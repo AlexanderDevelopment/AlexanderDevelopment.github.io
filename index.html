@@ -6,8 +6,58 @@
   <meta name="description" content="ZweiBier Indie is the solo indie game studio of Alex, a developer from Germany creating co-op horror, physics chaos, and friendship-breaking games." />
   <title>ZweiBier Indie — Solo Indie Game Developer</title>
   <script>
+    document.documentElement.classList.add("motion-ready");
+
     if (window.location.protocol === "http:" && window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
       window.location.replace("https://" + window.location.host + window.location.pathname + window.location.search + window.location.hash);
+    }
+
+    const DISCORD_CONSENT_KEY = "zb-discord-preview-consent";
+
+    function getDiscordStoredConsent() {
+      try {
+        return window.localStorage.getItem(DISCORD_CONSENT_KEY);
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function setDiscordStoredConsent(value) {
+      try {
+        if (value == null) {
+          window.localStorage.removeItem(DISCORD_CONSENT_KEY);
+          return;
+        }
+
+        window.localStorage.setItem(DISCORD_CONSENT_KEY, value);
+      } catch (error) {
+        // Ignore storage failures and continue without persistence.
+      }
+    }
+
+    function setDiscordStatus(message) {
+      const statusNote = document.getElementById("discord-status-note");
+      if (statusNote) {
+        statusNote.textContent = message;
+      }
+    }
+
+    function setDiscordPreviewState(isEnabled) {
+      const consentPanel = document.getElementById("discord-consent-panel");
+      const preview = document.getElementById("discord-preview");
+      const resetButton = document.getElementById("discord-reset-consent");
+
+      if (consentPanel) {
+        consentPanel.hidden = isEnabled;
+      }
+
+      if (preview) {
+        preview.hidden = !isEnabled;
+      }
+
+      if (resetButton) {
+        resetButton.hidden = !isEnabled;
+      }
     }
 
     function formatDiscordCount(value) {
@@ -65,54 +115,111 @@
       }
 
       const inviteCode = discordSection.dataset.discordInvite;
-      const statusNote = document.getElementById("discord-status-note");
+      const icon = document.getElementById("discord-icon");
+      const acceptButton = document.getElementById("discord-consent-accept");
+      const declineButton = document.getElementById("discord-consent-decline");
+      const resetButton = document.getElementById("discord-reset-consent");
       const fallbackSnapshot = {
+        name: document.getElementById("discord-community-title") ? document.getElementById("discord-community-title").textContent : "",
+        description: document.getElementById("discord-description") ? document.getElementById("discord-description").textContent : "",
         memberCount: Number(discordSection.dataset.memberCount) || 0,
-        onlineCount: Number(discordSection.dataset.onlineCount) || 0
+        onlineCount: Number(discordSection.dataset.onlineCount) || 0,
+        iconUrl: icon ? icon.dataset.iconUrl : "",
+        tags: Array.from(document.querySelectorAll("#discord-tags .discord-pill")).map(function (item) {
+          return item.textContent;
+        })
       };
 
-      updateDiscordSnapshot(fallbackSnapshot);
+      function blockDiscordPreview(message) {
+        setDiscordPreviewState(false);
+        setDiscordStatus(message || "Discord preview is blocked until you choose to load Discord content.");
+      }
 
-      if (!inviteCode) {
+      function loadDiscordPreview() {
+        updateDiscordSnapshot(fallbackSnapshot);
+        setDiscordPreviewState(true);
+
+        if (!inviteCode) {
+          setDiscordStatus("Discord preview loaded with locally stored public snapshot data.");
+          return;
+        }
+
+        if (discordSection.dataset.discordLoaded === "true") {
+          setDiscordStatus("Live public invite snapshot from Discord.");
+          return;
+        }
+
+        if (discordSection.dataset.discordLoaded === "pending") {
+          setDiscordStatus("Loading public Discord preview from Discord...");
+          return;
+        }
+
+        discordSection.dataset.discordLoaded = "pending";
+        setDiscordStatus("Loading public Discord preview from Discord...");
+
+        fetch("https://discord.com/api/v10/invites/" + inviteCode + "?with_counts=true")
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error("Discord invite request failed.");
+            }
+
+            return response.json();
+          })
+          .then(function (payload) {
+            const guild = payload.guild || {};
+            const profile = payload.profile || {};
+            const traits = Array.isArray(profile.traits)
+              ? profile.traits.map(function (item) { return item.label; }).filter(Boolean)
+              : [];
+            const iconUrl = guild.id && guild.icon
+              ? "https://cdn.discordapp.com/icons/" + guild.id + "/" + guild.icon + ".png?size=256"
+              : fallbackSnapshot.iconUrl;
+
+            updateDiscordSnapshot({
+              name: profile.name || guild.name || fallbackSnapshot.name,
+              description: profile.description || guild.description || fallbackSnapshot.description,
+              memberCount: payload.approximate_member_count || profile.member_count || fallbackSnapshot.memberCount,
+              onlineCount: payload.approximate_presence_count || profile.online_count || fallbackSnapshot.onlineCount,
+              iconUrl: iconUrl,
+              tags: traits.length ? traits : fallbackSnapshot.tags
+            });
+
+            discordSection.dataset.discordLoaded = "true";
+            setDiscordStatus("Live public invite snapshot from Discord.");
+          })
+          .catch(function () {
+            discordSection.dataset.discordLoaded = "fallback";
+            setDiscordStatus("Discord preview loaded with locally stored public snapshot data.");
+          });
+      }
+
+      if (acceptButton) {
+        acceptButton.addEventListener("click", function () {
+          setDiscordStoredConsent("accepted");
+          loadDiscordPreview();
+        });
+      }
+
+      if (declineButton) {
+        declineButton.addEventListener("click", function () {
+          setDiscordStoredConsent("rejected");
+          blockDiscordPreview("Discord preview stays blocked on this device until you choose to load it.");
+        });
+      }
+
+      if (resetButton) {
+        resetButton.addEventListener("click", function () {
+          setDiscordStoredConsent("rejected");
+          blockDiscordPreview("Discord preview stays blocked on this device until you choose to load it.");
+        });
+      }
+
+      if (getDiscordStoredConsent() === "accepted") {
+        loadDiscordPreview();
         return;
       }
 
-      fetch("https://discord.com/api/v10/invites/" + inviteCode + "?with_counts=true")
-        .then(function (response) {
-          if (!response.ok) {
-            throw new Error("Discord invite request failed.");
-          }
-
-          return response.json();
-        })
-        .then(function (payload) {
-          const guild = payload.guild || {};
-          const profile = payload.profile || {};
-          const traits = Array.isArray(profile.traits)
-            ? profile.traits.map(function (item) { return item.label; }).filter(Boolean)
-            : [];
-          const iconUrl = guild.id && guild.icon
-            ? "https://cdn.discordapp.com/icons/" + guild.id + "/" + guild.icon + ".png?size=256"
-            : "";
-
-          updateDiscordSnapshot({
-            name: profile.name || guild.name,
-            description: profile.description || guild.description,
-            memberCount: payload.approximate_member_count || profile.member_count,
-            onlineCount: payload.approximate_presence_count || profile.online_count,
-            iconUrl: iconUrl,
-            tags: traits
-          });
-
-          if (statusNote) {
-            statusNote.textContent = "Live public invite snapshot from Discord.";
-          }
-        })
-        .catch(function () {
-          if (statusNote) {
-            statusNote.textContent = "Public community snapshot with a direct invite link to Discord.";
-          }
-        });
+      blockDiscordPreview();
     }
 
     function initializeContactForm() {
@@ -149,9 +256,93 @@
       });
     }
 
+    function initializeScrollMotion() {
+      const revealElements = Array.from(document.querySelectorAll(".scroll-reveal"));
+      if (!revealElements.length) {
+        return;
+      }
+
+      revealElements.forEach(function (element, index) {
+        const revealDelay = Number(element.dataset.revealDelay);
+        const delay = Number.isFinite(revealDelay) ? revealDelay : Math.min(index * 60, 220);
+        element.style.setProperty("--reveal-delay", delay + "ms");
+      });
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        revealElements.forEach(function (element) {
+          element.classList.add("is-visible");
+          element.style.removeProperty("--depth-shift");
+          element.style.removeProperty("--depth-scale");
+        });
+        return;
+      }
+
+      if (!("IntersectionObserver" in window)) {
+        revealElements.forEach(function (element) {
+          element.classList.add("is-visible");
+        });
+      } else {
+        const observer = new IntersectionObserver(function (entries, currentObserver) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            entry.target.classList.add("is-visible");
+            currentObserver.unobserve(entry.target);
+          });
+        }, {
+          threshold: 0.18,
+          rootMargin: "0px 0px -12% 0px"
+        });
+
+        revealElements.forEach(function (element) {
+          observer.observe(element);
+        });
+      }
+
+      const depthElements = Array.from(document.querySelectorAll(".scroll-depth"));
+      if (!depthElements.length) {
+        return;
+      }
+
+      let frameId = 0;
+
+      function updateDepth() {
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
+
+        depthElements.forEach(function (element) {
+          const depthRange = Number(element.dataset.depth) || 0;
+          const rect = element.getBoundingClientRect();
+          const focusPoint = rect.top + rect.height / 2;
+          const normalized = Math.max(-1, Math.min(1, (focusPoint - viewportHeight / 2) / viewportHeight));
+          const depthShift = normalized * depthRange;
+          const depthScale = 1 - Math.min(Math.abs(normalized) * 0.018, 0.018);
+
+          element.style.setProperty("--depth-shift", depthShift.toFixed(2) + "px");
+          element.style.setProperty("--depth-scale", depthScale.toFixed(3));
+        });
+
+        frameId = 0;
+      }
+
+      function queueDepthUpdate() {
+        if (frameId) {
+          return;
+        }
+
+        frameId = window.requestAnimationFrame(updateDepth);
+      }
+
+      queueDepthUpdate();
+      window.addEventListener("scroll", queueDepthUpdate, { passive: true });
+      window.addEventListener("resize", queueDepthUpdate);
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
       initializeDiscordWidget();
       initializeContactForm();
+      initializeScrollMotion();
     });
   </script>
   <style>
@@ -185,13 +376,45 @@
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(circle at 12% 12%, rgba(124, 255, 196, 0.16), transparent 32rem),
-        radial-gradient(circle at 88% 4%, rgba(138, 168, 255, 0.15), transparent 30rem),
-        radial-gradient(circle at 50% 92%, rgba(255, 108, 143, 0.12), transparent 34rem),
-        var(--bg);
+      background: var(--bg);
       line-height: 1.6;
       overflow-x: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .page-backdrop {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(124, 255, 196, 0.18), transparent 30rem),
+        radial-gradient(circle at 84% 10%, rgba(138, 168, 255, 0.18), transparent 31rem),
+        radial-gradient(circle at 50% 82%, rgba(255, 108, 143, 0.12), transparent 32rem),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 24rem),
+        var(--bg);
+    }
+
+    .page-backdrop::before,
+    .page-backdrop::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+
+    .page-backdrop::before {
+      inset: -12%;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(124, 255, 196, 0.1), transparent 24rem),
+        radial-gradient(circle at 78% 24%, rgba(138, 168, 255, 0.1), transparent 24rem),
+        radial-gradient(circle at 52% 66%, rgba(255, 255, 255, 0.05), transparent 26rem);
+      filter: blur(36px);
+      opacity: 0.95;
+    }
+
+    .page-backdrop::after {
+      background: linear-gradient(to bottom, rgba(7, 8, 13, 0.12), rgba(7, 8, 13, 0.46) 52%, rgba(7, 8, 13, 0.74));
     }
 
     a {
@@ -220,6 +443,12 @@
     .container {
       width: min(var(--max), calc(100% - 40px));
       margin-inline: auto;
+    }
+
+    main,
+    footer {
+      position: relative;
+      z-index: 1;
     }
 
     header {
@@ -442,6 +671,29 @@
       font-weight: 800;
       letter-spacing: 0.18em;
       text-transform: uppercase;
+    }
+
+    .scroll-reveal {
+      --depth-shift: 0px;
+      --depth-scale: 1;
+      --reveal-offset: 0px;
+      transform-origin: center top;
+    }
+
+    .motion-ready .scroll-reveal {
+      --reveal-offset: 44px;
+      opacity: 0;
+      transform: translate3d(0, calc(var(--reveal-offset) + var(--depth-shift)), 0) scale(var(--depth-scale));
+      transition:
+        opacity 680ms cubic-bezier(.2, .8, .2, 1),
+        transform 900ms cubic-bezier(.16, 1, .3, 1);
+      transition-delay: var(--reveal-delay, 0ms);
+      will-change: opacity, transform;
+    }
+
+    .motion-ready .scroll-reveal.is-visible {
+      --reveal-offset: 0px;
+      opacity: 1;
     }
 
     h2 {
@@ -754,11 +1006,18 @@
       margin-top: 26px;
     }
 
+    .discord-note-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      margin-top: 18px;
+    }
+
     .discord-note {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin-top: 18px;
       color: var(--muted);
       font-size: 0.9rem;
     }
@@ -777,6 +1036,56 @@
       background:
         linear-gradient(180deg, rgba(88,101,242,0.16), transparent 34%),
         linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.035));
+      display: grid;
+    }
+
+    .discord-consent-panel {
+      display: grid;
+      gap: 16px;
+      min-height: 100%;
+      padding: clamp(22px, 4vw, 30px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at top left, rgba(88,101,242,0.2), transparent 14rem),
+        rgba(255,255,255,0.03);
+    }
+
+    .discord-consent-panel h3 {
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+    }
+
+    .discord-consent-copy {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .discord-consent-copy strong {
+      color: var(--text);
+    }
+
+    .discord-inline-action {
+      padding: 0;
+      border: 0;
+      background: none;
+      color: var(--accent-2);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
+    }
+
+    .discord-inline-action:hover {
+      color: var(--text);
+    }
+
+    .discord-preview[hidden],
+    .discord-consent-panel[hidden] {
+      display: none;
     }
 
     .discord-card-head {
@@ -930,6 +1239,30 @@
       color: var(--text);
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .motion-ready .scroll-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .slide-content {
+        animation: none;
+      }
+
+      .slides,
+      .control,
+      .dot,
+      .contact-list a,
+      .btn {
+        transition: none;
+      }
+    }
+
     @media (max-width: 940px) {
       .hero-grid,
       .about-grid,
@@ -1039,6 +1372,7 @@
   </style>
 </head>
 <body>
+  <div class="page-backdrop" aria-hidden="true"></div>
   <div class="noise" aria-hidden="true"></div>
 
   <header>
@@ -1060,7 +1394,7 @@
   <main id="top">
     <section class="hero">
       <div class="container hero-grid">
-        <div>
+        <div class="hero-copy scroll-reveal" data-reveal-delay="0">
           <span class="eyebrow">Solo indie studio from Germany</span>
           <h1>ZweiBier Indie</h1>
           <p class="hero-tagline">Co-op games about survival, physics, chaos, voice mechanics, teamwork, and the tiny disasters that make playing with friends unforgettable.</p>
@@ -1070,7 +1404,7 @@
             <a class="btn" href="#contact">Contact Alex</a>
           </div>
         </div>
-        <div class="hero-card" aria-label="Featured artwork from Dreadway">
+        <div class="hero-card scroll-reveal scroll-depth" data-reveal-delay="120" data-depth="24" aria-label="Featured artwork from Dreadway">
           <div class="floating-card">
             <strong>Made by Alex</strong>
             <span>One-person studio. Unity background. Games built around strong hooks and co-op moments.</span>
@@ -1081,13 +1415,13 @@
 
     <section id="about">
       <div class="container about-grid">
-        <div class="section-head">
+        <div class="section-head scroll-reveal" data-reveal-delay="0">
           <div>
             <div class="section-kicker">About me</div>
             <h2>Games are not just work. They are the dream.</h2>
           </div>
         </div>
-        <div class="about-panel">
+        <div class="about-panel scroll-reveal scroll-depth" data-reveal-delay="100" data-depth="14">
           <p>Hi, I’m Alex — a solo developer from Germany and the person behind ZweiBier Indie.</p>
           <p>I have always loved games. Before starting my own studio, I worked as a Unity developer, building the experience that now helps me create my own projects independently.</p>
           <p>For me, game development is not just a job. It is a dream, so I never get tired of building worlds, testing mechanics, breaking prototypes, and turning strange ideas into playable co-op chaos.</p>
@@ -1097,7 +1431,7 @@
 
     <section id="games">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head scroll-reveal" data-reveal-delay="0">
           <div>
             <div class="section-kicker">Games</div>
             <h2>Current projects</h2>
@@ -1105,7 +1439,7 @@
           <a class="btn" href="https://store.steampowered.com/search/?developer=ZweiBier+Indie" target="_blank" rel="noopener noreferrer">Steam developer page</a>
         </div>
 
-        <div class="carousel-wrap" aria-label="Game artwork carousel">
+        <div class="carousel-wrap scroll-reveal scroll-depth" data-reveal-delay="110" data-depth="22" aria-label="Game artwork carousel">
           <input type="radio" name="game-slider" id="slide-dreadway" checked>
           <input type="radio" name="game-slider" id="slide-open">
           <input type="radio" name="game-slider" id="slide-cows">
@@ -1174,7 +1508,7 @@
 
     <section id="discord" data-discord-invite="sredy7UU63" data-member-count="1248" data-online-count="329">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head scroll-reveal" data-reveal-delay="0">
           <div>
             <div class="section-kicker">Discord</div>
             <h2>Join the studio community.</h2>
@@ -1183,56 +1517,72 @@
         </div>
 
         <div class="discord-grid">
-          <div class="discord-copy-card">
+          <div class="discord-copy-card scroll-reveal scroll-depth" data-reveal-delay="80" data-depth="12">
             <p>Want to stay close to ZweiBier Indie between Steam page visits? This Discord block gives visitors a direct path into the community without leaving the look and feel of the site.</p>
             <p>It highlights the public server snapshot, shows how active the community is, and makes the invite link impossible to miss for players, press, and future collaborators.</p>
             <div class="discord-actions">
               <a class="btn primary" href="https://discord.gg/sredy7UU63" target="_blank" rel="noopener noreferrer">Join ZweiBier Indie</a>
               <a class="btn" href="https://store.steampowered.com/search/?developer=ZweiBier+Indie" target="_blank" rel="noopener noreferrer">Follow on Steam</a>
             </div>
-            <div class="discord-note" aria-live="polite">
-              <span id="discord-status-note">Public community snapshot from Discord invite data.</span>
+            <div class="discord-note-row">
+              <div class="discord-note" aria-live="polite">
+                <span id="discord-status-note">Discord preview is blocked until you choose to load Discord content.</span>
+              </div>
+              <button id="discord-reset-consent" class="discord-inline-action" type="button" hidden>Block Discord preview again</button>
             </div>
           </div>
 
-          <aside class="discord-panel" aria-labelledby="discord-community-title">
-            <div class="discord-card-head">
-              <img
-                id="discord-icon"
-                class="discord-avatar"
-                src="https://cdn.discordapp.com/icons/1303526994927157288/26b32e376ed7cb30dbe6939cb5a4e79b.png?size=256"
-                alt="ZweiBier Indie Discord server icon"
-                loading="lazy">
-              <div>
-                <p class="discord-overline">Community server</p>
-                <h3 id="discord-community-title">ZweiBier Indie</h3>
+          <aside class="discord-panel scroll-reveal scroll-depth" data-reveal-delay="160" data-depth="18">
+            <div id="discord-consent-panel" class="discord-consent-panel">
+              <p class="discord-overline">External content</p>
+              <h3>Load Discord preview?</h3>
+              <p class="discord-consent-copy">This community preview connects to Discord to load public invite data and the server icon. Discord may process technical data and use cookies or similar technologies after you choose to load it.</p>
+              <p class="discord-consent-copy"><strong>Your choice is stored on this device</strong> so the site remembers whether Discord content should load automatically next time.</p>
+              <div class="discord-actions">
+                <button id="discord-consent-accept" class="btn primary" type="button">Load Discord preview</button>
+                <button id="discord-consent-decline" class="btn" type="button">Keep blocked</button>
               </div>
             </div>
 
-            <p id="discord-description" class="discord-description">A co-op horror about surviving a nuclear apocalypse as a small group of people on a train, scavenging for various scrap to upgrade the train.</p>
-
-            <div class="discord-stat-grid" aria-label="Discord server snapshot">
-              <div class="discord-stat">
-                <strong id="discord-members">1,248</strong>
-                <span>Members</span>
+            <div id="discord-preview" class="discord-preview" hidden>
+              <div class="discord-card-head">
+                <img
+                  id="discord-icon"
+                  class="discord-avatar"
+                  data-icon-url="https://cdn.discordapp.com/icons/1303526994927157288/26b32e376ed7cb30dbe6939cb5a4e79b.png?size=256"
+                  alt="ZweiBier Indie Discord server icon"
+                  loading="lazy">
+                <div>
+                  <p class="discord-overline">Community server</p>
+                  <h3 id="discord-community-title">ZweiBier Indie</h3>
+                </div>
               </div>
-              <div class="discord-stat">
-                <strong id="discord-online">329</strong>
-                <span>Online now</span>
+
+              <p id="discord-description" class="discord-description">A co-op horror about surviving a nuclear apocalypse as a small group of people on a train, scavenging for various scrap to upgrade the train.</p>
+
+              <div class="discord-stat-grid" aria-label="Discord server snapshot">
+                <div class="discord-stat">
+                  <strong id="discord-members">1,248</strong>
+                  <span>Members</span>
+                </div>
+                <div class="discord-stat">
+                  <strong id="discord-online">329</strong>
+                  <span>Online now</span>
+                </div>
               </div>
-            </div>
 
-            <div id="discord-tags" class="discord-tags" aria-label="Discord server tags">
-              <span class="pill discord-pill">Indie</span>
-              <span class="pill discord-pill">Co-op</span>
-              <span class="pill discord-pill">Funny</span>
-              <span class="pill discord-pill">Adventure</span>
-              <span class="pill discord-pill">Psychological Horror</span>
-            </div>
+              <div id="discord-tags" class="discord-tags" aria-label="Discord server tags">
+                <span class="pill discord-pill">Indie</span>
+                <span class="pill discord-pill">Co-op</span>
+                <span class="pill discord-pill">Funny</span>
+                <span class="pill discord-pill">Adventure</span>
+                <span class="pill discord-pill">Psychological Horror</span>
+              </div>
 
-            <div class="discord-link-row">
-              <span>Invite link</span>
-              <a href="https://discord.gg/sredy7UU63" target="_blank" rel="noopener noreferrer">discord.gg/sredy7UU63</a>
+              <div class="discord-link-row">
+                <span>Invite link</span>
+                <a href="https://discord.gg/sredy7UU63" target="_blank" rel="noopener noreferrer">discord.gg/sredy7UU63</a>
+              </div>
             </div>
           </aside>
         </div>
@@ -1241,13 +1591,13 @@
 
     <section id="contact">
       <div class="container contact-grid">
-        <div class="contact-copy">
+        <div class="contact-copy scroll-reveal scroll-depth" data-reveal-delay="0" data-depth="12">
           <div class="section-kicker">Contact with me</div>
           <h2>Let’s talk.</h2>
           <p>For publishing, press, platform, contractor, or business inquiries, send a message to Alex at ZweiBier Indie.</p>
         </div>
 
-        <div class="contact-panel">
+        <div class="contact-panel scroll-reveal scroll-depth" data-reveal-delay="110" data-depth="16">
           <form id="contact-form" action="https://formsubmit.co/147c3fdf4bfcc0148149876bad37681c" method="POST">
             <input type="hidden" name="_subject" value="New contact request from zweiBier-indie.de">
             <input type="hidden" name="_next" value="https://zweibier-indie.de/contact-success.html">
