@@ -717,14 +717,15 @@
       inset: 0;
       z-index: -1;
       background:
-        radial-gradient(circle at 14% 18%, rgba(124, 255, 196, 0.18), transparent 20rem),
-        radial-gradient(circle at 82% 18%, rgba(138, 168, 255, 0.18), transparent 22rem),
-        linear-gradient(135deg, rgba(124, 255, 196, 0.16), transparent 38%),
-        linear-gradient(315deg, rgba(138, 168, 255, 0.22), transparent 36%),
-        url("https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1769872973") center 42% / cover no-repeat;
-      filter: blur(3px) saturate(0.92) contrast(1.04) brightness(0.58);
-      transform: scale(1.08);
-      opacity: 0.52;
+        radial-gradient(circle at 16% 20%, rgba(124, 255, 196, 0.24), transparent 18rem),
+        radial-gradient(circle at 82% 18%, rgba(138, 168, 255, 0.22), transparent 21rem),
+        radial-gradient(circle at 54% 78%, rgba(255, 255, 255, 0.07), transparent 20rem),
+        linear-gradient(140deg, rgba(124, 255, 196, 0.1), transparent 34%),
+        linear-gradient(320deg, rgba(138, 168, 255, 0.12), transparent 36%),
+        linear-gradient(180deg, rgba(10, 15, 24, 0.96), rgba(8, 11, 18, 0.82));
+      filter: blur(0);
+      transform: scale(1);
+      opacity: 1;
     }
 
     .hero-card::after {
@@ -1385,17 +1386,49 @@
         padding: 62px 0;
       }
 
+      h2 {
+        font-size: clamp(1.9rem, 10vw, 2.8rem);
+        line-height: 1.02;
+        letter-spacing: -0.05em;
+      }
+
       .hero-card {
-        min-height: 480px;
-        padding: 24px;
+        min-height: auto;
+        padding: 26px 24px 28px;
       }
 
       .hero-wordmark {
         gap: 0;
+        margin-bottom: 18px;
+        font-size: clamp(3.15rem, 15vw, 4.7rem);
+        line-height: 0.86;
+        letter-spacing: -0.082em;
+      }
+
+      .hero-wordmark span {
+        width: 100%;
+        max-width: 100%;
       }
 
       .hero-wordmark span:last-child {
         justify-self: start;
+      }
+
+      .hero-tagline {
+        max-width: 18ch;
+        font-size: 1rem;
+        line-height: 1.58;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+        min-width: 0;
       }
 
       .stat-grid {
@@ -1440,6 +1473,17 @@
       .discord-stat-grid {
         grid-template-columns: 1fr;
       }
+    }
+
+    @media (max-width: 420px) {
+      .hero-wordmark {
+        font-size: clamp(2.95rem, 14vw, 4.2rem);
+      }
+
+      .hero-tagline {
+        max-width: 16ch;
+      }
+
     }
   </style>
 </head>
@@ -1586,7 +1630,6 @@
             <div class="section-kicker">Discord</div>
             <h2>Join the studio community.</h2>
           </div>
-          <a class="btn" href="https://discord.gg/sredy7UU63" target="_blank" rel="noopener noreferrer">Open Discord invite</a>
         </div>
 
         <div class="discord-grid">

@@ -17,5 +17,5 @@ The homepage Discord section is a consent-gated community card that links visito
 ## Update Checklist
 
 - If the invite changes, update the `data-discord-invite` attribute on `#discord`.
-- Update all `discord.gg/...` links in the Discord section CTA buttons.
+- Update the `discord.gg/...` link in the Discord section CTA button.
 - If the server icon changes and you want the default preview image to match before the live request finishes, update `data-icon-url` on `#discord-icon`.
