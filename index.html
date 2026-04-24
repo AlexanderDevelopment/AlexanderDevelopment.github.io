@@ -7,7 +7,7 @@
   <title>ZweiBier Indie — Solo Indie Game Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet" />
   <script>
     document.documentElement.classList.add("motion-ready");
 
@@ -571,11 +571,16 @@
     }
 
     .brand-wordmark {
-      font-family: "Syne", "Arial Narrow", "Segoe UI", sans-serif;
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
       font-size: 1.08rem;
-      line-height: 0.92;
-      letter-spacing: -0.08em;
-      text-shadow: 0 10px 30px rgba(124, 255, 196, 0.14);
+      line-height: 1;
+      letter-spacing: -0.06em;
+      color: #a9ffc8;
+      -webkit-text-stroke: 0.6px rgba(0, 0, 0, 0.82);
+      paint-order: stroke fill;
+      text-shadow:
+        0 0 14px rgba(124, 255, 196, 0.18),
+        0 8px 18px rgba(0, 0, 0, 0.28);
     }
 
     .brand-mark {
@@ -745,30 +750,22 @@
     }
 
     .hero-wordmark {
-      max-width: none;
+      max-width: 100%;
       width: 100%;
       margin-bottom: 24px;
-      display: grid;
-      gap: 4px;
-      font-family: "Syne", "Arial Narrow", "Segoe UI", sans-serif;
-      font-size: clamp(4.4rem, 10.8vw, 10.8rem);
-      line-height: 0.8;
-      letter-spacing: -0.095em;
-    }
-
-    .hero-wordmark span {
-      display: block;
-      width: max-content;
-      max-width: 100%;
-      background: linear-gradient(135deg, #f7fbff 4%, #dffcf2 38%, #9ed5ff 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      filter: drop-shadow(0 12px 36px rgba(124, 255, 196, 0.16));
-    }
-
-    .hero-wordmark span:last-child {
-      justify-self: end;
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
+      font-size: clamp(1.6rem, 8.8vw, 8.8rem);
+      font-weight: 800;
+      line-height: 0.94;
+      letter-spacing: -0.08em;
+      white-space: nowrap;
+      color: #a9ffc8;
+      -webkit-text-stroke: 2px rgba(0, 0, 0, 0.9);
+      paint-order: stroke fill;
+      text-shadow:
+        0 0 18px rgba(124, 255, 196, 0.34),
+        0 0 38px rgba(124, 255, 196, 0.24),
+        0 14px 30px rgba(0, 0, 0, 0.42);
     }
 
     section {
@@ -1340,7 +1337,7 @@
       }
 
       .hero-wordmark {
-        font-size: clamp(3.9rem, 13vw, 8rem);
+        font-size: clamp(1.8rem, 8vw, 6.4rem);
       }
 
       .section-head {
@@ -1363,7 +1360,8 @@
       }
 
       .hero-shell {
-        width: calc(100% - 28px);
+        width: 100%;
+        padding-inline: 14px;
       }
 
       .nav {
@@ -1398,20 +1396,11 @@
       }
 
       .hero-wordmark {
-        gap: 0;
         margin-bottom: 18px;
-        font-size: clamp(3.15rem, 15vw, 4.7rem);
-        line-height: 0.86;
-        letter-spacing: -0.082em;
-      }
-
-      .hero-wordmark span {
-        width: 100%;
-        max-width: 100%;
-      }
-
-      .hero-wordmark span:last-child {
-        justify-self: start;
+        font-size: clamp(1.72rem, 8.6vw, 2.45rem);
+        line-height: 0.96;
+        letter-spacing: -0.072em;
+        -webkit-text-stroke-width: 1.4px;
       }
 
       .hero-tagline {
@@ -1477,7 +1466,8 @@
 
     @media (max-width: 420px) {
       .hero-wordmark {
-        font-size: clamp(2.95rem, 14vw, 4.2rem);
+        font-size: clamp(1.56rem, 8.2vw, 2.1rem);
+        -webkit-text-stroke-width: 1.1px;
       }
 
       .hero-tagline {
@@ -1514,10 +1504,7 @@
           <div class="hero-card scroll-reveal scroll-depth" data-reveal-delay="0" data-depth="20" aria-label="Featured artwork from Dreadway">
             <div class="hero-copy">
               <span class="eyebrow">Solo indie dev from Germany</span>
-              <h1 class="hero-wordmark">
-                <span>ZweiBier</span>
-                <span>Indie</span>
-              </h1>
+              <h1 class="hero-wordmark">ZweiBier Indie</h1>
               <p class="hero-tagline">Co-op games about survival, physics, chaos, voice mechanics, teamwork, and the tiny disasters that make playing with friends unforgettable.</p>
               <div class="hero-actions">
                 <a class="btn primary" href="#games">Explore games</a>
