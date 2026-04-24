@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ZweiBier Indie is the solo indie game studio of Alex, a developer from Germany creating co-op horror, physics chaos, and friendship-breaking games." />
+  <title>ZweiBier Indie — Solo Indie Game Developer</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07080d;
+      --bg-soft: #0d1018;
+      --panel: rgba(255, 255, 255, 0.06);
+      --panel-strong: rgba(255, 255, 255, 0.1);
+      --text: #f5f7fb;
+      --muted: #aeb7ca;
+      --line: rgba(255, 255, 255, 0.13);
+      --accent: #7cffc4;
+      --accent-2: #8aa8ff;
+      --danger: #ff6c8f;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      --radius: 28px;
+      --max: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 12%, rgba(124, 255, 196, 0.16), transparent 32rem),
+        radial-gradient(circle at 88% 4%, rgba(138, 168, 255, 0.15), transparent 30rem),
+        radial-gradient(circle at 50% 92%, rgba(255, 108, 143, 0.12), transparent 34rem),
+        var(--bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .noise {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 8, 13, 0.7);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(124, 255, 196, 0.95), rgba(138, 168, 255, 0.9));
+      color: #07100d;
+      box-shadow: 0 12px 40px rgba(124, 255, 196, 0.18);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .nav-links a {
+      transition: color 180ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      font-weight: 700;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--panel-strong);
+      border-color: rgba(255, 255, 255, 0.28);
+    }
+
+    .btn.primary {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #06100d;
+      box-shadow: 0 18px 50px rgba(124, 255, 196, 0.18);
+    }
+
+    .hero {
+      min-height: calc(100svh - 74px);
+      display: grid;
+      align-items: center;
+      padding: 86px 0 74px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.045);
+      font-size: 0.88rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 18px var(--accent);
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin-bottom: 20px;
+      font-size: clamp(3.3rem, 9vw, 8.4rem);
+      line-height: 0.88;
+      letter-spacing: -0.085em;
+    }
+
+    .hero-tagline {
+      max-width: 620px;
+      margin-bottom: 32px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.32rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 520px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+        var(--bg-soft);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      z-index: -1;
+      background:
+        linear-gradient(135deg, rgba(124, 255, 196, 0.14), transparent 34%),
+        linear-gradient(315deg, rgba(138, 168, 255, 0.18), transparent 34%),
+        url("https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1769872973") center/cover no-repeat;
+      filter: saturate(1.08) contrast(1.12);
+      transform: scale(1.2);
+      opacity: 0.62;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(to top, rgba(7, 8, 13, 0.92), rgba(7, 8, 13, 0.1));
+    }
+
+    .floating-card {
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      width: min(320px, calc(100% - 48px));
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 24px;
+      background: rgba(7, 8, 13, 0.72);
+      backdrop-filter: blur(18px);
+    }
+
+    .floating-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.15rem;
+    }
+
+    .floating-card span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    section {
+      padding: 86px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+
+    .section-kicker {
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-size: clamp(2.1rem, 4vw, 4.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .about-panel, .stat-card, .contact-panel, .policy-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.035));
+      box-shadow: var(--shadow);
+    }
+
+    .about-panel {
+      padding: 32px;
+    }
+
+    .about-panel p {
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+
+    .about-panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .stat-card {
+      min-height: 180px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .stat-card b {
+      font-size: clamp(1.85rem, 4vw, 3.4rem);
+      line-height: 0.9;
+      letter-spacing: -0.065em;
+    }
+
+    .stat-card span {
+      color: var(--muted);
+    }
+
+    .carousel-wrap {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.04);
+      box-shadow: var(--shadow);
+    }
+
+    .carousel-wrap input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .slides {
+      display: flex;
+      width: 300%;
+      transition: transform 620ms cubic-bezier(.2,.8,.2,1);
+    }
+
+    .slide {
+      position: relative;
+      width: 33.3333%;
+      min-height: 640px;
+      display: grid;
+      align-items: end;
+      padding: 42px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: var(--game-image) center/cover no-repeat;
+      transform: scale(1.05);
+      filter: saturate(1.08) contrast(1.08);
+    }
+
+    .slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(7,8,13,0.92), rgba(7,8,13,0.22) 54%, rgba(7,8,13,0.68)),
+        linear-gradient(0deg, rgba(7,8,13,0.88), transparent 55%);
+    }
+
+    #slide-dreadway:checked ~ .slides { transform: translateX(0); }
+    #slide-open:checked ~ .slides { transform: translateX(-33.3333%); }
+    #slide-cows:checked ~ .slides { transform: translateX(-66.6666%); }
+
+    .slide-content {
+      max-width: 660px;
+      animation: fadeUp 620ms ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .game-logo {
+      width: min(460px, 100%);
+      margin-bottom: 24px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 20px 70px rgba(0,0,0,0.42);
+    }
+
+    .slide h3 {
+      margin-bottom: 12px;
+      font-size: clamp(2rem, 4vw, 4.8rem);
+      line-height: 0.94;
+      letter-spacing: -0.07em;
+    }
+
+    .slide p {
+      max-width: 620px;
+      color: #d8deea;
+      font-size: clamp(1rem, 1.7vw, 1.18rem);
+    }
+
+    .game-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 22px 0 26px;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.075);
+      color: #dce3f0;
+      font-size: 0.88rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .controls {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+    }
+
+    .control {
+      pointer-events: auto;
+      display: none;
+      width: 50px;
+      height: 50px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      background: rgba(7,8,13,0.68);
+      backdrop-filter: blur(16px);
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease;
+      user-select: none;
+      font-size: 1.45rem;
+      line-height: 1;
+    }
+
+    .control:hover {
+      transform: scale(1.06);
+      background: rgba(255,255,255,0.13);
+    }
+
+    #slide-dreadway:checked ~ .controls .dreadway-prev,
+    #slide-dreadway:checked ~ .controls .dreadway-next,
+    #slide-open:checked ~ .controls .open-prev,
+    #slide-open:checked ~ .controls .open-next,
+    #slide-cows:checked ~ .controls .cows-prev,
+    #slide-cows:checked ~ .controls .cows-next {
+      display: grid;
+    }
+
+    .dots {
+      position: absolute;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      padding: 8px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      background: rgba(7,8,13,0.55);
+      backdrop-filter: blur(14px);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.34);
+      cursor: pointer;
+      transition: width 220ms ease, background 220ms ease;
+    }
+
+    #slide-dreadway:checked ~ .dots label[for="slide-dreadway"],
+    #slide-open:checked ~ .dots label[for="slide-open"],
+    #slide-cows:checked ~ .dots label[for="slide-cows"] {
+      width: 30px;
+      background: var(--accent);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .contact-copy {
+      padding: 32px;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(140deg, rgba(124,255,196,0.14), transparent 46%),
+        linear-gradient(320deg, rgba(138,168,255,0.14), transparent 42%),
+        rgba(255,255,255,0.045);
+      border: 1px solid var(--line);
+    }
+
+    .contact-copy p {
+      color: var(--muted);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .contact-list a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.045);
+      color: var(--muted);
+      transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+    }
+
+    .contact-list a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+    }
+
+    .contact-panel {
+      padding: 28px;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    label {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    input, textarea {
+      width: 100%;
+      margin-top: 8px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.055);
+      color: var(--text);
+      outline: none;
+      font: inherit;
+      transition: border-color 180ms ease, background 180ms ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: rgba(124, 255, 196, 0.74);
+      background: rgba(255,255,255,0.08);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 0;
+      color: var(--muted);
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-row a {
+      color: var(--text);
+    }
+
+    @media (max-width: 940px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        min-height: 430px;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head .btn {
+        margin-top: 20px;
+      }
+
+      .slide {
+        min-height: 620px;
+        padding: 32px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .nav {
+        min-height: 66px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 58px 0 48px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 18vw, 5.2rem);
+      }
+
+      section {
+        padding: 62px 0;
+      }
+
+      .hero-card {
+        min-height: 390px;
+        padding: 18px;
+      }
+
+      .floating-card {
+        right: 18px;
+        bottom: 18px;
+        width: calc(100% - 36px);
+      }
+
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .slide {
+        min-height: 690px;
+        padding: 22px;
+      }
+
+      .game-logo {
+        margin-bottom: 18px;
+      }
+
+      .controls {
+        align-items: end;
+        justify-content: center;
+        gap: 84px;
+        padding-bottom: 74px;
+      }
+
+      .dots {
+        bottom: 22px;
+      }
+
+      .about-panel,
+      .contact-copy,
+      .contact-panel {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="ZweiBier Indie home">
+        <span class="brand-mark">ZB</span>
+        <span>ZweiBier Indie</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#games">Games</a>
+        <a href="#contact">Contact</a>
+        <a href="privacy-policy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Solo indie studio from Germany</span>
+          <h1>ZweiBier Indie</h1>
+          <p class="hero-tagline">Co-op games about survival, physics, chaos, voice mechanics, teamwork, and the tiny disasters that make playing with friends unforgettable.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#games">Explore games</a>
+            <a class="btn" href="#contact">Contact Alex</a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Featured artwork from Dreadway">
+          <div class="floating-card">
+            <strong>Made by Alex</strong>
+            <span>One-person studio. Unity background. Games built around strong hooks and co-op moments.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">About me</div>
+            <h2>Games are not just work. They are the dream.</h2>
+          </div>
+        </div>
+        <div class="about-panel">
+          <p>Hi, I’m Alex — a solo developer from Germany and the person behind ZweiBier Indie.</p>
+          <p>I have always loved games. Before starting my own studio, I worked as a Unity developer, building the experience that now helps me create my own projects independently.</p>
+          <p>For me, game development is not just a job. It is a dream, so I never get tired of building worlds, testing mechanics, breaking prototypes, and turning strange ideas into playable co-op chaos.</p>
+        </div>
+      </div>
+      <div class="container" style="margin-top: 28px;">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <b>Solo</b>
+            <span>One developer, full creative direction.</span>
+          </div>
+          <div class="stat-card">
+            <b>Unity</b>
+            <span>Gameplay, multiplayer, physics, and fast prototyping.</span>
+          </div>
+          <div class="stat-card">
+            <b>Co-op</b>
+            <span>Games focused on friends, communication, and chaos.</span>
+          </div>
+          <div class="stat-card">
+            <b>3</b>
+            <span>DREADWAY, OPEN UP SIR!, and NO MORE COWS.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="games">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Games</div>
+            <h2>Current projects</h2>
+          </div>
+          <a class="btn" href="https://store.steampowered.com/search/?developer=ZweiBier+Indie" target="_blank" rel="noopener noreferrer">Steam developer page</a>
+        </div>
+
+        <div class="carousel-wrap" aria-label="Game artwork carousel">
+          <input type="radio" name="game-slider" id="slide-dreadway" checked>
+          <input type="radio" name="game-slider" id="slide-open">
+          <input type="radio" name="game-slider" id="slide-cows">
+
+          <div class="slides">
+            <article class="slide" style="--game-image: url('https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1769872973');">
+              <div class="slide-content">
+                <img class="game-logo" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1769872973" alt="Dreadway logo and key art" loading="lazy">
+                <h3>DREADWAY</h3>
+                <p>A co-op extraction horror for 1–4 players where you survive nuclear wastelands on a train. Scavenge scrap for fuel and supplies, and use voice mechanics to stay alive.</p>
+                <div class="game-meta">
+                  <span class="pill">Co-op horror</span>
+                  <span class="pill">Voice mechanics</span>
+                  <span class="pill">Train survival</span>
+                </div>
+                <a class="btn primary" href="https://store.steampowered.com/app/3215820/Dreadway/" target="_blank" rel="noopener noreferrer">View on Steam</a>
+              </div>
+            </article>
+
+            <article class="slide" style="--game-image: url('https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4454760/1699f7d86a37f68e6e67cabc992915631026f771/header.jpg?t=1774457481');">
+              <div class="slide-content">
+                <img class="game-logo" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4454760/1699f7d86a37f68e6e67cabc992915631026f771/header.jpg?t=1774457481" alt="OPEN UP SIR! logo and key art" loading="lazy">
+                <h3>OPEN UP SIR!</h3>
+                <p>Co-op for 2–4 players about firefighters: you take on funny and dangerous calls — rescue, extinguish, and break things.</p>
+                <div class="game-meta">
+                  <span class="pill">Firefighter co-op</span>
+                  <span class="pill">Physics chaos</span>
+                  <span class="pill">Destruction</span>
+                </div>
+                <a class="btn primary" href="https://store.steampowered.com/app/4454760/OPEN_UP_SIR/" target="_blank" rel="noopener noreferrer">View on Steam</a>
+              </div>
+            </article>
+
+            <article class="slide" style="--game-image: url('https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4635170/d1b8657c54d044dcbd80807d1a25f5959681a874/header.jpg?t=1776781719');">
+              <div class="slide-content">
+                <img class="game-logo" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4635170/d1b8657c54d044dcbd80807d1a25f5959681a874/header.jpg?t=1776781719" alt="NO MORE COWS logo and key art" loading="lazy">
+                <h3>NO MORE COWS</h3>
+                <p>Physics-based co-op platformer where you and your friend must abduct a cow and drag it all the way from a barn to a laboratory in space. Survive traps, zero gravity, and friendship-breaking chaos in online co-op for 2 players.</p>
+                <div class="game-meta">
+                  <span class="pill">2-player co-op</span>
+                  <span class="pill">Cow carrying</span>
+                  <span class="pill">Zero gravity</span>
+                </div>
+                <a class="btn primary" href="https://store.steampowered.com/app/4635170/NO_MORE_COWS/" target="_blank" rel="noopener noreferrer">View on Steam</a>
+              </div>
+            </article>
+          </div>
+
+          <div class="controls" aria-hidden="true">
+            <label class="control dreadway-prev" for="slide-cows">‹</label>
+            <label class="control dreadway-next" for="slide-open">›</label>
+            <label class="control open-prev" for="slide-dreadway">‹</label>
+            <label class="control open-next" for="slide-cows">›</label>
+            <label class="control cows-prev" for="slide-open">‹</label>
+            <label class="control cows-next" for="slide-dreadway">›</label>
+          </div>
+
+          <div class="dots" aria-label="Choose game slide">
+            <label class="dot" for="slide-dreadway" aria-label="Show Dreadway"></label>
+            <label class="dot" for="slide-open" aria-label="Show OPEN UP SIR!"></label>
+            <label class="dot" for="slide-cows" aria-label="Show NO MORE COWS"></label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <div class="section-kicker">Contact with me</div>
+          <h2>Let’s talk.</h2>
+          <p>For publishing, press, platform, contractor, or business inquiries, send a message to Alex at ZweiBier Indie.</p>
+          <div class="contact-list">
+            <a href="https://store.steampowered.com/search/?developer=ZweiBier+Indie" target="_blank" rel="noopener noreferrer"><span>Steam</span><span>↗</span></a>
+            <a href="https://zweibier-indie.de" target="_blank" rel="noopener noreferrer"><span>Website</span><span>↗</span></a>
+          </div>
+        </div>
+
+        <div class="contact-panel">
+          <form action="mailto:contact@zweibier-indie.de" method="post" enctype="text/plain">
+            <label>
+              Your name
+              <input type="text" name="name" placeholder="Name" autocomplete="name" required>
+            </label>
+            <label>
+              Your email
+              <input type="email" name="email" placeholder="email@example.com" autocomplete="email" required>
+            </label>
+            <label>
+              Message
+              <textarea name="message" placeholder="Tell me about your request..." required></textarea>
+            </label>
+            <button class="btn primary" type="submit">Send message</button>
+            <p class="form-note">This HTML-only form uses mailto. For production, connect it to your own backend or form service.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© 2026 ZweiBier Indie. All rights reserved.</span>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+  </footer>
+</body>
+</html>
