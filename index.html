@@ -418,10 +418,67 @@
         return;
       }
 
+      function prepareMotionPieces(element, revealDelay) {
+        const pieces = new Set();
+        const pieceSelectors = [
+          ".hero-copy > .eyebrow",
+          ".hero-copy > .hero-wordmark",
+          ".hero-copy > .hero-tagline",
+          ".hero-copy > .hero-actions",
+          ".about-panel > p",
+          ".slide-content > .game-logo",
+          ".slide-content > h3",
+          ".slide-content > p",
+          ".slide-content > .game-meta",
+          ".contact-copy > .section-kicker",
+          ".contact-copy > h2",
+          ".contact-copy > p",
+          ".contact-copy > .contact-list",
+          ".discord-consent-panel > *",
+          ".discord-preview > .discord-card-head",
+          ".discord-preview > .discord-description",
+          ".discord-preview > .discord-stat-grid",
+          ".discord-preview > .discord-tags",
+          ".contact-panel > form > label",
+          ".contact-panel > form > .form-note"
+        ];
+
+        if (element.classList.contains("section-head")) {
+          Array.from(element.children).forEach(function (child) {
+            if (!child.classList.contains("btn")) {
+              pieces.add(child);
+            }
+          });
+        }
+
+        pieceSelectors.forEach(function (selector) {
+          element.querySelectorAll(selector).forEach(function (piece) {
+            pieces.add(piece);
+          });
+        });
+
+        Array.from(pieces).forEach(function (piece, pieceIndex) {
+          const visualPiece = piece.matches(".game-logo, .hero-actions, .game-meta, .contact-list, .discord-stat-grid, .discord-tags");
+          const fromRight = visualPiece || pieceIndex % 2 === 1;
+          const distance = Math.max(34, 72 - Math.min(pieceIndex, 6) * 5);
+          const verticalOffset = Math.min(18, 8 + pieceIndex * 2);
+          const delay = revealDelay + Math.min(pieceIndex * 72, 360);
+
+          piece.classList.add("motion-piece");
+          piece.style.setProperty("--piece-x", (fromRight ? distance : -distance) + "px");
+          piece.style.setProperty("--piece-y", verticalOffset + "px");
+          piece.style.setProperty("--piece-delay", delay + "ms");
+        });
+      }
+
       revealElements.forEach(function (element, index) {
         const revealDelay = Number(element.dataset.revealDelay);
         const delay = Number.isFinite(revealDelay) ? revealDelay : Math.min(index * 60, 220);
+        const revealSide = element.dataset.revealSide || (index % 2 === 0 ? "left" : "right");
+
         element.style.setProperty("--reveal-delay", delay + "ms");
+        element.classList.add(revealSide === "right" ? "reveal-from-right" : "reveal-from-left");
+        prepareMotionPieces(element, delay);
       });
 
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -473,7 +530,8 @@
           const focusPoint = rect.top + rect.height / 2;
           const normalized = Math.max(-1, Math.min(1, (focusPoint - viewportHeight / 2) / viewportHeight));
           const depthShift = normalized * depthRange;
-          const depthScale = 1 - Math.min(Math.abs(normalized) * 0.018, 0.018);
+          const scaleRange = Math.max(0.045, Math.min(depthRange * 0.0032, 0.075));
+          const depthScale = Math.max(0.925, Math.min(1.075, 1 + normalized * scaleRange));
 
           element.style.setProperty("--depth-shift", depthShift.toFixed(2) + "px");
           element.style.setProperty("--depth-scale", depthScale.toFixed(3));
@@ -855,23 +913,76 @@
       --depth-shift: 0px;
       --depth-scale: 1;
       --reveal-offset: 0px;
-      transform-origin: center top;
+      --reveal-x-start: 0px;
+      transform-origin: center center;
     }
 
     .motion-ready .scroll-reveal {
       --reveal-offset: 44px;
       opacity: 0;
-      transform: translate3d(0, calc(var(--reveal-offset) + var(--depth-shift)), 0) scale(var(--depth-scale));
+      clip-path: inset(0 8% round var(--radius));
+      transform: translate3d(var(--reveal-x-start), calc(var(--reveal-offset) + var(--depth-shift)), 0) scale(var(--depth-scale));
       transition:
         opacity 680ms cubic-bezier(.2, .8, .2, 1),
+        clip-path 900ms cubic-bezier(.16, 1, .3, 1),
         transform 900ms cubic-bezier(.16, 1, .3, 1);
       transition-delay: var(--reveal-delay, 0ms);
-      will-change: opacity, transform;
+      will-change: opacity, clip-path, transform;
+    }
+
+    .motion-ready .scroll-reveal.reveal-from-left {
+      --reveal-x-start: -46px;
+      clip-path: inset(0 10% 0 0 round var(--radius));
+    }
+
+    .motion-ready .scroll-reveal.reveal-from-right {
+      --reveal-x-start: 46px;
+      clip-path: inset(0 0 0 10% round var(--radius));
     }
 
     .motion-ready .scroll-reveal.is-visible {
       --reveal-offset: 0px;
+      --reveal-x-start: 0px;
       opacity: 1;
+      clip-path: inset(-12px round var(--radius));
+    }
+
+    .motion-ready .motion-piece {
+      opacity: 0;
+      filter: blur(10px);
+      transform: translate3d(var(--piece-x, 0px), var(--piece-y, 12px), 0) scale(0.96);
+      transition:
+        opacity 680ms cubic-bezier(.2, .8, .2, 1),
+        filter 760ms cubic-bezier(.16, 1, .3, 1),
+        transform 900ms cubic-bezier(.16, 1, .3, 1);
+      transition-delay: var(--piece-delay, 0ms);
+      will-change: opacity, filter, transform;
+    }
+
+    .motion-ready .scroll-reveal.is-visible .motion-piece {
+      opacity: 1;
+      filter: blur(0);
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    .motion-ready .hero-card.scroll-reveal::before {
+      transform: translate3d(7%, 0, 0) scale(1.08);
+      transition: transform 1100ms cubic-bezier(.16, 1, .3, 1);
+      transition-delay: calc(var(--reveal-delay, 0ms) + 80ms);
+    }
+
+    .motion-ready .hero-card.scroll-reveal.is-visible::before {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    .motion-ready .carousel-wrap.scroll-reveal .slide::before {
+      transform: translate3d(6%, 0, 0) scale(1.12);
+      transition: transform 1100ms cubic-bezier(.16, 1, .3, 1);
+      transition-delay: calc(var(--reveal-delay, 0ms) + 80ms);
+    }
+
+    .motion-ready .carousel-wrap.scroll-reveal.is-visible .slide::before {
+      transform: translate3d(0, 0, 0) scale(1.05);
     }
 
     h2 {
@@ -1414,7 +1525,20 @@
 
       .motion-ready .scroll-reveal {
         opacity: 1;
+        clip-path: none;
         transform: none;
+        transition: none;
+      }
+
+      .motion-ready .motion-piece {
+        opacity: 1;
+        filter: none;
+        transform: none;
+        transition: none;
+      }
+
+      .motion-ready .hero-card.scroll-reveal::before,
+      .motion-ready .carousel-wrap.scroll-reveal .slide::before {
         transition: none;
       }
 
