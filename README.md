@@ -5,6 +5,8 @@ Static landing page for ZweiBier Indie.
 ## Documentation
 
 - Motion and fixed background notes: `Docs/site-motion.md`
+- Social media links: `Docs/social-links.md`
+- Steam game artwork cache and refresh workflow: `Docs/steam-game-art.md`
 
 ## Discord Community Section
 

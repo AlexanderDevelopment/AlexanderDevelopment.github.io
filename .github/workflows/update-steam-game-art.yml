@@ -1,0 +1,38 @@
+name: Update Steam game artwork
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-steam-game-art:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Refresh Steam artwork cache
+        run: node scripts/update-steam-game-art.mjs
+
+      - name: Commit updated artwork cache
+        run: |
+          if git diff --quiet -- data/steam-games.json; then
+            echo "Steam artwork cache is already up to date."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/steam-games.json
+          git commit -m "Update Steam game artwork cache"
+          git push

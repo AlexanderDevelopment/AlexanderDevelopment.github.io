@@ -257,6 +257,67 @@
       blockDiscordPreview();
     }
 
+    function isTrustedSteamImage(value, appId) {
+      if (typeof value !== "string") {
+        return false;
+      }
+
+      try {
+        const url = new URL(value);
+        return (
+          url.protocol === "https:" &&
+          /(^|\.)steamstatic\.com$/i.test(url.hostname) &&
+          url.pathname.indexOf("/apps/" + appId + "/") !== -1 &&
+          /\.(avif|jpe?g|png|webp)$/i.test(url.pathname)
+        );
+      } catch (error) {
+        return false;
+      }
+    }
+
+    function toCssUrl(value) {
+      return 'url("' + value.replace(/["\\]/g, "\\$&") + '")';
+    }
+
+    function initializeSteamArtwork() {
+      const slides = Array.from(document.querySelectorAll("[data-steam-app-id]"));
+      if (!slides.length || !window.fetch) {
+        return;
+      }
+
+      fetch("data/steam-games.json", { cache: "no-cache" })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("Steam artwork cache could not be loaded.");
+          }
+
+          return response.json();
+        })
+        .then(function (payload) {
+          const games = payload && payload.games ? payload.games : {};
+
+          slides.forEach(function (slide) {
+            const appId = slide.dataset.steamAppId;
+            const game = games[appId];
+            const headerImage = game && game.headerImage;
+
+            if (!appId || !isTrustedSteamImage(headerImage, appId)) {
+              return;
+            }
+
+            slide.style.setProperty("--game-image", toCssUrl(headerImage));
+
+            const logo = slide.querySelector(".game-logo");
+            if (logo) {
+              logo.src = headerImage;
+            }
+          });
+        })
+        .catch(function () {
+          // Keep the built-in artwork fallbacks when the local cache cannot load.
+        });
+    }
+
     function initializeContactForm() {
       const contactForm = document.getElementById("contact-form");
       if (!contactForm) {
@@ -435,6 +496,7 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
+      initializeSteamArtwork();
       initializeDiscordWidget();
       initializeContactForm();
       initializeScrollMotion();
@@ -1092,6 +1154,33 @@
       transform: translateY(-2px);
     }
 
+    .contact-list a strong,
+    .contact-list a small {
+      display: block;
+    }
+
+    .contact-list a > span:first-child {
+      min-width: 0;
+    }
+
+    .contact-list a strong {
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .contact-list a small {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.4;
+    }
+
+    .link-arrow {
+      flex: 0 0 auto;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
     .contact-panel {
       padding: 28px;
     }
@@ -1301,6 +1390,23 @@
       color: var(--text);
     }
 
+    .footer-socials {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-socials a {
+      color: var(--muted);
+      font-weight: 700;
+      transition: color 180ms ease;
+    }
+
+    .footer-socials a:hover {
+      color: var(--text);
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -1320,6 +1426,7 @@
       .control,
       .dot,
       .contact-list a,
+      .footer-socials a,
       .btn {
         transition: none;
       }
@@ -1549,9 +1656,9 @@
           <input type="radio" name="game-slider" id="slide-cows">
 
           <div class="slides">
-            <article class="slide" style="--game-image: url('https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1769872973');">
+            <article class="slide" data-steam-app-id="3215820" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1777071326');">
               <div class="slide-content">
-                <img class="game-logo" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1769872973" alt="Dreadway logo and key art" loading="lazy">
+                <img class="game-logo" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1777071326" alt="Dreadway logo and key art" loading="lazy">
                 <h3>DREADWAY</h3>
                 <p>A co-op extraction horror for 1–4 players where you survive nuclear wastelands on a train. Scavenge scrap for fuel and supplies, and use voice mechanics to stay alive.</p>
                 <div class="game-meta">
@@ -1563,9 +1670,9 @@
               </div>
             </article>
 
-            <article class="slide" style="--game-image: url('https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4454760/1699f7d86a37f68e6e67cabc992915631026f771/header.jpg?t=1774457481');">
+            <article class="slide" data-steam-app-id="4454760" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4454760/1699f7d86a37f68e6e67cabc992915631026f771/header.jpg?t=1777071358');">
               <div class="slide-content">
-                <img class="game-logo" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4454760/1699f7d86a37f68e6e67cabc992915631026f771/header.jpg?t=1774457481" alt="OPEN UP SIR! logo and key art" loading="lazy">
+                <img class="game-logo" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4454760/1699f7d86a37f68e6e67cabc992915631026f771/header.jpg?t=1777071358" alt="OPEN UP SIR! logo and key art" loading="lazy">
                 <h3>OPEN UP SIR!</h3>
                 <p>Co-op for 2–4 players about firefighters: you take on funny and dangerous calls — rescue, extinguish, and break things.</p>
                 <div class="game-meta">
@@ -1577,9 +1684,9 @@
               </div>
             </article>
 
-            <article class="slide" style="--game-image: url('https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4635170/d1b8657c54d044dcbd80807d1a25f5959681a874/header.jpg?t=1776781719');">
+            <article class="slide" data-steam-app-id="4635170" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972');">
               <div class="slide-content">
-                <img class="game-logo" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4635170/d1b8657c54d044dcbd80807d1a25f5959681a874/header.jpg?t=1776781719" alt="NO MORE COWS logo and key art" loading="lazy">
+                <img class="game-logo" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972" alt="NO MORE COWS logo and key art" loading="lazy">
                 <h3>NO MORE COWS</h3>
                 <p>Physics-based co-op platformer where you and your friend must abduct a cow and drag it all the way from a barn to a laboratory in space. Survive traps, zero gravity, and friendship-breaking chaos in online co-op for 2 players.</p>
                 <div class="game-meta">
@@ -1682,6 +1789,36 @@
           <div class="section-kicker">Contact with me</div>
           <h2>Let’s talk.</h2>
           <p>For publishing, press, platform, contractor, or business inquiries, send a message to Alex at ZweiBier Indie.</p>
+          <div class="contact-list" aria-label="Social media links">
+            <a href="https://www.patreon.com/cw/bayern_dev" target="_blank" rel="noopener noreferrer">
+              <span>
+                <strong>Patreon</strong>
+                <small>Support the studio and follow development updates.</small>
+              </span>
+              <span class="link-arrow" aria-hidden="true">-&gt;</span>
+            </a>
+            <a href="https://x.com/bayern_dev" target="_blank" rel="noopener noreferrer">
+              <span>
+                <strong>X / Twitter</strong>
+                <small>Studio news, release notes, and quick development updates.</small>
+              </span>
+              <span class="link-arrow" aria-hidden="true">-&gt;</span>
+            </a>
+            <a href="https://www.tiktok.com/@i_am_gamedev" target="_blank" rel="noopener noreferrer">
+              <span>
+                <strong>TikTok</strong>
+                <small>Short dev clips, experiments, and behind-the-scenes posts.</small>
+              </span>
+              <span class="link-arrow" aria-hidden="true">-&gt;</span>
+            </a>
+            <a href="https://www.reddit.com/user/dreadway_the_game/" target="_blank" rel="noopener noreferrer">
+              <span>
+                <strong>Reddit</strong>
+                <small>Project posts, community threads, and Dreadway updates.</small>
+              </span>
+              <span class="link-arrow" aria-hidden="true">-&gt;</span>
+            </a>
+          </div>
         </div>
 
         <div class="contact-panel scroll-reveal scroll-depth" data-reveal-delay="110" data-depth="16">
@@ -1717,6 +1854,12 @@
   <footer>
     <div class="container footer-row">
       <span>© 2026 ZweiBier Indie. All rights reserved.</span>
+      <div class="footer-socials" aria-label="Social media">
+        <a href="https://www.patreon.com/cw/bayern_dev" target="_blank" rel="noopener noreferrer">Patreon</a>
+        <a href="https://x.com/bayern_dev" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+        <a href="https://www.tiktok.com/@i_am_gamedev" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="https://www.reddit.com/user/dreadway_the_game/" target="_blank" rel="noopener noreferrer">Reddit</a>
+      </div>
       <a href="privacy-policy.html">Privacy Policy</a>
     </div>
   </footer>
