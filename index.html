@@ -457,17 +457,23 @@
           });
         });
 
-        Array.from(pieces).forEach(function (piece, pieceIndex) {
+        const pieceList = Array.from(pieces);
+
+        pieceList.forEach(function (piece, pieceIndex) {
           const visualPiece = piece.matches(".game-logo, .hero-actions, .game-meta, .contact-list, .discord-stat-grid, .discord-tags");
           const fromRight = visualPiece || pieceIndex % 2 === 1;
           const distance = Math.max(34, 72 - Math.min(pieceIndex, 6) * 5);
           const verticalOffset = Math.min(18, 8 + pieceIndex * 2);
           const delay = revealDelay + Math.min(pieceIndex * 72, 360);
+          const exitDelay = Math.min((pieceList.length - pieceIndex - 1) * 38, 220);
 
           piece.classList.add("motion-piece");
           piece.style.setProperty("--piece-x", (fromRight ? distance : -distance) + "px");
           piece.style.setProperty("--piece-y", verticalOffset + "px");
           piece.style.setProperty("--piece-delay", delay + "ms");
+          piece.style.setProperty("--piece-exit-x", (fromRight ? distance : -distance) + "px");
+          piece.style.setProperty("--piece-exit-y", (-verticalOffset - 12) + "px");
+          piece.style.setProperty("--piece-exit-delay", exitDelay + "ms");
         });
       }
 
@@ -490,39 +496,40 @@
         return;
       }
 
-      if (!("IntersectionObserver" in window)) {
-        revealElements.forEach(function (element) {
-          element.classList.add("is-visible");
-        });
-      } else {
-        const observer = new IntersectionObserver(function (entries, currentObserver) {
-          entries.forEach(function (entry) {
-            if (!entry.isIntersecting) {
-              return;
-            }
-
-            entry.target.classList.add("is-visible");
-            currentObserver.unobserve(entry.target);
-          });
-        }, {
-          threshold: 0.18,
-          rootMargin: "0px 0px -12% 0px"
-        });
-
-        revealElements.forEach(function (element) {
-          observer.observe(element);
-        });
-      }
-
       const depthElements = Array.from(document.querySelectorAll(".scroll-depth"));
-      if (!depthElements.length) {
-        return;
-      }
-
       let frameId = 0;
+
+      function updateRevealStates(viewportHeight) {
+        const revealLine = viewportHeight * 0.86;
+        const exitLine = viewportHeight * 0.16;
+
+        revealElements.forEach(function (element) {
+          const rect = element.getBoundingClientRect();
+          const isLeavingUp = rect.bottom < exitLine;
+          const isReadyToReveal = rect.top < revealLine && rect.bottom > exitLine;
+
+          if (isLeavingUp) {
+            element.classList.remove("is-visible");
+            element.classList.add("is-leaving-up");
+            return;
+          }
+
+          if (isReadyToReveal) {
+            element.classList.add("is-visible");
+            element.classList.remove("is-leaving-up");
+            return;
+          }
+
+          if (rect.top >= revealLine) {
+            element.classList.remove("is-visible", "is-leaving-up");
+          }
+        });
+      }
 
       function updateDepth() {
         const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
+
+        updateRevealStates(viewportHeight);
 
         depthElements.forEach(function (element) {
           const depthRange = Number(element.dataset.depth) || 0;
