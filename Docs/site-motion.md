@@ -11,7 +11,8 @@ The homepage uses a fixed decorative backdrop and scroll-triggered motion to add
 - Elements marked with `.scroll-depth` also receive a scroll-driven vertical shift and scale change: panels below the viewport center grow, while panels moving above the center shrink.
 - `initializeScrollMotion()` alternates `.scroll-reveal` blocks between left-side and right-side entry classes.
 - `initializeScrollMotion()` also marks key text, image, and content groups as `.motion-piece` so panels assemble from staggered left/right child motion.
-- `initializeScrollMotion()` handles the reveal observer, split-piece setup, and the depth updates with `requestAnimationFrame`.
+- When a revealed block scrolls out through the top of the viewport, `initializeScrollMotion()` applies `.is-leaving-up` so the panel shrinks, fades, clips inward, and its `.motion-piece` children split back out to the sides.
+- `initializeScrollMotion()` handles reveal state, upward exit state, split-piece setup, and the depth updates with `requestAnimationFrame`.
 
 ## Accessibility
 

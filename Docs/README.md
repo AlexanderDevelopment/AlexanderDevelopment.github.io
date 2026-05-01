@@ -6,3 +6,4 @@
 - [Social Links](social-links.md) documents the Patreon, X/Twitter, TikTok, and Reddit links shown in the homepage contact section and footer.
 - [Site Motion](site-motion.md) documents the fixed background and scroll animation system used on the homepage.
 - [Steam Game Artwork](steam-game-art.md) documents the Steam header image cache, updater script, and GitHub Actions refresh workflow.
+- [Epic Developer Pages](epic-developer-pages.md) documents the public application website and privacy policy URLs used for Epic Developer Portal review.
