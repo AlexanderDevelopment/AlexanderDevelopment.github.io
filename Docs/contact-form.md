@@ -8,7 +8,7 @@ The homepage contact form in `index.html` submits to the Formspree endpoint `htt
 
 - `index.html` contains the form markup, the Formspree endpoint, and the client-side anti-abuse checks.
 - `contact-success.html` is the local success page after a completed submission.
-- `privacy-policy.html` documents the third-party processing used by the form.
+- `privacy-policy.html` documents the third-party processing used by the form and must include a plain, clickable email address for privacy and data protection inquiries.
 
 ## Abuse Protection
 
