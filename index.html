@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.16/dist/hls.min.js" defer></script>
   <script>
     document.documentElement.classList.add("motion-ready");
 
@@ -280,8 +281,8 @@
     }
 
     function initializeSteamArtwork() {
-      const slides = Array.from(document.querySelectorAll("[data-steam-app-id]"));
-      if (!slides.length || !window.fetch) {
+      const gameCards = Array.from(document.querySelectorAll("[data-steam-app-id]"));
+      if (!gameCards.length || !window.fetch) {
         return;
       }
 
@@ -296,8 +297,8 @@
         .then(function (payload) {
           const games = payload && payload.games ? payload.games : {};
 
-          slides.forEach(function (slide) {
-            const appId = slide.dataset.steamAppId;
+          gameCards.forEach(function (gameCard) {
+            const appId = gameCard.dataset.steamAppId;
             const game = games[appId];
             const headerImage = game && game.headerImage;
 
@@ -305,17 +306,462 @@
               return;
             }
 
-            slide.style.setProperty("--game-image", toCssUrl(headerImage));
+            gameCard.style.setProperty("--game-image", toCssUrl(headerImage));
 
-            const logo = slide.querySelector(".game-logo");
-            if (logo) {
-              logo.src = headerImage;
+            gameCard.querySelectorAll(".game-logo, .game-poster, .game-thumb").forEach(function (image) {
+              image.src = headerImage;
+            });
+
+            const video = gameCard.querySelector(".game-trailer");
+            if (video) {
+              video.poster = headerImage;
             }
           });
         })
         .catch(function () {
           // Keep the built-in artwork fallbacks when the local cache cannot load.
         });
+    }
+
+    function initializeGameShowcase() {
+      const showcase = document.querySelector("[data-game-showcase]");
+      if (!showcase) {
+        return;
+      }
+
+      const tabs = Array.from(showcase.querySelectorAll("[data-game-tab]"));
+      const panels = Array.from(showcase.querySelectorAll("[data-game-panel]"));
+      const soundButtons = Array.from(showcase.querySelectorAll("[data-game-sound-toggle]"));
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let audioEnabled = false;
+
+      if (!tabs.length || !panels.length) {
+        return;
+      }
+
+      function updateSoundButtons() {
+        soundButtons.forEach(function (button) {
+          const label = button.querySelector(".game-sound-label");
+          button.classList.toggle("is-audio-enabled", audioEnabled);
+          button.setAttribute("aria-pressed", audioEnabled ? "true" : "false");
+          button.setAttribute("aria-label", audioEnabled ? "Turn trailer sound off" : "Turn trailer sound on");
+
+          if (label) {
+            label.textContent = audioEnabled ? "Sound on" : "Sound off";
+          }
+        });
+      }
+
+      function setupHlsVideo(panel) {
+        const video = panel.querySelector(".game-trailer");
+        if (!video || video.dataset.hlsReady === "true") {
+          return;
+        }
+
+        const hlsSource = video.dataset.hlsSrc;
+        const fallbackSource = video.currentSrc || video.getAttribute("src");
+        video.dataset.fallbackSrc = fallbackSource || "";
+
+        if (!hlsSource) {
+          video.dataset.streamMode = "mp4-fallback";
+          video.dataset.hlsReady = "true";
+          return;
+        }
+
+        if (video.canPlayType("application/vnd.apple.mpegurl")) {
+          video.src = hlsSource;
+          video.dataset.streamMode = "native-hls";
+          video.dataset.hlsReady = "true";
+          return;
+        }
+
+        if (!window.Hls || !window.Hls.isSupported()) {
+          video.dataset.streamMode = "mp4-fallback";
+          video.dataset.hlsReady = "true";
+          return;
+        }
+
+        const hls = new window.Hls({
+          capLevelToPlayerSize: true,
+          maxBufferLength: 18,
+          startFragPrefetch: true
+        });
+
+        video.dataset.streamMode = "hls-js";
+        video.dataset.hlsReady = "true";
+        video._hls = hls;
+
+        hls.loadSource(hlsSource);
+        hls.attachMedia(video);
+
+        hls.on(window.Hls.Events.MANIFEST_PARSED, function () {
+          if (panel.classList.contains("is-active")) {
+            syncVideo(panel, true);
+          }
+        });
+
+        hls.on(window.Hls.Events.ERROR, function (eventName, data) {
+          if (!data || !data.fatal) {
+            return;
+          }
+
+          if (data.type === window.Hls.ErrorTypes.NETWORK_ERROR) {
+            hls.startLoad();
+            return;
+          }
+
+          if (data.type === window.Hls.ErrorTypes.MEDIA_ERROR) {
+            hls.recoverMediaError();
+            return;
+          }
+
+          hls.destroy();
+          delete video._hls;
+          video.dataset.streamMode = "mp4-fallback";
+          if (video.dataset.fallbackSrc) {
+            video.src = video.dataset.fallbackSrc;
+            video.load();
+          }
+        });
+      }
+
+      panels.forEach(function (panel) {
+        const video = panel.querySelector(".game-trailer");
+        if (!video) {
+          return;
+        }
+
+        video.addEventListener("loadeddata", function () {
+          video.classList.add("is-ready");
+        }, { once: true });
+
+        video.addEventListener("error", function () {
+          video.classList.remove("is-ready");
+        });
+
+        const soundButton = panel.querySelector("[data-game-sound-toggle]");
+        if (soundButton) {
+          soundButton.addEventListener("click", function () {
+            audioEnabled = !audioEnabled;
+            updateSoundButtons();
+            panels.forEach(function (currentPanel) {
+              syncVideo(currentPanel, currentPanel.classList.contains("is-active"));
+            });
+          });
+        }
+      });
+
+      function syncVideo(panel, shouldPlay) {
+        const video = panel.querySelector(".game-trailer");
+        if (!video) {
+          return;
+        }
+
+        if (!shouldPlay || reducedMotion) {
+          video.pause();
+          video.currentTime = 0;
+          video.muted = true;
+          return;
+        }
+
+        setupHlsVideo(panel);
+        video.volume = 0.82;
+        video.muted = !audioEnabled;
+        video.play().catch(function () {
+          // Browsers can still block autoplay; the poster image remains visible.
+        });
+      }
+
+      function setActiveGame(gameId) {
+        tabs.forEach(function (tab) {
+          const isActive = tab.dataset.gameTab === gameId;
+          tab.classList.toggle("is-active", isActive);
+          tab.setAttribute("aria-selected", isActive ? "true" : "false");
+          tab.tabIndex = isActive ? 0 : -1;
+        });
+
+        panels.forEach(function (panel) {
+          const isActive = panel.dataset.gamePanel === gameId;
+          panel.classList.toggle("is-active", isActive);
+          panel.toggleAttribute("hidden", !isActive);
+          syncVideo(panel, isActive);
+        });
+      }
+
+      tabs.forEach(function (tab, index) {
+        tab.addEventListener("click", function () {
+          setActiveGame(tab.dataset.gameTab);
+        });
+
+        tab.addEventListener("keydown", function (event) {
+          if (event.key !== "ArrowDown" && event.key !== "ArrowRight" && event.key !== "ArrowUp" && event.key !== "ArrowLeft") {
+            return;
+          }
+
+          event.preventDefault();
+          const direction = event.key === "ArrowDown" || event.key === "ArrowRight" ? 1 : -1;
+          const nextIndex = (index + direction + tabs.length) % tabs.length;
+          tabs[nextIndex].focus();
+          setActiveGame(tabs[nextIndex].dataset.gameTab);
+        });
+      });
+
+      const activeTab = tabs.find(function (tab) {
+        return tab.getAttribute("aria-selected") === "true";
+      }) || tabs[0];
+
+      updateSoundButtons();
+      setActiveGame(activeTab.dataset.gameTab);
+    }
+
+    function initializeAtmosphereCanvas() {
+      const canvas = document.querySelector("[data-atmosphere-canvas]");
+      if (!canvas) {
+        return;
+      }
+
+      const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (reducedMotionQuery.matches) {
+        canvas.hidden = true;
+        return;
+      }
+
+      const context = canvas.getContext("2d", { alpha: true });
+      if (!context) {
+        return;
+      }
+
+      const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+      const pointer = {
+        x: 0,
+        y: 0,
+        active: false
+      };
+
+      let width = 0;
+      let height = 0;
+      let particles = [];
+      let frameId = 0;
+      let lastFrameAt = 0;
+
+      function randomBetween(min, max) {
+        return min + Math.random() * (max - min);
+      }
+
+      function createParticle() {
+        const isAccent = Math.random() > 0.42;
+        return {
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: randomBetween(-0.045, 0.045) * (coarsePointer ? 0.58 : 1),
+          vy: randomBetween(-0.035, 0.035) * (coarsePointer ? 0.58 : 1),
+          radius: randomBetween(0.8, coarsePointer ? 1.8 : 2.4),
+          alpha: randomBetween(0.34, 0.82),
+          pulse: randomBetween(0, Math.PI * 2),
+          color: isAccent ? "124, 255, 196" : "138, 168, 255"
+        };
+      }
+
+      function resizeCanvas() {
+        const ratio = Math.min(window.devicePixelRatio || 1, 1.6);
+        width = window.innerWidth || document.documentElement.clientWidth || 1;
+        height = window.innerHeight || document.documentElement.clientHeight || 1;
+        canvas.width = Math.round(width * ratio);
+        canvas.height = Math.round(height * ratio);
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+        context.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+        const density = coarsePointer ? 32000 : 22000;
+        const minCount = coarsePointer ? 18 : 28;
+        const maxCount = coarsePointer ? 38 : 78;
+        const targetCount = Math.max(minCount, Math.min(maxCount, Math.round((width * height) / density)));
+
+        if (particles.length > targetCount) {
+          particles = particles.slice(0, targetCount);
+        }
+
+        while (particles.length < targetCount) {
+          particles.push(createParticle());
+        }
+      }
+
+      function updateParticle(particle, delta) {
+        const pointerRange = coarsePointer ? 0 : 150;
+
+        if (pointer.active && pointerRange) {
+          const pointerDx = particle.x - pointer.x;
+          const pointerDy = particle.y - pointer.y;
+          const pointerDistance = Math.hypot(pointerDx, pointerDy);
+
+          if (pointerDistance > 0 && pointerDistance < pointerRange) {
+            const force = (1 - pointerDistance / pointerRange) * 0.012;
+            particle.vx += (pointerDx / pointerDistance) * force;
+            particle.vy += (pointerDy / pointerDistance) * force;
+          }
+        }
+
+        particle.x += particle.vx * delta;
+        particle.y += particle.vy * delta;
+        particle.vx *= 0.996;
+        particle.vy *= 0.996;
+        particle.pulse += 0.018 * delta;
+
+        const margin = 24;
+        if (particle.x < -margin) {
+          particle.x = width + margin;
+        } else if (particle.x > width + margin) {
+          particle.x = -margin;
+        }
+
+        if (particle.y < -margin) {
+          particle.y = height + margin;
+        } else if (particle.y > height + margin) {
+          particle.y = -margin;
+        }
+      }
+
+      function drawConnections() {
+        const maxDistance = coarsePointer ? 105 : 148;
+
+        for (let index = 0; index < particles.length; index += 1) {
+          const current = particles[index];
+
+          for (let nextIndex = index + 1; nextIndex < particles.length; nextIndex += 1) {
+            const next = particles[nextIndex];
+            const dx = current.x - next.x;
+            const dy = current.y - next.y;
+            const distance = Math.hypot(dx, dy);
+
+            if (distance > maxDistance) {
+              continue;
+            }
+
+            const alpha = (1 - distance / maxDistance) * 0.16;
+            context.strokeStyle = "rgba(124, 255, 196, " + alpha.toFixed(3) + ")";
+            context.lineWidth = 1;
+            context.beginPath();
+            context.moveTo(current.x, current.y);
+            context.lineTo(next.x, next.y);
+            context.stroke();
+          }
+        }
+      }
+
+      function drawPointerGlow() {
+        if (!pointer.active || coarsePointer) {
+          return;
+        }
+
+        const gradient = context.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, 190);
+        gradient.addColorStop(0, "rgba(124, 255, 196, 0.16)");
+        gradient.addColorStop(0.38, "rgba(138, 168, 255, 0.07)");
+        gradient.addColorStop(1, "rgba(124, 255, 196, 0)");
+        context.fillStyle = gradient;
+        context.beginPath();
+        context.arc(pointer.x, pointer.y, 190, 0, Math.PI * 2);
+        context.fill();
+      }
+
+      function drawParticles() {
+        particles.forEach(function (particle) {
+          const pulseAlpha = particle.alpha + Math.sin(particle.pulse) * 0.16;
+          context.fillStyle = "rgba(" + particle.color + ", " + Math.max(0.2, pulseAlpha).toFixed(3) + ")";
+          context.shadowColor = "rgba(" + particle.color + ", 0.58)";
+          context.shadowBlur = 12;
+          context.beginPath();
+          context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+          context.fill();
+          context.shadowBlur = 0;
+        });
+      }
+
+      function renderFrame(timestamp) {
+        if (timestamp - lastFrameAt < 1000 / 42) {
+          frameId = window.requestAnimationFrame(renderFrame);
+          return;
+        }
+
+        const delta = Math.min(2.4, (timestamp - lastFrameAt) / (1000 / 60) || 1);
+        lastFrameAt = timestamp;
+
+        context.clearRect(0, 0, width, height);
+        particles.forEach(function (particle) {
+          updateParticle(particle, delta);
+        });
+
+        drawPointerGlow();
+        drawConnections();
+        drawParticles();
+
+        frameId = window.requestAnimationFrame(renderFrame);
+      }
+
+      window.addEventListener("pointermove", function (event) {
+        pointer.x = event.clientX;
+        pointer.y = event.clientY;
+        pointer.active = true;
+      }, { passive: true });
+
+      window.addEventListener("pointerleave", function () {
+        pointer.active = false;
+      });
+
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
+      frameId = window.requestAnimationFrame(renderFrame);
+
+      reducedMotionQuery.addEventListener("change", function (event) {
+        if (event.matches && frameId) {
+          window.cancelAnimationFrame(frameId);
+          canvas.hidden = true;
+        }
+      });
+    }
+
+    function initializeClickBursts() {
+      const layer = document.querySelector("[data-click-burst-layer]");
+      if (!layer || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+      }
+
+      const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+      let activeBursts = 0;
+
+      window.addEventListener("pointerdown", function (event) {
+        if (event.button !== 0 || event.isPrimary === false || activeBursts > 8) {
+          return;
+        }
+
+        if (event.target && event.target.closest && event.target.closest("input, textarea, select")) {
+          return;
+        }
+
+        const burst = document.createElement("span");
+        const sparkCount = coarsePointer ? 7 : 10;
+        burst.className = "click-burst";
+        burst.style.left = event.clientX + "px";
+        burst.style.top = event.clientY + "px";
+
+        for (let index = 0; index < sparkCount; index += 1) {
+          const spark = document.createElement("span");
+          spark.style.setProperty("--spark-angle", (index * (360 / sparkCount) + randomJitter(16)) + "deg");
+          spark.style.setProperty("--spark-distance", (coarsePointer ? 28 : 38) + randomJitter(8) + "px");
+          spark.style.setProperty("--spark-delay", Math.min(index * 12, 84) + "ms");
+          burst.appendChild(spark);
+        }
+
+        activeBursts += 1;
+        layer.appendChild(burst);
+        window.setTimeout(function () {
+          burst.remove();
+          activeBursts -= 1;
+        }, 820);
+      }, { passive: true });
+
+      function randomJitter(amount) {
+        return Math.round((Math.random() - 0.5) * amount);
+      }
     }
 
     function initializeContactForm() {
@@ -426,10 +872,13 @@
           ".hero-copy > .hero-tagline",
           ".hero-copy > .hero-actions",
           ".about-panel > p",
-          ".slide-content > .game-logo",
-          ".slide-content > h3",
-          ".slide-content > p",
-          ".slide-content > .game-meta",
+          ".game-picker > .game-tab",
+          ".game-preview-media",
+          ".game-preview-copy > .game-logo",
+          ".game-preview-copy > h3",
+          ".game-preview-copy > p",
+          ".game-preview-copy > .game-meta",
+          ".game-preview-copy > .game-preview-actions",
           ".contact-copy > .section-kicker",
           ".contact-copy > h2",
           ".contact-copy > p",
@@ -460,7 +909,7 @@
         const pieceList = Array.from(pieces);
 
         pieceList.forEach(function (piece, pieceIndex) {
-          const visualPiece = piece.matches(".game-logo, .hero-actions, .game-meta, .contact-list, .discord-stat-grid, .discord-tags");
+          const visualPiece = piece.matches(".game-logo, .hero-actions, .game-meta, .game-tab, .game-preview-media, .game-preview-actions, .contact-list, .discord-stat-grid, .discord-tags");
           const fromRight = visualPiece || pieceIndex % 2 === 1;
           const distance = Math.max(34, 72 - Math.min(pieceIndex, 6) * 5);
           const verticalOffset = Math.min(18, 8 + pieceIndex * 2);
@@ -561,7 +1010,10 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
+      initializeAtmosphereCanvas();
+      initializeClickBursts();
       initializeSteamArtwork();
+      initializeGameShowcase();
       initializeDiscordWidget();
       initializeContactForm();
       initializeScrollMotion();
@@ -608,7 +1060,7 @@
       pointer-events: none;
       position: fixed;
       inset: 0;
-      z-index: -2;
+      z-index: -3;
       background:
         radial-gradient(circle at 12% 12%, rgba(124, 255, 196, 0.18), transparent 30rem),
         radial-gradient(circle at 84% 10%, rgba(138, 168, 255, 0.18), transparent 31rem),
@@ -638,6 +1090,17 @@
       background: linear-gradient(to bottom, rgba(7, 8, 13, 0.12), rgba(7, 8, 13, 0.46) 52%, rgba(7, 8, 13, 0.74));
     }
 
+    .atmosphere-canvas {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      width: 100%;
+      height: 100%;
+      opacity: 0.72;
+      mix-blend-mode: screen;
+    }
+
     a {
       color: inherit;
       text-decoration: none;
@@ -659,6 +1122,150 @@
         linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
       background-size: 44px 44px;
       mask-image: linear-gradient(to bottom, black, transparent 88%);
+    }
+
+    .signal-line {
+      pointer-events: none;
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 0;
+      height: 150px;
+      opacity: 0.34;
+      overflow: hidden;
+      transform: translateY(-8px);
+      mask-image: linear-gradient(to bottom, black 12%, transparent 100%);
+    }
+
+    .signal-line svg {
+      width: 100%;
+      height: 100%;
+      transform: translateX(var(--signal-shift, 0));
+      animation: signal-drift 8s ease-in-out infinite alternate;
+    }
+
+    .signal-line path {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 10 18;
+      animation: signal-dash 6s linear infinite;
+    }
+
+    .signal-line path:nth-child(1) {
+      stroke: rgba(124, 255, 196, 0.92);
+      stroke-width: 1.4;
+    }
+
+    .signal-line path:nth-child(2) {
+      stroke: rgba(138, 168, 255, 0.58);
+      stroke-width: 1;
+      animation-duration: 8s;
+      animation-direction: reverse;
+    }
+
+    .click-burst-layer {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      overflow: hidden;
+    }
+
+    .click-burst {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 8px;
+      height: 8px;
+      transform: translate(-50%, -50%);
+    }
+
+    .click-burst::before {
+      content: "";
+      position: absolute;
+      inset: -16px;
+      border: 1px solid rgba(124, 255, 196, 0.74);
+      border-radius: 50%;
+      box-shadow:
+        0 0 20px rgba(124, 255, 196, 0.28),
+        inset 0 0 18px rgba(138, 168, 255, 0.14);
+      animation: click-ring 620ms cubic-bezier(.16, 1, .3, 1) forwards;
+    }
+
+    .click-burst span {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(124, 255, 196, 0.64);
+      transform: translate(-50%, -50%) rotate(var(--spark-angle)) translateY(0);
+      animation: click-spark 680ms cubic-bezier(.16, 1, .3, 1) var(--spark-delay) forwards;
+    }
+
+    @keyframes signal-drift {
+      from {
+        --signal-shift: -1.2%;
+        transform: translateX(-1.2%);
+      }
+
+      to {
+        --signal-shift: 1.2%;
+        transform: translateX(1.2%);
+      }
+    }
+
+    @keyframes signal-dash {
+      to {
+        stroke-dashoffset: -120;
+      }
+    }
+
+    @keyframes click-ring {
+      0% {
+        opacity: 0.9;
+        transform: scale(0.24);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(1.8);
+      }
+    }
+
+    @keyframes click-spark {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(var(--spark-angle)) translateY(0) scale(0.8);
+      }
+
+      18% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(var(--spark-angle)) translateY(calc(-1 * var(--spark-distance))) scale(0.2);
+      }
+    }
+
+    @keyframes wordmark-glow {
+      0%,
+      100% {
+        text-shadow:
+          0 0 18px rgba(124, 255, 196, 0.34),
+          0 0 38px rgba(124, 255, 196, 0.24),
+          0 14px 30px rgba(0, 0, 0, 0.42);
+      }
+
+      50% {
+        text-shadow:
+          0 0 24px rgba(124, 255, 196, 0.52),
+          0 0 58px rgba(138, 168, 255, 0.26),
+          0 18px 34px rgba(0, 0, 0, 0.48);
+      }
     }
 
     .container {
@@ -738,6 +1345,7 @@
     }
 
     .btn {
+      position: relative;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -749,13 +1357,38 @@
       background: var(--panel);
       color: var(--text);
       font-weight: 700;
-      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+      overflow: hidden;
+      isolation: isolate;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .btn::after,
+    .game-tab::after,
+    .contact-list a::after {
+      content: "";
+      position: absolute;
+      inset: -42%;
+      z-index: 0;
+      pointer-events: none;
+      background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.2) 48%, transparent 64%);
+      opacity: 0;
+      transform: translateX(-42%) rotate(10deg);
+      transition: opacity 180ms ease, transform 520ms cubic-bezier(.16, 1, .3, 1);
     }
 
     .btn:hover {
       transform: translateY(-2px);
       background: var(--panel-strong);
       border-color: rgba(255, 255, 255, 0.28);
+      box-shadow: 0 18px 54px rgba(124, 255, 196, 0.12);
+    }
+
+    .btn:hover::after,
+    .game-tab:hover::after,
+    .game-tab:focus-visible::after,
+    .contact-list a:hover::after {
+      opacity: 1;
+      transform: translateX(42%) rotate(10deg);
     }
 
     .btn.primary {
@@ -893,6 +1526,7 @@
         0 0 18px rgba(124, 255, 196, 0.34),
         0 0 38px rgba(124, 255, 196, 0.24),
         0 14px 30px rgba(0, 0, 0, 0.42);
+      animation: wordmark-glow 5.5s ease-in-out infinite;
     }
 
     section {
@@ -1000,18 +1634,18 @@
       transform: translate3d(-6%, -2%, 0) scale(0.98);
     }
 
-    .motion-ready .carousel-wrap.scroll-reveal .slide::before {
-      transform: translate3d(6%, 0, 0) scale(1.12);
-      transition: transform 1100ms cubic-bezier(.16, 1, .3, 1);
+    .motion-ready .game-showcase.scroll-reveal .game-preview-media {
+      transform: translate3d(6%, 0, 0) scale(1.04);
+      transition: transform 1100ms cubic-bezier(.16, 1, .3, 1), border-color 220ms ease;
       transition-delay: calc(var(--reveal-delay, 0ms) + 80ms);
     }
 
-    .motion-ready .carousel-wrap.scroll-reveal.is-visible .slide::before {
-      transform: translate3d(0, 0, 0) scale(1.05);
+    .motion-ready .game-showcase.scroll-reveal.is-visible .game-preview-media {
+      transform: translate3d(0, 0, 0) scale(1);
     }
 
-    .motion-ready .carousel-wrap.scroll-reveal.is-leaving-up .slide::before {
-      transform: translate3d(-5%, -2%, 0) scale(1.02);
+    .motion-ready .game-showcase.scroll-reveal.is-leaving-up .game-preview-media {
+      transform: translate3d(-5%, -2%, 0) scale(0.98);
     }
 
     h2 {
@@ -1073,98 +1707,289 @@
       color: var(--muted);
     }
 
-    .carousel-wrap {
+    .game-showcase {
       position: relative;
+      display: grid;
+      grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.58fr);
+      gap: 0;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(255,255,255,0.04);
+      background:
+        linear-gradient(140deg, rgba(124,255,196,0.08), transparent 42%),
+        linear-gradient(320deg, rgba(138,168,255,0.08), transparent 38%),
+        rgba(255,255,255,0.04);
       box-shadow: var(--shadow);
     }
 
-    .carousel-wrap input {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .slides {
-      display: flex;
-      width: 300%;
-      transition: transform 620ms cubic-bezier(.2,.8,.2,1);
-    }
-
-    .slide {
-      position: relative;
-      width: 33.3333%;
-      min-height: 640px;
+    .game-picker {
       display: grid;
-      align-items: end;
-      padding: 42px;
+      align-content: stretch;
+      gap: 12px;
+      padding: 20px;
+      border-right: 1px solid var(--line);
+      background: rgba(7,8,13,0.38);
+      backdrop-filter: blur(14px);
+    }
+
+    .game-tab {
+      position: relative;
+      min-width: 0;
+      display: grid;
+      grid-template-columns: 54px minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+      min-height: 104px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.045);
+      color: var(--muted);
+      text-align: left;
+      cursor: pointer;
       overflow: hidden;
+      isolation: isolate;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .game-tab:hover,
+    .game-tab:focus-visible,
+    .game-tab.is-active {
+      transform: translateY(-2px);
+      border-color: rgba(124,255,196,0.48);
+      background: rgba(124,255,196,0.095);
+      box-shadow: 0 16px 44px rgba(0,0,0,0.28);
+      outline: none;
+    }
+
+    .game-tab.is-active::before {
+      content: "";
+      position: absolute;
+      inset: 14px auto 14px -1px;
+      width: 3px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 22px rgba(124,255,196,0.52);
+    }
+
+    .game-tab img {
+      width: 54px;
+      height: 54px;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+    }
+
+    .game-tab strong {
+      display: block;
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1.1;
+    }
+
+    .game-tab span {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.88rem;
+      line-height: 1.35;
+    }
+
+    .game-preview-stage {
+      min-width: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .game-showcase-panel {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      align-items: stretch;
+      background:
+        var(--game-image) center/cover no-repeat,
+        rgba(7,8,13,0.78);
       isolation: isolate;
     }
 
-    .slide::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      background: var(--game-image) center/cover no-repeat;
-      transform: scale(1.05);
-      filter: saturate(1.08) contrast(1.08);
-    }
-
-    .slide::after {
+    .game-showcase-panel::before {
       content: "";
       position: absolute;
       inset: 0;
       z-index: -1;
       background:
-        linear-gradient(90deg, rgba(7,8,13,0.92), rgba(7,8,13,0.22) 54%, rgba(7,8,13,0.68)),
-        linear-gradient(0deg, rgba(7,8,13,0.88), transparent 55%);
+        linear-gradient(90deg, rgba(7,8,13,0.18), rgba(7,8,13,0.74) 54%, rgba(7,8,13,0.92)),
+        linear-gradient(0deg, rgba(7,8,13,0.88), transparent 60%);
     }
 
-    #slide-dreadway:checked ~ .slides { transform: translateX(0); }
-    #slide-open:checked ~ .slides { transform: translateX(-33.3333%); }
-    #slide-cows:checked ~ .slides { transform: translateX(-66.6666%); }
-
-    .slide-content {
-      max-width: 660px;
-      animation: fadeUp 620ms ease both;
+    .game-showcase-panel:not(.is-active) {
+      display: none;
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
+    .game-preview-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      min-height: 0;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(124,255,196,0.12), transparent 16rem),
+        #030509;
+    }
+
+    .game-preview-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(7,8,13,0.22), transparent 24%, transparent 76%, rgba(7,8,13,0.24)),
+        linear-gradient(0deg, rgba(7,8,13,0.42), transparent 34%);
+      pointer-events: none;
+    }
+
+    .game-trailer,
+    .game-poster {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: saturate(1.08) contrast(1.05);
+    }
+
+    .game-poster {
+      opacity: 1;
+      transition: opacity 220ms ease;
+    }
+
+    .game-trailer.is-ready + .game-poster {
+      opacity: 0;
+    }
+
+    .game-preview-badge {
+      position: absolute;
+      left: 22px;
+      bottom: 22px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      background: rgba(7,8,13,0.68);
+      color: #dce3f0;
+      font-size: 0.84rem;
+      font-weight: 800;
+      backdrop-filter: blur(12px);
+    }
+
+    .game-preview-badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 16px var(--accent);
+    }
+
+    .game-sound-toggle {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 42px;
+      padding: 0 13px;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      background: rgba(7,8,13,0.72);
+      color: #edf3ff;
+      font: inherit;
+      font-size: 0.84rem;
+      font-weight: 800;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.34);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .game-sound-toggle:hover,
+    .game-sound-toggle:focus-visible,
+    .game-sound-toggle.is-audio-enabled {
+      transform: translateY(-1px);
+      border-color: rgba(124,255,196,0.58);
+      background: rgba(17,30,28,0.84);
+      box-shadow: 0 18px 42px rgba(124,255,196,0.14);
+      outline: none;
+    }
+
+    .game-sound-toggle::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--danger);
+      box-shadow: 0 0 14px rgba(255,108,143,0.58);
+    }
+
+    .game-sound-toggle.is-audio-enabled::before {
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(124,255,196,0.74);
+    }
+
+    .game-preview-copy {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: minmax(160px, 260px) minmax(0, 1fr);
+      gap: 16px 30px;
+      align-items: end;
+      padding: 30px;
+      background:
+        linear-gradient(180deg, rgba(7,8,13,0.54), rgba(7,8,13,0.86)),
+        rgba(7,8,13,0.36);
+      backdrop-filter: blur(8px);
     }
 
     .game-logo {
-      width: min(460px, 100%);
-      margin-bottom: 24px;
+      width: 100%;
+      margin: 0;
+      grid-row: 1 / span 4;
+      align-self: start;
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.14);
       box-shadow: 0 20px 70px rgba(0,0,0,0.42);
     }
 
-    .slide h3 {
-      margin-bottom: 12px;
-      font-size: clamp(2rem, 4vw, 4.8rem);
+    .game-preview-copy h3 {
+      margin: 0 0 12px;
+      font-size: clamp(2.2rem, 4.2vw, 3.15rem);
       line-height: 0.94;
-      letter-spacing: -0.07em;
+      letter-spacing: -0.055em;
     }
 
-    .slide p {
+    .game-preview-copy p {
       max-width: 620px;
+      margin: 0;
       color: #d8deea;
-      font-size: clamp(1rem, 1.7vw, 1.18rem);
+      font-size: 1.08rem;
     }
 
     .game-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin: 22px 0 26px;
+      margin: 6px 0 4px;
+    }
+
+    .game-preview-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .pill {
@@ -1175,77 +2000,6 @@
       color: #dce3f0;
       font-size: 0.88rem;
       backdrop-filter: blur(12px);
-    }
-
-    .controls {
-      pointer-events: none;
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 18px;
-    }
-
-    .control {
-      pointer-events: auto;
-      display: none;
-      width: 50px;
-      height: 50px;
-      place-items: center;
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 999px;
-      background: rgba(7,8,13,0.68);
-      backdrop-filter: blur(16px);
-      cursor: pointer;
-      transition: transform 180ms ease, background 180ms ease;
-      user-select: none;
-      font-size: 1.45rem;
-      line-height: 1;
-    }
-
-    .control:hover {
-      transform: scale(1.06);
-      background: rgba(255,255,255,0.13);
-    }
-
-    #slide-dreadway:checked ~ .controls .dreadway-prev,
-    #slide-dreadway:checked ~ .controls .dreadway-next,
-    #slide-open:checked ~ .controls .open-prev,
-    #slide-open:checked ~ .controls .open-next,
-    #slide-cows:checked ~ .controls .cows-prev,
-    #slide-cows:checked ~ .controls .cows-next {
-      display: grid;
-    }
-
-    .dots {
-      position: absolute;
-      left: 50%;
-      bottom: 24px;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
-      padding: 8px;
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 999px;
-      background: rgba(7,8,13,0.55);
-      backdrop-filter: blur(14px);
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.34);
-      cursor: pointer;
-      transition: width 220ms ease, background 220ms ease;
-    }
-
-    #slide-dreadway:checked ~ .dots label[for="slide-dreadway"],
-    #slide-open:checked ~ .dots label[for="slide-open"],
-    #slide-cows:checked ~ .dots label[for="slide-cows"] {
-      width: 30px;
-      background: var(--accent);
     }
 
     .contact-grid {
@@ -1276,6 +2030,7 @@
     }
 
     .contact-list a {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1285,6 +2040,8 @@
       border-radius: 18px;
       background: rgba(255,255,255,0.045);
       color: var(--muted);
+      overflow: hidden;
+      isolation: isolate;
       transition: color 180ms ease, background 180ms ease, transform 180ms ease;
     }
 
@@ -1567,17 +2324,29 @@
       }
 
       .motion-ready .hero-card.scroll-reveal::before,
-      .motion-ready .carousel-wrap.scroll-reveal .slide::before {
+      .motion-ready .game-showcase.scroll-reveal .game-preview-media {
         transition: none;
       }
 
-      .slide-content {
+      .atmosphere-canvas,
+      .click-burst-layer {
+        display: none;
+      }
+
+      .signal-line svg,
+      .signal-line path,
+      .hero-wordmark {
         animation: none;
       }
 
-      .slides,
-      .control,
-      .dot,
+      .btn::after,
+      .game-tab::after,
+      .contact-list a::after {
+        display: none;
+      }
+
+      .game-tab,
+      .game-preview-media,
       .contact-list a,
       .footer-socials a,
       .btn {
@@ -1608,9 +2377,43 @@
         margin-top: 20px;
       }
 
-      .slide {
-        min-height: 620px;
-        padding: 32px;
+      .game-showcase,
+      .game-showcase-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .game-picker {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .game-tab {
+        grid-template-columns: 1fr;
+        align-content: start;
+        min-height: 164px;
+      }
+
+      .game-tab img {
+        width: 100%;
+        height: 72px;
+      }
+
+      .game-showcase-panel {
+        min-height: 0;
+      }
+
+      .game-preview-media {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .game-preview-copy {
+        padding: 34px;
+      }
+
+      .game-preview-copy h3 {
+        font-size: 2.7rem;
       }
     }
 
@@ -1684,24 +2487,58 @@
         grid-template-columns: 1fr;
       }
 
-      .slide {
-        min-height: 690px;
-        padding: 22px;
+      .game-picker {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 14px;
+        scroll-snap-type: x mandatory;
+      }
+
+      .game-tab {
+        width: 74%;
+        min-width: 220px;
+        min-height: 130px;
+        scroll-snap-align: start;
+      }
+
+      .game-tab img {
+        height: 58px;
+      }
+
+      .game-preview-media {
+        aspect-ratio: 16 / 9;
+      }
+
+      .game-preview-copy {
+        grid-template-columns: 1fr;
+        padding: 24px;
       }
 
       .game-logo {
+        width: min(260px, 100%);
+        grid-row: auto;
         margin-bottom: 18px;
       }
 
-      .controls {
-        align-items: end;
-        justify-content: center;
-        gap: 84px;
-        padding-bottom: 74px;
+      .game-preview-copy h3 {
+        font-size: 2.2rem;
+        letter-spacing: -0.045em;
       }
 
-      .dots {
-        bottom: 22px;
+      .game-preview-copy p {
+        font-size: 1rem;
+      }
+
+      .game-preview-actions .btn {
+        width: 100%;
+      }
+
+      .game-sound-toggle {
+        right: 12px;
+        top: 12px;
+        min-height: 38px;
+        padding-inline: 11px;
       }
 
       .about-panel,
@@ -1739,7 +2576,15 @@
 </head>
 <body>
   <div class="page-backdrop" aria-hidden="true"></div>
+  <canvas class="atmosphere-canvas" data-atmosphere-canvas aria-hidden="true"></canvas>
   <div class="noise" aria-hidden="true"></div>
+  <div class="signal-line" aria-hidden="true">
+    <svg viewBox="0 0 1200 150" preserveAspectRatio="none" focusable="false">
+      <path d="M0 72 C90 64 144 42 230 55 C330 70 365 100 462 89 C555 78 596 42 680 50 C772 59 818 92 912 83 C1010 73 1070 48 1200 62" />
+      <path d="M0 92 C110 78 156 95 248 86 C342 77 396 42 484 58 C570 74 612 110 710 96 C806 82 852 54 956 66 C1048 76 1110 106 1200 88" />
+    </svg>
+  </div>
+  <div class="click-burst-layer" data-click-burst-layer aria-hidden="true"></div>
 
   <header>
     <div class="container nav">
@@ -1803,42 +2648,84 @@
           <a class="btn" href="https://store.steampowered.com/search/?developer=ZweiBier+Indie" target="_blank" rel="noopener noreferrer">Steam developer page</a>
         </div>
 
-        <div class="carousel-wrap scroll-reveal scroll-depth" data-reveal-delay="110" data-depth="22" aria-label="Game artwork carousel">
-          <input type="radio" name="game-slider" id="slide-dreadway" checked>
-          <input type="radio" name="game-slider" id="slide-open">
-          <input type="radio" name="game-slider" id="slide-cows">
+        <div class="game-showcase scroll-reveal scroll-depth" data-game-showcase data-reveal-delay="110" data-depth="22" aria-label="Game trailer showcase">
+          <div class="game-picker" role="tablist" aria-label="Choose a game trailer">
+            <button class="game-tab is-active" type="button" role="tab" id="game-tab-dreadway" aria-selected="true" aria-controls="game-panel-dreadway" data-game-tab="dreadway" data-steam-app-id="3215820" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1777071326');">
+              <img class="game-thumb" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1777071326" alt="" loading="lazy">
+              <span>
+                <strong>DREADWAY</strong>
+                <span>Extraction horror on a train</span>
+              </span>
+            </button>
+            <button class="game-tab" type="button" role="tab" id="game-tab-open" aria-selected="false" aria-controls="game-panel-open" data-game-tab="open-up-sir" data-steam-app-id="4454760" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4454760/1699f7d86a37f68e6e67cabc992915631026f771/header.jpg?t=1777071358');">
+              <img class="game-thumb" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4454760/1699f7d86a37f68e6e67cabc992915631026f771/header.jpg?t=1777071358" alt="" loading="lazy">
+              <span>
+                <strong>OPEN UP SIR!</strong>
+                <span>Firefighter co-op chaos</span>
+              </span>
+            </button>
+            <button class="game-tab" type="button" role="tab" id="game-tab-cows" aria-selected="false" aria-controls="game-panel-cows" data-game-tab="no-more-cows" data-steam-app-id="4635170" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972');">
+              <img class="game-thumb" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972" alt="" loading="lazy">
+              <span>
+                <strong>NO MORE COWS</strong>
+                <span>Physics cow-carrying co-op</span>
+              </span>
+            </button>
+          </div>
 
-          <div class="slides">
-            <article class="slide" data-steam-app-id="3215820" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1777071326');">
-              <div class="slide-content">
+          <div class="game-preview-stage">
+            <article class="game-showcase-panel is-active" id="game-panel-dreadway" role="tabpanel" aria-labelledby="game-tab-dreadway" data-game-panel="dreadway" data-steam-app-id="3215820" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1777071326');">
+              <div class="game-preview-media">
+                <video class="game-trailer" src="https://video.fastly.steamstatic.com/store_trailers/3215820/1935248400/a4ae30aecc773d8423b5817c396b7e03edbf9607/1765930059/microtrailer.mp4" data-hls-src="https://video.akamai.steamstatic.com/store_trailers/3215820/1935248400/a4ae30aecc773d8423b5817c396b7e03edbf9607/1765930059/hls_264_master.m3u8?t=1765934506" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1777071326" muted loop playsinline preload="metadata" aria-label="Dreadway trailer preview"></video>
+                <img class="game-poster" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1777071326" alt="" loading="lazy">
+                <span class="game-preview-badge">Steam trailer preview</span>
+                <button class="game-sound-toggle" type="button" data-game-sound-toggle aria-pressed="false" aria-label="Turn trailer sound on"><span class="game-sound-label">Sound off</span></button>
+              </div>
+              <div class="game-preview-copy">
                 <img class="game-logo" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1777071326" alt="Dreadway logo and key art" loading="lazy">
                 <h3>DREADWAY</h3>
-                <p>A co-op extraction horror for 1–4 players where you survive nuclear wastelands on a train. Scavenge scrap for fuel and supplies, and use voice mechanics to stay alive.</p>
+                <p>A co-op extraction horror for 1-4 players where you survive nuclear wastelands on a train. Scavenge scrap for fuel and supplies, and use voice mechanics to stay alive.</p>
                 <div class="game-meta">
                   <span class="pill">Co-op horror</span>
                   <span class="pill">Voice mechanics</span>
                   <span class="pill">Train survival</span>
                 </div>
-                <a class="btn primary" href="https://store.steampowered.com/app/3215820/Dreadway/" target="_blank" rel="noopener noreferrer">View on Steam</a>
+                <div class="game-preview-actions">
+                  <a class="btn primary" href="https://store.steampowered.com/app/3215820/Dreadway/" target="_blank" rel="noopener noreferrer">View on Steam</a>
+                </div>
               </div>
             </article>
 
-            <article class="slide" data-steam-app-id="4454760" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4454760/1699f7d86a37f68e6e67cabc992915631026f771/header.jpg?t=1777071358');">
-              <div class="slide-content">
+            <article class="game-showcase-panel" id="game-panel-open" role="tabpanel" aria-labelledby="game-tab-open" data-game-panel="open-up-sir" data-steam-app-id="4454760" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4454760/1699f7d86a37f68e6e67cabc992915631026f771/header.jpg?t=1777071358');" hidden>
+              <div class="game-preview-media">
+                <video class="game-trailer" src="https://video.fastly.steamstatic.com/store_trailers/4454760/1040176759/d3afc48786063a30a1c68a5368d4aed4226f4b92/1774457001/microtrailer.mp4" data-hls-src="https://video.akamai.steamstatic.com/store_trailers/4454760/1040176759/d3afc48786063a30a1c68a5368d4aed4226f4b92/1774457001/hls_264_master.m3u8?t=1774457480" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4454760/1699f7d86a37f68e6e67cabc992915631026f771/header.jpg?t=1777071358" muted loop playsinline preload="metadata" aria-label="OPEN UP SIR! trailer preview"></video>
+                <img class="game-poster" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4454760/1699f7d86a37f68e6e67cabc992915631026f771/header.jpg?t=1777071358" alt="" loading="lazy">
+                <span class="game-preview-badge">Steam trailer preview</span>
+                <button class="game-sound-toggle" type="button" data-game-sound-toggle aria-pressed="false" aria-label="Turn trailer sound on"><span class="game-sound-label">Sound off</span></button>
+              </div>
+              <div class="game-preview-copy">
                 <img class="game-logo" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4454760/1699f7d86a37f68e6e67cabc992915631026f771/header.jpg?t=1777071358" alt="OPEN UP SIR! logo and key art" loading="lazy">
                 <h3>OPEN UP SIR!</h3>
-                <p>Co-op for 2–4 players about firefighters: you take on funny and dangerous calls — rescue, extinguish, and break things.</p>
+                <p>Co-op for 2-4 players about firefighters: you take on funny and dangerous calls - rescue, extinguish, and break things.</p>
                 <div class="game-meta">
                   <span class="pill">Firefighter co-op</span>
                   <span class="pill">Physics chaos</span>
                   <span class="pill">Destruction</span>
                 </div>
-                <a class="btn primary" href="https://store.steampowered.com/app/4454760/OPEN_UP_SIR/" target="_blank" rel="noopener noreferrer">View on Steam</a>
+                <div class="game-preview-actions">
+                  <a class="btn primary" href="https://store.steampowered.com/app/4454760/OPEN_UP_SIR/" target="_blank" rel="noopener noreferrer">View on Steam</a>
+                </div>
               </div>
             </article>
 
-            <article class="slide" data-steam-app-id="4635170" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972');">
-              <div class="slide-content">
+            <article class="game-showcase-panel" id="game-panel-cows" role="tabpanel" aria-labelledby="game-tab-cows" data-game-panel="no-more-cows" data-steam-app-id="4635170" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972');" hidden>
+              <div class="game-preview-media">
+                <video class="game-trailer" src="https://video.fastly.steamstatic.com/store_trailers/4635170/191898554/6d712337c5c30e7b4c29fd9846a321dc49dfbf7f/1777411645/microtrailer.mp4" data-hls-src="https://video.akamai.steamstatic.com/store_trailers/4635170/191898554/6d712337c5c30e7b4c29fd9846a321dc49dfbf7f/1777411645/hls_264_master.m3u8?t=1777411970" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972" muted loop playsinline preload="metadata" aria-label="NO MORE COWS trailer preview"></video>
+                <img class="game-poster" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972" alt="" loading="lazy">
+                <span class="game-preview-badge">Steam trailer preview</span>
+                <button class="game-sound-toggle" type="button" data-game-sound-toggle aria-pressed="false" aria-label="Turn trailer sound on"><span class="game-sound-label">Sound off</span></button>
+              </div>
+              <div class="game-preview-copy">
                 <img class="game-logo" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972" alt="NO MORE COWS logo and key art" loading="lazy">
                 <h3>NO MORE COWS</h3>
                 <p>Physics-based co-op platformer where you and your friend must abduct a cow and drag it all the way from a barn to a laboratory in space. Survive traps, zero gravity, and friendship-breaking chaos in online co-op for 2 players.</p>
@@ -1847,25 +2734,13 @@
                   <span class="pill">Cow carrying</span>
                   <span class="pill">Zero gravity</span>
                 </div>
-                <a class="btn primary" href="https://store.steampowered.com/app/4635170/NO_MORE_COWS/" target="_blank" rel="noopener noreferrer">View on Steam</a>
+                <div class="game-preview-actions">
+                  <a class="btn primary" href="https://store.steampowered.com/app/4635170/NO_MORE_COWS/" target="_blank" rel="noopener noreferrer">View on Steam</a>
+                </div>
               </div>
             </article>
           </div>
 
-          <div class="controls" aria-hidden="true">
-            <label class="control dreadway-prev" for="slide-cows">‹</label>
-            <label class="control dreadway-next" for="slide-open">›</label>
-            <label class="control open-prev" for="slide-dreadway">‹</label>
-            <label class="control open-next" for="slide-cows">›</label>
-            <label class="control cows-prev" for="slide-open">‹</label>
-            <label class="control cows-next" for="slide-dreadway">›</label>
-          </div>
-
-          <div class="dots" aria-label="Choose game slide">
-            <label class="dot" for="slide-dreadway" aria-label="Show Dreadway"></label>
-            <label class="dot" for="slide-open" aria-label="Show OPEN UP SIR!"></label>
-            <label class="dot" for="slide-cows" aria-label="Show NO MORE COWS"></label>
-          </div>
         </div>
       </div>
     </section>
