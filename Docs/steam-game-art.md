@@ -2,7 +2,7 @@
 
 ## Overview
 
-The homepage games section in `index.html` uses a trailer showcase. Each project has a selectable tab, a horizontal 16:9 Steam HLS trailer with audio, an overlay sound toggle, and Steam `header_image` artwork as the poster/fallback.
+The homepage games section in `index.html` uses a trailer showcase. Each project has a selectable tab, a horizontal 16:9 Steam HLS trailer with audio, overlay sound controls with a volume slider, and Steam `header_image` artwork as the poster/fallback.
 
 Steam can change both the cache-busting `t` value and the hashed asset folder when store artwork is updated, so the site keeps a local cache at `data/steam-games.json` instead of relying on hardcoded CDN paths forever.
 
@@ -17,6 +17,7 @@ Steam can change both the cache-busting `t` value and the hashed asset folder wh
 - `index.html` loads pinned `hls.js@1.6.16` from jsDelivr so Chromium/Firefox can play HLS. Safari uses native HLS when available.
 - `.game-preview-media` is the horizontal 16:9 player shell. Keep the trailer itself at `object-fit: contain` so horizontal videos scale down on vertical screens without changing proportions or cropping into a vertical preview.
 - `[data-game-sound-toggle]` controls the shared trailer audio state. Autoplay starts muted; a user click on the overlay button unmutes the active trailer and keeps that sound preference when switching games.
+- `[data-game-volume-slider]` controls the shared trailer volume for every panel. The slider starts disabled while audio is muted, becomes active when sound is enabled, and is disabled again when sound is turned off.
 
 ## Trailer Sources
 
@@ -46,4 +47,4 @@ When updating a trailer URL, test that the HLS manifest returns `200` and contai
 - Keep the inline `--game-image`, `.game-thumb`, `.game-poster`, `.game-logo`, and video `poster` values as sensible fallbacks for visitors whose browser cannot load the JSON cache.
 - Add or update the `.game-trailer` `data-hls-src` with the current Steam HLS URL.
 - Add or update the `.game-trailer` `src` with the current SteamDB `video/mp4` microtrailer fallback URL.
-- Keep one `[data-game-sound-toggle]` button inside each `.game-preview-media` so every selected panel exposes the same audio control.
+- Keep one `.game-audio-controls` block inside each `.game-preview-media` so every selected panel exposes the same sound toggle and `[data-game-volume-slider]` control.

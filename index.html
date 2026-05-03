@@ -332,8 +332,10 @@
       const tabs = Array.from(showcase.querySelectorAll("[data-game-tab]"));
       const panels = Array.from(showcase.querySelectorAll("[data-game-panel]"));
       const soundButtons = Array.from(showcase.querySelectorAll("[data-game-sound-toggle]"));
+      const volumeSliders = Array.from(showcase.querySelectorAll("[data-game-volume-slider]"));
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       let audioEnabled = false;
+      let trailerVolume = 0.82;
 
       if (!tabs.length || !panels.length) {
         return;
@@ -348,6 +350,29 @@
 
           if (label) {
             label.textContent = audioEnabled ? "Sound on" : "Sound off";
+          }
+        });
+
+        volumeSliders.forEach(function (slider) {
+          const volumePercent = Math.round(trailerVolume * 100);
+          const control = slider.closest(".game-volume-control");
+
+          slider.disabled = !audioEnabled;
+          slider.value = String(volumePercent);
+          slider.setAttribute("aria-valuetext", volumePercent + "%");
+
+          if (control) {
+            control.classList.toggle("is-disabled", !audioEnabled);
+          }
+        });
+      }
+
+      function applyVolumeToVideos() {
+        panels.forEach(function (panel) {
+          const video = panel.querySelector(".game-trailer");
+
+          if (video) {
+            video.volume = trailerVolume;
           }
         });
       }
@@ -449,6 +474,21 @@
             });
           });
         }
+
+        const volumeSlider = panel.querySelector("[data-game-volume-slider]");
+        if (volumeSlider) {
+          volumeSlider.addEventListener("input", function () {
+            const nextVolume = Number(volumeSlider.value);
+
+            if (Number.isNaN(nextVolume)) {
+              return;
+            }
+
+            trailerVolume = Math.max(0, Math.min(1, nextVolume / 100));
+            applyVolumeToVideos();
+            updateSoundButtons();
+          });
+        }
       });
 
       function syncVideo(panel, shouldPlay) {
@@ -465,7 +505,7 @@
         }
 
         setupHlsVideo(panel);
-        video.volume = 0.82;
+        video.volume = trailerVolume;
         video.muted = !audioEnabled;
         video.play().catch(function () {
           // Browsers can still block autoplay; the poster image remains visible.
@@ -1895,11 +1935,18 @@
       box-shadow: 0 0 16px var(--accent);
     }
 
-    .game-sound-toggle {
+    .game-audio-controls {
       position: absolute;
       right: 18px;
       top: 18px;
       z-index: 3;
+      display: grid;
+      justify-items: end;
+      gap: 10px;
+      width: min(178px, calc(100% - 36px));
+    }
+
+    .game-sound-toggle {
       display: inline-flex;
       align-items: center;
       gap: 9px;
@@ -1940,6 +1987,44 @@
     .game-sound-toggle.is-audio-enabled::before {
       background: var(--accent);
       box-shadow: 0 0 16px rgba(124,255,196,0.74);
+    }
+
+    .game-volume-control {
+      display: grid;
+      gap: 7px;
+      width: min(170px, 100%);
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 14px;
+      background: rgba(7,8,13,0.72);
+      color: #dce3f0;
+      font-size: 0.7rem;
+      font-weight: 800;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.3);
+      transition: opacity 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .game-volume-control.is-disabled {
+      opacity: 0.52;
+      border-color: rgba(255,255,255,0.12);
+      background: rgba(7,8,13,0.56);
+    }
+
+    .game-volume-label {
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .game-volume-slider {
+      width: 100%;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .game-volume-slider:disabled {
+      cursor: not-allowed;
     }
 
     .game-preview-copy {
@@ -2347,6 +2432,7 @@
 
       .game-tab,
       .game-preview-media,
+      .game-volume-control,
       .contact-list a,
       .footer-socials a,
       .btn {
@@ -2534,11 +2620,20 @@
         width: 100%;
       }
 
-      .game-sound-toggle {
+      .game-audio-controls {
         right: 12px;
         top: 12px;
+        width: min(160px, calc(100% - 24px));
+      }
+
+      .game-sound-toggle {
         min-height: 38px;
         padding-inline: 11px;
+      }
+
+      .game-volume-control {
+        width: min(150px, 100%);
+        padding: 8px 10px;
       }
 
       .about-panel,
@@ -2679,7 +2774,13 @@
                 <video class="game-trailer" src="https://video.fastly.steamstatic.com/store_trailers/3215820/1935248400/a4ae30aecc773d8423b5817c396b7e03edbf9607/1765930059/microtrailer.mp4" data-hls-src="https://video.akamai.steamstatic.com/store_trailers/3215820/1935248400/a4ae30aecc773d8423b5817c396b7e03edbf9607/1765930059/hls_264_master.m3u8?t=1765934506" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1777071326" muted loop playsinline preload="metadata" aria-label="Dreadway trailer preview"></video>
                 <img class="game-poster" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1777071326" alt="" loading="lazy">
                 <span class="game-preview-badge">Steam trailer preview</span>
-                <button class="game-sound-toggle" type="button" data-game-sound-toggle aria-pressed="false" aria-label="Turn trailer sound on"><span class="game-sound-label">Sound off</span></button>
+                <div class="game-audio-controls">
+                  <button class="game-sound-toggle" type="button" data-game-sound-toggle aria-pressed="false" aria-label="Turn trailer sound on"><span class="game-sound-label">Sound off</span></button>
+                  <label class="game-volume-control is-disabled">
+                    <span class="game-volume-label">Volume</span>
+                    <input class="game-volume-slider" type="range" min="0" max="100" value="82" data-game-volume-slider aria-label="Trailer volume" disabled>
+                  </label>
+                </div>
               </div>
               <div class="game-preview-copy">
                 <img class="game-logo" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3215820/236fb92091e8ccef2e5c93fec52c25d643a7aa84/header.jpg?t=1777071326" alt="Dreadway logo and key art" loading="lazy">
@@ -2701,7 +2802,13 @@
                 <video class="game-trailer" src="https://video.fastly.steamstatic.com/store_trailers/4454760/1040176759/d3afc48786063a30a1c68a5368d4aed4226f4b92/1774457001/microtrailer.mp4" data-hls-src="https://video.akamai.steamstatic.com/store_trailers/4454760/1040176759/d3afc48786063a30a1c68a5368d4aed4226f4b92/1774457001/hls_264_master.m3u8?t=1774457480" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4454760/1699f7d86a37f68e6e67cabc992915631026f771/header.jpg?t=1777071358" muted loop playsinline preload="metadata" aria-label="OPEN UP SIR! trailer preview"></video>
                 <img class="game-poster" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4454760/1699f7d86a37f68e6e67cabc992915631026f771/header.jpg?t=1777071358" alt="" loading="lazy">
                 <span class="game-preview-badge">Steam trailer preview</span>
-                <button class="game-sound-toggle" type="button" data-game-sound-toggle aria-pressed="false" aria-label="Turn trailer sound on"><span class="game-sound-label">Sound off</span></button>
+                <div class="game-audio-controls">
+                  <button class="game-sound-toggle" type="button" data-game-sound-toggle aria-pressed="false" aria-label="Turn trailer sound on"><span class="game-sound-label">Sound off</span></button>
+                  <label class="game-volume-control is-disabled">
+                    <span class="game-volume-label">Volume</span>
+                    <input class="game-volume-slider" type="range" min="0" max="100" value="82" data-game-volume-slider aria-label="Trailer volume" disabled>
+                  </label>
+                </div>
               </div>
               <div class="game-preview-copy">
                 <img class="game-logo" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4454760/1699f7d86a37f68e6e67cabc992915631026f771/header.jpg?t=1777071358" alt="OPEN UP SIR! logo and key art" loading="lazy">
@@ -2723,7 +2830,13 @@
                 <video class="game-trailer" src="https://video.fastly.steamstatic.com/store_trailers/4635170/191898554/6d712337c5c30e7b4c29fd9846a321dc49dfbf7f/1777411645/microtrailer.mp4" data-hls-src="https://video.akamai.steamstatic.com/store_trailers/4635170/191898554/6d712337c5c30e7b4c29fd9846a321dc49dfbf7f/1777411645/hls_264_master.m3u8?t=1777411970" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972" muted loop playsinline preload="metadata" aria-label="NO MORE COWS trailer preview"></video>
                 <img class="game-poster" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972" alt="" loading="lazy">
                 <span class="game-preview-badge">Steam trailer preview</span>
-                <button class="game-sound-toggle" type="button" data-game-sound-toggle aria-pressed="false" aria-label="Turn trailer sound on"><span class="game-sound-label">Sound off</span></button>
+                <div class="game-audio-controls">
+                  <button class="game-sound-toggle" type="button" data-game-sound-toggle aria-pressed="false" aria-label="Turn trailer sound on"><span class="game-sound-label">Sound off</span></button>
+                  <label class="game-volume-control is-disabled">
+                    <span class="game-volume-label">Volume</span>
+                    <input class="game-volume-slider" type="range" min="0" max="100" value="82" data-game-volume-slider aria-label="Trailer volume" disabled>
+                  </label>
+                </div>
               </div>
               <div class="game-preview-copy">
                 <img class="game-logo" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972" alt="NO MORE COWS logo and key art" loading="lazy">
