@@ -9,8 +9,7 @@ Steam can change both the cache-busting `t` value and the hashed asset folder wh
 ## Files
 
 - `data/steam-games.json` stores the latest known Steam `headerImage` URL for each app ID.
-- `scripts/update-steam-game-art.mjs` refreshes that cache from Steam Store appdetails.
-- `.github/workflows/update-steam-game-art.yml` runs the refresh on a schedule and can also be started manually from GitHub Actions.
+- `scripts/update-steam-game-art.mjs` refreshes that cache from Steam Store appdetails when run locally.
 - `index.html` keeps current artwork as a no-JavaScript fallback, then loads `data/steam-games.json` and applies the cached URLs to elements marked with `data-steam-app-id`.
 - `index.html` stores the current Steam HLS trailer URL on each `.game-trailer` as `data-hls-src`.
 - `index.html` also keeps the SteamDB `microtrailer.mp4` URL as the regular `src` fallback for browsers where HLS cannot be played.
@@ -34,9 +33,8 @@ When updating a trailer URL, test that the HLS manifest returns `200` and contai
 
 ## Update Flow
 
-- GitHub Actions runs every 6 hours and commits `data/steam-games.json` only when Steam returns changed artwork URLs.
-- To update immediately after changing Steam art, run the `Update Steam game artwork` workflow manually.
-- For a local refresh, run `node scripts/update-steam-game-art.mjs` from the repository root, then commit the updated JSON.
+- To refresh artwork after changing Steam art, run `node scripts/update-steam-game-art.mjs` from the repository root.
+- Commit `data/steam-games.json` only when the script changes the cached artwork URLs.
 
 ## Adding Or Removing Games
 
