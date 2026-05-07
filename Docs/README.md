@@ -7,3 +7,4 @@
 - [Site Motion](site-motion.md) documents the fixed background and scroll animation system used on the homepage.
 - [Steam Game Artwork](steam-game-art.md) documents the Steam header image cache and local updater script.
 - [Epic Developer Pages](epic-developer-pages.md) documents the public application website and privacy policy URLs used for Epic Developer Portal review.
+- [OPEN UP SIR! Publisher Pitch](open-up-sir-pitch.md) documents the hidden publisher pitch page, mobile viewing mode, PDF download, and update flow.

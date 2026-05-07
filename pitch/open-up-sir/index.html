@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OPEN UP SIR! - Pitch Deck</title>
+  <meta name="description" content="Investor-ready HTML pitch deck for OPEN UP SIR!, a physics-based co-op firefighting comedy.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="theme-color" content="#170903">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="pitch-actions" aria-label="Pitch deck actions">
+    <span class="pitch-actions-title">OPEN UP SIR!</span>
+    <a class="pitch-download" href="./open-up-sir-pitch-deck.pdf" download>Download PDF</a>
+  </header>
+
+  <div class="presentation-stage" id="presentation-stage">
+  <canvas id="fx-canvas" aria-hidden="true"></canvas>
+
+  <div class="chrome" aria-hidden="true">
+    <div class="brand-mark">OPEN UP SIR!</div>
+    <div class="progress-track"><span id="progress-fill"></span></div>
+    <div class="slide-counter"><span id="current-slide">01</span><span id="total-slides">/17</span></div>
+  </div>
+
+  <nav class="slide-rail" aria-label="Slide navigation">
+    <button type="button" data-target="0" aria-label="Slide 1"></button>
+    <button type="button" data-target="1" aria-label="Slide 2"></button>
+    <button type="button" data-target="2" aria-label="Slide 3"></button>
+    <button type="button" data-target="3" aria-label="Slide 4"></button>
+    <button type="button" data-target="4" aria-label="Slide 5"></button>
+    <button type="button" data-target="5" aria-label="Slide 6"></button>
+    <button type="button" data-target="6" aria-label="Slide 7"></button>
+    <button type="button" data-target="7" aria-label="Slide 8"></button>
+    <button type="button" data-target="8" aria-label="Slide 9"></button>
+    <button type="button" data-target="9" aria-label="Slide 10"></button>
+    <button type="button" data-target="10" aria-label="Slide 11"></button>
+    <button type="button" data-target="11" aria-label="Slide 12"></button>
+    <button type="button" data-target="12" aria-label="Slide 13"></button>
+    <button type="button" data-target="13" aria-label="Slide 14"></button>
+    <button type="button" data-target="14" aria-label="Slide 15"></button>
+    <button type="button" data-target="15" aria-label="Slide 16"></button>
+    <button type="button" data-target="16" aria-label="Slide 17"></button>
+  </nav>
+
+  <button class="nav-button nav-prev" type="button" id="prev-slide" aria-label="Previous slide"><span>&lsaquo;</span></button>
+  <button class="nav-button nav-next" type="button" id="next-slide" aria-label="Next slide"><span>&rsaquo;</span></button>
+
+  <main class="deck" id="deck" aria-live="polite">
+    <section class="slide cover active" data-scene="cover" aria-labelledby="slide-1-title">
+      <div class="scene-house" aria-hidden="true">
+        <div class="roof"></div>
+        <div class="wall wall-left"></div>
+        <div class="wall wall-right"></div>
+        <div class="door"></div>
+        <div class="window window-a"></div>
+        <div class="window window-b"></div>
+        <div class="water-arc arc-a"></div>
+        <div class="water-arc arc-b"></div>
+        <div class="smoke-pill smoke-a"></div>
+        <div class="smoke-pill smoke-b"></div>
+        <div class="flare"></div>
+      </div>
+      <div class="slide-content cover-content">
+        <p class="eyebrow reveal">Physics-based co-op firefighting comedy</p>
+        <h1 id="slide-1-title" class="mega-title reveal">OPEN UP SIR!</h1>
+        <p class="tagline reveal">Save the house. Try not to be the disaster.</p>
+        <div class="cover-meta reveal">
+          <span>Requested amount: €82,000</span>
+          <span>Co-op 2-4 players</span>
+          <span>Comedy / chaos</span>
+          <span>Driving + firefighting</span>
+          <span>PC / Steam</span>
+        </div>
+        <div class="cover-proof reveal">
+          <span>Trailer live</span>
+          <span>Steam page live</span>
+          <span>Public hook validated</span>
+        </div>
+        <p class="contact reveal">ZweiBeir Indie / alexander.gamedev34@gmail.com / Munich, Bavaria</p>
+      </div>
+      <div class="screenshot-frame cover-shot shot-01 reveal">
+        <span class="shot-caption">Original screenshots from the game, enhanced with ChatGPT to show the target in-game graphics.</span>
+      </div>
+    </section>
+
+    <section class="slide hook" data-scene="smoke" aria-labelledby="slide-2-title">
+      <div class="slide-content narrow">
+        <p class="kicker reveal">Hook</p>
+        <h2 id="slide-2-title" class="stacked-hook reveal">
+          <span>A tiny emergency.</span>
+          <span>A fully equipped fire crew.</span>
+          <span>A house that may not survive the rescue.</span>
+        </h2>
+        <p class="body-copy reveal">
+          Players are called to solve simple emergencies, but physical tools, bad communication,
+          overpowered hoses, destructible houses and panic can turn every rescue into a disaster.
+        </p>
+        <p class="impact-line reveal">The firefighters are often more dangerous than the fire.</p>
+      </div>
+      <div class="screenshot-frame shot-04 reveal">
+        <span class="shot-caption">Original screenshots from the game, enhanced with ChatGPT to show the target in-game graphics.</span>
+      </div>
+    </section>
+
+    <section class="slide pitch" data-scene="water" aria-labelledby="slide-3-title">
+      <div class="slide-content two-column">
+        <div>
+          <p class="kicker reveal">Elevator Pitch</p>
+          <h2 id="slide-3-title" class="slide-title reveal">A crew that should help. Tools that fight back.</h2>
+        </div>
+        <div class="copy-stack">
+          <p class="body-copy reveal">
+            OPEN UP SIR! is a 2-4 player first-person physics comedy about an underprepared
+            firefighting crew in a small Bavarian town. Players receive emergency calls, race to
+            the scene in a shared firetruck, and solve incidents ranging from cats in trees to real
+            house fires.
+          </p>
+          <p class="body-copy reveal">
+            But every tool is physical and dangerous: hoses knock players down, ladders wobble, gas
+            cylinders explode, walls break, and careless rescuing can cost more than the fire itself.
+          </p>
+          <p class="impact-line reveal">The goal is not just to finish the call - it is to keep the property alive.</p>
+        </div>
+      </div>
+      <div class="hose-diagram" aria-hidden="true">
+        <div class="hose-line"></div>
+        <div class="pressure-dot dot-a"></div>
+        <div class="pressure-dot dot-b"></div>
+        <div class="pressure-dot dot-c"></div>
+      </div>
+      <div class="screenshot-frame shot-03 reveal">
+        <span class="shot-caption">Original screenshots from the game, enhanced with ChatGPT to show the target in-game graphics.</span>
+      </div>
+    </section>
+
+    <section class="slide usp" data-scene="sparks" aria-labelledby="slide-4-title">
+      <div class="slide-content">
+        <p class="kicker reveal">USP</p>
+        <h2 id="slide-4-title" class="slide-title reveal">Physics chaos players can hear, feel and destroy.</h2>
+        <div class="usp-grid" aria-label="Unique selling points">
+          <article class="usp-card reveal">
+            <span class="usp-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 5a3 3 0 1 0 3 3"/><path d="M10 11l3 3 4-4"/><path d="M13 14l-2 6"/><path d="M16 11l4 3"/><path d="M8 14l-4 3"/><path d="M18 4l2 2"/><path d="M4 6l2-2"/></svg>
+            </span>
+            <h3>Active ragdoll physics</h3>
+            <p>Players stumble, collide, get knocked down and recover through physical motion.</p>
+          </article>
+          <article class="usp-card reveal">
+            <span class="usp-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 9a4 4 0 0 1 4-4h1l5 5v1a4 4 0 0 1-4 4H8l-4 4v-4a4 4 0 0 1 0-6z"/><path d="M16 7a5 5 0 0 1 0 10"/><path d="M19 4a9 9 0 0 1 0 16"/></svg>
+            </span>
+            <h3>Proximity voice chat</h3>
+            <p>Communication becomes spatial, messy and funny when the crew spreads across the house.</p>
+          </article>
+          <article class="usp-card reveal">
+            <span class="usp-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 12a4 4 0 1 0-4-4"/><path d="M16 12a4 4 0 1 0 4-4"/><path d="M4 20a5 5 0 0 1 8 0"/><path d="M12 20a5 5 0 0 1 8 0"/><path d="M10 8h4"/></svg>
+            </span>
+            <h3>Online co-op</h3>
+            <p>2-4 players share the truck, tools, mistakes and mission payout in one live run.</p>
+          </article>
+          <article class="usp-card reveal">
+            <span class="usp-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 20V8l8-4 8 4v12"/><path d="M4 12h16"/><path d="M9 20v-5h6v5"/><path d="M12 4v8"/><path d="M8 8l8 8"/><path d="M16 8l-8 8"/></svg>
+            </span>
+            <h3>Complete destructibility</h3>
+            <p>Walls, furniture, doors and property become part of the score, not just decoration.</p>
+          </article>
+        </div>
+        <p class="impact-line reveal">The rescue is a system collision: bodies, voices, tools and buildings all fight back.</p>
+      </div>
+    </section>
+
+    <section class="slide loop" data-scene="sparks" aria-labelledby="slide-5-title">
+      <div class="slide-content">
+        <p class="kicker reveal">Core Gameplay Loop</p>
+        <h2 id="slide-5-title" class="slide-title reveal">Respond fast. Rescue badly. Pay for the damage.</h2>
+        <div class="loop-grid reveal" aria-label="Gameplay loop">
+          <div class="loop-node">Emergency call</div>
+          <div class="loop-node">Chaotic dispatch</div>
+          <div class="loop-node">Destructive rescue</div>
+          <div class="loop-node">Damage-based payout</div>
+          <div class="loop-node">Repair / refill / restock</div>
+          <div class="loop-node">Next call</div>
+        </div>
+        <p class="impact-line reveal">The run continues while the team earns more than it spends. Bankruptcy ends the run.</p>
+      </div>
+      <div class="screenshot-frame shot-02 reveal">
+        <span class="shot-caption">Original screenshots from the game, enhanced with ChatGPT to show the target in-game graphics.</span>
+      </div>
+    </section>
+
+    <section class="slide pillars" data-scene="cover" aria-labelledby="slide-6-title">
+      <div class="slide-content">
+        <p class="kicker reveal">Core Pillars</p>
+        <h2 id="slide-6-title" class="slide-title reveal">The conflict is the product.</h2>
+        <div class="pillar-grid">
+          <article class="pillar reveal">
+            <span class="pillar-index">01</span>
+            <h3>Destructive Rescue Comedy</h3>
+            <p>Every action can save the house - or destroy it.</p>
+          </article>
+          <article class="pillar reveal">
+            <span class="pillar-index">02</span>
+            <h3>Crew-Based Communication</h3>
+            <p>Driver has the wheel. Navigator has the map. Everyone has an opinion.</p>
+          </article>
+          <article class="pillar reveal">
+            <span class="pillar-index">03</span>
+            <h3>Physical Firefighting Tools</h3>
+            <p>Hoses, ladders, axes, masks and trucks are powerful, clumsy and dangerous.</p>
+          </article>
+          <article class="pillar reveal">
+            <span class="pillar-index">04</span>
+            <h3>Run-Based Pressure</h3>
+            <p>Players must not only extinguish the fire - they need to make the call profitable.</p>
+          </article>
+        </div>
+      </div>
+      <div class="screenshot-frame shot-01 reveal">
+        <span class="shot-caption">Original screenshots from the game, enhanced with ChatGPT to show the target in-game graphics.</span>
+      </div>
+    </section>
+
+    <section class="slide mission mission-tree-slide" data-scene="smoke" aria-labelledby="slide-7-title">
+      <div class="slide-content">
+        <p class="kicker reveal">Mission Example: House Fire</p>
+        <h2 id="slide-7-title" class="slide-title reveal">One call branches into several ways to lose money.</h2>
+        <div class="mission-tree reveal" aria-label="House fire mission action tree">
+          <svg class="mission-tree-links" viewBox="0 0 1480 440" aria-hidden="true" focusable="false">
+            <defs>
+              <marker id="tree-arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+                <path d="M 0 0 L 10 5 L 0 10 z"></path>
+              </marker>
+              <marker id="tree-arrow-danger" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+                <path d="M 0 0 L 10 5 L 0 10 z"></path>
+              </marker>
+              <marker id="tree-arrow-success" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+                <path d="M 0 0 L 10 5 L 0 10 z"></path>
+              </marker>
+            </defs>
+            <path class="tree-link" d="M155 220 H165"></path>
+            <path class="tree-link" d="M320 220 H330"></path>
+            <path class="tree-link danger" d="M320 220 C345 220 305 64 330 64"></path>
+            <path class="tree-link" d="M485 220 H530"></path>
+            <path class="tree-link" d="M485 220 C520 220 495 64 530 64"></path>
+            <path class="tree-link" d="M485 220 C520 220 495 376 530 376"></path>
+            <path class="tree-link" d="M685 220 H690"></path>
+            <path class="tree-link" d="M845 220 H850"></path>
+            <path class="tree-link" d="M1005 220 H1010"></path>
+            <path class="tree-link danger" d="M685 64 C785 64 890 220 1010 220"></path>
+            <path class="tree-link success" d="M685 376 C785 376 890 220 1010 220"></path>
+            <path class="tree-link danger" d="M1165 220 C1215 220 1115 124 1165 124"></path>
+            <path class="tree-link success" d="M1165 220 C1215 220 1115 316 1165 316"></path>
+            <path class="tree-link danger" d="M1320 124 H1325"></path>
+            <path class="tree-link success" d="M1320 316 H1325"></path>
+          </svg>
+          <div class="tree-node call"><b>Call</b><span>Smoke detected at Bozener Str. 8.</span></div>
+          <div class="tree-node arrive"><b>Arrive in time?</b><span>5-minute response timer.</span></div>
+          <div class="tree-node fail"><b>Too late</b><span>Mission failed.</span></div>
+          <div class="tree-node assess"><b>Threat assessment</b><span>Smoke, heat, locked doors, gas.</span></div>
+          <div class="tree-node breach"><b>Breach doors</b><span>Lockpicks or axe. Fast entry can create damage.</span></div>
+          <div class="tree-node search"><b>Search house</b><span>Find victims, hazards and fire spread.</span></div>
+          <div class="tree-node utility"><b>Cut electricity</b><span>Reduce escalation risk before water hits the room.</span></div>
+          <div class="tree-node dirty"><b>Dirty result</b><span>House is destroyed. Mission failed.</span></div>
+          <div class="tree-node route"><b>Shortest route</b><span>Reach the fire source with minimal damage.</span></div>
+          <div class="tree-node clean"><b>Clean run</b><span>Fire out with almost no damage. 5 stars.</span></div>
+          <div class="tree-node okay"><b>Satisfactory</b><span>Damage under 50%. Mission complete, 3 stars.</span></div>
+          <div class="tree-node score"><b>Final check</b><span>Stars, payout and damage invoice are calculated.</span></div>
+          <div class="tree-node money penalty"><b>-1000$</b><span>Damage invoice.</span></div>
+          <div class="tree-node money reward"><b>+1000$</b><span>Clean bonus.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide roles" data-scene="water" aria-labelledby="slide-8-title">
+      <div class="slide-content">
+        <p class="kicker reveal">Co-op & Voice Chat</p>
+        <h2 id="slide-8-title" class="slide-title reveal">The team is split by information and responsibility.</h2>
+        <div class="player-cards">
+          <article class="player-card reveal">
+            <h3>Player 1: Driver</h3>
+            <div><b>During dispatch</b><span>Drives the truck, follows voice instructions, avoids traffic and property damage.</span></div>
+            <div><b>On the mission</b><span>Positions the truck, manages parking angle and keeps escape routes open.</span></div>
+          </article>
+          <article class="player-card reveal">
+            <h3>Player 2: Navigator</h3>
+            <div><b>During dispatch</b><span>Reads the map, calls turns, chooses the fastest route.</span></div>
+            <div><b>On the mission</b><span>Tracks objectives, hazards and the shortest path through the building.</span></div>
+          </article>
+          <article class="player-card reveal">
+            <h3>Player 3: Truck Operator</h3>
+            <div><b>During dispatch</b><span>Prepares hose, ladder, masks, axe and compartments.</span></div>
+            <div><b>On the mission</b><span>Controls water supply, pressure, hose length and refill timing.</span></div>
+          </article>
+          <article class="player-card reveal">
+            <h3>Player 4: Breacher / Rescuer</h3>
+            <div><b>During dispatch</b><span>Plans entry tools and rescue gear before arrival.</span></div>
+            <div><b>On the mission</b><span>Opens doors, carries people or cat, disables hazards and finishes objectives.</span></div>
+          </article>
+        </div>
+        <p class="impact-line reveal">Roles are not classes. They emerge from the chaos.</p>
+      </div>
+      <div class="screenshot-frame shot-04 reveal">
+        <span class="shot-caption">Original screenshots from the game, enhanced with ChatGPT to show the target in-game graphics.</span>
+      </div>
+    </section>
+
+    <section class="slide tools" data-scene="sparks" aria-labelledby="slide-9-title">
+      <div class="slide-content">
+        <p class="kicker reveal">Tools & Physical Chaos</p>
+        <h2 id="slide-9-title" class="slide-title reveal">Every tool solves one problem and creates another.</h2>
+        <div class="tool-orbit" aria-label="Tools">
+          <div class="tool-chip reveal">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 14a6 6 0 1 0 6-6H7a3 3 0 0 0 0 6h5a1.6 1.6 0 0 0 0-3.2H8"/><path d="M15 5l3-3 4 4-3 3"/><path d="M14 10l5-5"/></svg>
+            </span>
+            <b>Hose</b><small>Pressure knocks players and objects around.</small>
+          </div>
+          <div class="tool-chip reveal">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M13 6l5 5"/><path d="M12.5 6.5L5 19l3 2 7.5-12.5"/><path d="M13 6c2.2-2.5 5-2.5 8 0-2.2.2-3.8 1.3-4.8 3.2"/></svg>
+            </span>
+            <b>Axe</b><small>Opens fast routes but creates damage penalties.</small>
+          </div>
+          <div class="tool-chip reveal">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 21V3"/><path d="M17 21V3"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>
+            </span>
+            <b>Ladder</b><small>Enables rescue but requires positioning and coordination.</small>
+          </div>
+          <div class="tool-chip reveal">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 13c0-4.4 2-7 5-7s5 2.6 5 7v2a5 5 0 0 1-10 0v-2z"/><path d="M9 12h6"/><path d="M10 17h4"/><path d="M8 9L4.5 7.5"/><path d="M16 9l3.5-1.5"/></svg>
+            </span>
+            <b>Mask</b><small>Protects from toxins but limits visibility.</small>
+          </div>
+          <div class="tool-chip reveal">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="6" y="10" width="12" height="10" rx="2"/><path d="M8.5 10V8a3.5 3.5 0 0 1 7 0v2"/><path d="M12 15h.01"/><path d="M16 5l5-2"/><path d="M19 4l1.5 3"/></svg>
+            </span>
+            <b>Lockpicks</b><small>Avoid damage but are limited consumables.</small>
+          </div>
+          <div class="tool-chip reveal">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9 3h6"/><path d="M10 3v4h4V3"/><rect x="7" y="7" width="10" height="14" rx="2"/><path d="M12 17c-1.4-1-2-2.1-2-3.3 0-1.8 1.4-2.8 2-4.2.6 1.4 2 2.4 2 4.2 0 1.2-.6 2.3-2 3.3z"/><path d="M18.5 8.5l2.5-2.5"/><path d="M19.5 12h2.5"/></svg>
+            </span>
+            <b>Gas hazards</b><small>Can escalate into explosions.</small>
+          </div>
+        </div>
+      </div>
+      <div class="screenshot-frame shot-03 reveal">
+        <span class="shot-caption">Original screenshots from the game, enhanced with ChatGPT to show the target in-game graphics.</span>
+      </div>
+    </section>
+
+    <section class="slide economy" data-scene="cover" aria-labelledby="slide-10-title">
+      <div class="slide-content">
+        <p class="kicker reveal">Scoring & Economy</p>
+        <h2 id="slide-10-title" class="slide-title reveal">The house is the score.</h2>
+        <div class="formula reveal">
+          Final Reward = Base Reward + Speed Bonus + Rescue Bonus + Clean Work Bonus
+          <span>- Late Penalty - Destruction Penalty - Resource Costs</span>
+        </div>
+        <div class="receipt reveal" aria-label="Mission receipt example">
+          <div><span>Mission Success</span><b>Fire extinguished</b></div>
+          <div><span>Property Damage</span><b>-€1,850</b></div>
+          <div><span>Truck Damage</span><b>-€300</b></div>
+          <div><span>Late Penalty</span><b>-€100</b></div>
+          <div class="receipt-total"><span>Final Result</span><b>-€250</b></div>
+        </div>
+        <p class="impact-line reveal">Players can succeed at the emergency and still lose money.</p>
+      </div>
+    </section>
+
+    <section class="slide scope" data-scene="water" aria-labelledby="slide-11-title">
+      <div class="slide-content">
+        <p class="kicker reveal">MVP / Vertical Slice</p>
+        <h2 id="slide-11-title" class="slide-title reveal">Vertical Slice Scope</h2>
+        <div class="scope-columns">
+          <div class="scope-block reveal">
+            <h3>Playable slice</h3>
+            <ul>
+              <li>2-4 player host-client co-op.</li>
+              <li>1 compact Bavarian district.</li>
+              <li>1 street with destructible houses.</li>
+              <li>Bavarian firefighter uniforms.</li>
+              <li>Bavarian firetruck identity.</li>
+              <li>1 firetruck with driving, ladder, hose, water and fuel.</li>
+            </ul>
+          </div>
+          <div class="scope-block reveal">
+            <h3>3 MVP missions</h3>
+            <ul>
+              <li>Cat rescue.</li>
+              <li>Sensor replacement / false alarm.</li>
+              <li>House fire.</li>
+            </ul>
+          </div>
+          <div class="scope-block reveal">
+            <h3>Core systems</h3>
+            <ul>
+              <li>hose physics;</li>
+              <li>destruction;</li>
+              <li>mask / toxins / knockdown;</li>
+              <li>axe;</li>
+              <li>lockpicks;</li>
+              <li>mission management;</li>
+              <li>post-mission economy;</li>
+              <li>bankruptcy run loop.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide trailer" data-scene="water" aria-labelledby="slide-12-title">
+      <div class="slide-content">
+        <p class="kicker reveal">Trailer & Steam Page</p>
+        <h2 id="slide-12-title" class="slide-title reveal">The pitch is already playable as a public-facing hook.</h2>
+        <div class="media-grid">
+          <a class="trailer-preview reveal" href="https://youtu.be/c59w_SwHOLk" target="_blank" rel="noreferrer">
+            <img src="https://img.youtube.com/vi/c59w_SwHOLk/maxresdefault.jpg" alt="OPEN UP SIR! trailer preview">
+            <span class="play-button" aria-hidden="true"></span>
+            <b>Watch trailer</b>
+          </a>
+          <a class="steam-preview reveal" href="https://store.steampowered.com/app/4454760/OPEN_UP_SIR/" target="_blank" rel="noreferrer">
+            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4454760/49f1b36326ce7e78bff9029bfc4feca983e0dcfe/capsule_616x353.jpg" alt="OPEN UP SIR! Steam capsule preview">
+            <div>
+              <span class="shot-tag">Steam page</span>
+              <h3>OPEN UP SIR!</h3>
+              <p>Wishlist-ready store page for the co-op firefighting comedy.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide moodboard" data-scene="water" aria-labelledby="slide-13-title">
+      <div class="slide-content">
+        <div class="art-direction-layout">
+          <div class="art-copy">
+            <p class="kicker reveal">Art Direction Moodboard</p>
+            <h2 id="slide-13-title" class="slide-title reveal">Cozy ambient, readable chaos.</h2>
+            <p class="body-copy reveal">
+              The core visual references are Outbound, Peak and RV There Yet? They point toward
+              warm exploration, soft readable lighting, stylized silhouettes and playful physical comedy.
+            </p>
+            <div class="reference-chips reveal" aria-label="Main art references">
+              <span>Outbound</span>
+              <span>Peak</span>
+              <span>RV There Yet?</span>
+            </div>
+            <div class="shader-card reveal">
+              <span>Target shader</span>
+              <b>cozy ambient + cell shading + black outline</b>
+              <p>
+                Applying this shader pass lets even third-party assets land in one unified art style.
+              </p>
+            </div>
+          </div>
+          <div class="moodboard-collage reveal" aria-label="Moodboard image collage">
+            <section class="mood-category mood-core">
+              <h3>Core direction</h3>
+              <div>
+                <img src="./assets/moodboard/core/core-01.png" alt="">
+                <img src="./assets/moodboard/core/core-02.png" alt="">
+                <img src="./assets/moodboard/core/core-03.png" alt="">
+                <img src="./assets/moodboard/core/core-04.png" alt="">
+                <img src="./assets/moodboard/core/core-05.png" alt="">
+                <img src="./assets/moodboard/core/core-06.png" alt="">
+                <img src="./assets/moodboard/core/core-07.png" alt="">
+                <img src="./assets/moodboard/core/core-08.png" alt="">
+                <img src="./assets/moodboard/core/core-09.png" alt="">
+                <img src="./assets/moodboard/core/core-10.png" alt="">
+                <img src="./assets/moodboard/core/core-11.png" alt="">
+              </div>
+            </section>
+            <section class="mood-category mood-architecture">
+              <h3>Architecture & exteriors</h3>
+              <div>
+                <img src="./assets/moodboard/architecture/architecture-01.png" alt="">
+                <img src="./assets/moodboard/architecture/architecture-02.png" alt="">
+                <img src="./assets/moodboard/architecture/architecture-03.png" alt="">
+                <img src="./assets/moodboard/architecture/architecture-04.png" alt="">
+              </div>
+            </section>
+            <section class="mood-category mood-atmosphere">
+              <h3>Atmosphere & light</h3>
+              <div>
+                <img src="./assets/moodboard/atmosphere/atmosphere-01.png" alt="">
+                <img src="./assets/moodboard/atmosphere/atmosphere-02.png" alt="">
+                <img src="./assets/moodboard/atmosphere/atmosphere-03.png" alt="">
+              </div>
+            </section>
+            <section class="mood-category mood-characters">
+              <h3>Characters</h3>
+              <div>
+                <img src="./assets/moodboard/characters/characters-01.png" alt="">
+                <img src="./assets/moodboard/characters/characters-02.png" alt="">
+                <img src="./assets/moodboard/characters/characters-03.png" alt="">
+                <img src="./assets/moodboard/characters/characters-04.png" alt="">
+                <img src="./assets/moodboard/characters/characters-05.png" alt="">
+                <img src="./assets/moodboard/characters/characters-06.png" alt="">
+                <img src="./assets/moodboard/characters/characters-07.png" alt="">
+                <img src="./assets/moodboard/characters/characters-08.png" alt="">
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide validation" data-scene="sparks" aria-labelledby="slide-14-title">
+      <div class="slide-content">
+        <p class="kicker reveal">Market Check</p>
+        <h2 id="slide-14-title" class="slide-title reveal">Players understood the joke before the game existed.</h2>
+        <div class="market-proof-layout">
+          <div class="metric-row proof-metrics" aria-label="Concept traction metrics">
+            <div class="metric reveal"><strong>5M+</strong><span>video views</span></div>
+            <div class="metric reveal"><strong>200K+</strong><span>likes</span></div>
+            <div class="metric reveal"><strong>70K+</strong><span>shares</span></div>
+            <div class="metric reveal"><strong>35K+</strong><span>profile visits</span></div>
+            <div class="metric reveal"><strong>2K+</strong><span>comments</span></div>
+            <div class="metric reveal"><strong>Buy?</strong><span>intent signal</span></div>
+          </div>
+          <aside class="social-proof-card reveal" aria-label="Social proof preview">
+            <div class="social-frame shot-05">
+              <span>OPEN UP SIR!</span>
+              <b>Concept footage</b>
+            </div>
+            <div class="comment-stack">
+              <p><b>Where can I buy this?</b><span>2h ago</span></p>
+              <p><b>I need this with friends</b><span>3h ago</span></p>
+              <p><b>Wishlist?</b><span>4h ago</span></p>
+            </div>
+          </aside>
+        </div>
+        <p class="body-copy reveal">
+          Short concept posts gained multi-million organic reach and repeated buying-intent comments.
+        </p>
+        <p class="impact-line reveal">The hook is instantly readable: the rescue becoming the disaster is the shareable moment.</p>
+      </div>
+    </section>
+
+    <section class="slide positioning" data-scene="water" aria-labelledby="slide-15-title">
+      <div class="slide-content">
+        <p class="kicker reveal">Market Positioning</p>
+        <h2 id="slide-15-title" class="slide-title reveal">Positioned between co-op chaos and firefighting fantasy.</h2>
+        <div class="comparison">
+          <article class="compare-card reveal">
+            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1062830/capsule_616x353.jpg" alt="Embr Steam capsule">
+            <h3>Embr</h3>
+            <p>Accessible co-op firefighting comedy.</p>
+          </article>
+          <article class="compare-card hero-compare reveal">
+            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4454760/49f1b36326ce7e78bff9029bfc4feca983e0dcfe/capsule_616x353.jpg" alt="OPEN UP SIR! Steam capsule">
+            <h3>OPEN UP SIR!</h3>
+            <p>Physics-destruction co-op comedy where the rescue itself becomes the disaster.</p>
+          </article>
+          <article class="compare-card reveal">
+            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/420560/capsule_616x353.jpg" alt="Firefighting Simulator - The Squad Steam capsule">
+            <h3>Firefighting Simulator</h3>
+            <p>Serious firefighting fantasy.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide track-record-slide" data-scene="cover" aria-labelledby="slide-16-title">
+      <div class="slide-content">
+        <p class="kicker reveal">Track Record: Dreadway</p>
+        <h2 id="slide-16-title" class="slide-title reveal">Lean co-op production already shipped once.</h2>
+        <div class="track-showcase">
+          <div class="team-block reveal">
+            <h3>ZweiBeir Indie</h3>
+            <p><b>Aleksandr Varko</b><span>Founder / game director / programmer. 7 years Unity development and co-op multiplayer experience.</span></p>
+            <p><b>Daria Varko</b><span>Artist. Art and visual support for the game's playable identity.</span></p>
+          </div>
+          <a class="dreadway-preview reveal" href="https://steamdb.info/app/3215820/info/" target="_blank" rel="noreferrer" aria-label="Dreadway SteamDB preview">
+            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3215820/c95a8b35ddc61e1def9e17ace657038852465d4a/capsule_616x353.jpg" alt="Dreadway Steam capsule preview">
+            <div>
+              <span class="shot-tag">SteamDB capsule preview</span>
+              <h3>Dreadway</h3>
+              <p>Previous co-op horror title shipped by the team, with publisher support joining late as marketing investment.</p>
+            </div>
+          </a>
+          <div class="track-record reveal" aria-label="Dreadway track record metrics">
+            <h3>Proof points</h3>
+            <div class="track-grid">
+              <span><b>40K</b> current wishlists</span>
+              <span><b>$50K</b> gross revenue</span>
+              <span><b>10M+</b> social views</span>
+              <span><b>1.5K</b> Discord members</span>
+              <span><b>Released</b> co-op title</span>
+              <span><b>Near-zero</b> pre-publisher budget</span>
+            </div>
+          </div>
+          <div class="funds-block reveal">
+            <h3>Use of funds</h3>
+            <ul>
+              <li>core gameplay implementation;</li>
+              <li>networking and physics polish;</li>
+              <li>custom player/firetruck models;</li>
+              <li>3 MVP missions;</li>
+              <li>trailer, Steam assets, capsules;</li>
+              <li>QA/playtests;</li>
+              <li>EA preparation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide roadmap-slide" data-scene="water" aria-labelledby="slide-17-title">
+      <div class="slide-content">
+        <p class="kicker reveal">Roadmap</p>
+        <h2 id="slide-17-title" class="slide-title reveal">Roadmap to MVP, demo, playtests and Early Access.</h2>
+        <div class="roadmap roadmap-detailed roadmap-board reveal" aria-label="Detailed MVP roadmap">
+          <article>
+            <h3>MVP · Sep 2026 - Jan 2027</h3>
+            <p>1 fire mission, hand-crafted street, hose + water, destructible houses, navigator map, gas hazards.</p>
+          </article>
+          <article>
+            <h3>Playtest 1</h3>
+            <p>Mission tracking, knockdowns, evacuation, main menu, tutorial draft, feedback loop.</p>
+          </article>
+          <article>
+            <h3>Demo</h3>
+            <p>3 missions, trailer, Steam page, sound design, economy, replenishment, truck upgrades.</p>
+          </article>
+          <article>
+            <h3>Playtest 2</h3>
+            <p>Critical bug pass, player feedback, NPC fire reports, tool shop, polish improvements.</p>
+          </article>
+          <article>
+            <h3>EA / Release</h3>
+            <p>90% bug fixes, 3 more missions, 2 more streets, station activities, settings, launch trailer.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+  </div>
+
+  <main class="mobile-deck" aria-label="OPEN UP SIR! mobile pitch deck">
+    <figure class="mobile-slide" id="mobile-slide-1">
+      <img src="./assets/mobile-pages/page-01.jpg" alt="OPEN UP SIR! pitch deck slide 1" width="1600" height="900" loading="eager">
+    </figure>
+    <figure class="mobile-slide" id="mobile-slide-2">
+      <img src="./assets/mobile-pages/page-02.jpg" alt="OPEN UP SIR! pitch deck slide 2" width="1600" height="900" loading="lazy">
+    </figure>
+    <figure class="mobile-slide" id="mobile-slide-3">
+      <img src="./assets/mobile-pages/page-03.jpg" alt="OPEN UP SIR! pitch deck slide 3" width="1600" height="900" loading="lazy">
+    </figure>
+    <figure class="mobile-slide" id="mobile-slide-4">
+      <img src="./assets/mobile-pages/page-04.jpg" alt="OPEN UP SIR! pitch deck slide 4" width="1600" height="900" loading="lazy">
+    </figure>
+    <figure class="mobile-slide" id="mobile-slide-5">
+      <img src="./assets/mobile-pages/page-05.jpg" alt="OPEN UP SIR! pitch deck slide 5" width="1600" height="900" loading="lazy">
+    </figure>
+    <figure class="mobile-slide" id="mobile-slide-6">
+      <img src="./assets/mobile-pages/page-06.jpg" alt="OPEN UP SIR! pitch deck slide 6" width="1600" height="900" loading="lazy">
+    </figure>
+    <figure class="mobile-slide" id="mobile-slide-7">
+      <img src="./assets/mobile-pages/page-07.jpg" alt="OPEN UP SIR! pitch deck slide 7" width="1600" height="900" loading="lazy">
+    </figure>
+    <figure class="mobile-slide" id="mobile-slide-8">
+      <img src="./assets/mobile-pages/page-08.jpg" alt="OPEN UP SIR! pitch deck slide 8" width="1600" height="900" loading="lazy">
+    </figure>
+    <figure class="mobile-slide" id="mobile-slide-9">
+      <img src="./assets/mobile-pages/page-09.jpg" alt="OPEN UP SIR! pitch deck slide 9" width="1600" height="900" loading="lazy">
+    </figure>
+    <figure class="mobile-slide" id="mobile-slide-10">
+      <img src="./assets/mobile-pages/page-10.jpg" alt="OPEN UP SIR! pitch deck slide 10" width="1600" height="900" loading="lazy">
+    </figure>
+    <figure class="mobile-slide" id="mobile-slide-11">
+      <img src="./assets/mobile-pages/page-11.jpg" alt="OPEN UP SIR! pitch deck slide 11" width="1600" height="900" loading="lazy">
+    </figure>
+    <figure class="mobile-slide" id="mobile-slide-12">
+      <img src="./assets/mobile-pages/page-12.jpg" alt="OPEN UP SIR! pitch deck slide 12" width="1600" height="900" loading="lazy">
+    </figure>
+    <figure class="mobile-slide" id="mobile-slide-13">
+      <img src="./assets/mobile-pages/page-13.jpg" alt="OPEN UP SIR! pitch deck slide 13" width="1600" height="900" loading="lazy">
+    </figure>
+    <figure class="mobile-slide" id="mobile-slide-14">
+      <img src="./assets/mobile-pages/page-14.jpg" alt="OPEN UP SIR! pitch deck slide 14" width="1600" height="900" loading="lazy">
+    </figure>
+    <figure class="mobile-slide" id="mobile-slide-15">
+      <img src="./assets/mobile-pages/page-15.jpg" alt="OPEN UP SIR! pitch deck slide 15" width="1600" height="900" loading="lazy">
+    </figure>
+    <figure class="mobile-slide" id="mobile-slide-16">
+      <img src="./assets/mobile-pages/page-16.jpg" alt="OPEN UP SIR! pitch deck slide 16" width="1600" height="900" loading="lazy">
+    </figure>
+    <figure class="mobile-slide" id="mobile-slide-17">
+      <img src="./assets/mobile-pages/page-17.jpg" alt="OPEN UP SIR! pitch deck slide 17" width="1600" height="900" loading="lazy">
+    </figure>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>

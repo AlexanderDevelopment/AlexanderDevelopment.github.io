@@ -7,6 +7,7 @@ Static landing page for ZweiBier Indie.
 - Motion and fixed background notes: `Docs/site-motion.md`
 - Social media links: `Docs/social-links.md`
 - Steam game artwork cache and local refresh script: `Docs/steam-game-art.md`
+- Hidden OPEN UP SIR! publisher pitch page: `Docs/open-up-sir-pitch.md`
 
 ## Discord Community Section
 
