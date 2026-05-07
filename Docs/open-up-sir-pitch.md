@@ -9,7 +9,7 @@ Hidden publisher link:
 The page is intentionally not linked from `index.html` or the public footer. It includes:
 
 - `meta name="robots" content="noindex, nofollow, noarchive"` to discourage indexing.
-- Desktop interactive HTML pitch deck.
+- Desktop interactive 18-slide HTML pitch deck.
 - Mobile-first vertical slide image view for phone browsers.
 - `Download PDF` button that downloads `pitch/open-up-sir/open-up-sir-pitch-deck.pdf`.
 - Publisher-friendly funding framing:
@@ -17,6 +17,10 @@ The page is intentionally not linked from `index.html` or the public footer. It 
   - FFF Bayern grant applied: €82,000, Bavaria-only spend;
   - external financing gap: €68,000;
   - flexible passive investor, professional publisher, hybrid, and custom collaboration structures.
+- Publisher proof updates:
+  - OPEN UP SIR! social proof slide: 5M TikTok concept views, 8K Steam wishlists, and TikTok removed after concept validation;
+  - neutral fast-follower market signal from a similar Steam concept, with OPEN UP SIR! positioned above it through full physics destruction, unique characters, and stronger environments;
+  - Dreadway proof points as of April 2026: 45K wishlists, $55K gross revenue, and about 20M total social views.
 - Production roadmap:
   - MVP: September 2026 - January 2027;
   - first playtest: late February 2027;
@@ -46,7 +50,7 @@ The downloadable PDF currently uses the flat high-quality export:
 
 Mobile page images are generated from the latest rendered QA pages:
 
-`D:\Documents\New project\Exports\qa\publisher-friendly-financing-options\pages\page-01.png` through `page-17.png`
+`D:\Documents\New project\Exports\qa\publisher-social-proof-fast-follower\pages\page-01.png` through `page-18.png`
 
 They are stored as optimized JPEGs in:
 

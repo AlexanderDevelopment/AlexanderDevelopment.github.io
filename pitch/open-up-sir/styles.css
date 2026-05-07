@@ -2120,7 +2120,7 @@ button {
 
 .comparison {
   display: grid;
-  grid-template-columns: 0.85fr 1.18fr 0.85fr;
+  grid-template-columns: 0.84fr 1.08fr 0.84fr 0.84fr;
   align-items: stretch;
   gap: 16px;
   margin-top: 36px;
@@ -2128,7 +2128,7 @@ button {
 
 .compare-card {
   min-height: 240px;
-  padding: 24px;
+  padding: 20px;
   overflow: hidden;
 }
 
@@ -2147,8 +2147,8 @@ button {
 
 .compare-card img {
   height: 150px;
-  margin: -24px -24px 18px;
-  width: calc(100% + 48px);
+  margin: -20px -20px 18px;
+  width: calc(100% + 40px);
   border-bottom: 1px solid rgba(247, 255, 247, 0.12);
 }
 
@@ -2191,6 +2191,7 @@ button {
 }
 
 .track-record-slide .slide-title,
+.partnership-slide .slide-title,
 .roadmap-slide .slide-title {
   max-width: 1120px;
 }
@@ -2590,6 +2591,7 @@ button {
 .positioning .slide-title,
 .ask .slide-title,
 .track-record-slide .slide-title,
+.partnership-slide .slide-title,
 .roadmap-slide .slide-title {
   font-size: clamp(3.65rem, 4.15vw, 4.75rem);
   line-height: 1.06;
@@ -2743,7 +2745,8 @@ button {
   line-height: 1.48;
 }
 
-.track-record-slide .slide-title {
+.track-record-slide .slide-title,
+.partnership-slide .slide-title {
   max-width: 980px;
   font-size: clamp(3.15rem, 3.55vw, 4.05rem);
 }
@@ -3807,7 +3810,7 @@ body {
 }
 
 .presentation-stage .comparison {
-  grid-template-columns: 0.85fr 1.18fr 0.85fr;
+  grid-template-columns: 0.84fr 1.08fr 0.84fr 0.84fr;
 }
 
 .presentation-stage .hero-compare {
@@ -3820,6 +3823,7 @@ body {
 }
 
 .presentation-stage .track-record-slide .slide-title,
+.presentation-stage .partnership-slide .slide-title,
 .presentation-stage .roadmap-slide .slide-title {
   max-width: 1120px;
 }
