@@ -19,12 +19,13 @@ The page is intentionally not linked from `index.html` or the public footer. It 
   - flexible passive investor, professional publisher, hybrid, and custom collaboration structures.
 - Publisher proof updates:
   - OPEN UP SIR! social proof slide: 5M TikTok concept views, 8K Steam wishlists, and TikTok removed after concept validation;
-  - market positioning slide with Embr, OPEN UP SIR!, and Firefighting Simulator - The Squad, with OPEN UP SIR! positioned above the set through full physics destruction, unique characters, and stronger environments;
-  - Dreadway proof points as of April 2026: 45K wishlists, $55K gross revenue, and about 20M total social views.
+  - market positioning slide with Embr, OPEN UP SIR!, and Firefighting Simulator - The Squad, with OPEN UP SIR! positioned between aging party co-op games and serious firefighting simulators as a friendslop adventure for one or two evenings;
+  - Dreadway proof points as of April 2026: 45K wishlists, $55K gross revenue, about 20M total social views, and an almost-zero production budget.
 - Latest visual pass:
   - main slide headings use a 2mm black text outline;
-  - Slide 15 uses a three-card competitor comparison;
-  - Slide 16 text blocks and proof points stay inside the main slide frame.
+  - Slide 15 uses a three-card competitor comparison and positions OPEN UP SIR! between aging party co-op games and serious firefighting simulators;
+  - Slide 16 text blocks and proof points stay inside the main slide frame;
+  - Slide 16 now states that Dreadway was built and shipped with an almost-zero production budget, including a `~0 budget` proof point.
 - Production roadmap:
   - MVP: September 2026 - January 2027;
   - first playtest: late February 2027;
@@ -60,7 +61,7 @@ The downloadable PDF currently uses the flat high-quality export:
 
 Mobile page images are generated from the latest rendered QA pages:
 
-`D:\Documents\New project\Exports\qa\rescue-guys-removed-outline\pages\page-01.png` through `page-18.png`
+`D:\Documents\New project\Exports\qa\budget-positioning-update\pages\page-01.png` through `page-18.png`
 
 They are stored as optimized JPEGs in:
 
