@@ -14,6 +14,8 @@
   const imagePreloads = [];
   const mobileDeckQuery = window.matchMedia("(max-width: 860px), (pointer: coarse) and (max-height: 540px)");
   const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const backgroundFrameInterval = 1000 / 30;
+  const backgroundRenderScale = 0.64;
 
   let activeIndex = getInitialSlideIndex();
   let lastWheel = 0;
@@ -26,6 +28,7 @@
   let scene = "cover";
   let animationFrame = 0;
   let lastAnimationTime = 0;
+  let renderScale = 1;
 
   function isMobileDeckMode() {
     return mobileDeckQuery.matches;
@@ -62,22 +65,23 @@
 
   function resizeCanvas() {
     updateStageScale();
-    const dpr = 1;
+    renderScale = isStaticExportMode() ? 1 : backgroundRenderScale;
     width = stage ? stageWidth : window.innerWidth;
     height = stage ? stageHeight : window.innerHeight;
-    canvas.width = Math.floor(width * dpr);
-    canvas.height = Math.floor(height * dpr);
+    canvas.width = Math.floor(width * renderScale);
+    canvas.height = Math.floor(height * renderScale);
     canvas.style.width = width + "px";
     canvas.style.height = height + "px";
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.setTransform(renderScale, 0, 0, renderScale, 0, 0);
+    ctx.imageSmoothingEnabled = true;
     seedParticles();
     drawBackground();
     startBackgroundAnimation();
   }
 
   function seedParticles() {
-    const sceneBoost = scene === "sparks" ? 48 : scene === "smoke" ? 18 : 0;
-    const count = Math.max(84, Math.floor((width * height) / 18000) + sceneBoost);
+    const sceneBoost = scene === "sparks" ? 22 : scene === "smoke" ? 10 : 0;
+    const count = Math.max(44, Math.floor((width * height) / 36000) + sceneBoost);
     particles = Array.from({ length: count }, function (_, index) {
       return createParticle(index);
     });
@@ -249,9 +253,15 @@
       return;
     }
 
-    const delta = Math.min(48, Math.max(8, now - lastAnimationTime));
+    const rawDelta = now - lastAnimationTime;
+    if (rawDelta < backgroundFrameInterval) {
+      animationFrame = window.requestAnimationFrame(animateBackground);
+      return;
+    }
+
+    const delta = Math.min(80, Math.max(backgroundFrameInterval, rawDelta));
     const step = delta / 16.67;
-    lastAnimationTime = now;
+    lastAnimationTime = now - (rawDelta % backgroundFrameInterval);
     frame += step;
 
     drawAnimatedBackground(step);
@@ -331,8 +341,6 @@
     const flicker = 0.64 + Math.sin(frame * 0.11 + particle.turn) * 0.36;
     ctx.globalAlpha = particle.alpha * particle.twinkle * flicker * fade;
     ctx.fillStyle = particle.index % 3 === 0 ? "#fff0a8" : particle.index % 2 === 0 ? "#ffd257" : "#ff8a2f";
-    ctx.shadowColor = "#ff8a2f";
-    ctx.shadowBlur = 12;
     ctx.beginPath();
     ctx.ellipse(particle.x, particle.y, particle.size * 0.72, particle.size * 1.2, particle.turn * 0.2, 0, Math.PI * 2);
     ctx.fill();
@@ -354,11 +362,9 @@
     const fade = 1 - Math.min(particle.life, 1);
     ctx.globalAlpha = particle.alpha * 0.36 * fade;
     ctx.fillStyle = particle.type === "mist" ? "#ffb84d" : "#f0c99f";
-    ctx.filter = "blur(10px)";
     ctx.beginPath();
     ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
     ctx.fill();
-    ctx.filter = "none";
     ctx.restore();
   }
 

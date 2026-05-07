@@ -35,6 +35,7 @@ The page is intentionally not linked from `index.html` or the public footer. It 
   - sparks slides add brighter drifting embers;
   - water slides add faster warm streaks and mist;
   - smoke slides add slower smoky depth;
+  - desktop animation is capped at 30 FPS, rendered at a reduced internal canvas resolution, and uses a lighter particle count without per-particle blur/shadow effects;
   - motion is disabled in mobile deck mode, `prefers-reduced-motion`, and PDF/export mode.
 
 This is link-hidden, not password-protected. Anyone with the URL can open it.
