@@ -19,14 +19,23 @@ The page is intentionally not linked from `index.html` or the public footer. It 
   - flexible passive investor, professional publisher, hybrid, and custom collaboration structures.
 - Publisher proof updates:
   - OPEN UP SIR! social proof slide: 5M TikTok concept views, 8K Steam wishlists, and TikTok removed after concept validation;
-  - neutral fast-follower market signal from a similar Steam concept, with OPEN UP SIR! positioned above it through full physics destruction, unique characters, and stronger environments;
+  - market positioning slide with Embr, OPEN UP SIR!, and Firefighting Simulator - The Squad, with OPEN UP SIR! positioned above the set through full physics destruction, unique characters, and stronger environments;
   - Dreadway proof points as of April 2026: 45K wishlists, $55K gross revenue, and about 20M total social views.
+- Latest visual pass:
+  - main slide headings use a 2mm black text outline;
+  - Slide 15 uses a three-card competitor comparison;
+  - Slide 16 text blocks and proof points stay inside the main slide frame.
 - Production roadmap:
   - MVP: September 2026 - January 2027;
   - first playtest: late February 2027;
   - Steam Next Fest demo: June 2027;
   - closed media/influencer playtest: July 2027;
   - Early Access / release target: September 2027.
+- Scene-reactive canvas background motion:
+  - sparks slides add brighter drifting embers;
+  - water slides add faster warm streaks and mist;
+  - smoke slides add slower smoky depth;
+  - motion is disabled in mobile deck mode, `prefers-reduced-motion`, and PDF/export mode.
 
 This is link-hidden, not password-protected. Anyone with the URL can open it.
 
@@ -50,7 +59,7 @@ The downloadable PDF currently uses the flat high-quality export:
 
 Mobile page images are generated from the latest rendered QA pages:
 
-`D:\Documents\New project\Exports\qa\publisher-social-proof-fast-follower\pages\page-01.png` through `page-18.png`
+`D:\Documents\New project\Exports\qa\rescue-guys-removed-outline\pages\page-01.png` through `page-18.png`
 
 They are stored as optimized JPEGs in:
 

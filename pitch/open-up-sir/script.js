@@ -13,6 +13,7 @@
   const stageHeight = 1080;
   const imagePreloads = [];
   const mobileDeckQuery = window.matchMedia("(max-width: 860px), (pointer: coarse) and (max-height: 540px)");
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   let activeIndex = getInitialSlideIndex();
   let lastWheel = 0;
@@ -23,9 +24,20 @@
   let height = 0;
   let frame = 0;
   let scene = "cover";
+  let animationFrame = 0;
+  let lastAnimationTime = 0;
 
   function isMobileDeckMode() {
     return mobileDeckQuery.matches;
+  }
+
+  function addQueryChangeListener(query, handler) {
+    if (typeof query.addEventListener === "function") {
+      query.addEventListener("change", handler);
+      return;
+    }
+
+    query.addListener(handler);
   }
 
   function preloadImages() {
@@ -60,10 +72,12 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     seedParticles();
     drawBackground();
+    startBackgroundAnimation();
   }
 
   function seedParticles() {
-    const count = Math.max(72, Math.floor((width * height) / 18000));
+    const sceneBoost = scene === "sparks" ? 48 : scene === "smoke" ? 18 : 0;
+    const count = Math.max(84, Math.floor((width * height) / 18000) + sceneBoost);
     particles = Array.from({ length: count }, function (_, index) {
       return createParticle(index);
     });
@@ -71,25 +85,29 @@
 
   function createParticle(index) {
     const typePool = scene === "sparks"
-      ? ["spark", "spark", "smoke", "water"]
+      ? ["spark", "ember", "spark", "ember", "smoke", "mist"]
       : scene === "water"
-        ? ["water", "water", "mist", "spark"]
+        ? ["water", "water", "mist", "spark", "ember"]
         : scene === "smoke"
-          ? ["smoke", "smoke", "mist", "spark"]
-          : ["water", "smoke", "spark", "mist"];
+          ? ["smoke", "smoke", "mist", "ember"]
+          : ["ember", "water", "smoke", "spark", "mist"];
 
     const type = typePool[index % typePool.length];
+    const isSoftParticle = type === "smoke" || type === "mist";
+    const isSparkParticle = type === "spark" || type === "ember";
     return {
       index,
       type,
       x: Math.random() * width,
       y: Math.random() * height,
-      speed: 0.25 + Math.random() * 1.2,
-      drift: -0.6 + Math.random() * 1.2,
-      size: type === "smoke" ? 28 + Math.random() * 74 : 2 + Math.random() * 8,
+      speed: isSparkParticle ? 0.35 + Math.random() * 1.8 : 0.25 + Math.random() * 1.2,
+      drift: scene === "sparks" ? -0.9 + Math.random() * 1.8 : -0.6 + Math.random() * 1.2,
+      size: isSoftParticle ? 28 + Math.random() * 74 : type === "water" ? 2 + Math.random() * 8 : 1.5 + Math.random() * 5.8,
+      length: type === "spark" ? 10 + Math.random() * 24 : 3 + Math.random() * 8,
       life: Math.random(),
       alpha: 0.16 + Math.random() * 0.55,
-      turn: Math.random() * Math.PI * 2
+      turn: Math.random() * Math.PI * 2,
+      twinkle: 0.55 + Math.random() * 0.55
     };
   }
 
@@ -103,6 +121,8 @@
     activeIndex = nextIndex;
     slides[activeIndex].classList.add("active");
     scene = slides[activeIndex].dataset.scene || "cover";
+    seedParticles();
+    restartBackgroundAnimation();
     updateChrome();
     syncHash();
   }
@@ -158,7 +178,8 @@
     }
   }
 
-  function drawBackground() {
+  function drawBackground(includeParticles) {
+    const shouldDrawParticles = includeParticles !== false;
     ctx.clearRect(0, 0, width, height);
 
     const gradient = ctx.createLinearGradient(0, 0, width, height);
@@ -168,11 +189,14 @@
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height);
 
-    drawLight(width * 0.13, height * 0.2, scene === "sparks" ? "rgba(255, 210, 87, 0.34)" : "rgba(255, 210, 87, 0.22)", width * 0.34);
-    drawLight(width * 0.84, height * 0.72, scene === "water" ? "rgba(255, 138, 47, 0.3)" : "rgba(255, 138, 47, 0.18)", width * 0.38);
-    drawLight(width * 0.58, height * 0.38, scene === "smoke" ? "rgba(255, 184, 77, 0.18)" : "rgba(255, 184, 77, 0.12)", width * 0.28);
+    const pulse = shouldAnimateBackground() ? Math.sin(frame * 0.035) * 0.04 : 0;
+    drawLight(width * 0.13, height * 0.2, scene === "sparks" ? "rgba(255, 210, 87, " + (0.34 + pulse) + ")" : "rgba(255, 210, 87, 0.22)", width * 0.34);
+    drawLight(width * 0.84, height * 0.72, scene === "water" ? "rgba(255, 138, 47, " + (0.3 + pulse) + ")" : "rgba(255, 138, 47, 0.18)", width * 0.38);
+    drawLight(width * 0.58, height * 0.38, scene === "smoke" ? "rgba(255, 184, 77, " + (0.18 + pulse * 0.5) + ")" : "rgba(255, 184, 77, 0.12)", width * 0.28);
 
-    particles.forEach(drawStaticParticle);
+    if (shouldDrawParticles) {
+      particles.forEach(drawStaticParticle);
+    }
   }
 
   function drawLight(x, y, color, radius) {
@@ -185,27 +209,87 @@
     ctx.fill();
   }
 
-  function updateParticle(particle) {
-    particle.turn += 0.012;
-    particle.life += 0.004 + particle.speed * 0.001;
+  function isStaticExportMode() {
+    return document.documentElement.classList.contains("exporting")
+      || document.body.classList.contains("exporting")
+      || document.body.classList.contains("pdf-export");
+  }
+
+  function shouldAnimateBackground() {
+    return !reducedMotionQuery.matches && !isStaticExportMode() && !isMobileDeckMode();
+  }
+
+  function startBackgroundAnimation() {
+    if (animationFrame || !shouldAnimateBackground()) {
+      return;
+    }
+
+    lastAnimationTime = performance.now();
+    animationFrame = window.requestAnimationFrame(animateBackground);
+  }
+
+  function stopBackgroundAnimation() {
+    if (animationFrame) {
+      window.cancelAnimationFrame(animationFrame);
+      animationFrame = 0;
+    }
+    lastAnimationTime = 0;
+  }
+
+  function restartBackgroundAnimation() {
+    stopBackgroundAnimation();
+    drawBackground();
+    startBackgroundAnimation();
+  }
+
+  function animateBackground(now) {
+    if (!shouldAnimateBackground()) {
+      stopBackgroundAnimation();
+      drawBackground();
+      return;
+    }
+
+    const delta = Math.min(48, Math.max(8, now - lastAnimationTime));
+    const step = delta / 16.67;
+    lastAnimationTime = now;
+    frame += step;
+
+    drawAnimatedBackground(step);
+    animationFrame = window.requestAnimationFrame(animateBackground);
+  }
+
+  function drawAnimatedBackground(step) {
+    drawBackground(false);
+    particles.forEach(function (particle) {
+      updateParticle(particle, step);
+    });
+  }
+
+  function updateParticle(particle, step) {
+    particle.turn += 0.012 * step;
+    particle.life += (0.004 + particle.speed * 0.001) * step;
 
     if (particle.type === "spark") {
-      particle.x += Math.cos(particle.turn) * 0.5 + particle.drift;
-      particle.y -= 1.2 + particle.speed * 1.8;
+      particle.x += (Math.cos(particle.turn) * 0.5 + particle.drift) * step;
+      particle.y -= (1.2 + particle.speed * 1.8) * step;
       drawSpark(particle);
+    } else if (particle.type === "ember") {
+      particle.x += (Math.sin(particle.turn) * 0.55 + particle.drift * 0.44) * step;
+      particle.y -= (0.62 + particle.speed * 1.25) * step;
+      drawEmber(particle);
     } else if (particle.type === "water") {
-      particle.x += 2.2 + particle.speed * 2.6;
-      particle.y += Math.sin(frame * 5 + particle.turn) * 0.9 + particle.drift * 0.25;
+      particle.x += (2.2 + particle.speed * 2.6) * step;
+      particle.y += (Math.sin(frame * 0.08 + particle.turn) * 0.9 + particle.drift * 0.25) * step;
       drawWater(particle);
     } else {
-      particle.x += Math.sin(particle.turn) * 0.24 + particle.drift * 0.18;
-      particle.y -= 0.28 + particle.speed * 0.34;
+      particle.x += (Math.sin(particle.turn) * 0.24 + particle.drift * 0.18) * step;
+      particle.y -= (0.28 + particle.speed * 0.34) * step;
       drawSmoke(particle);
     }
 
     if (particle.y < -120 || particle.x > width + 120 || particle.x < -120 || particle.life > 1.7) {
       Object.assign(particle, createParticle(Math.floor(Math.random() * 1000)));
-      if (particle.type === "spark" || particle.type === "smoke") {
+      if (particle.type === "spark" || particle.type === "ember" || particle.type === "smoke") {
         particle.y = height + Math.random() * 80;
       }
       if (particle.type === "water") {
@@ -219,6 +303,8 @@
   function drawStaticParticle(particle) {
     if (particle.type === "spark") {
       drawSpark(particle);
+    } else if (particle.type === "ember") {
+      drawEmber(particle);
     } else if (particle.type === "water") {
       drawWater(particle);
     } else {
@@ -228,13 +314,28 @@
 
   function drawSpark(particle) {
     ctx.save();
-    ctx.globalAlpha = particle.alpha * (1 - Math.min(particle.life, 1));
+    const flicker = 0.7 + Math.sin(frame * 0.16 + particle.turn) * 0.3;
+    ctx.globalAlpha = particle.alpha * flicker * (1 - Math.min(particle.life, 1));
     ctx.strokeStyle = particle.index % 2 === 0 ? "#ffd257" : "#ff8a2f";
     ctx.lineWidth = 1.4;
     ctx.beginPath();
     ctx.moveTo(particle.x, particle.y);
-    ctx.lineTo(particle.x + particle.drift * 10, particle.y + 14);
+    ctx.lineTo(particle.x + particle.drift * particle.length, particle.y + particle.length);
     ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawEmber(particle) {
+    ctx.save();
+    const fade = 1 - Math.min(particle.life, 1);
+    const flicker = 0.64 + Math.sin(frame * 0.11 + particle.turn) * 0.36;
+    ctx.globalAlpha = particle.alpha * particle.twinkle * flicker * fade;
+    ctx.fillStyle = particle.index % 3 === 0 ? "#fff0a8" : particle.index % 2 === 0 ? "#ffd257" : "#ff8a2f";
+    ctx.shadowColor = "#ff8a2f";
+    ctx.shadowBlur = 12;
+    ctx.beginPath();
+    ctx.ellipse(particle.x, particle.y, particle.size * 0.72, particle.size * 1.2, particle.turn * 0.2, 0, Math.PI * 2);
+    ctx.fill();
     ctx.restore();
   }
 
@@ -333,6 +434,11 @@
     resizeCanvas();
     syncMobileDeckPosition();
   });
+  addQueryChangeListener(mobileDeckQuery, function () {
+    resizeCanvas();
+    syncMobileDeckPosition();
+  });
+  addQueryChangeListener(reducedMotionQuery, restartBackgroundAnimation);
   window.addEventListener("hashchange", function () {
     if (isMobileDeckMode()) {
       syncMobileDeckPosition();
@@ -350,5 +456,5 @@
   resizeCanvas();
   updateChrome();
   syncMobileDeckPosition();
-  drawBackground();
+  startBackgroundAnimation();
 }());

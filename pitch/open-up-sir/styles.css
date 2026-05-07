@@ -2120,7 +2120,7 @@ button {
 
 .comparison {
   display: grid;
-  grid-template-columns: 0.84fr 1.08fr 0.84fr 0.84fr;
+  grid-template-columns: 0.84fr 1.08fr 0.84fr;
   align-items: stretch;
   gap: 16px;
   margin-top: 36px;
@@ -2506,6 +2506,13 @@ button {
   font-size: clamp(7.8rem, 8.8vw, 10.2rem);
   line-height: 0.92;
   font-weight: 800;
+}
+
+.mega-title,
+.slide-title,
+.stacked-hook {
+  -webkit-text-stroke: 2mm rgba(0, 0, 0, 0.92);
+  paint-order: stroke fill;
 }
 
 .slide-title {
@@ -3810,7 +3817,7 @@ body {
 }
 
 .presentation-stage .comparison {
-  grid-template-columns: 0.84fr 1.08fr 0.84fr 0.84fr;
+  grid-template-columns: 0.84fr 1.08fr 0.84fr;
 }
 
 .presentation-stage .hero-compare {
@@ -3828,8 +3835,19 @@ body {
   max-width: 1120px;
 }
 
+.presentation-stage .track-record-slide .slide-title {
+  max-width: 1160px;
+  font-size: 5.25rem;
+  line-height: 0.98;
+}
+
 .presentation-stage .track-showcase {
   grid-template-columns: 0.78fr 1.15fr 0.85fr;
+}
+
+.presentation-stage .track-record-slide .track-showcase {
+  gap: 12px;
+  margin-top: 18px;
 }
 
 .presentation-stage .track-showcase .team-block {
@@ -3857,8 +3875,41 @@ body {
   grid-row: 2;
 }
 
+.presentation-stage .track-record-slide .team-block,
+.presentation-stage .track-record-slide .funds-block {
+  padding: 18px;
+}
+
+.presentation-stage .track-record-slide .dreadway-preview img {
+  height: 220px;
+}
+
+.presentation-stage .track-record-slide .dreadway-preview div {
+  gap: 8px;
+  padding: 13px 18px 15px;
+}
+
+.presentation-stage .track-record-slide .dreadway-preview h3 {
+  font-size: 1.8rem;
+}
+
+.presentation-stage .track-record-slide .track-record {
+  padding: 14px 18px;
+}
+
 .presentation-stage .track-showcase .track-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.presentation-stage .track-record-slide .track-grid span {
+  min-height: 62px;
+  padding: 10px 12px;
+}
+
+.presentation-stage .track-record-slide .team-block li,
+.presentation-stage .track-record-slide .funds-block li {
+  font-size: 0.88rem;
+  line-height: 1.28;
 }
 
 .presentation-stage .roadmap-board {
