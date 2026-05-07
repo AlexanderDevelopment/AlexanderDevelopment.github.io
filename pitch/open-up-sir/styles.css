@@ -1162,6 +1162,7 @@ button {
 
 .role-lane ul,
 .scope-block ul,
+.team-block ul,
 .proof-block ul,
 .funds-block ul {
   list-style: none;
@@ -1184,6 +1185,7 @@ button {
 
 .role-lane span,
 .scope-block li,
+.team-block li,
 .proof-block li,
 .funds-block li {
   color: var(--muted);
@@ -1626,6 +1628,7 @@ button {
 }
 
 .scope-block li,
+.team-block li,
 .proof-block li,
 .funds-block li {
   position: relative;
@@ -1633,6 +1636,7 @@ button {
 }
 
 .scope-block li::before,
+.team-block li::before,
 .proof-block li::before,
 .funds-block li::before {
   content: "";
@@ -2216,6 +2220,11 @@ button {
   grid-row: 1;
 }
 
+.track-showcase .proof-block {
+  grid-column: 2;
+  grid-row: 1;
+}
+
 .track-showcase .funds-block {
   grid-column: 3;
   grid-row: 1;
@@ -2326,6 +2335,8 @@ button {
 }
 
 .track-showcase .team-block span,
+.track-showcase .team-block li,
+.track-showcase .proof-block li,
 .track-showcase .funds-block li {
   font-size: 0.95rem;
   line-height: 1.36;
@@ -2685,6 +2696,7 @@ button {
 }
 
 .scope-block li,
+.team-block li,
 .proof-block li,
 .funds-block li,
 .team-block span {
@@ -2986,6 +2998,7 @@ button {
   }
 
   .track-showcase .team-block,
+  .track-showcase .proof-block,
   .track-showcase .dreadway-preview,
   .track-showcase .funds-block,
   .track-showcase .track-record {
@@ -3382,6 +3395,7 @@ button {
   .pillar p,
   .compare-card p,
   .scope-block li,
+  .team-block li,
   .proof-block li,
   .funds-block li,
   .team-block span {
@@ -3824,6 +3838,11 @@ body {
   grid-row: 1;
 }
 
+.presentation-stage .track-showcase .proof-block {
+  grid-column: 2;
+  grid-row: 1;
+}
+
 .presentation-stage .track-showcase .funds-block {
   grid-column: 3;
   grid-row: 1;
@@ -3835,7 +3854,7 @@ body {
 }
 
 .presentation-stage .track-showcase .track-grid {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .presentation-stage .roadmap-board {

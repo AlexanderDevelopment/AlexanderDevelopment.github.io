@@ -12,6 +12,17 @@ The page is intentionally not linked from `index.html` or the public footer. It 
 - Desktop interactive HTML pitch deck.
 - Mobile-first vertical slide image view for phone browsers.
 - `Download PDF` button that downloads `pitch/open-up-sir/open-up-sir-pitch-deck.pdf`.
+- Publisher-friendly funding framing:
+  - fixed total game budget: €150,000;
+  - FFF Bayern grant applied: €82,000, Bavaria-only spend;
+  - external financing gap: €68,000;
+  - flexible passive investor, professional publisher, hybrid, and custom collaboration structures.
+- Production roadmap:
+  - MVP: September 2026 - January 2027;
+  - first playtest: late February 2027;
+  - Steam Next Fest demo: June 2027;
+  - closed media/influencer playtest: July 2027;
+  - Early Access / release target: September 2027.
 
 This is link-hidden, not password-protected. Anyone with the URL can open it.
 
@@ -35,7 +46,7 @@ The downloadable PDF currently uses the flat high-quality export:
 
 Mobile page images are generated from the latest rendered QA pages:
 
-`D:\Documents\New project\Exports\qa\funding-roadmap-update\page-01.png` through `page-17.png`
+`D:\Documents\New project\Exports\qa\publisher-friendly-financing-options\pages\page-01.png` through `page-17.png`
 
 They are stored as optimized JPEGs in:
 
