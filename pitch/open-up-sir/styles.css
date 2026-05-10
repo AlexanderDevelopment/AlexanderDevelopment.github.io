@@ -322,7 +322,6 @@ button {
 
 .cover-meta span,
 .cover-proof span,
-.cover-proof a,
 .contact,
 .progression-list span,
 .positioning-list span {
@@ -354,23 +353,6 @@ button {
   text-transform: uppercase;
 }
 
-.cover-proof a {
-  padding: 8px 12px;
-  color: var(--lime);
-  font-size: 0.82rem;
-  font-weight: 900;
-  text-decoration: none;
-  text-transform: uppercase;
-  pointer-events: auto;
-}
-
-.cover-proof a:hover,
-.cover-proof a:focus-visible {
-  border-color: rgba(255, 231, 106, 0.62);
-  color: var(--ink);
-  outline: none;
-}
-
 .contact {
   display: inline-flex;
   margin: 18px 0 0;
@@ -383,7 +365,7 @@ button {
   z-index: 4;
   top: clamp(142px, 15vh, 190px);
   right: clamp(78px, 7vw, 136px);
-  width: 430px;
+  width: 608px;
   padding: 14px;
   border: 1px solid rgba(255, 231, 106, 0.44);
   border-radius: 10px;
@@ -554,6 +536,34 @@ button {
   width: 100%;
   accent-color: var(--sun);
   cursor: pointer;
+}
+
+.cover-poc-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  margin-top: 12px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 231, 106, 0.55);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffd257, #ff9f36);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+  color: #170903;
+  font-size: 0.9rem;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  pointer-events: auto;
+}
+
+.cover-poc-download:hover,
+.cover-poc-download:focus-visible {
+  border-color: rgba(255, 250, 242, 0.78);
+  color: #170903;
+  outline: none;
+  transform: translateY(-1px);
 }
 
 .screenshot-frame {

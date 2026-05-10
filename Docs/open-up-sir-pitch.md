@@ -12,8 +12,8 @@ The page is intentionally not linked from `index.html` or the public footer. It 
 - Desktop interactive 18-slide HTML pitch deck.
 - Mobile-first vertical slide image view for phone browsers.
 - `Download PDF` button that downloads `pitch/open-up-sir/open-up-sir-pitch-deck.pdf`.
-- Slide 1 interactive trailer mini-preview for `https://youtu.be/c59w_SwHOLk`, using the YouTube IFrame API after the viewer clicks play. The preview starts with sound after the user gesture and includes a `Mute` button plus a volume slider defaulted to 45%.
-- Slide 1 `Proof Of Concept` link:
+- Slide 1 larger interactive trailer preview for `https://youtu.be/c59w_SwHOLk`, using the YouTube IFrame API after the viewer clicks play. The preview starts with sound after the user gesture and includes a `Mute` button plus a volume slider defaulted to 45%.
+- Slide 1 `DOWNLOAD Proof Of Concept` button sits directly below the trailer controls and links to:
   `https://drive.google.com/drive/folders/1pEeE3I0hxa_EsD4twyH-9-1xvR0pWpZZ?usp=drive_link`
 - Mobile deck mode keeps static slide images, so the first mobile slide adds direct `Watch trailer` and `Proof Of Concept` links below the image instead of embedding the interactive player.
 - Publisher-friendly funding framing:
@@ -81,5 +81,5 @@ When the pitch deck changes:
 2. Copy the updated HTML/CSS/JS/assets into `pitch/open-up-sir/`.
 3. Replace `pitch/open-up-sir/open-up-sir-pitch-deck.pdf` with the latest flat PDF.
 4. Regenerate the `assets/mobile-pages/page-*.jpg` files from the latest QA page renders.
-5. Re-apply or preserve the Slide 1 interactive trailer mini-preview, mute button, volume slider, and Proof Of Concept link if the source export does not include them.
+5. Re-apply or preserve the Slide 1 larger interactive trailer preview, mute button, volume slider, and `DOWNLOAD Proof Of Concept` button below the trailer if the source export does not include them.
 6. Re-test desktop and mobile viewport rendering before publishing.
