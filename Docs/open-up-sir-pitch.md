@@ -9,13 +9,16 @@ Hidden publisher link:
 The page is intentionally not linked from `index.html` or the public footer. It includes:
 
 - `meta name="robots" content="noindex, nofollow, noarchive"` to discourage indexing.
-- Desktop interactive 18-slide HTML pitch deck.
+- Desktop interactive 17-slide HTML pitch deck.
 - Mobile-first vertical slide image view for phone browsers.
 - `Download PDF` button that downloads `pitch/open-up-sir/open-up-sir-pitch-deck.pdf`.
 - Slide 1 larger interactive trailer preview for `https://youtu.be/c59w_SwHOLk`, using the YouTube IFrame API after the viewer clicks play. The preview starts with sound after the user gesture and includes a `Mute` button plus a volume slider defaulted to 45%.
 - Slide 1 `DOWNLOAD Proof Of Concept` button sits directly below the trailer controls and links to:
   `https://drive.google.com/drive/folders/1pEeE3I0hxa_EsD4twyH-9-1xvR0pWpZZ?usp=drive_link`
-- Mobile deck mode keeps static slide images, so the first mobile slide adds direct `Watch trailer` and `Proof Of Concept` links below the image instead of embedding the interactive player.
+- Slide 1 `STEAM PAGE` button sits below `DOWNLOAD Proof Of Concept` and links to:
+  `https://store.steampowered.com/app/4454760/OPEN_UP_SIR/`
+- The standalone `Trailer & Steam Page` slide was removed from the live HTML deck because those actions now live on Slide 1.
+- Mobile deck mode keeps static slide images, so the first mobile slide adds direct `Watch trailer`, `Proof Of Concept`, and `Steam Page` links below the image instead of embedding the interactive player. The live mobile sequence skips the old `page-12.jpg` trailer/store slide and maps `page-13.jpg` through `page-18.jpg` onto mobile slides 12-17.
 - Publisher-friendly funding framing:
   - fixed total game budget: €150,000;
   - FFF Bayern grant applied: €82,000, Bavaria-only spend;
@@ -27,9 +30,9 @@ The page is intentionally not linked from `index.html` or the public footer. It 
   - Dreadway proof points as of April 2026: 45K wishlists, $55K gross revenue, about 20M total social views, and an almost-zero production budget.
 - Latest visual pass:
   - main slide headings use a 2mm black text outline;
-  - Slide 15 uses a three-card competitor comparison and positions OPEN UP SIR! between aging party co-op games and serious firefighting simulators;
-  - Slide 16 text blocks and proof points stay inside the main slide frame;
-  - Slide 16 now states that Dreadway was built and shipped with an almost-zero production budget, including a `~0 budget` proof point.
+  - Market positioning uses a three-card competitor comparison and positions OPEN UP SIR! between aging party co-op games and serious firefighting simulators;
+  - Track record text blocks and proof points stay inside the main slide frame;
+  - Track record now states that Dreadway was built and shipped with an almost-zero production budget, including a `~0 budget` proof point.
 - Production roadmap:
   - MVP: September 2026 - January 2027;
   - first playtest: late February 2027;
@@ -73,6 +76,8 @@ They are stored as optimized JPEGs in:
 
 `pitch/open-up-sir/assets/mobile-pages/`
 
+The live HTML deck currently skips `assets/mobile-pages/page-12.jpg` because the former `Trailer & Steam Page` slide was removed from the website copy. The downloadable PDF remains the flat source export until it is regenerated.
+
 ## Update Flow
 
 When the pitch deck changes:
@@ -80,6 +85,6 @@ When the pitch deck changes:
 1. Re-export the source HTML deck and PDF from `D:\Documents\New project`.
 2. Copy the updated HTML/CSS/JS/assets into `pitch/open-up-sir/`.
 3. Replace `pitch/open-up-sir/open-up-sir-pitch-deck.pdf` with the latest flat PDF.
-4. Regenerate the `assets/mobile-pages/page-*.jpg` files from the latest QA page renders.
-5. Re-apply or preserve the Slide 1 larger interactive trailer preview, mute button, volume slider, and `DOWNLOAD Proof Of Concept` button below the trailer if the source export does not include them.
+4. Regenerate the `assets/mobile-pages/page-*.jpg` files from the latest QA page renders and keep the live mobile sequence aligned with the current 17-slide HTML deck.
+5. Re-apply or preserve the Slide 1 larger interactive trailer preview, mute button, volume slider, `DOWNLOAD Proof Of Concept` button, and `STEAM PAGE` button below the trailer if the source export does not include them.
 6. Re-test desktop and mobile viewport rendering before publishing.

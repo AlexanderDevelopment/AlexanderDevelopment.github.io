@@ -538,7 +538,7 @@ button {
   cursor: pointer;
 }
 
-.cover-poc-download {
+.cover-trailer-action {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -558,8 +558,8 @@ button {
   pointer-events: auto;
 }
 
-.cover-poc-download:hover,
-.cover-poc-download:focus-visible {
+.cover-trailer-action:hover,
+.cover-trailer-action:focus-visible {
   border-color: rgba(255, 250, 242, 0.78);
   color: #170903;
   outline: none;
@@ -4492,7 +4492,7 @@ body {
 
   .mobile-cover-actions {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
     gap: 8px;
     padding: 10px;
   }
