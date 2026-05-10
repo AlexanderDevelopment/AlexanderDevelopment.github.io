@@ -9,6 +9,11 @@
   const stage = document.getElementById("presentation-stage");
   const canvas = document.getElementById("fx-canvas");
   const ctx = canvas.getContext("2d", { alpha: true });
+  const coverTrailerCard = document.querySelector(".cover-trailer-card");
+  const coverTrailerFrame = document.getElementById("cover-trailer-frame");
+  const coverTrailerPlay = document.getElementById("cover-trailer-play");
+  const coverTrailerMute = document.getElementById("cover-trailer-mute");
+  const coverTrailerVolume = document.getElementById("cover-trailer-volume");
   const stageWidth = 1920;
   const stageHeight = 1080;
   const imagePreloads = [];
@@ -29,6 +34,8 @@
   let animationFrame = 0;
   let lastAnimationTime = 0;
   let renderScale = 1;
+  let coverTrailerMuted = false;
+  let coverTrailerVolumeValue = coverTrailerVolume ? Number(coverTrailerVolume.value) : 45;
 
   function isMobileDeckMode() {
     return mobileDeckQuery.matches;
@@ -41,6 +48,98 @@
     }
 
     query.addListener(handler);
+  }
+
+  function isInteractiveTarget(target) {
+    return Boolean(target && target.closest("button, a, input, textarea, select, iframe, [contenteditable='true']"));
+  }
+
+  function isInsideCoverTrailer(target) {
+    return Boolean(coverTrailerCard && target && coverTrailerCard.contains(target));
+  }
+
+  function getCoverTrailerUrl() {
+    if (!coverTrailerFrame) {
+      return "";
+    }
+
+    const videoId = coverTrailerFrame.dataset.videoId;
+    const origin = /^https?:/.test(window.location.origin)
+      ? "&origin=" + encodeURIComponent(window.location.origin)
+      : "";
+    return "https://www.youtube.com/embed/" + encodeURIComponent(videoId)
+      + "?autoplay=1&enablejsapi=1&playsinline=1&controls=1&rel=0&modestbranding=1" + origin;
+  }
+
+  function sendCoverTrailerCommand(command, args) {
+    if (!coverTrailerFrame || !coverTrailerFrame.contentWindow) {
+      return;
+    }
+
+    coverTrailerFrame.contentWindow.postMessage(JSON.stringify({
+      event: "command",
+      func: command,
+      args: args || []
+    }), "https://www.youtube.com");
+  }
+
+  function syncCoverTrailerAudio() {
+    sendCoverTrailerCommand("setVolume", [coverTrailerVolumeValue]);
+    sendCoverTrailerCommand(coverTrailerMuted ? "mute" : "unMute");
+  }
+
+  function ensureCoverTrailerFrame() {
+    if (coverTrailerFrame && !coverTrailerFrame.src) {
+      coverTrailerFrame.src = getCoverTrailerUrl();
+    }
+  }
+
+  function playCoverTrailer() {
+    if (!coverTrailerCard || !coverTrailerFrame) {
+      return;
+    }
+
+    coverTrailerMuted = false;
+    updateCoverTrailerMuteButton();
+    ensureCoverTrailerFrame();
+    coverTrailerCard.classList.add("is-ready", "is-playing");
+    coverTrailerCard.classList.remove("is-loading");
+    syncCoverTrailerAudio();
+    sendCoverTrailerCommand("playVideo");
+  }
+
+  function pauseCoverTrailer() {
+    sendCoverTrailerCommand("pauseVideo");
+    if (coverTrailerCard) {
+      coverTrailerCard.classList.remove("is-playing");
+    }
+  }
+
+  function setCoverTrailerMuted(muted) {
+    coverTrailerMuted = muted;
+    sendCoverTrailerCommand(coverTrailerMuted ? "mute" : "unMute");
+    updateCoverTrailerMuteButton();
+  }
+
+  function updateCoverTrailerMuteButton() {
+    if (!coverTrailerMute) {
+      return;
+    }
+
+    coverTrailerMute.textContent = coverTrailerMuted ? "Unmute" : "Mute";
+    coverTrailerMute.setAttribute("aria-pressed", String(coverTrailerMuted));
+  }
+
+  function setCoverTrailerVolume(value) {
+    coverTrailerVolumeValue = Math.max(0, Math.min(100, Number(value) || 0));
+    sendCoverTrailerCommand("setVolume", [coverTrailerVolumeValue]);
+    setCoverTrailerMuted(coverTrailerVolumeValue === 0);
+  }
+
+  function syncCoverTrailerVolumeInput() {
+    if (coverTrailerVolume) {
+      setCoverTrailerVolume(coverTrailerVolume.value);
+    }
   }
 
   function preloadImages() {
@@ -119,6 +218,10 @@
     const nextIndex = Math.max(0, Math.min(slides.length - 1, index));
     if (nextIndex === activeIndex) {
       return;
+    }
+
+    if (activeIndex === 0 && nextIndex !== 0) {
+      pauseCoverTrailer();
     }
 
     slides[activeIndex].classList.remove("active");
@@ -368,6 +471,33 @@
     ctx.restore();
   }
 
+  if (coverTrailerPlay) {
+    coverTrailerPlay.addEventListener("click", playCoverTrailer);
+  }
+
+  if (coverTrailerFrame) {
+    coverTrailerFrame.addEventListener("load", function () {
+      window.setTimeout(function () {
+        syncCoverTrailerAudio();
+        if (coverTrailerCard && coverTrailerCard.classList.contains("is-playing")) {
+          sendCoverTrailerCommand("playVideo");
+        }
+      }, 400);
+    });
+  }
+
+  if (coverTrailerMute) {
+    coverTrailerMute.addEventListener("click", function () {
+      setCoverTrailerMuted(!coverTrailerMuted);
+    });
+  }
+
+  if (coverTrailerVolume) {
+    coverTrailerVolume.addEventListener("input", syncCoverTrailerVolumeInput);
+    coverTrailerVolume.addEventListener("change", syncCoverTrailerVolumeInput);
+    coverTrailerVolume.addEventListener("click", syncCoverTrailerVolumeInput);
+  }
+
   railButtons.forEach(function (button) {
     button.addEventListener("click", function () {
       setSlide(Number(button.dataset.target));
@@ -383,6 +513,10 @@
   });
 
   window.addEventListener("keydown", function (event) {
+    if (isInteractiveTarget(event.target)) {
+      return;
+    }
+
     if (event.key === "ArrowRight" || event.key === "PageDown" || event.key === " ") {
       event.preventDefault();
       setSlide(activeIndex + 1);
@@ -402,7 +536,7 @@
   });
 
   window.addEventListener("wheel", function (event) {
-    if (isMobileDeckMode()) {
+    if (isMobileDeckMode() || isInsideCoverTrailer(event.target)) {
       return;
     }
 
@@ -415,7 +549,7 @@
   }, { passive: true });
 
   window.addEventListener("touchstart", function (event) {
-    if (isMobileDeckMode()) {
+    if (isMobileDeckMode() || isInsideCoverTrailer(event.target)) {
       return;
     }
 
@@ -424,7 +558,7 @@
   }, { passive: true });
 
   window.addEventListener("touchend", function (event) {
-    if (isMobileDeckMode()) {
+    if (isMobileDeckMode() || isInsideCoverTrailer(event.target)) {
       return;
     }
 
