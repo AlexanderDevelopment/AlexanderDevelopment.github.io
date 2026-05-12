@@ -7,6 +7,7 @@ Static landing page for ZweiBier Indie.
 - Motion and fixed background notes: `Docs/site-motion.md`
 - Public contact and social links: `Docs/social-links.md`
 - Steam game artwork cache and local refresh script: `Docs/steam-game-art.md`
+- NO MORE COWS closed playtest key claims: `Docs/no-more-cows-playtest.md`
 - Hidden OPEN UP SIR! publisher pitch page: `Docs/open-up-sir-pitch.md`
 
 ## Discord Community Section

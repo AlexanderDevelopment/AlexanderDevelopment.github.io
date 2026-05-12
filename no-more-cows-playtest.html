@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="description" content="NO MORE COWS closed playtest key claim page for email invite visitors." />
+  <title>NO MORE COWS Closed Playtest Keys | ZweiBier Indie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet" />
+  <script>
+    (function () {
+      const CLAIM_ENDPOINT = "https://asameydhgajemivrcckb.functions.supabase.co/nmc-claim";
+      const RECEIPT_STORAGE_KEY = "zb-nmc-playtest:receipt-token";
+      const CAMPAIGN_STORAGE_KEY = "zb-nmc-playtest:campaign-token";
+
+      function getInviteToken() {
+        const params = new URLSearchParams(window.location.search);
+        const token = (params.get("invite") || params.get("campaign") || "").trim();
+
+        if (token) {
+          window.localStorage.setItem(CAMPAIGN_STORAGE_KEY, token);
+          return token;
+        }
+
+        return (window.localStorage.getItem(CAMPAIGN_STORAGE_KEY) || "").trim();
+      }
+
+      function getStoredReceiptToken() {
+        return (window.localStorage.getItem(RECEIPT_STORAGE_KEY) || "").trim();
+      }
+
+      function setStatus(statusElement, message, tone) {
+        statusElement.textContent = message;
+        statusElement.dataset.tone = tone || "neutral";
+      }
+
+      function mapClaimError(errorCode) {
+        if (errorCode === "campaign_not_active") {
+          return "This playtest link is not active right now.";
+        }
+
+        if (errorCode === "not_enough_keys") {
+          return "All available playtest keys have already been claimed.";
+        }
+
+        if (errorCode === "claim_limit_reached") {
+          return "Too many claims were made from this connection today.";
+        }
+
+        if (errorCode === "invalid_request") {
+          return "This playtest link is missing required claim data.";
+        }
+
+        return "Keys could not be claimed right now. Please try again later.";
+      }
+
+      function renderKeys(listElement, keys) {
+        listElement.innerHTML = "";
+
+        keys.forEach(function (steamKey, index) {
+          const item = document.createElement("li");
+          item.className = "key-card";
+
+          const label = document.createElement("span");
+          label.className = "key-card-label";
+          label.textContent = "Key " + String(index + 1).padStart(2, "0");
+
+          const value = document.createElement("code");
+          value.textContent = steamKey;
+
+          const copyButton = document.createElement("button");
+          copyButton.className = "copy-button";
+          copyButton.type = "button";
+          copyButton.dataset.copyValue = steamKey;
+          copyButton.textContent = "Copy";
+
+          item.append(label, value, copyButton);
+          listElement.appendChild(item);
+        });
+      }
+
+      async function copyText(value, button) {
+        if (!navigator.clipboard) {
+          return;
+        }
+
+        await navigator.clipboard.writeText(value);
+        const previousText = button.textContent;
+        button.textContent = "Copied";
+        window.setTimeout(function () {
+          button.textContent = previousText;
+        }, 1400);
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const claimButton = document.getElementById("claim-button");
+        const statusNote = document.getElementById("claim-status");
+        const keyPanel = document.getElementById("key-panel");
+        const keyList = document.getElementById("key-list");
+        const countNote = document.getElementById("claim-count-note");
+        const copyAllButton = document.getElementById("copy-all-button");
+        const campaignToken = getInviteToken();
+        let receiptToken = getStoredReceiptToken();
+        let currentKeys = [];
+
+        if (!campaignToken) {
+          claimButton.disabled = true;
+          setStatus(statusNote, "Open this page from the playtest email link to claim keys.", "warning");
+          return;
+        }
+
+        if (receiptToken) {
+          claimButton.textContent = "Show my keys again";
+          setStatus(statusNote, "This browser already has a saved playtest claim.", "neutral");
+        }
+
+        claimButton.addEventListener("click", async function () {
+          if (claimButton.disabled) {
+            return;
+          }
+
+          claimButton.disabled = true;
+          claimButton.setAttribute("aria-busy", "true");
+          setStatus(statusNote, receiptToken ? "Loading your keys..." : "Claiming two keys...", "neutral");
+
+          try {
+            const payload = { campaignToken: campaignToken };
+
+            if (receiptToken) {
+              payload.receiptToken = receiptToken;
+            }
+
+            const response = await fetch(CLAIM_ENDPOINT, {
+              method: "POST",
+              headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(payload)
+            });
+
+            const result = await response.json().catch(function () {
+              return null;
+            });
+
+            if (!response.ok || !result || !Array.isArray(result.keys)) {
+              throw new Error(result && result.error ? result.error : "claim_failed");
+            }
+
+            receiptToken = result.receiptToken || receiptToken;
+
+            if (receiptToken) {
+              window.localStorage.setItem(RECEIPT_STORAGE_KEY, receiptToken);
+            }
+
+            currentKeys = result.keys;
+            renderKeys(keyList, currentKeys);
+            keyPanel.hidden = false;
+            claimButton.textContent = "Show my keys again";
+            setStatus(statusNote, result.isExisting ? "These are your saved playtest keys." : "Two playtest keys are reserved for you.", "success");
+
+            if (typeof result.remainingKeys === "number") {
+              countNote.textContent = result.remainingKeys + " keys remain in the pool.";
+            } else {
+              countNote.textContent = "";
+            }
+          } catch (error) {
+            setStatus(statusNote, mapClaimError(error.message), "warning");
+          } finally {
+            claimButton.disabled = false;
+            claimButton.removeAttribute("aria-busy");
+          }
+        });
+
+        keyList.addEventListener("click", function (event) {
+          const button = event.target.closest("[data-copy-value]");
+
+          if (!button) {
+            return;
+          }
+
+          copyText(button.dataset.copyValue, button).catch(function () {
+            setStatus(statusNote, "Copying failed. Select the key text manually.", "warning");
+          });
+        });
+
+        copyAllButton.addEventListener("click", function () {
+          if (!currentKeys.length) {
+            return;
+          }
+
+          copyText(currentKeys.join("\n"), copyAllButton).catch(function () {
+            setStatus(statusNote, "Copying failed. Select the key text manually.", "warning");
+          });
+        });
+      });
+    }());
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07080d;
+      --text: #f5f7fb;
+      --muted: #b6bfd2;
+      --line: rgba(255, 255, 255, 0.15);
+      --panel: rgba(9, 11, 18, 0.78);
+      --accent: #7cffc4;
+      --accent-2: #8aa8ff;
+      --danger: #ff7f9d;
+      --shadow: 0 24px 90px rgba(0, 0, 0, 0.48);
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: "Space Grotesk", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        linear-gradient(90deg, rgba(7, 8, 13, 0.98) 0%, rgba(7, 8, 13, 0.82) 46%, rgba(7, 8, 13, 0.52) 100%),
+        url("https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972") center / cover fixed,
+        var(--bg);
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    header,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav,
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--accent);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.28);
+    }
+
+    .back-link,
+    footer a {
+      color: var(--muted);
+    }
+
+    main {
+      min-height: calc(100vh - 164px);
+      display: grid;
+      align-items: center;
+      padding: 48px 0 72px;
+    }
+
+    .claim-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(360px, 0.72fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .intro,
+    .claim-panel {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.045)), var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .intro {
+      min-height: 560px;
+      padding: clamp(28px, 5vw, 56px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .intro::after {
+      content: "";
+      position: absolute;
+      inset: auto -8% -22% 22%;
+      height: 280px;
+      background: radial-gradient(circle, rgba(124, 255, 196, 0.2), transparent 62%);
+      z-index: -1;
+    }
+
+    .kicker {
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 18px 0 18px;
+      font-size: clamp(3rem, 8vw, 7.2rem);
+      line-height: 0.9;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .intro p {
+      max-width: 640px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    .playtest-facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 44px;
+    }
+
+    .fact {
+      min-height: 98px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.055);
+    }
+
+    .fact strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+
+    .fact span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .claim-panel {
+      padding: 26px;
+      align-self: center;
+    }
+
+    .claim-panel h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .claim-panel p {
+      color: var(--muted);
+    }
+
+    .primary-button,
+    .copy-button,
+    .secondary-button {
+      min-height: 46px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 14px;
+      color: var(--text);
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .primary-button {
+      width: 100%;
+      margin: 12px 0 10px;
+      padding: 0 20px;
+      background: linear-gradient(135deg, rgba(124, 255, 196, 0.95), rgba(138, 168, 255, 0.9));
+      color: #07100d;
+      font-weight: 800;
+    }
+
+    .secondary-button,
+    .copy-button {
+      padding: 0 14px;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .primary-button:hover,
+    .secondary-button:hover,
+    .copy-button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(124, 255, 196, 0.55);
+    }
+
+    .primary-button:disabled {
+      cursor: not-allowed;
+      filter: grayscale(0.65);
+      opacity: 0.68;
+      transform: none;
+    }
+
+    .status {
+      min-height: 50px;
+      margin: 0;
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .status[data-tone="success"] {
+      border-color: rgba(124, 255, 196, 0.36);
+      color: var(--accent);
+    }
+
+    .status[data-tone="warning"] {
+      border-color: rgba(255, 127, 157, 0.42);
+      color: var(--danger);
+    }
+
+    .key-panel {
+      margin-top: 20px;
+    }
+
+    .key-panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .key-panel-head h3 {
+      margin: 0;
+      font-size: 1rem;
+      letter-spacing: 0;
+    }
+
+    .key-list {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .key-card {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .key-card-label {
+      color: var(--accent-2);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    code {
+      overflow-wrap: anywhere;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+
+    .count-note {
+      min-height: 24px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        background:
+          linear-gradient(180deg, rgba(7, 8, 13, 0.97), rgba(7, 8, 13, 0.78)),
+          url("https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972") center / cover fixed,
+          var(--bg);
+      }
+
+      .claim-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .intro {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(100% - 24px, var(--max));
+      }
+
+      .nav,
+      .footer-row,
+      .key-panel-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      main {
+        padding-top: 22px;
+      }
+
+      .intro,
+      .claim-panel {
+        border-radius: 18px;
+      }
+
+      .playtest-facts {
+        grid-template-columns: 1fr;
+        margin-top: 28px;
+      }
+
+      .key-card {
+        grid-template-columns: 1fr;
+      }
+
+      .copy-button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">ZB</span>
+        <span>ZweiBier Indie</span>
+      </a>
+      <a class="back-link" href="index.html">Back to website</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container claim-layout">
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <div class="kicker">Closed playtest</div>
+          <h1 id="page-title">NO MORE COWS</h1>
+          <p>Claim two Steam keys for the closed playtest and bring a co-op partner into the chaos.</p>
+        </div>
+
+        <div class="playtest-facts" aria-label="Playtest details">
+          <div class="fact">
+            <strong>2</strong>
+            <span>Steam keys per claim</span>
+          </div>
+          <div class="fact">
+            <strong>Co-op</strong>
+            <span>Built for two players</span>
+          </div>
+          <div class="fact">
+            <strong>Closed</strong>
+            <span>Email invite access</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="claim-panel" aria-labelledby="claim-title">
+        <div class="kicker">Steam playtest access</div>
+        <h2 id="claim-title">Get your keys</h2>
+        <p>Each claim reserves two unused keys from the playtest pool.</p>
+
+        <button id="claim-button" class="primary-button" type="button">Get 2 keys</button>
+        <p id="claim-status" class="status" data-tone="neutral" aria-live="polite">Ready when you are.</p>
+
+        <div id="key-panel" class="key-panel" hidden>
+          <div class="key-panel-head">
+            <h3>Your Steam keys</h3>
+            <button id="copy-all-button" class="secondary-button" type="button">Copy both</button>
+          </div>
+          <ul id="key-list" class="key-list"></ul>
+          <p id="claim-count-note" class="count-note" aria-live="polite"></p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>&copy; 2026 ZweiBier Indie. All rights reserved.</span>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+  </footer>
+</body>
+</html>
