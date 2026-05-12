@@ -38,12 +38,12 @@ values (
   'NO MORE COWS Closed Playtest',
   'nmc-closed-playtest-2026',
   2,
-  500,
+  null,
   null
 );
 ```
 
-4. Import the 1000 real Steam playtest keys into `public.nmc_playtest_keys` with one key per row in the `steam_key` column. Keep real key CSV files outside git or under `supabase/seed/`, where non-example CSV files are ignored.
+4. Import the real Steam playtest keys into `public.nmc_playtest_keys` with one key per row in the `steam_key` column. Keep real key CSV files outside git or under `supabase/seed/`, where non-example CSV files are ignored.
 5. Deploy the `nmc-claim` Edge Function. Use `--no-verify-jwt` because the public website claim page does not send a Supabase user JWT:
 
 ```powershell
