@@ -1,12 +1,13 @@
-# Social Links
+# Public Contact Links
 
-The homepage exposes the studio social links in two places:
+The homepage exposes the studio public contact and social links in two places:
 
-- The contact section in `index.html`, where the links are presented as full social media rows.
+- The contact section in `index.html`, where the links are presented as full contact rows.
 - The footer in `index.html`, where the same links are repeated in a compact row.
 
 ## Current URLs
 
+- Email: `mailto:alexander.gamedev34@gmail.com`
 - Patreon: `https://www.patreon.com/cw/bayern_dev`
 - X/Twitter: `https://x.com/bayern_dev`
 - TikTok: `https://www.tiktok.com/@i_am_gamedev`
@@ -14,7 +15,7 @@ The homepage exposes the studio social links in two places:
 
 ## Privacy Notes
 
-These are regular outbound links only. The site does not embed Patreon, X/Twitter, TikTok, or Reddit content, and it does not load scripts or previews from those providers before a visitor clicks a link.
+These are regular outbound links only. The email link uses `mailto:` and the social links navigate away from the site. The site does not embed Patreon, X/Twitter, TikTok, or Reddit content, and it does not load scripts or previews from those providers before a visitor clicks a link.
 
 If new social platforms are added or if any link becomes embedded content, update `privacy-policy.html` to describe the additional third-party processing.
 
