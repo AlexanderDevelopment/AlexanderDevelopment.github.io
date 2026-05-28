@@ -20,7 +20,7 @@ Latest local fixes:
 
 - Slide 4 quest checklist frame was enlarged so all quest examples sit inside the background panel.
 - Slide 8 market positioning now places BERG between PEAK and Roblox K2 Climbing Simulator, with a bottom note explaining BERG's difference from both references.
-- Slide 10 team section uses Matthias Baudrexl instead of Daria, keeping the art-direction responsibilities and adding level design and producing.
+- Slide 10 team section uses Matthias Baudrexl instead of Daria, keeping the art-direction responsibilities, adding level design and producing, and listing him as Founder PMB Interactive UG.
 - Full-slide Berg screenshot backgrounds are now alternated across all 10 slides instead of appearing only on the first and last slides.
 - Hidden website page at `pitch/berg/index.html` is now a native HTML pitch deck with slide navigation, alternating Berg screenshot backgrounds, animated snowflakes and a PDF download button.
 - The animated snow exists only in the HTML page. The downloadable PDF remains a static high-resolution export for application use.

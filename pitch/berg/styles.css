@@ -416,6 +416,14 @@ h3 {
   line-height: 1.38;
 }
 
+.team-cards .role-note {
+  color: var(--amber);
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
 .split-proof {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
