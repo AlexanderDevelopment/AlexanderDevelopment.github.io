@@ -9,3 +9,4 @@
 - [Steam Game Artwork](steam-game-art.md) documents the Steam header image cache and local updater script.
 - [Epic Developer Pages](epic-developer-pages.md) documents the public application website and privacy policy URLs used for Epic Developer Portal review.
 - [OPEN UP SIR! Publisher Pitch](open-up-sir-pitch.md) documents the hidden publisher pitch page, mobile viewing mode, PDF download, and update flow.
+- [Berg High Concept Pitch](berg-pitch.md) documents the editable FFF Bayern High Concept 1.0 pitch deck and source screenshot folder.
