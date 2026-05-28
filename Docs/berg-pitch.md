@@ -12,7 +12,7 @@ The positioning used in the deck:
 - Zugspitze / Bavarian Alps setting;
 - premium business model;
 - Unity + Photon multiplayer direction;
-- concept-phase ask up to EUR 20,000 for High Concept 2.0 work.
+- concept-phase ask: 20 000 euro for High Concept 2.0 work.
 
 The deck text was revised to the approved English slide copy covering route choice, NPC tasks, upgrades, weather pressure, voice distance, market positioning and the High Concept 2.0 deliverable package.
 
@@ -20,7 +20,7 @@ Latest local fixes:
 
 - Slide 4 quest checklist frame was enlarged so all quest examples sit inside the background panel.
 - Slide 8 market positioning now places BERG between PEAK and Roblox K2 Climbing Simulator, with a bottom note explaining BERG's difference from both references.
-- Slide 10 team section uses Matthias Baudrexl instead of Daria, keeping the art-direction responsibilities, adding level design and producing, and listing him as Founder PMB Interactive UG.
+- Slide 10 team section uses the approved Applicants wording: Aleksandr Varko / ZweiBier Indie as applicant and PMB Interactive as art-direction, visual-concept and level-design contributor, backed by 20+ years of game development experience, 50+ published titles, the Apple Design Award and the Deutscher Computerspielpreis.
 - Full-slide Berg screenshot backgrounds are now alternated across all 10 slides instead of appearing only on the first and last slides.
 - Hidden website page at `pitch/berg/index.html` is now a native HTML pitch deck with slide navigation, alternating Berg screenshot backgrounds, animated snowflakes and a PDF download button.
 - The animated snow exists only in the HTML page. The downloadable PDF remains a static high-resolution export for application use.
@@ -66,4 +66,4 @@ The deck has 10 slides:
 
 - `MemPalace` was not present in this repository when this pitch was created.
 - Generative AI is disclosed in the deck as an art ideation aid during concept work.
-- The current scope deliberately avoids promising a playable prototype for the EUR 20,000 concept phase; the stated deliverable is High Concept 2.0 with design, market, technical-scope and art-direction work.
+- The current scope deliberately avoids promising a playable prototype for the 20 000 euro concept phase; the stated deliverable is High Concept 2.0 with design, market, technical-scope and art-direction work.

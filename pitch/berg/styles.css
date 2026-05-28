@@ -811,6 +811,18 @@ h3 {
   display: none;
 }
 
+html.pdf-export .pitch-actions,
+html.pdf-export .chrome,
+html.pdf-export .slide-rail,
+html.pdf-export .nav-button,
+html.pdf-export .snow {
+  display: none;
+}
+
+html.pdf-export .slide {
+  padding: 86px clamp(78px, 7vw, 122px) 66px;
+}
+
 @media (max-width: 1180px) {
   .slide {
     padding-left: 74px;
