@@ -2,7 +2,7 @@
 
 ## Purpose
 
-`Berg_High_Concept_1_0_FFF_Bayern.pptx` is a 10-slide English pitch deck for a FFF Bayern High Concept 1.0 submission targeting High Concept 2.0 funding.
+The Berg pitch package is a 10-slide English concept deck for a FFF Bayern High Concept 2.0 application.
 
 The positioning used in the deck:
 
@@ -22,7 +22,8 @@ Latest local fixes:
 - Slide 8 market positioning now places BERG between PEAK and Roblox K2 Climbing Simulator, with a bottom note explaining BERG's difference from both references.
 - Slide 10 team section uses Matthias Baudrexl instead of Daria, keeping the art-direction responsibilities and adding level design and producing.
 - Full-slide Berg screenshot backgrounds are now alternated across all 10 slides instead of appearing only on the first and last slides.
-- Hidden website page added at `pitch/berg/index.html` with `noindex`, PDF/PPTX download links, embedded PDF preview and animated snowflakes over the Berg background.
+- Hidden website page at `pitch/berg/index.html` is now a native HTML pitch deck with slide navigation, alternating Berg screenshot backgrounds, animated snowflakes and a PDF download button.
+- The animated snow exists only in the HTML page. The downloadable PDF remains a static high-resolution export for application use.
 
 ## Source Assets
 
@@ -34,7 +35,7 @@ The screenshots are embedded as visual mood and concept proof, not treated as fi
 
 ## Deck File
 
-Hidden public pitch page:
+Hidden public HTML pitch page:
 
 `https://zweibier-indie.de/pitch/berg/`
 

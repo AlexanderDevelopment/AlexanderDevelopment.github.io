@@ -4,53 +4,247 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BERG - High Concept Deck</title>
-  <meta name="description" content="Hidden High Concept deck page for BERG, a realistic social climbing adventure set on the Zugspitze.">
+  <meta name="description" content="Hidden HTML High Concept deck for BERG, a realistic social climbing adventure set on the Zugspitze.">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="theme-color" content="#061318">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <div class="snow" aria-hidden="true">
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
+  <header class="pitch-actions" aria-label="Pitch deck actions">
+    <span class="pitch-actions-title">BERG</span>
+    <a class="pitch-download" href="./Berg_High_Concept_1_0_FFF_Bayern.pdf" download="BERG_High_Concept_2_0_FFF_Bayern.pdf">Download PDF</a>
+  </header>
+
+  <div class="presentation-stage" id="presentation-stage">
+    <div class="snow" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="chrome" aria-hidden="true">
+      <div class="brand-mark">BERG</div>
+      <div class="progress-track"><span id="progress-fill"></span></div>
+      <div class="slide-counter"><span id="current-slide">01</span><span id="total-slides">/10</span></div>
+    </div>
+
+    <nav class="slide-rail" aria-label="Slide navigation">
+      <button type="button" data-target="0" aria-label="Slide 1"></button>
+      <button type="button" data-target="1" aria-label="Slide 2"></button>
+      <button type="button" data-target="2" aria-label="Slide 3"></button>
+      <button type="button" data-target="3" aria-label="Slide 4"></button>
+      <button type="button" data-target="4" aria-label="Slide 5"></button>
+      <button type="button" data-target="5" aria-label="Slide 6"></button>
+      <button type="button" data-target="6" aria-label="Slide 7"></button>
+      <button type="button" data-target="7" aria-label="Slide 8"></button>
+      <button type="button" data-target="8" aria-label="Slide 9"></button>
+      <button type="button" data-target="9" aria-label="Slide 10"></button>
+    </nav>
+
+    <button class="nav-button nav-prev" type="button" id="prev-slide" aria-label="Previous slide"><span>&lsaquo;</span></button>
+    <button class="nav-button nav-next" type="button" id="next-slide" aria-label="Next slide"><span>&rsaquo;</span></button>
+
+    <main class="deck" id="deck" aria-live="polite">
+      <section class="slide cover active bg-1" aria-labelledby="slide-1-title">
+        <div class="slide-content cover-grid">
+          <div>
+            <p class="kicker">Concept Development Deck</p>
+            <h1 id="slide-1-title" class="mega-title">BERG</h1>
+            <p class="hero-line">A first-person co-op climbing adventure set on the Zugspitze.</p>
+            <p class="body-copy">Players climb together on a shared mountain server, where route choice, weather, oxygen, cold, stamina and rope safety define the outcome of each expedition.</p>
+          </div>
+          <div class="metric-stack">
+            <div><strong>PC</strong><span>Platform</span></div>
+            <div><strong>12+</strong><span>Audience</span></div>
+            <div><strong>100</strong><span>Server goal</span></div>
+            <div><strong>FFF Bayern</strong><span>High Concept 2.0</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide bg-2" aria-labelledby="slide-2-title">
+        <div class="slide-content two-column">
+          <div>
+            <p class="kicker">Elevator Pitch</p>
+            <h2 id="slide-2-title">A grounded co-op climbing adventure set on the Zugspitze.</h2>
+            <p class="body-copy">BERG is a first-person co-op game about reaching the summit in modern alpine conditions. Players start at the base of the mountain, choose routes, deliver supplies, complete tasks and climb upward while overcoming environmental obstacles.</p>
+            <p class="body-copy strong">The core interaction is simple and readable: control each hand, manage grip, secure the rope, monitor oxygen and keep moving. Depth comes from route choice, weather pressure, oxygen management, cold exposure and the presence of other players on the same mountain.</p>
+          </div>
+          <div class="proof-panel">
+            <h3>Key points</h3>
+            <ul>
+              <li>Zugspitze setting</li>
+              <li>Friends-first co-op</li>
+              <li>Readable alpine pressure</li>
+            </ul>
+            <div class="mini-metrics">
+              <div><strong>USK 6/12</strong><span>Target rating</span></div>
+              <div><strong>60+ min</strong><span>Session target</span></div>
+              <div><strong>Grounded</strong><span>Mood target</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide bg-3" aria-labelledby="slide-3-title">
+        <div class="slide-content">
+          <p class="kicker">Moment-to-Moment Loop</p>
+          <h2 id="slide-3-title">The climb is built around clear physical decisions.</h2>
+          <p class="body-copy narrow">BERG translates climbing into a readable gameplay loop. Players read the route, climb by moving each hand separately, attach themselves to rope anchors and monitor their body state under changing alpine conditions.</p>
+          <div class="loop-grid">
+            <article><span>01</span><h3>Read the route</h3><p>Players follow marked climbing lines, evaluate the next section and choose when to continue, rest or change approach.</p></article>
+            <article><span>02</span><h3>Move each hand</h3><p>Separate left and right hand inputs create the core climbing rhythm.</p></article>
+            <article><span>03</span><h3>Attach to anchors</h3><p>Players secure themselves to fixed rope points to reduce fall risk and create safer progress.</p></article>
+            <article><span>04</span><h3>Monitor body state</h3><p>Cold, oxygen and stamina affect movement speed, grip reliability and recovery.</p></article>
+          </div>
+          <div class="split-proof">
+            <article class="danger"><h3>Failure model</h3><p>Fall, ragdoll, freeze, recover. Mistakes do not delete the run. Players can lose time, position and route progress, but return to a recoverable state or respawn from the checkpoint.</p></article>
+            <article><h3>Weather pressure</h3><p>Changing weather supports longer 60+ minute attempts. Strong wind can interfere with movement and drown out voice chat. Snowstorms reduce visibility and can separate players, creating tense moments where teammates must call out to find each other again.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide bg-1" aria-labelledby="slide-4-title">
+        <div class="slide-content mountain-layout">
+          <div>
+            <p class="kicker">Mountain Structure</p>
+            <h2 id="slide-4-title">One mountain, multiple routes to the same summit.</h2>
+            <p class="body-copy">All players start at the base of the mountain. The mountain contains several rope-marked routes that all lead toward the same summit, but each route creates a different risk profile. At the beginning, only one route is clearly available. As players progress, they unlock new routes and learn which lines are safer, faster or more demanding under specific conditions.</p>
+            <p class="body-copy strong">NPC tasks give players practical goals during the climb. Completing tasks rewards currency that can be spent on better oxygen tanks, improved hand stamina, longer ropes, winch-based rope tools, radios and other climbing gadgets.</p>
+            <p class="body-copy">There is one main checkpoint in the middle of the mountain. It reduces frustration while preserving the feeling of one continuous climb.</p>
+          </div>
+          <div class="proof-panel route-card">
+            <h3>Route logic</h3>
+            <p>Base -> route choice -> middle checkpoint -> summit push</p>
+          </div>
+          <div class="quest-panel">
+            <h3>Quest examples</h3>
+            <ul>
+              <li>Deliver an oxygen tank to an intermediate camp</li>
+              <li>Deliver supplies to a high-altitude tent camp</li>
+              <li>Bring down an NPC suffering from altitude sickness</li>
+              <li>Evacuate climbers stranded on the route</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide bg-2" aria-labelledby="slide-5-title">
+        <div class="slide-content">
+          <p class="kicker">Simulation Pillars</p>
+          <h2 id="slide-5-title">Realism is expressed through readable gameplay systems.</h2>
+          <p class="body-copy narrow">BERG should feel grounded and atmospheric without becoming a hardcore climbing simulator. The player has a clear HUD for important survival and movement indicators, while the mountain systems directly affect moment-to-moment decisions.</p>
+          <div class="systems-table">
+            <div class="table-head"><span>System</span><span>Player-facing information</span><span>Gameplay effect</span></div>
+            <div><strong>Wind speed / direction</strong><span>Wind strength, direction and exposed route sections</span><span>Pushes players sideways, makes some sections harder and can increase fall risk</span></div>
+            <div><strong>Cold and snow</strong><span>Temperature drop, snowstorm intensity and exposure</span><span>Slows movement, increases pressure to rest or reach shelter</span></div>
+            <div><strong>Snowstorm visibility</strong><span>Reduced visibility in bad weather</span><span>Players can lose sight of teammates and must communicate to regroup</span></div>
+            <div><strong>Voice distance</strong><span>Proximity voice affected by distance and weather</span><span>Strong wind and snowstorms make communication harder</span></div>
+            <div><strong>Oxygen</strong><span>Tank amount and thin-air pressure</span><span>Lower oxygen makes stamina drain faster during vertical climbs</span></div>
+            <div><strong>Hand stamina</strong><span>Separate grip stamina for climbing actions</span><span>Forces pauses, safer route choices and better timing</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide bg-3" aria-labelledby="slide-6-title">
+        <div class="slide-content">
+          <p class="kicker">Social Mountain</p>
+          <h2 id="slide-6-title">Multiplayer turns the mountain into a shared expedition space.</h2>
+          <p class="body-copy narrow">BERG is not limited to a closed four-player party. The concept is built around a cloud-hosted Photon server where multiple teams share the same mountain, cross paths on routes, hear nearby players through distance-based voice chat and create organic rescue, supply and cooperation moments.</p>
+          <div class="social-grid">
+            <article><h3>Public base</h3><p>Players gather, choose routes, accept tasks and form groups.</p></article>
+            <article><h3>Route traffic</h3><p>Teams cross each other on easier and more technical climbing lines.</p></article>
+            <article><h3>Emergent help</h3><p>Supplies, rescue actions and rope support become social interactions.</p></article>
+            <article><h3>Summit stories / leaderboard</h3><p>The server records who reached the summit and under which conditions.</p></article>
+          </div>
+          <div class="bottom-rail">
+            <div><strong>Up to 100</strong><span>Online players</span></div>
+            <div><strong>Unity + Photon</strong><span>Technical direction</span></div>
+            <div><strong>Distance voice + global text</strong><span>Communication</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide bg-1" aria-labelledby="slide-7-title">
+        <div class="slide-content">
+          <p class="kicker">Progression and Retention</p>
+          <h2 id="slide-7-title">Replayability comes from upgrades, harder routes and shared stories.</h2>
+          <p class="body-copy narrow">BERG is designed around repeated attempts to reach the summit under different conditions. Players improve their equipment, unlock more demanding routes and return to the mountain with different friends to experience new failures, rescues and summit stories.</p>
+          <div class="three-panels">
+            <article><h3>Progression</h3><ul><li>Better oxygen tanks</li><li>Improved hand stamina</li><li>Longer ropes</li><li>Radios and climbing gadgets</li><li>New route access</li></ul></article>
+            <article><h3>Retention</h3><ul><li>Try a harder route</li><li>Return with another group</li><li>Recover from failed attempts</li><li>Create memorable co-op moments</li><li>Reach the summit under different conditions</li></ul></article>
+            <article><h3>Business model</h3><p>Premium Steam</p><p>Buy once, invite friends, climb the mountain.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide bg-2" aria-labelledby="slide-8-title">
+        <div class="slide-content">
+          <p class="kicker">Market Position</p>
+          <h2 id="slide-8-title">Climbing games show clear demand, but PC still has room for a grounded social alpine title.</h2>
+          <p class="body-copy narrow">BERG is positioned between PEAK and more realistic Roblox climbing experiences such as K2 Climbing Simulator. The goal is a dedicated premium PC product, not a mod or platform-limited experience.</p>
+          <div class="market-grid">
+            <article><h3>PEAK</h3><p>A strong reference for social climbing with broad streamer-friendly readability. Its tone is closer to fantasy, friendslop and comedy than to an atmospheric climbing simulation.</p></article>
+            <article class="berg-card"><h3>BERG</h3><p>A dedicated premium PC climbing adventure set in the Bavarian Alps. BERG focuses on grounded atmosphere, route planning, weather pressure, proximity voice and shared-server expeditions.</p></article>
+            <article><h3>Roblox K2 Climbing Simulator</h3><p>A proof that players respond to climb-to-summit progression and public mountain status. Roblox shows the demand, while BERG translates the appeal into a dedicated PC Steam product.</p></article>
+          </div>
+          <div class="positioning-note"><strong>BERG difference</strong><span>BERG combines PEAK's social readability with K2's climb-to-summit progression, then moves both toward a grounded PC Steam experience: Zugspitze setting, weather pressure, proximity voice and shared-server expeditions.</span></div>
+        </div>
+      </section>
+
+      <section class="slide bg-3" aria-labelledby="slide-9-title">
+        <div class="slide-content">
+          <p class="kicker">FFF Bayern Concept Phase</p>
+          <h2 id="slide-9-title">The goal is to make BERG ready for further production funding.</h2>
+          <p class="body-copy narrow">The High Concept 2.0 phase is focused on clarifying the design, market positioning, technical scope and visual direction before moving into production.</p>
+          <div class="phase-grid">
+            <article><h3>High Concept 2.0</h3><p>A polished English concept deck and written design thesis for FFF follow-up evaluation.</p></article>
+            <article><h3>Additional concept-phase deliverables</h3><ul><li>GDD 1.0</li><li>Financial plan</li><li>Cost plan for a future prototype funding application</li></ul></article>
+            <article><h3>Bavarian relevance</h3><p>The Zugspitze and the German Alps give the project a clear local cultural and geographic anchor.</p></article>
+          </div>
+          <div class="ai-note"><h3>Generative AI disclosure</h3><p>AI may be used as an ideation aid during concept work. Final application material should clearly label the role of AI and remain under human creative direction.</p></div>
+        </div>
+      </section>
+
+      <section class="slide bg-1" aria-labelledby="slide-10-title">
+        <div class="slide-content team-layout">
+          <div>
+            <p class="kicker">Team and Ask</p>
+            <h2 id="slide-10-title">ZweiBier Indie can turn a focused concept grant into a fundable production package.</h2>
+            <p class="body-copy">Applicant: Aleksandr Varko / ZweiBier Indie, Munich. The concept team is intentionally small and focused: Aleksandr leads programming, multiplayer systems and design ownership; Matthias Baudrexl supports art direction, visual concepts, mood development, presentation, level design and producing.</p>
+            <div class="team-cards">
+              <article><h3>Aleksandr Varko</h3><p>Programming, multiplayer systems, design ownership</p></article>
+              <article><h3>Matthias Baudrexl</h3><p>Art direction, visual concepts, mood and presentation, level design and producing</p></article>
+            </div>
+            <div class="request-line"><strong>Request</strong><span>Up to EUR 20,000 for High Concept 2.0</span></div>
+          </div>
+          <div class="metric-stack">
+            <div><strong>Dreadway</strong><span>Shipped commercial Steam reference</span></div>
+            <div><strong>Munich</strong><span>Home-based Bavarian development</span></div>
+            <div><strong>PC Steam</strong><span>Premium multiplayer release path</span></div>
+            <div><strong>High Concept 2.0</strong><span>Design, market, technical scope and art package</span></div>
+          </div>
+        </div>
+      </section>
+    </main>
   </div>
 
-  <main class="page-shell">
-    <section class="hero" aria-labelledby="berg-title">
-      <div class="hero-copy">
-        <p class="eyebrow">Concept Development Deck</p>
-        <h1 id="berg-title">BERG</h1>
-        <p class="lede">A first-person co-op climbing adventure set on the Zugspitze.</p>
-        <p class="summary">Players climb together on a shared mountain server, where route choice, weather, oxygen, cold, stamina and rope safety define the outcome of each expedition.</p>
-        <div class="actions" aria-label="Deck downloads">
-          <a class="button primary" href="./Berg_High_Concept_1_0_FFF_Bayern.pdf" download>Download PDF</a>
-          <a class="button" href="./Berg_High_Concept_1_0_FFF_Bayern.pptx" download>Download PPTX</a>
-        </div>
-      </div>
-
-      <div class="hero-meta" aria-label="Project facts">
-        <div><strong>PC</strong><span>Platform</span></div>
-        <div><strong>12+</strong><span>Audience</span></div>
-        <div><strong>100</strong><span>Server goal</span></div>
-        <div><strong>FFF Bayern</strong><span>High Concept 2.0</span></div>
-      </div>
-    </section>
-
-    <section class="deck-preview" aria-labelledby="preview-title">
-      <div class="preview-header">
-        <div>
-          <p class="eyebrow">Deck Preview</p>
-          <h2 id="preview-title">High Concept 1.0</h2>
-        </div>
-        <a class="button small" href="./Berg_High_Concept_1_0_FFF_Bayern.pdf" target="_blank" rel="noreferrer">Open PDF</a>
-      </div>
-      <iframe src="./Berg_High_Concept_1_0_FFF_Bayern.pdf#view=FitH" title="BERG High Concept PDF preview"></iframe>
-      <p class="fallback">If the embedded PDF viewer is unavailable, open or download the deck using the buttons above.</p>
-    </section>
+  <main class="mobile-deck" aria-label="BERG mobile pitch deck">
+    <section><h2>BERG</h2><p>A first-person co-op climbing adventure set on the Zugspitze.</p><a class="pitch-download" href="./Berg_High_Concept_1_0_FFF_Bayern.pdf" download="BERG_High_Concept_2_0_FFF_Bayern.pdf">Download PDF</a></section>
+    <section><h2>Elevator Pitch</h2><p>Players start at the base, choose routes, deliver supplies, complete tasks and climb upward while overcoming environmental obstacles.</p></section>
+    <section><h2>Moment-to-Moment Loop</h2><p>Read the route, move each hand, attach to anchors and monitor cold, oxygen and stamina.</p></section>
+    <section><h2>Mountain Structure</h2><p>One mountain, multiple rope-marked routes, one middle checkpoint and several mission goals.</p></section>
+    <section><h2>Simulation Pillars</h2><p>Wind, cold, snowstorm visibility, voice distance, oxygen and hand stamina drive readable decisions.</p></section>
+    <section><h2>Social Mountain</h2><p>Cloud-hosted Photon server, public base, route traffic, emergent help and summit stories.</p></section>
+    <section><h2>Progression</h2><p>Upgrades, harder routes, shared stories and a premium Steam business model.</p></section>
+    <section><h2>Market Position</h2><p>BERG sits between PEAK and Roblox K2 Climbing Simulator as a grounded social alpine PC title.</p></section>
+    <section><h2>Concept Phase</h2><p>High Concept 2.0, GDD 1.0, financial plan and cost plan for future prototype funding.</p></section>
+    <section><h2>Team and Ask</h2><p>Aleksandr Varko and Matthias Baudrexl. Request: up to EUR 20,000 for High Concept 2.0.</p></section>
   </main>
+
+  <script src="./script.js"></script>
 </body>
 </html>
