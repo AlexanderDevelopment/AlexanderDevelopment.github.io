@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
 const dataFile = path.join(rootDir, "data", "steam-games.json");
-const fallbackAppIds = ["3215820", "4454760", "4635170"];
+const fallbackAppIds = ["3215820", "4454760", "4635170", "4793270"];
 const source = "https://store.steampowered.com/api/appdetails?filters=basic";
 
 async function readCurrentData() {

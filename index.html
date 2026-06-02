@@ -2469,7 +2469,7 @@
       }
 
       .game-picker {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         border-right: 0;
         border-bottom: 1px solid var(--line);
       }
@@ -2759,11 +2759,18 @@
                 <span>Firefighter co-op chaos</span>
               </span>
             </button>
-            <button class="game-tab" type="button" role="tab" id="game-tab-cows" aria-selected="false" aria-controls="game-panel-cows" data-game-tab="no-more-cows" data-steam-app-id="4635170" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972');">
-              <img class="game-thumb" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972" alt="" loading="lazy">
+            <button class="game-tab" type="button" role="tab" id="game-tab-cows" aria-selected="false" aria-controls="game-panel-cows" data-game-tab="no-more-cows" data-steam-app-id="4635170" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1779495332');">
+              <img class="game-thumb" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1779495332" alt="" loading="lazy">
               <span>
                 <strong>NO MORE COWS</strong>
                 <span>Physics cow-carrying co-op</span>
+              </span>
+            </button>
+            <button class="game-tab" type="button" role="tab" id="game-tab-berg" aria-selected="false" aria-controls="game-panel-berg" data-game-tab="berg" data-steam-app-id="4793270" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4793270/0f345e3926eb40c95e7fc49fbe84b4424755b0c3/header.jpg?t=1780412338');">
+              <img class="game-thumb" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4793270/0f345e3926eb40c95e7fc49fbe84b4424755b0c3/header.jpg?t=1780412338" alt="" loading="lazy">
+              <span>
+                <strong>BERG</strong>
+                <span>High-altitude co-op survival</span>
               </span>
             </button>
           </div>
@@ -2825,10 +2832,10 @@
               </div>
             </article>
 
-            <article class="game-showcase-panel" id="game-panel-cows" role="tabpanel" aria-labelledby="game-tab-cows" data-game-panel="no-more-cows" data-steam-app-id="4635170" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972');" hidden>
+            <article class="game-showcase-panel" id="game-panel-cows" role="tabpanel" aria-labelledby="game-tab-cows" data-game-panel="no-more-cows" data-steam-app-id="4635170" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1779495332');" hidden>
               <div class="game-preview-media">
-                <video class="game-trailer" src="https://video.fastly.steamstatic.com/store_trailers/4635170/191898554/6d712337c5c30e7b4c29fd9846a321dc49dfbf7f/1777411645/microtrailer.mp4" data-hls-src="https://video.akamai.steamstatic.com/store_trailers/4635170/191898554/6d712337c5c30e7b4c29fd9846a321dc49dfbf7f/1777411645/hls_264_master.m3u8?t=1777411970" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972" muted loop playsinline preload="metadata" aria-label="NO MORE COWS trailer preview"></video>
-                <img class="game-poster" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972" alt="" loading="lazy">
+                <video class="game-trailer" src="https://video.fastly.steamstatic.com/store_trailers/4635170/191898554/6d712337c5c30e7b4c29fd9846a321dc49dfbf7f/1777411645/microtrailer.mp4" data-hls-src="https://video.akamai.steamstatic.com/store_trailers/4635170/191898554/6d712337c5c30e7b4c29fd9846a321dc49dfbf7f/1777411645/hls_264_master.m3u8?t=1777411970" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1779495332" muted loop playsinline preload="metadata" aria-label="NO MORE COWS trailer preview"></video>
+                <img class="game-poster" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1779495332" alt="" loading="lazy">
                 <span class="game-preview-badge">Steam trailer preview</span>
                 <div class="game-audio-controls">
                   <button class="game-sound-toggle" type="button" data-game-sound-toggle aria-pressed="false" aria-label="Turn trailer sound on"><span class="game-sound-label">Sound off</span></button>
@@ -2839,7 +2846,7 @@
                 </div>
               </div>
               <div class="game-preview-copy">
-                <img class="game-logo" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1777411972" alt="NO MORE COWS logo and key art" loading="lazy">
+                <img class="game-logo" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4635170/f7e763c5b048bef5f978c06d2cfa7630af9bb421/header.jpg?t=1779495332" alt="NO MORE COWS logo and key art" loading="lazy">
                 <h3>NO MORE COWS</h3>
                 <p>Physics-based co-op platformer where you and your friend must abduct a cow and drag it all the way from a barn to a laboratory in space. Survive traps, zero gravity, and friendship-breaking chaos in online co-op for 2 players.</p>
                 <div class="game-meta">
@@ -2849,6 +2856,26 @@
                 </div>
                 <div class="game-preview-actions">
                   <a class="btn primary" href="https://store.steampowered.com/app/4635170/NO_MORE_COWS/" target="_blank" rel="noopener noreferrer">View on Steam</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="game-showcase-panel" id="game-panel-berg" role="tabpanel" aria-labelledby="game-tab-berg" data-game-panel="berg" data-steam-app-id="4793270" style="--game-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4793270/0f345e3926eb40c95e7fc49fbe84b4424755b0c3/header.jpg?t=1780412338');" hidden>
+              <div class="game-preview-media">
+                <img class="game-poster" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4793270/0f345e3926eb40c95e7fc49fbe84b4424755b0c3/header.jpg?t=1780412338" alt="" loading="lazy">
+                <span class="game-preview-badge">Steam page live</span>
+              </div>
+              <div class="game-preview-copy">
+                <img class="game-logo" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4793270/0f345e3926eb40c95e7fc49fbe84b4424755b0c3/header.jpg?t=1780412338" alt="BERG logo and key art" loading="lazy">
+                <h3>BERG</h3>
+                <p>A first-person co-op mountain climbing survival game where you climb alpine peaks, manage oxygen and weather pressure, secure ropes, and try to reach the summit together.</p>
+                <div class="game-meta">
+                  <span class="pill">Online co-op</span>
+                  <span class="pill">Physics climbing</span>
+                  <span class="pill">Dynamic weather</span>
+                </div>
+                <div class="game-preview-actions">
+                  <a class="btn primary" href="https://store.steampowered.com/app/4793270/BERG/" target="_blank" rel="noopener noreferrer">View on Steam</a>
                 </div>
               </div>
             </article>
