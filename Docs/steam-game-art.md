@@ -32,6 +32,10 @@ Use Steam Store appdetails or SteamDB to find the current highlighted trailer UR
 
 When updating a trailer URL, test that the HLS manifest returns `200` and contains an audio stream. `ffprobe -show_entries stream=codec_type,codec_name,width,height URL` should show `aac` audio plus `h264` video. Also test that the fallback MP4 returns `200` with `Content-Type: video/mp4`.
 
+## Homepage Order
+
+The homepage games carousel currently starts with BERG, followed by DREADWAY, OPEN UP SIR!, and NO MORE COWS. Keep BERG as the initial active tab and panel while it is the newest public Steam page.
+
 ## Update Flow
 
 - To refresh artwork after changing Steam art, run `node scripts/update-steam-game-art.mjs` from the repository root.
