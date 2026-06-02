@@ -51,4 +51,4 @@ The homepage games carousel currently starts with BERG, followed by DREADWAY, OP
 - For trailer-backed panels, add or update the `.game-trailer` `data-hls-src` with the current Steam HLS URL.
 - For trailer-backed panels, add or update the `.game-trailer` `src` with the current SteamDB `video/mp4` microtrailer fallback URL.
 - Keep one `.game-audio-controls` block inside each trailer-backed `.game-preview-media` so every selected trailer panel exposes the same sound toggle and `[data-game-volume-slider]` control.
-- For static-only panels, omit `.game-trailer` and `.game-audio-controls`; keep `.game-poster`, `.game-preview-badge`, `.game-logo`, and the Steam page CTA.
+- For static-only panels, omit `.game-trailer` and `.game-audio-controls`; keep `.game-poster`, `.game-preview-badge`, `.game-logo`, and the Steam CTA.
