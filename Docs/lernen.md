@@ -36,7 +36,7 @@ RESET|confirmation-dialog/cancel-preserves/confirm-recreates310queue;no-other-or
 ## AAAK:LID-EXAM-20261028
 
 AUTH|TL-option3/history+current-versus-previous-result;TL-refinement/with-or-without-question-translation/Leben-in-Deutschland.
-STATUS|IMPLEMENTED/LOCAL-ENGINE-AND-BROWSER-PASS/PRODUCTION-PENDING|SOURCE_BASE:4e33ef4.
+STATUS|COMPLETE/LOCAL-ENGINE-AND-BROWSER+PRODUCTION-PASS|SOURCE_BASE:4e33ef4|SOURCE_COMMIT:b17c4cfdafa08901d7b3c55a5f9c79e5478f1055.
 ROUTE|/lernen/index.html/localized-exam-entry->/lernen/exam.html;existing-GitHub-Pages/main.
 OWNER|exam.html+exam.css+exam.mjs/presentation+storage;exam-engine.mjs/pure-attempt-state+selection+deadline+grading.
 FORMAT|33unique-questions/30-of-300-Deutschland+3-of-10-Bayern/Fisher-Yates-random-without-replacement/general-first-regional-last/original-answer-order+illustrations;new-paper-each-start.
@@ -57,6 +57,7 @@ ISOLATION|exam-module-never-reads-or-writes-learning-session-key;learning-queue+
 QA_ENGINE|node --test scripts/lernen/test.mjs scripts/lernen/exam.test.mjs/20PASS;240random-papers-all-modes;LiD0/14/15/16/17/33-boundaries;absolute-expiry+background-reload+late-input-rejection;answer-change-clear+history-roundtrip+duplicate-submission+corrupt-records;existing11learning-data-and-queue-tests-pass.
 QA_BROWSER|local-Chromium/IAB/desktop+390x844;entry-button;none/no-bold-no-translation;RU-translation+EN-interface;EN-translation+RU-interface;italic+paired-bold;answer-change-clear+regional-jump+reload-continuing-timer;cancel-and-confirm-submit-with31blanks;complete33-answer-traversal;2/33->8/33/+6+different-mode-note;33review-items;history-reload+thirdattempt;two-tabs-sync-close-stale-dialog+single-history-record;learning-progress1/310+pending-correct-feedback-preserved;zero-console-errors-or-warnings;mobile-no-horizontal-overflow.
 PROOF_BOUNDARY|one-hour-real-wall-clock-expiry-not-waited-in-browser/pure-engine-controlled-time-verified;no-claim-official-exam-certification-or-device-sync;actual-original-exam-papers-unavailable.
+LIVE|GitHub-Pages-run40778471200/success/sourceb17c4cf;HTTP200/exam.html+exam.mjs+exam-engine.mjs+exam.css/content-identical-to-local-source-after-line-ending-normalization/correct-MIME;production-browser-new-entry->setup+both-modes+15of33+60min+empty-history/zero-console-errors;no-production-attempt-started;live-screenshot-in-task-artifacts.
 
 ## AAAK:LEARNING-BASELINE-ACCEPTANCE
 
