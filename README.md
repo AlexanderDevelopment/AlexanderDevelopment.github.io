@@ -4,6 +4,8 @@ Static landing page for ZweiBier Indie.
 
 ## Documentation
 
+- BAMF learning app (Bavaria, Russian/English): `Docs/lernen.md`; direct route `/lernen/`.
+
 - Motion and fixed background notes: `Docs/site-motion.md`
 - Public contact and social links: `Docs/social-links.md`
 - Steam game artwork cache and local refresh script: `Docs/steam-game-art.md`

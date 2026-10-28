@@ -1,0 +1,4368 @@
+[
+  {
+    "id": 1,
+    "region": "Deutschland",
+    "de": "In Deutschland dürfen Menschen offen etwas gegen die Regierung sagen, weil …",
+    "answers": [
+      "hier Religionsfreiheit gilt.",
+      "die Menschen Steuern zahlen.",
+      "die Menschen das Wahlrecht haben.",
+      "hier Meinungsfreiheit gilt."
+    ],
+    "correct": 3,
+    "bamfId": "4619",
+    "pdfPage": 2
+  },
+  {
+    "id": 2,
+    "region": "Deutschland",
+    "de": "In Deutschland können Eltern bis zum 14. Lebensjahr ihres Kindes entscheiden, ob es in der Schule am …",
+    "answers": [
+      "Geschichtsunterricht teilnimmt.",
+      "Religionsunterricht teilnimmt.",
+      "Politikunterricht teilnimmt.",
+      "Sprachunterricht teilnimmt."
+    ],
+    "correct": 1,
+    "bamfId": "4618",
+    "pdfPage": 2
+  },
+  {
+    "id": 3,
+    "region": "Deutschland",
+    "de": "Deutschland ist ein Rechtsstaat. Was ist damit gemeint?",
+    "answers": [
+      "Alle Einwohner / Einwohnerinnen und der Staat müssen sich an die Gesetze halten.",
+      "Der Staat muss sich nicht an die Gesetze halten.",
+      "Nur Deutsche müssen die Gesetze befolgen.",
+      "Die Gerichte machen die Gesetze."
+    ],
+    "correct": 0,
+    "bamfId": "4611",
+    "pdfPage": 2
+  },
+  {
+    "id": 4,
+    "region": "Deutschland",
+    "de": "Welches Recht gehört zu den Grundrechten in Deutschland?",
+    "answers": [
+      "Waffenbesitz",
+      "Faustrecht",
+      "Meinungsfreiheit",
+      "Selbstjustiz"
+    ],
+    "correct": 2,
+    "bamfId": "4628",
+    "pdfPage": 3
+  },
+  {
+    "id": 5,
+    "region": "Deutschland",
+    "de": "Wahlen in Deutschland sind frei. Was bedeutet das?",
+    "answers": [
+      "Man darf Geld annehmen, wenn man dafür einen bestimmten Kandidaten / eine bestimmte Kandidatin wählt.",
+      "Nur Personen, die noch nie im Gefängnis waren, dürfen wählen.",
+      "Der Wähler darf bei der Wahl weder beeinflusst noch zu einer bestimmten Stimmabgabe gezwungen werden und keine Nachteile durch die Wahl haben.",
+      "Alle wahlberechtigten Personen müssen wählen."
+    ],
+    "correct": 2,
+    "bamfId": "4733",
+    "pdfPage": 3
+  },
+  {
+    "id": 6,
+    "region": "Deutschland",
+    "de": "Wie heißt die deutsche Verfassung?",
+    "answers": [
+      "Volksgesetz",
+      "Bundesgesetz",
+      "Deutsches Gesetz",
+      "Grundgesetz"
+    ],
+    "correct": 3,
+    "bamfId": "4614",
+    "pdfPage": 3
+  },
+  {
+    "id": 7,
+    "region": "Deutschland",
+    "de": "Welches Recht gehört zu den Grundrechten, die nach der deutschen Verfassung garantiert werden? Das Recht auf …",
+    "answers": [
+      "Glaubens- und Gewissensfreiheit.",
+      "Unterhaltung.",
+      "Arbeit.",
+      "Wohnung."
+    ],
+    "correct": 0,
+    "bamfId": "4626",
+    "pdfPage": 4
+  },
+  {
+    "id": 8,
+    "region": "Deutschland",
+    "de": "Was steht nicht im Grundgesetz von Deutschland?",
+    "answers": [
+      "Die Würde des Menschen ist unantastbar.",
+      "Alle sollen gleich viel Geld haben.",
+      "Jeder Mensch darf seine Meinung sagen.",
+      "Alle sind vor dem Gesetz gleich."
+    ],
+    "correct": 1,
+    "bamfId": "4627",
+    "pdfPage": 4
+  },
+  {
+    "id": 9,
+    "region": "Deutschland",
+    "de": "Welches Grundrecht gilt in Deutschland nur für Ausländerinnen/Ausländer? Das Grundrecht auf …",
+    "answers": [
+      "Schutz der Familie",
+      "Menschenwürde",
+      "Asyl",
+      "Meinungsfreiheit"
+    ],
+    "correct": 2,
+    "bamfId": "4616",
+    "pdfPage": 4
+  },
+  {
+    "id": 10,
+    "region": "Deutschland",
+    "de": "Was ist mit dem deutschen Grundgesetz vereinbar?",
+    "answers": [
+      "die Prügelstrafe",
+      "die Folter",
+      "die Todesstrafe",
+      "die Geldstrafe"
+    ],
+    "correct": 3,
+    "bamfId": "4624",
+    "pdfPage": 5
+  },
+  {
+    "id": 11,
+    "region": "Deutschland",
+    "de": "Wie wird die Verfassung der Bundesrepublik Deutschland genannt?",
+    "answers": [
+      "Grundgesetz",
+      "Bundesverfassung",
+      "Gesetzbuch",
+      "Verfassungsvertrag"
+    ],
+    "correct": 0,
+    "bamfId": "4625",
+    "pdfPage": 5
+  },
+  {
+    "id": 12,
+    "region": "Deutschland",
+    "de": "Eine Partei im Deutschen Bundestag will die Pressefreiheit abschaffen. Ist das möglich?",
+    "answers": [
+      "Ja, wenn mehr als die Hälfte der Abgeordneten im Bundestag dafür sind.",
+      "Ja, aber dazu müssen zwei Drittel der Abgeordneten im Bundestag dafür sein.",
+      "Nein, denn die Pressefreiheit ist ein Grundrecht. Sie kann nicht abgeschafft werden.",
+      "Nein, denn nur der Bundesrat kann die Pressefreiheit abschaffen."
+    ],
+    "correct": 2,
+    "bamfId": "4612",
+    "pdfPage": 5
+  },
+  {
+    "id": 13,
+    "region": "Deutschland",
+    "de": "Im Parlament steht der Begriff \"Opposition\" für …",
+    "answers": [
+      "die regierenden Parteien.",
+      "die Fraktion mit den meisten Abgeordneten.",
+      "alle Parteien, die bei der letzten Wahl die 5%-Hürde erreichen konnten.",
+      "alle Abgeordneten, die nicht zu der Regierungspartei/den Regierungsparteien gehören."
+    ],
+    "correct": 3,
+    "bamfId": "4681",
+    "pdfPage": 6
+  },
+  {
+    "id": 14,
+    "region": "Deutschland",
+    "de": "Meinungsfreiheit in Deutschland heißt zum Beispiel, dass ich …",
+    "answers": [
+      "Passanten auf der Straße beschimpfen darf",
+      "meine Meinung im Internet äußern kann",
+      "Nazi-, Hamas- oder Islamischer Staat-Symbole öffentlich tragen darf",
+      "meine Meinung nur dann äußern darf, solange ich der Regierung nicht widerspreche"
+    ],
+    "correct": 1,
+    "bamfId": "4622",
+    "pdfPage": 6
+  },
+  {
+    "id": 15,
+    "region": "Deutschland",
+    "de": "Was verbietet das deutsche Grundgesetz?",
+    "answers": [
+      "Militärdienst",
+      "Zwangsarbeit",
+      "freie Berufswahl",
+      "Arbeit im Ausland"
+    ],
+    "correct": 1,
+    "bamfId": "4621",
+    "pdfPage": 6
+  },
+  {
+    "id": 16,
+    "region": "Deutschland",
+    "de": "Wann ist die Meinungsfreiheit in Deutschland eingeschränkt?",
+    "answers": [
+      "bei der öffentlichen Verbreitung falscher Behauptungen über einzelne Personen",
+      "bei Meinungsäußerungen über die Bundesregierung",
+      "bei Diskussionen über Religionen",
+      "bei Kritik am Staat"
+    ],
+    "correct": 0,
+    "bamfId": "4613",
+    "pdfPage": 7
+  },
+  {
+    "id": 17,
+    "region": "Deutschland",
+    "de": "Die deutschen Gesetze verbieten …",
+    "answers": [
+      "Meinungsfreiheit der Einwohner und Einwohnerinnen.",
+      "Petitionen der Bürger und Bürgerinnen.",
+      "Versammlungsfreiheit der Einwohner und Einwohnerinnen.",
+      "Ungleichbehandlung der Bürger und Bürgerinnen durch den Staat."
+    ],
+    "correct": 3,
+    "bamfId": "4615",
+    "pdfPage": 7
+  },
+  {
+    "id": 18,
+    "region": "Deutschland",
+    "de": "Welches Grundrecht ist in Artikel 1 des Grundgesetzes der Bundesrepublik Deutschland garantiert?",
+    "answers": [
+      "die Unantastbarkeit der Menschenwürde",
+      "das Recht auf Leben",
+      "Religionsfreiheit",
+      "Meinungsfreiheit"
+    ],
+    "correct": 0,
+    "bamfId": "4623",
+    "pdfPage": 7
+  },
+  {
+    "id": 19,
+    "region": "Deutschland",
+    "de": "Was versteht man unter dem Recht der \"Freizügigkeit\" in Deutschland?",
+    "answers": [
+      "Man darf sich seinen Wohnort selbst aussuchen.",
+      "Man kann seinen Beruf wechseln.",
+      "Man darf sich für eine andere Religion entscheiden.",
+      "Man darf sich in der Öffentlichkeit nur leicht bekleidet bewegen."
+    ],
+    "correct": 0,
+    "bamfId": "4620",
+    "pdfPage": 8
+  },
+  {
+    "id": 20,
+    "region": "Deutschland",
+    "de": "Eine Partei in Deutschland verfolgt das Ziel, eine Diktatur zu errichten. Sie ist dann …",
+    "answers": [
+      "tolerant.",
+      "rechtsstaatlich orientiert.",
+      "gesetzestreu.",
+      "verfassungswidrig."
+    ],
+    "correct": 3,
+    "bamfId": "4617",
+    "pdfPage": 8
+  },
+  {
+    "id": 21,
+    "region": "Deutschland",
+    "de": "Welches ist das Wappen der Bundesrepublik Deutschland?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 0,
+    "bamfId": "4660",
+    "pdfPage": 9,
+    "image": "assets/question-021.png",
+    "imageCredit": ""
+  },
+  {
+    "id": 22,
+    "region": "Deutschland",
+    "de": "Was für eine Staatsform hat Deutschland?",
+    "answers": [
+      "Monarchie",
+      "Diktatur",
+      "Republik",
+      "Fürstentum"
+    ],
+    "correct": 2,
+    "bamfId": "4647",
+    "pdfPage": 9
+  },
+  {
+    "id": 23,
+    "region": "Deutschland",
+    "de": "In Deutschland sind die meisten Erwerbstätigen …",
+    "answers": [
+      "in kleinen Familienunternehmen beschäftigt.",
+      "ehrenamtlich für ein Bundesland tätig.",
+      "selbständig mit einer eigenen Firma tätig.",
+      "bei einer Firma oder Behörde beschäftigt."
+    ],
+    "correct": 3,
+    "bamfId": "4320",
+    "pdfPage": 10
+  },
+  {
+    "id": 24,
+    "region": "Deutschland",
+    "de": "Wie viele Bundesländer hat die Bundesrepublik Deutschland?",
+    "answers": [
+      "14",
+      "15",
+      "16",
+      "17"
+    ],
+    "correct": 2,
+    "bamfId": "4646",
+    "pdfPage": 10
+  },
+  {
+    "id": 25,
+    "region": "Deutschland",
+    "de": "Was ist kein Bundesland der Bundesrepublik Deutschland?",
+    "answers": [
+      "Elsass-Lothringen",
+      "Nordrhein-Westfalen",
+      "Mecklenburg-Vorpommern",
+      "Sachsen-Anhalt"
+    ],
+    "correct": 0,
+    "bamfId": "4645",
+    "pdfPage": 10
+  },
+  {
+    "id": 26,
+    "region": "Deutschland",
+    "de": "Deutschland ist …",
+    "answers": [
+      "eine kommunistische Republik.",
+      "ein demokratischer und sozialer Bundesstaat.",
+      "eine kapitalistische und soziale Monarchie.",
+      "ein sozialer und sozialistischer Bundesstaat."
+    ],
+    "correct": 1,
+    "bamfId": "4661",
+    "pdfPage": 11
+  },
+  {
+    "id": 27,
+    "region": "Deutschland",
+    "de": "Deutschland ist …",
+    "answers": [
+      "ein sozialistischer Staat.",
+      "ein Bundesstaat.",
+      "eine Diktatur.",
+      "eine Monarchie."
+    ],
+    "correct": 1,
+    "bamfId": "4643",
+    "pdfPage": 11
+  },
+  {
+    "id": 28,
+    "region": "Deutschland",
+    "de": "Wer wählt in Deutschland die Abgeordneten zum Bundestag?",
+    "answers": [
+      "das Militär",
+      "die Wirtschaft",
+      "das wahlberechtigte Volk",
+      "die Verwaltung"
+    ],
+    "correct": 2,
+    "bamfId": "4655",
+    "pdfPage": 11
+  },
+  {
+    "id": 29,
+    "region": "Deutschland",
+    "de": "Welches Tier ist das Wappentier der Bundesrepublik Deutschland?",
+    "answers": [
+      "Löwe",
+      "Adler",
+      "Bär",
+      "Pferd"
+    ],
+    "correct": 1,
+    "bamfId": "4669",
+    "pdfPage": 12
+  },
+  {
+    "id": 30,
+    "region": "Deutschland",
+    "de": "Was ist kein Merkmal unserer Demokratie?",
+    "answers": [
+      "regelmäßige Wahlen",
+      "Pressezensur",
+      "Meinungsfreiheit",
+      "verschiedene Parteien"
+    ],
+    "correct": 1,
+    "bamfId": "4671",
+    "pdfPage": 12
+  },
+  {
+    "id": 31,
+    "region": "Deutschland",
+    "de": "Die Zusammenarbeit von Parteien zur Bildung einer Regierung nennt man in Deutschland …",
+    "answers": [
+      "Einheit.",
+      "Koalition.",
+      "Ministerium.",
+      "Fraktion."
+    ],
+    "correct": 1,
+    "bamfId": "4638",
+    "pdfPage": 12
+  },
+  {
+    "id": 32,
+    "region": "Deutschland",
+    "de": "Was ist keine staatliche Gewalt in Deutschland?",
+    "answers": [
+      "Gesetzgebung",
+      "Regierung",
+      "Presse",
+      "Rechtsprechung"
+    ],
+    "correct": 2,
+    "bamfId": "4637",
+    "pdfPage": 13
+  },
+  {
+    "id": 33,
+    "region": "Deutschland",
+    "de": "Welche Aussage ist richtig? In Deutschland …",
+    "answers": [
+      "sind Staat und Religionsgemeinschaften voneinander getrennt.",
+      "bilden die Religionsgemeinschaften den Staat.",
+      "ist der Staat abhängig von den Religionsgemeinschaften.",
+      "bilden Staat und Religionsgemeinschaften eine Einheit."
+    ],
+    "correct": 0,
+    "bamfId": "4636",
+    "pdfPage": 13
+  },
+  {
+    "id": 34,
+    "region": "Deutschland",
+    "de": "Was ist Deutschland nicht?",
+    "answers": [
+      "eine Demokratie",
+      "ein Rechtsstaat",
+      "eine Monarchie",
+      "ein Sozialstaat"
+    ],
+    "correct": 2,
+    "bamfId": "4653",
+    "pdfPage": 13
+  },
+  {
+    "id": 35,
+    "region": "Deutschland",
+    "de": "Womit finanziert der deutsche Staat die Sozialversicherung?",
+    "answers": [
+      "Kirchensteuern",
+      "Sozialabgaben",
+      "Spendengeldern",
+      "Vereinsbeiträgen"
+    ],
+    "correct": 1,
+    "bamfId": "4665",
+    "pdfPage": 14
+  },
+  {
+    "id": 36,
+    "region": "Deutschland",
+    "de": "Welche Maßnahme schafft in Deutschland soziale Sicherheit?",
+    "answers": [
+      "die Krankenversicherung",
+      "die Autoversicherung",
+      "die Gebäudeversicherung",
+      "die Haftpflichtversicherung"
+    ],
+    "correct": 0,
+    "bamfId": "4674",
+    "pdfPage": 14
+  },
+  {
+    "id": 37,
+    "region": "Deutschland",
+    "de": "Wie werden die Regierungschefinnen/Regierungschefs der meisten Bundesländer in Deutschland genannt?",
+    "answers": [
+      "Erster Minister/ Erste Ministerin",
+      "Premierminister/ Premierministerin",
+      "Senator/ Senatorin",
+      "Ministerpräsident/ Ministerpräsidentin"
+    ],
+    "correct": 3,
+    "bamfId": "4644",
+    "pdfPage": 14
+  },
+  {
+    "id": 38,
+    "region": "Deutschland",
+    "de": "Die Bundesrepublik Deutschland ist ein demokratischer und sozialer …",
+    "answers": [
+      "Staatenverbund.",
+      "Bundesstaat.",
+      "Staatenbund.",
+      "Zentralstaat."
+    ],
+    "correct": 1,
+    "bamfId": "4668",
+    "pdfPage": 15
+  },
+  {
+    "id": 39,
+    "region": "Deutschland",
+    "de": "Was hat jedes deutsche Bundesland?",
+    "answers": [
+      "einen eigenen Außenminister / eine eigene Außenministerin",
+      "eine eigene Währung",
+      "eine eigene Armee",
+      "eine eigene Regierung"
+    ],
+    "correct": 3,
+    "bamfId": "4673",
+    "pdfPage": 15
+  },
+  {
+    "id": 40,
+    "region": "Deutschland",
+    "de": "Mit welchen Worten beginnt die deutsche Nationalhymne?",
+    "answers": [
+      "Völker, hört die Signale ...",
+      "Einigkeit und Recht und Freiheit ...",
+      "Freude schöner Götterfunken ...",
+      "Deutschland einig Vaterland ..."
+    ],
+    "correct": 1,
+    "bamfId": "4680",
+    "pdfPage": 15
+  },
+  {
+    "id": 41,
+    "region": "Deutschland",
+    "de": "Warum gibt es in einer Demokratie mehr als eine Partei?",
+    "answers": [
+      "weil dadurch die unterschiedlichen Meinungen der Bürger und Bürgerinnen vertreten werden",
+      "damit Bestechung in der Politik begrenzt wird",
+      "um politische Demonstrationen zu verhindern",
+      "um wirtschaftlichen Wettbewerb anzuregen"
+    ],
+    "correct": 0,
+    "bamfId": "4678",
+    "pdfPage": 16
+  },
+  {
+    "id": 42,
+    "region": "Deutschland",
+    "de": "Wer beschließt in Deutschland ein neues Gesetz?",
+    "answers": [
+      "die Regierung",
+      "das Parlament",
+      "die Gerichte",
+      "die Polizei"
+    ],
+    "correct": 1,
+    "bamfId": "4642",
+    "pdfPage": 16
+  },
+  {
+    "id": 43,
+    "region": "Deutschland",
+    "de": "Wann kann in Deutschland eine Partei verboten werden?",
+    "answers": [
+      "wenn ihr Wahlkampf zu teuer ist",
+      "wenn sie gegen die Verfassung kämpft",
+      "wenn sie Kritik am Staatsoberhaupt äußert",
+      "wenn ihr Programm eine neue Richtung vorschlägt"
+    ],
+    "correct": 1,
+    "bamfId": "4676",
+    "pdfPage": 16
+  },
+  {
+    "id": 44,
+    "region": "Deutschland",
+    "de": "Wen kann man als Bürgerin/ Bürger in Deutschland nicht direkt wählen?",
+    "answers": [
+      "Abgeordnete des EU-Parlaments",
+      "den Bundespräsidenten / die Bundespräsidentin",
+      "Landtagsabgeordnete",
+      "Bundestagsabgeordnete"
+    ],
+    "correct": 1,
+    "bamfId": "4629",
+    "pdfPage": 17
+  },
+  {
+    "id": 45,
+    "region": "Deutschland",
+    "de": "Zu welcher Versicherung gehört die Pflegeversicherung?",
+    "answers": [
+      "Sozialversicherung",
+      "Unfallversicherung",
+      "Hausratversicherung",
+      "Haftpflicht- und Feuerversicherung"
+    ],
+    "correct": 0,
+    "bamfId": "4672",
+    "pdfPage": 17
+  },
+  {
+    "id": 46,
+    "region": "Deutschland",
+    "de": "Der deutsche Staat hat viele Aufgaben. Welche Aufgabe gehört dazu?",
+    "answers": [
+      "Er baut Straßen und Schulen.",
+      "Er verkauft Lebensmittel und Kleidung.",
+      "Er versorgt alle Einwohner und Einwohnerinnen kostenlos mit Zeitungen.",
+      "Er produziert Autos und Busse."
+    ],
+    "correct": 0,
+    "bamfId": "4652",
+    "pdfPage": 17
+  },
+  {
+    "id": 47,
+    "region": "Deutschland",
+    "de": "Der deutsche Staat hat viele Aufgaben. Welche Aufgabe gehört nicht dazu?",
+    "answers": [
+      "Er bezahlt für alle Staatsangehörigen Urlaubsreisen.",
+      "Er zahlt Kindergeld.",
+      "Er unterstützt Museen.",
+      "Er fördert Sportler und Sportlerinnen."
+    ],
+    "correct": 0,
+    "bamfId": "4632",
+    "pdfPage": 18
+  },
+  {
+    "id": 48,
+    "region": "Deutschland",
+    "de": "Welches Organ gehört nicht zu den Verfassungsorganen Deutschlands?",
+    "answers": [
+      "der Bundesrat",
+      "der Bundespräsident / die Bundespräsidentin",
+      "die Bürgerversammlung",
+      "die Regierung"
+    ],
+    "correct": 2,
+    "bamfId": "4631",
+    "pdfPage": 18
+  },
+  {
+    "id": 49,
+    "region": "Deutschland",
+    "de": "Wer bestimmt in Deutschland die Schulpolitik?",
+    "answers": [
+      "die Lehrer und Lehrerinnen",
+      "die Bundesländer",
+      "das Familienministerium",
+      "die Universitäten"
+    ],
+    "correct": 1,
+    "bamfId": "4654",
+    "pdfPage": 18
+  },
+  {
+    "id": 50,
+    "region": "Deutschland",
+    "de": "Die Wirtschaftsform in Deutschland nennt man …",
+    "answers": [
+      "freie Zentralwirtschaft.",
+      "soziale Marktwirtschaft.",
+      "gelenkte Zentralwirtschaft.",
+      "Planwirtschaft."
+    ],
+    "correct": 1,
+    "bamfId": "4666",
+    "pdfPage": 19
+  },
+  {
+    "id": 51,
+    "region": "Deutschland",
+    "de": "Zu einem demokratischen Rechtsstaat gehört es nicht, dass …",
+    "answers": [
+      "Menschen sich kritisch über die Regierung äußern können.",
+      "Bürger friedlich demonstrieren gehen dürfen.",
+      "Menschen von einer Privatpolizei ohne Grund verhaftet werden.",
+      "jemand ein Verbrechen begeht und deshalb verhaftet wird."
+    ],
+    "correct": 2,
+    "bamfId": "4670",
+    "pdfPage": 19
+  },
+  {
+    "id": 52,
+    "region": "Deutschland",
+    "de": "Was bedeutet \"Volkssouveränität\"? Alle Staatsgewalt geht vom ...",
+    "answers": [
+      "Volke aus.",
+      "Bundestag aus.",
+      "preußischen König aus.",
+      "Bundesverfassungsgericht aus."
+    ],
+    "correct": 0,
+    "bamfId": "4667",
+    "pdfPage": 19
+  },
+  {
+    "id": 53,
+    "region": "Deutschland",
+    "de": "Was bedeutet \"Rechtsstaat\" in Deutschland?",
+    "answers": [
+      "Der Staat hat Recht.",
+      "Es gibt nur rechte Parteien.",
+      "Die Bürger und Bürgerinnen entscheiden über Gesetze.",
+      "Der Staat muss die Gesetze einhalten."
+    ],
+    "correct": 3,
+    "bamfId": "4675",
+    "pdfPage": 20
+  },
+  {
+    "id": 54,
+    "region": "Deutschland",
+    "de": "Was ist keine staatliche Gewalt in Deutschland?",
+    "answers": [
+      "Legislative",
+      "Judikative",
+      "Exekutive",
+      "Direktive"
+    ],
+    "correct": 3,
+    "bamfId": "4679",
+    "pdfPage": 20
+  },
+  {
+    "id": 55,
+    "region": "Deutschland",
+    "de": "Was zeigt dieses Bild?",
+    "answers": [
+      "den Bundestagssitz in Berlin",
+      "das Bundesverfassungsgericht in Karlsruhe",
+      "das Bundesratsgebäude in Berlin",
+      "das Bundeskanzleramt in Berlin"
+    ],
+    "correct": 0,
+    "bamfId": "4677",
+    "pdfPage": 21,
+    "image": "assets/question-055.png",
+    "imageCredit": "© Deutscher Bundestag/Achim Melde"
+  },
+  {
+    "id": 56,
+    "region": "Deutschland",
+    "de": "Welches Amt gehört in Deutschland zur Gemeindeverwaltung?",
+    "answers": [
+      "Pfarramt",
+      "Ordnungsamt",
+      "Finanzamt",
+      "Auswärtiges Amt"
+    ],
+    "correct": 1,
+    "bamfId": "4663",
+    "pdfPage": 21
+  },
+  {
+    "id": 57,
+    "region": "Deutschland",
+    "de": "Wer wird meistens zur Präsidentin/zum Präsidenten des Deutschen Bundestages gewählt?",
+    "answers": [
+      "der / die älteste Abgeordnete im Parlament",
+      "der Ministerpräsident / die Ministerpräsidentin des größten Bundeslandes",
+      "ein ehemaliger Bundeskanzler / eine ehemalige Bundeskanzlerin",
+      "ein Abgeordneter / eine Abgeordnete der stärksten Fraktion"
+    ],
+    "correct": 3,
+    "bamfId": "4639",
+    "pdfPage": 22
+  },
+  {
+    "id": 58,
+    "region": "Deutschland",
+    "de": "Wer ernennt in Deutschland die Ministerinnen/die Minister der Bundesregierung?",
+    "answers": [
+      "der Präsident / die Präsidentin des Bundesverfassungsgerichtes",
+      "der Bundespräsident / die Bundespräsidentin",
+      "der Bundesratspräsident / die Bundesratspräsidentin",
+      "der Bundestagspräsident / die Bundestagspräsidentin"
+    ],
+    "correct": 1,
+    "bamfId": "4641",
+    "pdfPage": 22
+  },
+  {
+    "id": 59,
+    "region": "Deutschland",
+    "de": "Vor wie vielen Jahren gab es erstmals eine jüdische Gemeinde auf dem Gebiet des heutigen Deutschlands?",
+    "answers": [
+      "vor etwa 300 Jahren",
+      "vor etwa 700 Jahren",
+      "vor etwa 1150 Jahren",
+      "vor etwa 1700 Jahren"
+    ],
+    "correct": 3,
+    "bamfId": "4648",
+    "pdfPage": 22
+  },
+  {
+    "id": 60,
+    "region": "Deutschland",
+    "de": "In Deutschland gehören der Bundestag und der Bundesrat zur …",
+    "answers": [
+      "Exekutive.",
+      "Legislative.",
+      "Direktive.",
+      "Judikative."
+    ],
+    "correct": 1,
+    "bamfId": "4651",
+    "pdfPage": 23
+  },
+  {
+    "id": 61,
+    "region": "Deutschland",
+    "de": "Was bedeutet \"Volkssouveränität\"?",
+    "answers": [
+      "Der König / die Königin herrscht über das Volk.",
+      "Das Bundesverfassungsgericht steht über der Verfassung.",
+      "Die Interessenverbände üben die Souveränität zusammen mit der Regierung aus.",
+      "Die Staatsgewalt geht vom Volke aus."
+    ],
+    "correct": 3,
+    "bamfId": "4649",
+    "pdfPage": 23
+  },
+  {
+    "id": 62,
+    "region": "Deutschland",
+    "de": "Wenn das Parlament eines deutschen Bundeslandes gewählt wird, nennt man das …",
+    "answers": [
+      "Kommunalwahl.",
+      "Landtagswahl.",
+      "Europawahl.",
+      "Bundestagswahl."
+    ],
+    "correct": 1,
+    "bamfId": "4664",
+    "pdfPage": 23
+  },
+  {
+    "id": 63,
+    "region": "Deutschland",
+    "de": "Was gehört in Deutschland nicht zur Exekutive?",
+    "answers": [
+      "die Polizei",
+      "die Gerichte",
+      "das Finanzamt",
+      "die Ministerien"
+    ],
+    "correct": 1,
+    "bamfId": "4650",
+    "pdfPage": 24
+  },
+  {
+    "id": 64,
+    "region": "Deutschland",
+    "de": "Die Bundesrepublik Deutschland ist heute gegliedert in …",
+    "answers": [
+      "vier Besatzungszonen.",
+      "einen Oststaat und einen Weststaat.",
+      "16 Kantone.",
+      "Bund, Länder und Kommunen."
+    ],
+    "correct": 3,
+    "bamfId": "4662",
+    "pdfPage": 24
+  },
+  {
+    "id": 65,
+    "region": "Deutschland",
+    "de": "Es gehört nicht zu den Aufgaben des Deutschen Bundestages, …",
+    "answers": [
+      "Gesetze zu entwerfen.",
+      "die Bundesregierung zu kontrollieren.",
+      "den Bundeskanzler / die Bundeskanzlerin zu wählen.",
+      "das Bundeskabinett zu bilden."
+    ],
+    "correct": 3,
+    "bamfId": "4640",
+    "pdfPage": 24
+  },
+  {
+    "id": 66,
+    "region": "Deutschland",
+    "de": "Welche Städte haben die größten jüdischen Gemeinden in Deutschland?",
+    "answers": [
+      "Berlin und München",
+      "Hamburg und Essen",
+      "Nürnberg und Stuttgart",
+      "Worms und Speyer"
+    ],
+    "correct": 0,
+    "bamfId": "4659",
+    "pdfPage": 25
+  },
+  {
+    "id": 67,
+    "region": "Deutschland",
+    "de": "Was ist in Deutschland vor allem eine Aufgabe der Bundesländer?",
+    "answers": [
+      "Verteidigungspolitik",
+      "Außenpolitik",
+      "Wirtschaftspolitik",
+      "Schulpolitik"
+    ],
+    "correct": 3,
+    "bamfId": "4657",
+    "pdfPage": 25
+  },
+  {
+    "id": 68,
+    "region": "Deutschland",
+    "de": "Warum kontrolliert der Staat in Deutschland das Schulwesen?",
+    "answers": [
+      "weil es in Deutschland nur staatliche Schulen gibt",
+      "weil alle Schüler und Schülerinnen einen Schulabschluss haben müssen",
+      "weil es in den Bundesländern verschiedene Schulen gibt",
+      "weil es nach dem Grundgesetz seine Aufgabe ist"
+    ],
+    "correct": 3,
+    "bamfId": "4630",
+    "pdfPage": 25
+  },
+  {
+    "id": 69,
+    "region": "Deutschland",
+    "de": "Die Bundesrepublik Deutschland hat einen dreistufigen Verwaltungsaufbau. Wie heißt die unterste politische Stufe?",
+    "answers": [
+      "Stadträte",
+      "Landräte",
+      "Gemeinden",
+      "Bezirksämter"
+    ],
+    "correct": 2,
+    "bamfId": "4656",
+    "pdfPage": 26
+  },
+  {
+    "id": 70,
+    "region": "Deutschland",
+    "de": "Der deutsche Bundespräsident Gustav Heinemann gibt Helmut Schmidt 1974 die Ernennungsurkunde zum deutschen Bundeskanzler. Was gehört zu den Aufgaben der deutschen Bundespräsidentin/des deutschen Bundespräsidenten?",
+    "answers": [
+      "Er / Sie führt die Regierungsgeschäfte.",
+      "Er / Sie kontrolliert die Regierungspartei.",
+      "Er / Sie wählt die Minister / Ministerinnen aus.",
+      "Er / Sie schlägt den Kanzler / die Kanzlerin zur Wahl vor."
+    ],
+    "correct": 3,
+    "bamfId": "4658",
+    "pdfPage": 27,
+    "image": "assets/question-070.png",
+    "imageCredit": "© Bundesregierung/Engelbert Reineke"
+  },
+  {
+    "id": 71,
+    "region": "Deutschland",
+    "de": "Wo hält sich die deutsche Bundeskanzlerin/der deutsche Bundeskanzler am häufigsten auf? Am häufigsten ist sie/er …",
+    "answers": [
+      "in Bonn, weil sich dort das Bundeskanzleramt und der Bundestag befinden.",
+      "auf Schloss Meseberg, dem Gästehaus der Bundesregierung, um Staatsgäste zu empfangen.",
+      "auf Schloss Bellevue, dem Amtssitz des Bundespräsidenten / der Bundespräsidentin, um Staatsgäste zu empfangen.",
+      "in Berlin, weil sich dort das Bundeskanzleramt und der Bundestag befinden."
+    ],
+    "correct": 3,
+    "bamfId": "4714",
+    "pdfPage": 28
+  },
+  {
+    "id": 72,
+    "region": "Deutschland",
+    "de": "Wie heißt die jetzige Bundeskanzlerin/der jetzige Bundeskanzler von Deutschland?",
+    "answers": [
+      "Gerhard Schröder",
+      "Angela Merkel",
+      "Ursula von der Leyen",
+      "Friedrich Merz"
+    ],
+    "correct": 3,
+    "bamfId": "4710",
+    "pdfPage": 28
+  },
+  {
+    "id": 73,
+    "region": "Deutschland",
+    "de": "Die beiden größten Fraktionen im Deutschen Bundestag heißen zurzeit …",
+    "answers": [
+      "CDU/CSU und AfD.",
+      "Die Linke und Bündnis 90/Die Grünen.",
+      "Bündnis 90/Die Grünen und SPD.",
+      "Die Linke und CDU/CSU."
+    ],
+    "correct": 0,
+    "bamfId": "4702",
+    "pdfPage": 28
+  },
+  {
+    "id": 74,
+    "region": "Deutschland",
+    "de": "Wie heißt das Parlament für ganz Deutschland?",
+    "answers": [
+      "Bundesversammlung",
+      "Volkskammer",
+      "Bundestag",
+      "Bundesgerichtshof"
+    ],
+    "correct": 2,
+    "bamfId": "4708",
+    "pdfPage": 29
+  },
+  {
+    "id": 75,
+    "region": "Deutschland",
+    "de": "Wie heißt Deutschlands heutiges Staatsoberhaupt?",
+    "answers": [
+      "Frank-Walter Steinmeier",
+      "Bärbel Bas",
+      "Bodo Ramelow",
+      "Joachim Gauck"
+    ],
+    "correct": 0,
+    "bamfId": "4682",
+    "pdfPage": 29
+  },
+  {
+    "id": 76,
+    "region": "Deutschland",
+    "de": "Was bedeutet die Abkürzung CDU in Deutschland?",
+    "answers": [
+      "Christliche Deutsche Union",
+      "Club Deutscher Unternehmer",
+      "Christlicher Deutscher Umweltschutz",
+      "Christlich Demokratische Union"
+    ],
+    "correct": 3,
+    "bamfId": "4717",
+    "pdfPage": 29
+  },
+  {
+    "id": 77,
+    "region": "Deutschland",
+    "de": "Was ist die Bundeswehr?",
+    "answers": [
+      "die deutsche Polizei",
+      "ein deutscher Hafen",
+      "eine deutsche Bürgerinitiative",
+      "die deutsche Armee"
+    ],
+    "correct": 3,
+    "bamfId": "4719",
+    "pdfPage": 30
+  },
+  {
+    "id": 78,
+    "region": "Deutschland",
+    "de": "Was bedeutet die Abkürzung SPD?",
+    "answers": [
+      "Sozialistische Partei Deutschlands",
+      "Sozialpolitische Partei Deutschlands",
+      "Sozialdemokratische Partei Deutschlands",
+      "Sozialgerechte Partei Deutschlands"
+    ],
+    "correct": 2,
+    "bamfId": "4716",
+    "pdfPage": 30
+  },
+  {
+    "id": 79,
+    "region": "Deutschland",
+    "de": "Was bedeutet die Abkürzung FDP in Deutschland?",
+    "answers": [
+      "Friedliche Demonstrative Partei",
+      "Freie Deutschland Partei",
+      "Führende Demokratische Partei",
+      "Freie Demokratische Partei"
+    ],
+    "correct": 3,
+    "bamfId": "4701",
+    "pdfPage": 30
+  },
+  {
+    "id": 80,
+    "region": "Deutschland",
+    "de": "Welches Gericht in Deutschland ist zuständig für die Auslegung des Grundgesetzes?",
+    "answers": [
+      "Oberlandesgericht",
+      "Amtsgericht",
+      "Bundesverfassungsgericht",
+      "Verwaltungsgericht"
+    ],
+    "correct": 2,
+    "bamfId": "4712",
+    "pdfPage": 31
+  },
+  {
+    "id": 81,
+    "region": "Deutschland",
+    "de": "Wer wählt die Bundeskanzlerin/den Bundeskanzler in Deutschland?",
+    "answers": [
+      "der Bundesrat",
+      "die Bundesversammlung",
+      "das Volk",
+      "der Bundestag"
+    ],
+    "correct": 3,
+    "bamfId": "4707",
+    "pdfPage": 31
+  },
+  {
+    "id": 82,
+    "region": "Deutschland",
+    "de": "Wer leitet das deutsche Bundeskabinett?",
+    "answers": [
+      "der Bundestagspräsident / die Bundestagspräsidentin",
+      "der Bundespräsident / die Bundespräsidentin",
+      "der Bundesratspräsident / die Bundesratspräsidentin",
+      "der Bundeskanzler / die Bundeskanzlerin"
+    ],
+    "correct": 3,
+    "bamfId": "4721",
+    "pdfPage": 31
+  },
+  {
+    "id": 83,
+    "region": "Deutschland",
+    "de": "Wer wählt die deutsche Bundeskanzlerin/den deutschen Bundeskanzler?",
+    "answers": [
+      "das Volk",
+      "die Bundesversammlung",
+      "der Bundestag",
+      "die Bundesregierung"
+    ],
+    "correct": 2,
+    "bamfId": "4706",
+    "pdfPage": 32
+  },
+  {
+    "id": 84,
+    "region": "Deutschland",
+    "de": "Welche Hauptaufgabe hat die deutsche Bundespräsidentin/der deutsche Bundespräsident? Sie/Er …",
+    "answers": [
+      "regiert das Land.",
+      "entwirft die Gesetze.",
+      "repräsentiert das Land.",
+      "überwacht die Einhaltung der Gesetze."
+    ],
+    "correct": 2,
+    "bamfId": "4703",
+    "pdfPage": 32
+  },
+  {
+    "id": 85,
+    "region": "Deutschland",
+    "de": "Wer bildet den deutschen Bundesrat?",
+    "answers": [
+      "die Abgeordneten des Bundestages",
+      "die Minister und Ministerinnen der Bundesregierung",
+      "die Regierungsvertreter der Bundesländer",
+      "die Parteimitglieder"
+    ],
+    "correct": 2,
+    "bamfId": "4720",
+    "pdfPage": 32
+  },
+  {
+    "id": 86,
+    "region": "Deutschland",
+    "de": "Wer wählt in Deutschland die Bundespräsidentin/den Bundespräsidenten?",
+    "answers": [
+      "die Bundesversammlung",
+      "der Bundesrat",
+      "das Bundesparlament",
+      "das Bundesverfassungsgericht"
+    ],
+    "correct": 0,
+    "bamfId": "4705",
+    "pdfPage": 33
+  },
+  {
+    "id": 87,
+    "region": "Deutschland",
+    "de": "Wer ist das Staatsoberhaupt der Bundesrepublik Deutschland?",
+    "answers": [
+      "der Bundeskanzler / die Bundeskanzlerin",
+      "der Bundespräsident / die Bundespräsidentin",
+      "der Bundesratspräsident / die Bundesratspräsidentin",
+      "der Bundestagspräsident / die Bundestagspräsidentin"
+    ],
+    "correct": 1,
+    "bamfId": "4709",
+    "pdfPage": 33
+  },
+  {
+    "id": 88,
+    "region": "Deutschland",
+    "de": "Die parlamentarische Opposition im Deutschen Bundestag …",
+    "answers": [
+      "kontrolliert die Regierung.",
+      "entscheidet, wer Bundesminister / Bundesministerin wird.",
+      "bestimmt, wer im Bundesrat sitzt.",
+      "schlägt die Regierungschefs / Regierungschefinnen der Länder vor."
+    ],
+    "correct": 0,
+    "bamfId": "4713",
+    "pdfPage": 33
+  },
+  {
+    "id": 89,
+    "region": "Deutschland",
+    "de": "Wie nennt man in Deutschland die Vereinigung von Abgeordneten einer Partei im Parlament?",
+    "answers": [
+      "Verband",
+      "Ältestenrat",
+      "Fraktion",
+      "Opposition"
+    ],
+    "correct": 2,
+    "bamfId": "4715",
+    "pdfPage": 34
+  },
+  {
+    "id": 90,
+    "region": "Deutschland",
+    "de": "Die deutschen Bundesländer wirken an der Gesetzgebung des Bundes mit durch …",
+    "answers": [
+      "den Bundesrat.",
+      "die Bundesversammlung.",
+      "den Bundestag.",
+      "die Bundesregierung."
+    ],
+    "correct": 0,
+    "bamfId": "4704",
+    "pdfPage": 34
+  },
+  {
+    "id": 91,
+    "region": "Deutschland",
+    "de": "In Deutschland kann ein Regierungswechsel in einem Bundesland Auswirkungen auf die Bundespolitik haben. Das Regieren wird …",
+    "answers": [
+      "schwieriger, wenn sich dadurch die Mehrheit im Bundestag ändert.",
+      "leichter, wenn dadurch neue Parteien in den Bundesrat kommen.",
+      "schwieriger, wenn dadurch die Mehrheit im Bundesrat verändert wird.",
+      "leichter, wenn es sich um ein reiches Bundesland handelt."
+    ],
+    "correct": 2,
+    "bamfId": "4711",
+    "pdfPage": 34
+  },
+  {
+    "id": 92,
+    "region": "Deutschland",
+    "de": "Was bedeutet die Abkürzung CSU in Deutschland?",
+    "answers": [
+      "Christlich Sichere Union",
+      "Christlich Süddeutsche Union",
+      "Christlich Sozialer Unternehmerverband",
+      "Christlich Soziale Union"
+    ],
+    "correct": 3,
+    "bamfId": "4718",
+    "pdfPage": 35
+  },
+  {
+    "id": 93,
+    "region": "Deutschland",
+    "de": "Je mehr \"Zweitstimmen\" eine Partei bei einer Bundestagswahl bekommt, desto …",
+    "answers": [
+      "weniger Erststimmen kann sie haben.",
+      "mehr Direktkandidaten der Partei ziehen ins Parlament ein.",
+      "größer ist das Risiko, eine Koalition bilden zu müssen.",
+      "mehr Sitze erhält die Partei im Parlament."
+    ],
+    "correct": 3,
+    "bamfId": "4749",
+    "pdfPage": 35
+  },
+  {
+    "id": 94,
+    "region": "Deutschland",
+    "de": "Ab welchem Alter darf man in Deutschland an der Wahl zum Deutschen Bundestag teilnehmen?",
+    "answers": [
+      "16",
+      "18",
+      "21",
+      "23"
+    ],
+    "correct": 1,
+    "bamfId": "4732",
+    "pdfPage": 35
+  },
+  {
+    "id": 95,
+    "region": "Deutschland",
+    "de": "Was gilt für die meisten Kinder in Deutschland?",
+    "answers": [
+      "Wahlpflicht",
+      "Schulpflicht",
+      "Schweigepflicht",
+      "Religionspflicht"
+    ],
+    "correct": 1,
+    "bamfId": "4722",
+    "pdfPage": 36
+  },
+  {
+    "id": 96,
+    "region": "Deutschland",
+    "de": "Wie kann jemand, der den Holocaust leugnet, bestraft werden?",
+    "answers": [
+      "Kürzung sozialer Leistungen",
+      "bis zu 100 Sozialstunden",
+      "gar nicht, Holocaustleugnung ist erlaubt",
+      "mit Freiheitsstrafe bis zu fünf Jahren oder mit Geldstrafe"
+    ],
+    "correct": 3,
+    "bamfId": "4727",
+    "pdfPage": 36
+  },
+  {
+    "id": 97,
+    "region": "Deutschland",
+    "de": "Was bezahlt man in Deutschland automatisch, wenn man fest angestellt ist?",
+    "answers": [
+      "Sozialversicherung",
+      "Sozialhilfe",
+      "Kindergeld",
+      "Wohngeld"
+    ],
+    "correct": 0,
+    "bamfId": "4728",
+    "pdfPage": 36
+  },
+  {
+    "id": 98,
+    "region": "Deutschland",
+    "de": "Wenn Abgeordnete im Deutschen Bundestag ihre Fraktion wechseln, …",
+    "answers": [
+      "dürfen sie nicht mehr an den Sitzungen des Parlaments teilnehmen.",
+      "kann die Regierung ihre Mehrheit verlieren.",
+      "muss der Bundespräsident / die Bundespräsidentin zuvor sein / ihr Einverständnis geben.",
+      "dürfen die Wähler / Wählerinnen dieser Abgeordneten noch einmal wählen."
+    ],
+    "correct": 1,
+    "bamfId": "4633",
+    "pdfPage": 37
+  },
+  {
+    "id": 99,
+    "region": "Deutschland",
+    "de": "Wer bezahlt in Deutschland die Sozialversicherungen?",
+    "answers": [
+      "Arbeitgeber / Arbeitgeberinnen und Arbeitnehmer / Arbeitnehmerinnen",
+      "nur Arbeitnehmer / Arbeitnehmerinnen",
+      "alle Staatsangehörigen",
+      "nur Arbeitgeber / Arbeitgeberinnen"
+    ],
+    "correct": 0,
+    "bamfId": "4729",
+    "pdfPage": 37
+  },
+  {
+    "id": 100,
+    "region": "Deutschland",
+    "de": "Was gehört nicht zur gesetzlichen Sozialversicherung?",
+    "answers": [
+      "die Lebensversicherung",
+      "die gesetzliche Rentenversicherung",
+      "die Arbeitslosenversicherung",
+      "die Pflegeversicherung"
+    ],
+    "correct": 0,
+    "bamfId": "4635",
+    "pdfPage": 37
+  },
+  {
+    "id": 101,
+    "region": "Deutschland",
+    "de": "Gewerkschaften sind Interessenverbände der …",
+    "answers": [
+      "Jugendlichen.",
+      "Arbeitnehmer und Arbeitnehmerinnen.",
+      "Rentner und Rentnerinnen.",
+      "Arbeitgeber und Arbeitgeberinnen."
+    ],
+    "correct": 1,
+    "bamfId": "4730",
+    "pdfPage": 38
+  },
+  {
+    "id": 102,
+    "region": "Deutschland",
+    "de": "Womit kann man in der Bundesrepublik Deutschland geehrt werden, wenn man auf politischem, wirtschaftlichem, kulturellem, geistigem oder sozialem Gebiet eine besondere Leistung erbracht hat? Mit dem …",
+    "answers": [
+      "Bundesverdienstkreuz",
+      "Bundesadler",
+      "Vaterländischen Verdienstorden",
+      "Ehrentitel \"Held der Deutschen Demokratischen Republik\""
+    ],
+    "correct": 0,
+    "bamfId": "4700",
+    "pdfPage": 38
+  },
+  {
+    "id": 103,
+    "region": "Deutschland",
+    "de": "Was wird in Deutschland als \"Ampelkoalition\" bezeichnet? Die Zusammenarbeit …",
+    "answers": [
+      "der Bundestagsfraktionen von CDU und CSU",
+      "von SPD, FDP und Bündnis 90/Die Grünen in einer Regierung",
+      "von CSU, Die LINKE und Bündnis 90/Die Grünen in einer Regierung",
+      "der Bundestagsfraktionen von CDU und SPD"
+    ],
+    "correct": 1,
+    "bamfId": "4634",
+    "pdfPage": 38
+  },
+  {
+    "id": 104,
+    "region": "Deutschland",
+    "de": "Eine Frau in Deutschland verliert ihre Arbeit. Was darf nicht der Grund für diese Entlassung sein?",
+    "answers": [
+      "Die Frau ist lange krank und arbeitsunfähig.",
+      "Die Frau kam oft zu spät zur Arbeit.",
+      "Die Frau erledigt private Sachen während der Arbeitszeit.",
+      "Die Frau bekommt ein Kind und ihr Chef weiß das."
+    ],
+    "correct": 3,
+    "bamfId": "4731",
+    "pdfPage": 39
+  },
+  {
+    "id": 105,
+    "region": "Deutschland",
+    "de": "Was ist eine Aufgabe von Wahlhelferinnen/Wahlhelfern in Deutschland?",
+    "answers": [
+      "Sie helfen alten Menschen bei der Stimmabgabe in der Wahlkabine.",
+      "Sie schreiben die Wahlbenachrichtigungen vor der Wahl.",
+      "Sie geben Zwischenergebnisse an die Medien weiter.",
+      "Sie zählen die Stimmen nach dem Ende der Wahl."
+    ],
+    "correct": 3,
+    "bamfId": "4726",
+    "pdfPage": 39
+  },
+  {
+    "id": 106,
+    "region": "Deutschland",
+    "de": "In Deutschland helfen ehrenamtliche Wahlhelferinnen und Wahlhelfer bei den Wahlen. Was ist eine Aufgabe von Wahlhelferinnen/Wahlhelfern?",
+    "answers": [
+      "Sie helfen Kindern und alten Menschen beim Wählen.",
+      "Sie schreiben Karten und Briefe mit der Angabe des Wahllokals.",
+      "Sie geben Zwischenergebnisse an Journalisten weiter.",
+      "Sie zählen die Stimmen nach dem Ende der Wahl."
+    ],
+    "correct": 3,
+    "bamfId": "4725",
+    "pdfPage": 39
+  },
+  {
+    "id": 107,
+    "region": "Deutschland",
+    "de": "Für wie viele Jahre wird der Bundestag in Deutschland gewählt?",
+    "answers": [
+      "2 Jahre",
+      "4 Jahre",
+      "6 Jahre",
+      "8 Jahre"
+    ],
+    "correct": 1,
+    "bamfId": "4751",
+    "pdfPage": 40
+  },
+  {
+    "id": 108,
+    "region": "Deutschland",
+    "de": "Bei einer Bundestagswahl in Deutschland darf jede/jeder wählen, die/der …",
+    "answers": [
+      "in der Bundesrepublik Deutschland wohnt und wählen möchte.",
+      "Bürger / Bürgerin der Bundesrepublik Deutschland ist und mindestens 18 Jahre alt ist.",
+      "seit mindestens 3 Jahren in der Bundesrepublik Deutschland lebt.",
+      "Bürger / Bürgerin der Bundesrepublik Deutschland ist und mindestens 21 Jahre alt ist."
+    ],
+    "correct": 1,
+    "bamfId": "4739",
+    "pdfPage": 40
+  },
+  {
+    "id": 109,
+    "region": "Deutschland",
+    "de": "Wie oft gibt es normalerweise Bundestagswahlen in Deutschland?",
+    "answers": [
+      "alle drei Jahre",
+      "alle vier Jahre",
+      "alle fünf Jahre",
+      "alle sechs Jahre"
+    ],
+    "correct": 1,
+    "bamfId": "4753",
+    "pdfPage": 40
+  },
+  {
+    "id": 110,
+    "region": "Deutschland",
+    "de": "Für wie viele Jahre wird der Bundestag in Deutschland gewählt?",
+    "answers": [
+      "2 Jahre",
+      "3 Jahre",
+      "4 Jahre",
+      "5 Jahre"
+    ],
+    "correct": 2,
+    "bamfId": "4752",
+    "pdfPage": 41
+  },
+  {
+    "id": 111,
+    "region": "Deutschland",
+    "de": "Welche Handlung mit Bezug auf den Staat Israel ist in Deutschland verboten?",
+    "answers": [
+      "die Politik Israels öffentlich kritisieren",
+      "das Aufhängen einer israelischen Flagge auf dem Privatgrundstück",
+      "eine Diskussion über die Politik Israels",
+      "der öffentliche Aufruf zur Vernichtung Israels"
+    ],
+    "correct": 3,
+    "bamfId": "4743",
+    "pdfPage": 41
+  },
+  {
+    "id": 112,
+    "region": "Deutschland",
+    "de": "Die Wahlen in Deutschland sind …",
+    "answers": [
+      "speziell.",
+      "geheim.",
+      "berufsbezogen.",
+      "geschlechtsabhängig."
+    ],
+    "correct": 1,
+    "bamfId": "4756",
+    "pdfPage": 41
+  },
+  {
+    "id": 113,
+    "region": "Deutschland",
+    "de": "Wahlen in Deutschland gewinnt die Partei, die …",
+    "answers": [
+      "die meisten Stimmen bekommt.",
+      "die meisten Männer mehrheitlich gewählt haben.",
+      "die meisten Stimmen bei den Arbeitern / Arbeiterinnen bekommen hat.",
+      "die meisten Erststimmen für ihren Kanzlerkandidaten / ihre Kanzlerkandidatin erhalten hat."
+    ],
+    "correct": 0,
+    "bamfId": "4754",
+    "pdfPage": 42
+  },
+  {
+    "id": 114,
+    "region": "Deutschland",
+    "de": "An demokratischen Wahlen in Deutschland teilzunehmen ist …",
+    "answers": [
+      "eine Pflicht.",
+      "ein Recht.",
+      "ein Zwang.",
+      "eine Last."
+    ],
+    "correct": 1,
+    "bamfId": "4737",
+    "pdfPage": 42
+  },
+  {
+    "id": 115,
+    "region": "Deutschland",
+    "de": "Was bedeutet \"aktives Wahlrecht\" in Deutschland?",
+    "answers": [
+      "Man kann gewählt werden.",
+      "Man muss wählen gehen.",
+      "Man kann wählen.",
+      "Man muss zur Auszählung der Stimmen gehen."
+    ],
+    "correct": 2,
+    "bamfId": "4755",
+    "pdfPage": 42
+  },
+  {
+    "id": 116,
+    "region": "Deutschland",
+    "de": "Wenn Sie bei einer Bundestagswahl in Deutschland wählen dürfen, heißt das …",
+    "answers": [
+      "aktive Wahlkampagne.",
+      "aktives Wahlverfahren.",
+      "aktiver Wahlkampf.",
+      "aktives Wahlrecht."
+    ],
+    "correct": 3,
+    "bamfId": "4735",
+    "pdfPage": 43
+  },
+  {
+    "id": 117,
+    "region": "Deutschland",
+    "de": "Wie viel Prozent der Zweitstimmen müssen Parteien mindestens bekommen, um in den Deutschen Bundestag gewählt zu werden?",
+    "answers": [
+      "3%",
+      "4%",
+      "5%",
+      "6%"
+    ],
+    "correct": 2,
+    "bamfId": "4746",
+    "pdfPage": 43
+  },
+  {
+    "id": 118,
+    "region": "Deutschland",
+    "de": "Wer darf bei den rund 40 jüdischen Makkabi-Sportvereinen Mitglied werden?",
+    "answers": [
+      "nur Deutsche",
+      "nur Israelis",
+      "nur religiöse Menschen",
+      "alle Menschen"
+    ],
+    "correct": 3,
+    "bamfId": "4741",
+    "pdfPage": 43
+  },
+  {
+    "id": 119,
+    "region": "Deutschland",
+    "de": "Wahlen in Deutschland sind frei. Was bedeutet das?",
+    "answers": [
+      "Alle verurteilten Straftäter / Straftäterinnen dürfen nicht wählen.",
+      "Wenn ich wählen gehen möchte, muss mein Arbeitgeber / meine Arbeitgeberin mir frei geben.",
+      "Jede Person kann ohne Zwang entscheiden, ob sie wählen möchte und wen sie wählen möchte.",
+      "Ich kann frei entscheiden, wo ich wählen gehen möchte."
+    ],
+    "correct": 2,
+    "bamfId": "4742",
+    "pdfPage": 44
+  },
+  {
+    "id": 120,
+    "region": "Deutschland",
+    "de": "Das Wahlsystem in Deutschland ist ein …",
+    "answers": [
+      "Zensuswahlrecht.",
+      "Dreiklassenwahlrecht.",
+      "Mehrheits- und Verhältniswahlrecht.",
+      "allgemeines Männerwahlrecht."
+    ],
+    "correct": 2,
+    "bamfId": "4748",
+    "pdfPage": 44
+  },
+  {
+    "id": 121,
+    "region": "Deutschland",
+    "de": "Eine Partei möchte in den Deutschen Bundestag. Sie muss aber einen Mindestanteil an Wählerstimmen haben. Das heißt …",
+    "answers": [
+      "5%-Hürde.",
+      "Zulassungsgrenze.",
+      "Basiswert.",
+      "Richtlinie."
+    ],
+    "correct": 0,
+    "bamfId": "4736",
+    "pdfPage": 44
+  },
+  {
+    "id": 122,
+    "region": "Deutschland",
+    "de": "Welchem Grundsatz unterliegen Wahlen in Deutschland? Wahlen in Deutschland sind …",
+    "answers": [
+      "frei, gleich, geheim.",
+      "offen, sicher, frei.",
+      "geschlossen, gleich, sicher.",
+      "sicher, offen, freiwillig."
+    ],
+    "correct": 0,
+    "bamfId": "4744",
+    "pdfPage": 45
+  },
+  {
+    "id": 123,
+    "region": "Deutschland",
+    "de": "Was ist in Deutschland die \"5%-Hürde\"?",
+    "answers": [
+      "Abstimmungsregelung im Bundestag für kleine Parteien",
+      "Anwesenheitskontrolle im Bundestag für Abstimmungen",
+      "Mindestanteil an Wählerstimmen, um ins Parlament zu kommen",
+      "Anwesenheitskontrolle im Bundesrat für Abstimmungen"
+    ],
+    "correct": 2,
+    "bamfId": "4745",
+    "pdfPage": 45
+  },
+  {
+    "id": 124,
+    "region": "Deutschland",
+    "de": "Die Bundestagswahl in Deutschland ist die Wahl …",
+    "answers": [
+      "des Bundeskanzlers / der Bundeskanzlerin.",
+      "der Parlamente der Länder.",
+      "des Parlaments für Deutschland.",
+      "des Bundespräsidenten / der Bundespräsidentin."
+    ],
+    "correct": 2,
+    "bamfId": "4738",
+    "pdfPage": 45
+  },
+  {
+    "id": 125,
+    "region": "Deutschland",
+    "de": "In einer Demokratie ist eine Funktion von regelmäßigen Wahlen, …",
+    "answers": [
+      "die Bürger und Bürgerinnen zu zwingen, ihre Stimme abzugeben.",
+      "nach dem Willen der Wählermehrheit den Wechsel der Regierung zu ermöglichen.",
+      "im Land bestehende Gesetze beizubehalten.",
+      "den Armen mehr Macht zu geben."
+    ],
+    "correct": 1,
+    "bamfId": "4747",
+    "pdfPage": 46
+  },
+  {
+    "id": 126,
+    "region": "Deutschland",
+    "de": "Was bekommen wahlberechtigte Bürgerinnen und Bürger in Deutschland vor einer Wahl?",
+    "answers": [
+      "eine Wahlbenachrichtigung von der Gemeinde",
+      "eine Wahlerlaubnis vom Bundespräsidenten / von der Bundespräsidentin",
+      "eine Benachrichtigung von der Bundesversammlung",
+      "eine Benachrichtigung vom Pfarramt"
+    ],
+    "correct": 0,
+    "bamfId": "4740",
+    "pdfPage": 46
+  },
+  {
+    "id": 127,
+    "region": "Deutschland",
+    "de": "Warum gibt es die 5%-Hürde im Wahlgesetz der Bundesrepublik Deutschland? Es gibt sie, weil …",
+    "answers": [
+      "die Programme von vielen kleinen Parteien viele Gemeinsamkeiten haben.",
+      "die Bürger und Bürgerinnen bei vielen kleinen Parteien die Orientierung verlieren können.",
+      "viele kleine Parteien die Regierungsbildung erschweren.",
+      "die kleinen Parteien nicht so viel Geld haben, um die Politiker und Politikerinnen zu bezahlen."
+    ],
+    "correct": 2,
+    "bamfId": "4734",
+    "pdfPage": 46
+  },
+  {
+    "id": 128,
+    "region": "Deutschland",
+    "de": "Parlamentsmitglieder, die von den Bürgerinnen und Bürgern gewählt werden, nennt man …",
+    "answers": [
+      "Abgeordnete.",
+      "Kanzler / Kanzlerinnen.",
+      "Botschafter / Botschafterinnen.",
+      "Ministerpräsidenten / Ministerpräsidentinnen."
+    ],
+    "correct": 0,
+    "bamfId": "4750",
+    "pdfPage": 47
+  },
+  {
+    "id": 129,
+    "region": "Deutschland",
+    "de": "Vom Volk gewählt wird in Deutschland …",
+    "answers": [
+      "der Bundeskanzler / die Bundeskanzlerin.",
+      "der Ministerpräsident / die Ministerpräsidentin eines Bundeslandes.",
+      "der Bundestag.",
+      "der Bundespräsident / die Bundespräsidentin."
+    ],
+    "correct": 2,
+    "bamfId": "4757",
+    "pdfPage": 47
+  },
+  {
+    "id": 130,
+    "region": "Deutschland",
+    "de": "Welcher Stimmzettel wäre bei einer Bundestagswahl gültig?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 0,
+    "bamfId": "4758",
+    "pdfPage": 48,
+    "image": "assets/question-130.png",
+    "imageCredit": "In Anlehnung an Bundeswahlordnung (BWO), Anlage 26"
+  },
+  {
+    "id": 131,
+    "region": "Deutschland",
+    "de": "In Deutschland ist eine Bürgermeisterin/ein Bürgermeister …",
+    "answers": [
+      "der Leiter / die Leiterin einer Schule.",
+      "der Chef / die Chefin einer Bank.",
+      "das Oberhaupt einer Gemeinde.",
+      "der / die Vorsitzende einer Partei."
+    ],
+    "correct": 2,
+    "bamfId": "4764",
+    "pdfPage": 49
+  },
+  {
+    "id": 132,
+    "region": "Deutschland",
+    "de": "Viele Menschen in Deutschland arbeiten in ihrer Freizeit ehrenamtlich. Was bedeutet das?",
+    "answers": [
+      "Sie arbeiten als Soldaten / Soldatinnen.",
+      "Sie arbeiten freiwillig und unbezahlt in Vereinen und Verbänden.",
+      "Sie arbeiten in der Bundesregierung.",
+      "Sie arbeiten in einem Krankenhaus und verdienen dabei Geld."
+    ],
+    "correct": 1,
+    "bamfId": "4761",
+    "pdfPage": 49
+  },
+  {
+    "id": 133,
+    "region": "Deutschland",
+    "de": "Was ist bei Bundestags- und Landtagswahlen in Deutschland erlaubt?",
+    "answers": [
+      "Der Ehemann wählt für seine Frau mit.",
+      "Man kann durch Briefwahl seine Stimme abgeben.",
+      "Man kann am Wahltag telefonisch seine Stimme abgeben.",
+      "Kinder ab dem Alter von 14 Jahren dürfen wählen."
+    ],
+    "correct": 1,
+    "bamfId": "4759",
+    "pdfPage": 49
+  },
+  {
+    "id": 134,
+    "region": "Deutschland",
+    "de": "Man will die Buslinie abschaffen, mit der Sie immer zur Arbeit fahren. Was können Sie machen, um die Buslinie zu erhalten?",
+    "answers": [
+      "Ich beteilige mich an einer Bürgerinitiative für die Erhaltung der Buslinie oder gründe selber eine Initiative.",
+      "Ich werde Mitglied in einem Sportverein und trainiere Radfahren.",
+      "Ich wende mich an das Finanzamt, weil ich als Steuerzahler / Steuerzahlerin ein Recht auf die Buslinie habe.",
+      "Ich schreibe einen Brief an das Forstamt der Gemeinde."
+    ],
+    "correct": 0,
+    "bamfId": "4762",
+    "pdfPage": 50
+  },
+  {
+    "id": 135,
+    "region": "Deutschland",
+    "de": "Wen vertreten die Gewerkschaften in Deutschland?",
+    "answers": [
+      "große Unternehmen",
+      "kleine Unternehmen",
+      "Selbständige",
+      "Arbeitnehmer und Arbeitnehmerinnen"
+    ],
+    "correct": 3,
+    "bamfId": "4763",
+    "pdfPage": 50
+  },
+  {
+    "id": 136,
+    "region": "Deutschland",
+    "de": "Sie gehen in Deutschland zum Arbeitsgericht bei …",
+    "answers": [
+      "falscher Nebenkostenabrechnung.",
+      "ungerechtfertigter Kündigung durch Ihren Chef / Ihre Chefin.",
+      "Problemen mit den Nachbarn / Nachbarinnen.",
+      "Schwierigkeiten nach einem Verkehrsunfall."
+    ],
+    "correct": 1,
+    "bamfId": "4777",
+    "pdfPage": 50
+  },
+  {
+    "id": 137,
+    "region": "Deutschland",
+    "de": "Welches Gericht ist in Deutschland bei Konflikten in der Arbeitswelt zuständig?",
+    "answers": [
+      "das Familiengericht",
+      "das Strafgericht",
+      "das Arbeitsgericht",
+      "das Amtsgericht"
+    ],
+    "correct": 2,
+    "bamfId": "4776",
+    "pdfPage": 51
+  },
+  {
+    "id": 138,
+    "region": "Deutschland",
+    "de": "Was kann ich in Deutschland machen, wenn mir meine Arbeitgeberin/mein Arbeitgeber zu Unrecht gekündigt hat?",
+    "answers": [
+      "weiter arbeiten und freundlich zum Chef / zur Chefin sein",
+      "ein Mahnverfahren gegen den Arbeitgeber / die Arbeitgeberin führen",
+      "Kündigungsschutzklage erheben",
+      "den Arbeitgeber / die Arbeitgeberin bei der Polizei anzeigen"
+    ],
+    "correct": 2,
+    "bamfId": "4775",
+    "pdfPage": 51
+  },
+  {
+    "id": 139,
+    "region": "Deutschland",
+    "de": "Wann kommt es in Deutschland zu einem Prozess vor Gericht? Wenn jemand …",
+    "answers": [
+      "zu einer anderen Religion übertritt.",
+      "eine Straftat begangen hat und angeklagt wird.",
+      "eine andere Meinung als die der Regierung vertritt.",
+      "sein Auto falsch geparkt hat und es abgeschleppt wird."
+    ],
+    "correct": 1,
+    "bamfId": "4768",
+    "pdfPage": 51
+  },
+  {
+    "id": 140,
+    "region": "Deutschland",
+    "de": "Was macht eine Schöffin/ein Schöffe in Deutschland? Sie/Er …",
+    "answers": [
+      "entscheidet mit Richtern / Richterinnen über Schuld und Strafe.",
+      "gibt Bürgern / Bürgerinnen rechtlichen Rat.",
+      "stellt Urkunden aus.",
+      "verteidigt den Angeklagten / die Angeklagte."
+    ],
+    "correct": 0,
+    "bamfId": "4769",
+    "pdfPage": 52
+  },
+  {
+    "id": 141,
+    "region": "Deutschland",
+    "de": "Wer berät in Deutschland Personen bei Rechtsfragen und vertritt sie vor Gericht?",
+    "answers": [
+      "ein Rechtsanwalt / eine Rechtsanwältin",
+      "ein Richter / eine Richterin",
+      "ein Schöffe / eine Schöffin",
+      "ein Staatsanwalt / eine Staatsanwältin"
+    ],
+    "correct": 0,
+    "bamfId": "4778",
+    "pdfPage": 52
+  },
+  {
+    "id": 142,
+    "region": "Deutschland",
+    "de": "Was ist die Hauptaufgabe einer Richterin/eines Richters in Deutschland? Eine Richterin/ein Richter …",
+    "answers": [
+      "vertritt Bürger und Bürgerinnen vor einem Gericht.",
+      "arbeitet an einem Gericht und spricht Urteile.",
+      "ändert Gesetze.",
+      "betreut Jugendliche vor Gericht."
+    ],
+    "correct": 1,
+    "bamfId": "4770",
+    "pdfPage": 52
+  },
+  {
+    "id": 143,
+    "region": "Deutschland",
+    "de": "Eine Richterin/ein Richter in Deutschland gehört zur …",
+    "answers": [
+      "Judikative.",
+      "Exekutive.",
+      "Operative.",
+      "Legislative."
+    ],
+    "correct": 0,
+    "bamfId": "4766",
+    "pdfPage": 53
+  },
+  {
+    "id": 144,
+    "region": "Deutschland",
+    "de": "Eine Richterin/ein Richter gehört in Deutschland zur …",
+    "answers": [
+      "vollziehenden Gewalt.",
+      "rechtsprechenden Gewalt.",
+      "planenden Gewalt.",
+      "gesetzgebenden Gewalt."
+    ],
+    "correct": 1,
+    "bamfId": "4765",
+    "pdfPage": 53
+  },
+  {
+    "id": 145,
+    "region": "Deutschland",
+    "de": "In Deutschland wird die Staatsgewalt geteilt. Für welche Staatsgewalt arbeitet eine Richterin/ein Richter? Für die …",
+    "answers": [
+      "Judikative",
+      "Exekutive",
+      "Presse",
+      "Legislative"
+    ],
+    "correct": 0,
+    "bamfId": "4771",
+    "pdfPage": 53
+  },
+  {
+    "id": 146,
+    "region": "Deutschland",
+    "de": "Wie nennt man in Deutschland ein Verfahren vor einem Gericht?",
+    "answers": [
+      "Programm",
+      "Prozedur",
+      "Protokoll",
+      "Prozess"
+    ],
+    "correct": 3,
+    "bamfId": "4779",
+    "pdfPage": 54
+  },
+  {
+    "id": 147,
+    "region": "Deutschland",
+    "de": "Was ist die Arbeit einer Richterin/eines Richters in Deutschland?",
+    "answers": [
+      "Deutschland regieren",
+      "Recht sprechen",
+      "Pläne erstellen",
+      "Gesetze erlassen"
+    ],
+    "correct": 1,
+    "bamfId": "4767",
+    "pdfPage": 54
+  },
+  {
+    "id": 148,
+    "region": "Deutschland",
+    "de": "Was ist eine Aufgabe der Polizei in Deutschland?",
+    "answers": [
+      "das Land zu verteidigen",
+      "die Bürgerinnen und Bürger abzuhören",
+      "die Gesetze zu beschließen",
+      "die Einhaltung von Gesetzen zu überwachen"
+    ],
+    "correct": 3,
+    "bamfId": "4774",
+    "pdfPage": 54
+  },
+  {
+    "id": 149,
+    "region": "Deutschland",
+    "de": "Was ist ein Beispiel für antisemitisches Verhalten?",
+    "answers": [
+      "ein jüdisches Fest besuchen",
+      "die israelische Regierung kritisieren",
+      "den Holocaust leugnen",
+      "gegen Juden Fußball spielen"
+    ],
+    "correct": 2,
+    "bamfId": "4772",
+    "pdfPage": 55
+  },
+  {
+    "id": 150,
+    "region": "Deutschland",
+    "de": "Eine Gerichtsschöffin/ein Gerichtsschöffe in Deutschland ist …",
+    "answers": [
+      "der Stellvertreter / die Stellvertreterin des Stadtoberhaupts.",
+      "ein ehrenamtlicher Richter / eine ehrenamtliche Richterin.",
+      "ein Mitglied eines Gemeinderats.",
+      "eine Person, die Jura studiert hat."
+    ],
+    "correct": 1,
+    "bamfId": "4773",
+    "pdfPage": 55
+  },
+  {
+    "id": 151,
+    "region": "Deutschland",
+    "de": "Wer baute die Mauer in Berlin?",
+    "answers": [
+      "Großbritannien",
+      "die DDR",
+      "die Bundesrepublik Deutschland",
+      "die USA"
+    ],
+    "correct": 1,
+    "bamfId": "4557",
+    "pdfPage": 55
+  },
+  {
+    "id": 152,
+    "region": "Deutschland",
+    "de": "Wann waren die Nationalsozialisten mit Adolf Hitler in Deutschland an der Macht?",
+    "answers": [
+      "1918 bis 1923",
+      "1932 bis 1950",
+      "1933 bis 1945",
+      "1945 bis 1989"
+    ],
+    "correct": 2,
+    "bamfId": "4534",
+    "pdfPage": 56
+  },
+  {
+    "id": 153,
+    "region": "Deutschland",
+    "de": "Was war am 8. Mai 1945?",
+    "answers": [
+      "Tod Adolf Hitlers",
+      "Beginn des Berliner Mauerbaus",
+      "Wahl von Konrad Adenauer zum Bundeskanzler",
+      "Ende des Zweiten Weltkriegs in Europa"
+    ],
+    "correct": 3,
+    "bamfId": "4532",
+    "pdfPage": 56
+  },
+  {
+    "id": 154,
+    "region": "Deutschland",
+    "de": "Wann war der Zweite Weltkrieg zu Ende?",
+    "answers": [
+      "1933",
+      "1945",
+      "1949",
+      "1961"
+    ],
+    "correct": 1,
+    "bamfId": "4530",
+    "pdfPage": 56
+  },
+  {
+    "id": 155,
+    "region": "Deutschland",
+    "de": "Wann waren die Nationalsozialisten in Deutschland an der Macht?",
+    "answers": [
+      "1888 bis 1918",
+      "1921 bis 1934",
+      "1933 bis 1945",
+      "1949 bis 1963"
+    ],
+    "correct": 2,
+    "bamfId": "4533",
+    "pdfPage": 57
+  },
+  {
+    "id": 156,
+    "region": "Deutschland",
+    "de": "In welchem Jahr wurde Hitler Reichskanzler?",
+    "answers": [
+      "1923",
+      "1927",
+      "1933",
+      "1936"
+    ],
+    "correct": 2,
+    "bamfId": "4528",
+    "pdfPage": 57
+  },
+  {
+    "id": 157,
+    "region": "Deutschland",
+    "de": "Die Nationalsozialisten mit Adolf Hitler errichteten 1933 in Deutschland …",
+    "answers": [
+      "eine Diktatur.",
+      "einen demokratischen Staat.",
+      "eine Monarchie.",
+      "ein Fürstentum."
+    ],
+    "correct": 0,
+    "bamfId": "4522",
+    "pdfPage": 57
+  },
+  {
+    "id": 158,
+    "region": "Deutschland",
+    "de": "Das \"Dritte Reich\" war eine …",
+    "answers": [
+      "Diktatur.",
+      "Demokratie.",
+      "Monarchie.",
+      "Räterepublik."
+    ],
+    "correct": 0,
+    "bamfId": "4525",
+    "pdfPage": 58
+  },
+  {
+    "id": 159,
+    "region": "Deutschland",
+    "de": "Was gab es in Deutschland nicht während der Zeit des Nationalsozialismus?",
+    "answers": [
+      "freie Wahlen",
+      "Pressezensur",
+      "willkürliche Verhaftungen",
+      "Verfolgung der Juden"
+    ],
+    "correct": 0,
+    "bamfId": "4531",
+    "pdfPage": 58
+  },
+  {
+    "id": 160,
+    "region": "Deutschland",
+    "de": "Welcher Krieg dauerte von 1939 bis 1945?",
+    "answers": [
+      "der Erste Weltkrieg",
+      "der Zweite Weltkrieg",
+      "der Vietnamkrieg",
+      "der Golfkrieg"
+    ],
+    "correct": 1,
+    "bamfId": "4526",
+    "pdfPage": 58
+  },
+  {
+    "id": 161,
+    "region": "Deutschland",
+    "de": "Was kennzeichnete den NS-Staat? Eine Politik …",
+    "answers": [
+      "des staatlichen Rassismus",
+      "der Meinungsfreiheit",
+      "der allgemeinen Religionsfreiheit",
+      "der Entwicklung der Demokratie"
+    ],
+    "correct": 0,
+    "bamfId": "4535",
+    "pdfPage": 59
+  },
+  {
+    "id": 162,
+    "region": "Deutschland",
+    "de": "Claus Schenk Graf von Stauffenberg wurde bekannt durch …",
+    "answers": [
+      "eine Goldmedaille bei den Olympischen Spielen 1936.",
+      "den Bau des Reichstagsgebäudes.",
+      "den Aufbau der Wehrmacht.",
+      "das Attentat auf Hitler am 20. Juli 1944."
+    ],
+    "correct": 3,
+    "bamfId": "4524",
+    "pdfPage": 59
+  },
+  {
+    "id": 163,
+    "region": "Deutschland",
+    "de": "In welchem Jahr zerstörten die Nationalsozialisten Synagogen und jüdische Geschäfte in Deutschland?",
+    "answers": [
+      "1925",
+      "1930",
+      "1938",
+      "1945"
+    ],
+    "correct": 2,
+    "bamfId": "4529",
+    "pdfPage": 59
+  },
+  {
+    "id": 164,
+    "region": "Deutschland",
+    "de": "Was passierte am 9. November 1938 in Deutschland?",
+    "answers": [
+      "Mit dem Angriff auf Polen beginnt der Zweite Weltkrieg.",
+      "Die Nationalsozialisten verlieren eine Wahl und lösen den Reichstag auf.",
+      "Jüdische Geschäfte und Synagogen werden durch Nationalsozialisten und ihre Anhänger zerstört.",
+      "Hitler wird Reichspräsident und lässt alle Parteien verbieten."
+    ],
+    "correct": 2,
+    "bamfId": "4527",
+    "pdfPage": 60
+  },
+  {
+    "id": 165,
+    "region": "Deutschland",
+    "de": "Wie hieß der erste Bundeskanzler der Bundesrepublik Deutschland?",
+    "answers": [
+      "Konrad Adenauer",
+      "Kurt Georg Kiesinger",
+      "Helmut Schmidt",
+      "Willy Brandt"
+    ],
+    "correct": 0,
+    "bamfId": "4549",
+    "pdfPage": 60
+  },
+  {
+    "id": 166,
+    "region": "Deutschland",
+    "de": "Bei welchen Demonstrationen in Deutschland riefen die Menschen \"Wir sind das Volk\"?",
+    "answers": [
+      "beim Arbeiteraufstand 1953 in der DDR",
+      "bei den Demonstrationen 1968 in der Bundesrepublik Deutschland",
+      "bei den Anti-Atomkraft-Demonstrationen 1985 in der Bundesrepublik Deutschland",
+      "bei den Montagsdemonstrationen 1989 in der DDR"
+    ],
+    "correct": 3,
+    "bamfId": "4560",
+    "pdfPage": 60
+  },
+  {
+    "id": 167,
+    "region": "Deutschland",
+    "de": "Welche Länder wurden nach dem Zweiten Weltkrieg in Deutschland als \"Alliierte Besatzungsmächte\" bezeichnet?",
+    "answers": [
+      "Sowjetunion, Großbritannien, Polen, Schweden",
+      "Frankreich, Sowjetunion, Italien, Japan",
+      "USA, Sowjetunion, Spanien, Portugal",
+      "USA, Sowjetunion, Großbritannien, Frankreich"
+    ],
+    "correct": 3,
+    "bamfId": "4536",
+    "pdfPage": 61
+  },
+  {
+    "id": 168,
+    "region": "Deutschland",
+    "de": "Welches Land war keine \"Alliierte Besatzungsmacht\" in Deutschland?",
+    "answers": [
+      "USA",
+      "Sowjetunion",
+      "Frankreich",
+      "Japan"
+    ],
+    "correct": 3,
+    "bamfId": "4548",
+    "pdfPage": 61
+  },
+  {
+    "id": 169,
+    "region": "Deutschland",
+    "de": "Wann wurde die Bundesrepublik Deutschland gegründet?",
+    "answers": [
+      "1939",
+      "1945",
+      "1949",
+      "1951"
+    ],
+    "correct": 2,
+    "bamfId": "4538",
+    "pdfPage": 61
+  },
+  {
+    "id": 170,
+    "region": "Deutschland",
+    "de": "Was gab es während der Zeit des Nationalsozialismus in Deutschland?",
+    "answers": [
+      "das Verbot von Parteien",
+      "das Recht zur freien Entfaltung der Persönlichkeit",
+      "Pressefreiheit",
+      "den Schutz der Menschenwürde"
+    ],
+    "correct": 0,
+    "bamfId": "4523",
+    "pdfPage": 62
+  },
+  {
+    "id": 171,
+    "region": "Deutschland",
+    "de": "Soziale Marktwirtschaft bedeutet, die Wirtschaft …",
+    "answers": [
+      "steuert sich allein nach Angebot und Nachfrage.",
+      "wird vom Staat geplant und gesteuert, Angebot und Nachfrage werden nicht berücksichtigt.",
+      "richtet sich nach der Nachfrage im Ausland.",
+      "richtet sich nach Angebot und Nachfrage, aber der Staat sorgt für einen sozialen Ausgleich."
+    ],
+    "correct": 3,
+    "bamfId": "4543",
+    "pdfPage": 62
+  },
+  {
+    "id": 172,
+    "region": "Deutschland",
+    "de": "In welcher Besatzungszone wurde die DDR gegründet? In der …",
+    "answers": [
+      "amerikanischen Besatzungszone",
+      "französischen Besatzungszone",
+      "britischen Besatzungszone",
+      "sowjetischen Besatzungszone"
+    ],
+    "correct": 3,
+    "bamfId": "4545",
+    "pdfPage": 62
+  },
+  {
+    "id": 173,
+    "region": "Deutschland",
+    "de": "Die Bundesrepublik Deutschland ist ein Gründungsmitglied …",
+    "answers": [
+      "des Nordatlantikpakts (NATO).",
+      "der Vereinten Nationen (VN).",
+      "der Europäischen Union (EU).",
+      "des Warschauer Pakts."
+    ],
+    "correct": 2,
+    "bamfId": "4553",
+    "pdfPage": 63
+  },
+  {
+    "id": 174,
+    "region": "Deutschland",
+    "de": "Wann wurde die DDR gegründet?",
+    "answers": [
+      "1947",
+      "1949",
+      "1953",
+      "1956"
+    ],
+    "correct": 1,
+    "bamfId": "4554",
+    "pdfPage": 63
+  },
+  {
+    "id": 175,
+    "region": "Deutschland",
+    "de": "Wie viele Besatzungszonen gab es in Deutschland nach dem Zweiten Weltkrieg?",
+    "answers": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "correct": 1,
+    "bamfId": "4556",
+    "pdfPage": 63
+  },
+  {
+    "id": 176,
+    "region": "Deutschland",
+    "de": "Wie waren die Besatzungszonen Deutschlands nach 1945 verteilt?",
+    "answers": [
+      "1=Großbritannien, 2=Sowjetunion, 3=Frankreich, 4=USA",
+      "1=Sowjetunion, 2=Großbritannien, 3=USA, 4=Frankreich",
+      "1=Großbritannien, 2=Sowjetunion, 3=USA, 4=Frankreich",
+      "1=Großbritannien, 2=USA, 3=Sowjetunion, 4=Frankreich"
+    ],
+    "correct": 2,
+    "bamfId": "4550",
+    "pdfPage": 64,
+    "image": "assets/question-176.png",
+    "imageCredit": ""
+  },
+  {
+    "id": 177,
+    "region": "Deutschland",
+    "de": "Welche deutsche Stadt wurde nach dem Zweiten Weltkrieg in vier Sektoren aufgeteilt?",
+    "answers": [
+      "München",
+      "Berlin",
+      "Dresden",
+      "Frankfurt/Oder"
+    ],
+    "correct": 1,
+    "bamfId": "4539",
+    "pdfPage": 65
+  },
+  {
+    "id": 178,
+    "region": "Deutschland",
+    "de": "Vom Juni 1948 bis zum Mai 1949 wurden die Bürgerinnen und Bürger von West-Berlin durch eine Luftbrücke versorgt. Welcher Umstand war dafür verantwortlich?",
+    "answers": [
+      "Für Frankreich war eine Versorgung der West-Berliner Bevölkerung mit dem Flugzeug kostengünstiger.",
+      "Die amerikanischen Soldaten / Soldatinnen hatten beim Landtransport Angst vor Überfällen.",
+      "Für Großbritannien war die Versorgung über die Luftbrücke schneller.",
+      "Die Sowjetunion unterbrach den gesamten Verkehr auf dem Landwege."
+    ],
+    "correct": 3,
+    "bamfId": "4544",
+    "pdfPage": 65
+  },
+  {
+    "id": 179,
+    "region": "Deutschland",
+    "de": "Wie endete der Zweite Weltkrieg in Europa offiziell?",
+    "answers": [
+      "mit dem Tod Adolf Hitlers",
+      "durch die bedingungslose Kapitulation Deutschlands",
+      "mit dem Rückzug der Deutschen aus den besetzten Gebieten",
+      "durch eine Revolution in Deutschland"
+    ],
+    "correct": 1,
+    "bamfId": "4551",
+    "pdfPage": 65
+  },
+  {
+    "id": 180,
+    "region": "Deutschland",
+    "de": "Der erste Bundeskanzler der Bundesrepublik Deutschland war …",
+    "answers": [
+      "Ludwig Erhard.",
+      "Willy Brandt.",
+      "Konrad Adenauer.",
+      "Gerhard Schröder."
+    ],
+    "correct": 2,
+    "bamfId": "4541",
+    "pdfPage": 66
+  },
+  {
+    "id": 181,
+    "region": "Deutschland",
+    "de": "Was wollte Willy Brandt mit seinem Kniefall 1970 im ehemaligen jüdischen Ghetto in Warschau ausdrücken?",
+    "answers": [
+      "Er hat sich den ehemaligen Alliierten unterworfen.",
+      "Er bat Polen und die polnischen Juden um Vergebung.",
+      "Er zeigte seine Demut vor dem Warschauer Pakt.",
+      "Er sprach ein Gebet am Grab des Unbekannten Soldaten."
+    ],
+    "correct": 1,
+    "bamfId": "4552",
+    "pdfPage": 67,
+    "image": "assets/question-181.png",
+    "imageCredit": "© Bundesregierung/Engelbert Reineke"
+  },
+  {
+    "id": 182,
+    "region": "Deutschland",
+    "de": "Wie heißt das jüdische Gebetshaus?",
+    "answers": [
+      "Basilika",
+      "Moschee",
+      "Synagoge",
+      "Kirche"
+    ],
+    "correct": 2,
+    "bamfId": "4547",
+    "pdfPage": 68
+  },
+  {
+    "id": 183,
+    "region": "Deutschland",
+    "de": "Wann war in der Bundesrepublik Deutschland das \"Wirtschaftswunder\"?",
+    "answers": [
+      "40er Jahre",
+      "50er Jahre",
+      "70er Jahre",
+      "80er Jahre"
+    ],
+    "correct": 1,
+    "bamfId": "4540",
+    "pdfPage": 68
+  },
+  {
+    "id": 184,
+    "region": "Deutschland",
+    "de": "Auf welcher rechtlichen Grundlage wurde der Staat Israel gegründet?",
+    "answers": [
+      "eine Resolution der Vereinten Nationen",
+      "ein Beschluss des Zionistenkongresses",
+      "ein Vorschlag der Bundesregierung",
+      "ein Vorschlag der UdSSR"
+    ],
+    "correct": 0,
+    "bamfId": "4555",
+    "pdfPage": 68
+  },
+  {
+    "id": 185,
+    "region": "Deutschland",
+    "de": "Wofür stand der Ausdruck \"Eiserner Vorhang\"? Für die Abschottung …",
+    "answers": [
+      "des Warschauer Pakts gegen den Westen",
+      "Norddeutschlands gegen Süddeutschland",
+      "Nazi-Deutschlands gegen die Alliierten",
+      "Europas gegen die USA"
+    ],
+    "correct": 0,
+    "bamfId": "4546",
+    "pdfPage": 69
+  },
+  {
+    "id": 186,
+    "region": "Deutschland",
+    "de": "Im Jahr 1953 gab es in der DDR einen Aufstand, an den lange Zeit in der Bundesrepublik Deutschland ein Feiertag erinnerte. Wann war das?",
+    "answers": [
+      "1. Mai",
+      "17. Juni",
+      "20. Juli",
+      "9. November"
+    ],
+    "correct": 1,
+    "bamfId": "4542",
+    "pdfPage": 69
+  },
+  {
+    "id": 187,
+    "region": "Deutschland",
+    "de": "Welcher deutsche Staat hatte eine schwarz-rot-goldene Flagge mit Hammer, Zirkel und Ährenkranz?",
+    "answers": [
+      "Preußen",
+      "Bundesrepublik Deutschland",
+      "\"Drittes Reich\"",
+      "DDR"
+    ],
+    "correct": 3,
+    "bamfId": "4579",
+    "pdfPage": 70,
+    "image": "assets/question-187.png",
+    "imageCredit": ""
+  },
+  {
+    "id": 188,
+    "region": "Deutschland",
+    "de": "In welchem Jahr wurde die Mauer in Berlin gebaut?",
+    "answers": [
+      "1953",
+      "1956",
+      "1959",
+      "1961"
+    ],
+    "correct": 3,
+    "bamfId": "4562",
+    "pdfPage": 70
+  },
+  {
+    "id": 189,
+    "region": "Deutschland",
+    "de": "Wann baute die DDR die Mauer in Berlin?",
+    "answers": [
+      "1919",
+      "1933",
+      "1961",
+      "1990"
+    ],
+    "correct": 2,
+    "bamfId": "4576",
+    "pdfPage": 71
+  },
+  {
+    "id": 190,
+    "region": "Deutschland",
+    "de": "Was bedeutet die Abkürzung DDR?",
+    "answers": [
+      "Dritter Deutscher Rundfunk",
+      "Die Deutsche Republik",
+      "Dritte Deutsche Republik",
+      "Deutsche Demokratische Republik"
+    ],
+    "correct": 3,
+    "bamfId": "4566",
+    "pdfPage": 71
+  },
+  {
+    "id": 191,
+    "region": "Deutschland",
+    "de": "Wann wurde die Mauer in Berlin für alle geöffnet?",
+    "answers": [
+      "1987",
+      "1989",
+      "1992",
+      "1995"
+    ],
+    "correct": 1,
+    "bamfId": "4565",
+    "pdfPage": 71
+  },
+  {
+    "id": 192,
+    "region": "Deutschland",
+    "de": "Welches heutige deutsche Bundesland gehörte früher zum Gebiet der DDR?",
+    "answers": [
+      "Brandenburg",
+      "Bayern",
+      "Saarland",
+      "Hessen"
+    ],
+    "correct": 0,
+    "bamfId": "4578",
+    "pdfPage": 72
+  },
+  {
+    "id": 193,
+    "region": "Deutschland",
+    "de": "Von 1961 bis 1989 war Berlin …",
+    "answers": [
+      "ohne Bürgermeister.",
+      "ein eigener Staat.",
+      "durch eine Mauer geteilt.",
+      "nur mit dem Flugzeug erreichbar."
+    ],
+    "correct": 2,
+    "bamfId": "4561",
+    "pdfPage": 72
+  },
+  {
+    "id": 194,
+    "region": "Deutschland",
+    "de": "Am 3. Oktober feiert man in Deutschland den Tag der Deutschen …",
+    "answers": [
+      "Einheit.",
+      "Nation.",
+      "Bundesländer.",
+      "Städte."
+    ],
+    "correct": 0,
+    "bamfId": "4564",
+    "pdfPage": 72
+  },
+  {
+    "id": 195,
+    "region": "Deutschland",
+    "de": "Welches heutige deutsche Bundesland gehörte früher zum Gebiet der DDR?",
+    "answers": [
+      "Hessen",
+      "Sachsen-Anhalt",
+      "Nordrhein-Westfalen",
+      "Saarland"
+    ],
+    "correct": 1,
+    "bamfId": "4572",
+    "pdfPage": 73
+  },
+  {
+    "id": 196,
+    "region": "Deutschland",
+    "de": "Warum nennt man die Zeit im Herbst 1989 in der DDR \"Die Wende\"? In dieser Zeit veränderte sich die DDR politisch …",
+    "answers": [
+      "von einer Diktatur zur Demokratie.",
+      "von einer liberalen Marktwirtschaft zum Sozialismus.",
+      "von einer Monarchie zur Sozialdemokratie.",
+      "von einem religiösen Staat zu einem kommunistischen Staat."
+    ],
+    "correct": 0,
+    "bamfId": "4558",
+    "pdfPage": 73
+  },
+  {
+    "id": 197,
+    "region": "Deutschland",
+    "de": "Welches heutige deutsche Bundesland gehörte früher zum Gebiet der DDR?",
+    "answers": [
+      "Thüringen",
+      "Hessen",
+      "Bayern",
+      "Bremen"
+    ],
+    "correct": 0,
+    "bamfId": "4577",
+    "pdfPage": 73
+  },
+  {
+    "id": 198,
+    "region": "Deutschland",
+    "de": "Welches heutige deutsche Bundesland gehörte früher zum Gebiet der DDR?",
+    "answers": [
+      "Bayern",
+      "Niedersachsen",
+      "Sachsen",
+      "Baden-Württemberg"
+    ],
+    "correct": 2,
+    "bamfId": "4574",
+    "pdfPage": 74
+  },
+  {
+    "id": 199,
+    "region": "Deutschland",
+    "de": "Mit der Abkürzung \"Stasi\" meinte man in der DDR …",
+    "answers": [
+      "das Parlament.",
+      "das Ministerium für Staatssicherheit.",
+      "eine regierende Partei.",
+      "das Ministerium für Volksbildung."
+    ],
+    "correct": 1,
+    "bamfId": "4582",
+    "pdfPage": 74
+  },
+  {
+    "id": 200,
+    "region": "Deutschland",
+    "de": "Welches heutige deutsche Bundesland gehörte früher zum Gebiet der DDR?",
+    "answers": [
+      "Hessen",
+      "Schleswig-Holstein",
+      "Mecklenburg-Vorpommern",
+      "Saarland"
+    ],
+    "correct": 2,
+    "bamfId": "4573",
+    "pdfPage": 74
+  },
+  {
+    "id": 201,
+    "region": "Deutschland",
+    "de": "Welche der folgenden Auflistungen enthält nur Bundesländer, die zum Gebiet der früheren DDR gehörten?",
+    "answers": [
+      "Niedersachsen, Nordrhein-Westfalen, Hessen, Schleswig-Holstein, Brandenburg",
+      "Mecklenburg-Vorpommern, Brandenburg, Sachsen, Sachsen-Anhalt, Thüringen",
+      "Bayern, Baden-Württemberg, Rheinland-Pfalz, Thüringen, Sachsen",
+      "Sachsen, Thüringen, Hessen, Niedersachen, Brandenburg"
+    ],
+    "correct": 1,
+    "bamfId": "4569",
+    "pdfPage": 75
+  },
+  {
+    "id": 202,
+    "region": "Deutschland",
+    "de": "Zu wem gehörte die DDR im \"Kalten Krieg\"?",
+    "answers": [
+      "zu den Westmächten",
+      "zum Warschauer Pakt",
+      "zur NATO",
+      "zu den blockfreien Staaten"
+    ],
+    "correct": 1,
+    "bamfId": "4580",
+    "pdfPage": 75
+  },
+  {
+    "id": 203,
+    "region": "Deutschland",
+    "de": "Wie hieß das Wirtschaftssystem der DDR?",
+    "answers": [
+      "Marktwirtschaft",
+      "Planwirtschaft",
+      "Angebot und Nachfrage",
+      "Kapitalismus"
+    ],
+    "correct": 1,
+    "bamfId": "4583",
+    "pdfPage": 75
+  },
+  {
+    "id": 204,
+    "region": "Deutschland",
+    "de": "Wie wurden die Bundesrepublik Deutschland und die DDR zu einem Staat?",
+    "answers": [
+      "Die Bundesrepublik hat die DDR besetzt.",
+      "Die heutigen fünf östlichen Bundesländer sind der Bundesrepublik Deutschland beigetreten.",
+      "Die westlichen Bundesländer sind der DDR beigetreten.",
+      "Die DDR hat die Bundesrepublik Deutschland besetzt."
+    ],
+    "correct": 1,
+    "bamfId": "4584",
+    "pdfPage": 76
+  },
+  {
+    "id": 205,
+    "region": "Deutschland",
+    "de": "Mit dem Beitritt der DDR zur Bundesrepublik Deutschland gehören die neuen Bundesländer nun auch …",
+    "answers": [
+      "zur Europäischen Union.",
+      "zum Warschauer Pakt.",
+      "zur OPEC.",
+      "zur Europäischen Verteidigungsgemeinschaft."
+    ],
+    "correct": 0,
+    "bamfId": "4567",
+    "pdfPage": 76
+  },
+  {
+    "id": 206,
+    "region": "Deutschland",
+    "de": "Woran erinnern die sogenannten „Stolpersteine“ in Deutschland?",
+    "answers": [
+      "an berühmte deutsche Politikerinnen und Politiker",
+      "an die Opfer des Nationalsozialismus",
+      "an Verkehrstote",
+      "an bekannte jüdische Musiker"
+    ],
+    "correct": 1,
+    "bamfId": "4568",
+    "pdfPage": 76
+  },
+  {
+    "id": 207,
+    "region": "Deutschland",
+    "de": "In welchem Militärbündnis war die DDR Mitglied?",
+    "answers": [
+      "in der NATO",
+      "im Rheinbund",
+      "im Warschauer Pakt",
+      "im Europabündnis"
+    ],
+    "correct": 2,
+    "bamfId": "4571",
+    "pdfPage": 77
+  },
+  {
+    "id": 208,
+    "region": "Deutschland",
+    "de": "Was war die \"Stasi\"?",
+    "answers": [
+      "der Geheimdienst im \"Dritten Reich\"",
+      "eine berühmte deutsche Gedenkstätte",
+      "der Geheimdienst der DDR",
+      "ein deutscher Sportverein während des Zweiten Weltkrieges"
+    ],
+    "correct": 2,
+    "bamfId": "4570",
+    "pdfPage": 77
+  },
+  {
+    "id": 209,
+    "region": "Deutschland",
+    "de": "Welches war das Wappen der Deutschen Demokratischen Republik?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 3,
+    "bamfId": "4575",
+    "pdfPage": 78,
+    "image": "assets/question-209.png",
+    "imageCredit": ""
+  },
+  {
+    "id": 210,
+    "region": "Deutschland",
+    "de": "Was ereignete sich am 17. Juni 1953 in der DDR?",
+    "answers": [
+      "der feierliche Beitritt zum Warschauer Pakt",
+      "landesweite Streiks und ein Volksaufstand",
+      "der 1. SED-Parteitag",
+      "der erste Besuch Fidel Castros"
+    ],
+    "correct": 1,
+    "bamfId": "4581",
+    "pdfPage": 78
+  },
+  {
+    "id": 211,
+    "region": "Deutschland",
+    "de": "Welcher Politiker steht für die \"Ostverträge\"?",
+    "answers": [
+      "Helmut Kohl",
+      "Willy Brandt",
+      "Michail Gorbatschow",
+      "Ludwig Erhard"
+    ],
+    "correct": 1,
+    "bamfId": "4563",
+    "pdfPage": 79
+  },
+  {
+    "id": 212,
+    "region": "Deutschland",
+    "de": "Wie heißt Deutschland mit vollem Namen?",
+    "answers": [
+      "Bundesstaat Deutschland",
+      "Bundesländer Deutschland",
+      "Bundesrepublik Deutschland",
+      "Bundesbezirk Deutschland"
+    ],
+    "correct": 2,
+    "bamfId": "4588",
+    "pdfPage": 79
+  },
+  {
+    "id": 213,
+    "region": "Deutschland",
+    "de": "Wie viele Einwohner hat Deutschland?",
+    "answers": [
+      "70 Millionen",
+      "78 Millionen",
+      "84 Millionen",
+      "90 Millionen"
+    ],
+    "correct": 2,
+    "bamfId": "4585",
+    "pdfPage": 79
+  },
+  {
+    "id": 214,
+    "region": "Deutschland",
+    "de": "Welche Farben hat die deutsche Flagge?",
+    "answers": [
+      "schwarz-rot-gold",
+      "rot-weiß-schwarz",
+      "schwarz-rot-grün",
+      "schwarz-gelb-rot"
+    ],
+    "correct": 0,
+    "bamfId": "4590",
+    "pdfPage": 80
+  },
+  {
+    "id": 215,
+    "region": "Deutschland",
+    "de": "Wer wird als \"Kanzler der Deutschen Einheit\" bezeichnet?",
+    "answers": [
+      "Gerhard Schröder",
+      "Helmut Kohl",
+      "Konrad Adenauer",
+      "Helmut Schmidt"
+    ],
+    "correct": 1,
+    "bamfId": "4591",
+    "pdfPage": 80
+  },
+  {
+    "id": 216,
+    "region": "Deutschland",
+    "de": "Welches Symbol ist im Plenarsaal des Deutschen Bundestages zu sehen?",
+    "answers": [
+      "der Bundesadler.",
+      "die Fahne der Stadt Berlin.",
+      "der Reichsadler.",
+      "die Reichskrone."
+    ],
+    "correct": 0,
+    "bamfId": "4699",
+    "pdfPage": 81,
+    "image": "assets/question-216.png",
+    "imageCredit": "© Deutscher Bundestag/Janine Schmitz"
+  },
+  {
+    "id": 217,
+    "region": "Deutschland",
+    "de": "In welchem Zeitraum gab es die Deutsche Demokratische Republik (DDR)?",
+    "answers": [
+      "1919 bis 1927",
+      "1933 bis 1945",
+      "1945 bis 1961",
+      "1949 bis 1990"
+    ],
+    "correct": 3,
+    "bamfId": "4537",
+    "pdfPage": 81
+  },
+  {
+    "id": 218,
+    "region": "Deutschland",
+    "de": "Wie viele Bundesländer kamen bei der Wiedervereinigung 1990 zur Bundesrepublik Deutschland hinzu?",
+    "answers": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "correct": 1,
+    "bamfId": "4587",
+    "pdfPage": 82
+  },
+  {
+    "id": 219,
+    "region": "Deutschland",
+    "de": "Die Bundesrepublik Deutschland hat die Grenzen von heute seit …",
+    "answers": [
+      "1933",
+      "1949",
+      "1971",
+      "1990"
+    ],
+    "correct": 3,
+    "bamfId": "4589",
+    "pdfPage": 82
+  },
+  {
+    "id": 220,
+    "region": "Deutschland",
+    "de": "Der 27. Januar ist in Deutschland ein offizieller Gedenktag. Woran erinnert dieser Tag?",
+    "answers": [
+      "an das Ende des Zweiten Weltkrieges",
+      "an die Verabschiedung des Grundgesetzes",
+      "an die Wiedervereinigung Deutschlands",
+      "an die Opfer des Nationalsozialismus (Tag der Befreiung des Vernichtungslagers Auschwitz)"
+    ],
+    "correct": 3,
+    "bamfId": "4586",
+    "pdfPage": 82
+  },
+  {
+    "id": 221,
+    "region": "Deutschland",
+    "de": "Deutschland ist Mitglied des Schengener Abkommens. Was bedeutet das?",
+    "answers": [
+      "Deutsche können in viele Länder Europas ohne Passkontrolle reisen.",
+      "Alle Menschen können ohne Personenkontrolle in Deutschland einreisen.",
+      "Deutsche können ohne Passkontrolle in jedes Land reisen.",
+      "Deutsche können in jedem Land mit dem Euro bezahlen."
+    ],
+    "correct": 0,
+    "bamfId": "4609",
+    "pdfPage": 83
+  },
+  {
+    "id": 222,
+    "region": "Deutschland",
+    "de": "Welches Land ist ein Nachbarland von Deutschland?",
+    "answers": [
+      "Ungarn",
+      "Portugal",
+      "Spanien",
+      "Schweiz"
+    ],
+    "correct": 3,
+    "bamfId": "4596",
+    "pdfPage": 83
+  },
+  {
+    "id": 223,
+    "region": "Deutschland",
+    "de": "Welches Land ist ein Nachbarland von Deutschland?",
+    "answers": [
+      "Rumänien",
+      "Bulgarien",
+      "Polen",
+      "Griechenland"
+    ],
+    "correct": 2,
+    "bamfId": "4608",
+    "pdfPage": 83
+  },
+  {
+    "id": 224,
+    "region": "Deutschland",
+    "de": "Was bedeutet die Abkürzung EU?",
+    "answers": [
+      "Europäische Unternehmen",
+      "Europäische Union",
+      "Einheitliche Union",
+      "Euro Union"
+    ],
+    "correct": 1,
+    "bamfId": "4600",
+    "pdfPage": 84
+  },
+  {
+    "id": 225,
+    "region": "Deutschland",
+    "de": "In welchem anderen Land gibt es eine große deutschsprachige Bevölkerung?",
+    "answers": [
+      "Tschechien",
+      "Norwegen",
+      "Spanien",
+      "Österreich"
+    ],
+    "correct": 3,
+    "bamfId": "4610",
+    "pdfPage": 84
+  },
+  {
+    "id": 226,
+    "region": "Deutschland",
+    "de": "Welche ist die Flagge der Europäischen Union?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 1,
+    "bamfId": "4597",
+    "pdfPage": 85,
+    "image": "assets/question-226.png",
+    "imageCredit": ""
+  },
+  {
+    "id": 227,
+    "region": "Deutschland",
+    "de": "Welches Land ist ein Nachbarland von Deutschland?",
+    "answers": [
+      "Finnland",
+      "Dänemark",
+      "Norwegen",
+      "Schweden"
+    ],
+    "correct": 1,
+    "bamfId": "4595",
+    "pdfPage": 85
+  },
+  {
+    "id": 228,
+    "region": "Deutschland",
+    "de": "Wie wird der Beitritt der DDR zur Bundesrepublik Deutschland im Jahr 1990 allgemein genannt?",
+    "answers": [
+      "NATO-Osterweiterung",
+      "EU-Osterweiterung",
+      "Deutsche Wiedervereinigung",
+      "Europäische Gemeinschaft"
+    ],
+    "correct": 2,
+    "bamfId": "4559",
+    "pdfPage": 85
+  },
+  {
+    "id": 229,
+    "region": "Deutschland",
+    "de": "Welches Land ist ein Nachbarland von Deutschland?",
+    "answers": [
+      "Spanien",
+      "Bulgarien",
+      "Norwegen",
+      "Luxemburg"
+    ],
+    "correct": 3,
+    "bamfId": "4607",
+    "pdfPage": 86
+  },
+  {
+    "id": 230,
+    "region": "Deutschland",
+    "de": "Das Europäische Parlament wird regelmäßig gewählt, nämlich alle …",
+    "answers": [
+      "5 Jahre.",
+      "6 Jahre.",
+      "7 Jahre.",
+      "8 Jahre."
+    ],
+    "correct": 0,
+    "bamfId": "4602",
+    "pdfPage": 86
+  },
+  {
+    "id": 231,
+    "region": "Deutschland",
+    "de": "Was bedeutet der Begriff \"europäische Integration\"?",
+    "answers": [
+      "Damit sind amerikanische Einwanderer in Europa gemeint.",
+      "Der Begriff meint den Einwanderungsstopp nach Europa.",
+      "Damit sind europäische Auswanderer in den USA gemeint.",
+      "Der Begriff meint den Zusammenschluss europäischer Staaten zur EU."
+    ],
+    "correct": 3,
+    "bamfId": "4592",
+    "pdfPage": 86
+  },
+  {
+    "id": 232,
+    "region": "Deutschland",
+    "de": "Wer wird bei der Europawahl gewählt?",
+    "answers": [
+      "die Europäische Kommission",
+      "die Länder, die in die EU eintreten dürfen",
+      "die Abgeordneten des Europäischen Parlaments",
+      "die europäische Verfassung"
+    ],
+    "correct": 2,
+    "bamfId": "4605",
+    "pdfPage": 87
+  },
+  {
+    "id": 233,
+    "region": "Deutschland",
+    "de": "Welches Land ist ein Nachbarland von Deutschland?",
+    "answers": [
+      "Tschechien",
+      "Bulgarien",
+      "Griechenland",
+      "Portugal"
+    ],
+    "correct": 0,
+    "bamfId": "4606",
+    "pdfPage": 87
+  },
+  {
+    "id": 234,
+    "region": "Deutschland",
+    "de": "Wo ist ein Sitz des Europäischen Parlaments?",
+    "answers": [
+      "London",
+      "Paris",
+      "Berlin",
+      "Straßburg"
+    ],
+    "correct": 3,
+    "bamfId": "4598",
+    "pdfPage": 87
+  },
+  {
+    "id": 235,
+    "region": "Deutschland",
+    "de": "Der damalige französische Staatspräsident François Mitterrand und der damalige deutsche Bundeskanzler Helmut Kohl gedenken in Verdun gemeinsam der Toten beider Weltkriege. Welches Ziel der Europäischen Union wird bei diesem Treffen deutlich?",
+    "answers": [
+      "Freundschaft zwischen England und Deutschland",
+      "Reisefreiheit in alle Länder der EU",
+      "Frieden und Sicherheit in den Ländern der EU",
+      "einheitliche Feiertage in den Ländern der EU"
+    ],
+    "correct": 2,
+    "bamfId": "4601",
+    "pdfPage": 88,
+    "image": "assets/question-235.png",
+    "imageCredit": "© Bundesregierung/Richard Schulze-Vorberg"
+  },
+  {
+    "id": 236,
+    "region": "Deutschland",
+    "de": "Wie viele Mitgliedstaaten hat die EU heute?",
+    "answers": [
+      "21",
+      "23",
+      "25",
+      "27"
+    ],
+    "correct": 3,
+    "bamfId": "4599",
+    "pdfPage": 89
+  },
+  {
+    "id": 237,
+    "region": "Deutschland",
+    "de": "2007 wurde das 50-jährige Jubiläum der \"Römischen Verträge\" gefeiert. Was war der Inhalt der Verträge?",
+    "answers": [
+      "Beitritt Deutschlands zur NATO",
+      "Gründung der Europäischen Wirtschaftsgemeinschaft (EWG)",
+      "Verpflichtung Deutschlands zu Reparationsleistungen",
+      "Festlegung der Oder-Neiße-Linie als Ostgrenze"
+    ],
+    "correct": 1,
+    "bamfId": "4603",
+    "pdfPage": 89
+  },
+  {
+    "id": 238,
+    "region": "Deutschland",
+    "de": "An welchen Orten arbeitet das Europäische Parlament?",
+    "answers": [
+      "Paris, London und Den Haag",
+      "Straßburg, Luxemburg und Brüssel",
+      "Rom, Bern und Wien",
+      "Bonn, Zürich und Mailand"
+    ],
+    "correct": 1,
+    "bamfId": "4593",
+    "pdfPage": 89
+  },
+  {
+    "id": 239,
+    "region": "Deutschland",
+    "de": "Durch welche Verträge schloss sich die Bundesrepublik Deutschland mit anderen Staaten zur Europäischen Wirtschaftsgemeinschaft zusammen?",
+    "answers": [
+      "durch die \"Hamburger Verträge\"",
+      "durch die \"Römischen Verträge\"",
+      "durch die \"Pariser Verträge\"",
+      "durch die \"Londoner Verträge\""
+    ],
+    "correct": 1,
+    "bamfId": "4604",
+    "pdfPage": 90
+  },
+  {
+    "id": 240,
+    "region": "Deutschland",
+    "de": "Seit wann bezahlt man in Deutschland mit dem Euro in bar?",
+    "answers": [
+      "1995",
+      "1998",
+      "2002",
+      "2005"
+    ],
+    "correct": 2,
+    "bamfId": "4594",
+    "pdfPage": 90
+  },
+  {
+    "id": 241,
+    "region": "Deutschland",
+    "de": "Frau Seger bekommt ein Kind. Was muss sie tun, um Elterngeld zu erhalten?",
+    "answers": [
+      "Sie muss an ihre Krankenkasse schreiben.",
+      "Sie muss einen Antrag bei der Elterngeldstelle stellen.",
+      "Sie muss nichts tun, denn sie bekommt automatisch Elterngeld.",
+      "Sie muss das Arbeitsamt um Erlaubnis bitten."
+    ],
+    "correct": 1,
+    "bamfId": "4359",
+    "pdfPage": 90
+  },
+  {
+    "id": 242,
+    "region": "Deutschland",
+    "de": "Wer entscheidet, ob ein Kind in Deutschland in den Kindergarten geht?",
+    "answers": [
+      "der Staat",
+      "die Bundesländer",
+      "die Eltern/die Erziehungsberechtigten",
+      "die Schulen"
+    ],
+    "correct": 2,
+    "bamfId": "4360",
+    "pdfPage": 91
+  },
+  {
+    "id": 243,
+    "region": "Deutschland",
+    "de": "Maik und Sybille wollen mit Freunden an ihrem deutschen Wohnort eine Demonstration auf der Straße abhalten. Was müssen sie vorher tun?",
+    "answers": [
+      "Sie müssen die Demonstration anmelden.",
+      "Sie müssen nichts tun. Man darf in Deutschland jederzeit überall demonstrieren.",
+      "Sie können gar nichts tun, denn Demonstrationen sind in Deutschland grundsätzlich verboten.",
+      "Maik und Sybille müssen einen neuen Verein gründen, weil nur Vereine demonstrieren dürfen."
+    ],
+    "correct": 0,
+    "bamfId": "4723",
+    "pdfPage": 91
+  },
+  {
+    "id": 244,
+    "region": "Deutschland",
+    "de": "Welchen Schulabschluss braucht man normalerweise, um an einer Universität in Deutschland ein Studium zu beginnen?",
+    "answers": [
+      "das Abitur",
+      "ein Diplom",
+      "die Prokura",
+      "eine Gesellenprüfung"
+    ],
+    "correct": 0,
+    "bamfId": "4349",
+    "pdfPage": 91
+  },
+  {
+    "id": 245,
+    "region": "Deutschland",
+    "de": "Wer darf in Deutschland nicht als Paar zusammenleben?",
+    "answers": [
+      "Hans (20 Jahre) und Marie (19 Jahre)",
+      "Tom (20 Jahre) und Klaus (45 Jahre)",
+      "Sofie (35 Jahre) und Lisa (40 Jahre)",
+      "Anne (13 Jahre) und Tim (25 Jahre)"
+    ],
+    "correct": 3,
+    "bamfId": "4356",
+    "pdfPage": 92
+  },
+  {
+    "id": 246,
+    "region": "Deutschland",
+    "de": "Ab welchem Alter ist man in Deutschland volljährig?",
+    "answers": [
+      "16",
+      "18",
+      "19",
+      "21"
+    ],
+    "correct": 1,
+    "bamfId": "4341",
+    "pdfPage": 92
+  },
+  {
+    "id": 247,
+    "region": "Deutschland",
+    "de": "Eine Frau ist schwanger. Sie ist kurz vor und nach der Geburt ihres Kindes vom Gesetz besonders beschützt. Wie heißt dieser Schutz?",
+    "answers": [
+      "Elternzeit",
+      "Mutterschutz",
+      "Geburtsvorbereitung",
+      "Wochenbett"
+    ],
+    "correct": 1,
+    "bamfId": "4344",
+    "pdfPage": 92
+  },
+  {
+    "id": 248,
+    "region": "Deutschland",
+    "de": "Die Erziehung der Kinder ist in Deutschland vor allem Aufgabe …",
+    "answers": [
+      "des Staates.",
+      "der Eltern.",
+      "der Großeltern.",
+      "der Schulen."
+    ],
+    "correct": 1,
+    "bamfId": "4351",
+    "pdfPage": 93
+  },
+  {
+    "id": 249,
+    "region": "Deutschland",
+    "de": "Wer ist in Deutschland hauptsächlich verantwortlich für die Kindererziehung?",
+    "answers": [
+      "der Staat",
+      "die Eltern",
+      "die Verwandten",
+      "die Schulen"
+    ],
+    "correct": 1,
+    "bamfId": "4352",
+    "pdfPage": 93
+  },
+  {
+    "id": 250,
+    "region": "Deutschland",
+    "de": "In Deutschland hat man die besten Chancen auf einen gut bezahlten Arbeitsplatz, wenn man …",
+    "answers": [
+      "katholisch ist.",
+      "gut ausgebildet ist.",
+      "eine Frau ist.",
+      "Mitglied einer Partei ist."
+    ],
+    "correct": 1,
+    "bamfId": "4350",
+    "pdfPage": 93
+  },
+  {
+    "id": 251,
+    "region": "Deutschland",
+    "de": "Wenn man in Deutschland ein Kind schlägt, …",
+    "answers": [
+      "geht das niemanden etwas an.",
+      "geht das nur die Familie etwas an.",
+      "kann man dafür nicht bestraft werden.",
+      "kann man dafür bestraft werden."
+    ],
+    "correct": 3,
+    "bamfId": "4338",
+    "pdfPage": 94
+  },
+  {
+    "id": 252,
+    "region": "Deutschland",
+    "de": "In Deutschland …",
+    "answers": [
+      "darf man zur gleichen Zeit nur mit einem Partner / einer Partnerin verheiratet sein.",
+      "kann man mehrere Ehepartner / Ehepartnerinnen gleichzeitig haben.",
+      "darf man nicht wieder heiraten, wenn man einmal verheiratet war.",
+      "darf eine Frau nicht wieder heiraten, wenn ihr Mann gestorben ist."
+    ],
+    "correct": 0,
+    "bamfId": "4326",
+    "pdfPage": 94
+  },
+  {
+    "id": 253,
+    "region": "Deutschland",
+    "de": "Wo müssen Sie sich anmelden, wenn Sie in Deutschland umziehen?",
+    "answers": [
+      "beim Einwohnermeldeamt",
+      "beim Standesamt",
+      "beim Ordnungsamt",
+      "beim Gewerbeamt"
+    ],
+    "correct": 0,
+    "bamfId": "4327",
+    "pdfPage": 94
+  },
+  {
+    "id": 254,
+    "region": "Deutschland",
+    "de": "In Deutschland dürfen Ehepaare sich scheiden lassen. Meistens müssen sie dazu das \"Trennungsjahr\" einhalten. Was bedeutet das?",
+    "answers": [
+      "Der Scheidungsprozess dauert ein Jahr",
+      "Die Ehegatten sind ein Jahr verheiratet, dann ist die Scheidung möglich",
+      "Das Besuchsrecht für die Kinder gilt ein Jahr",
+      "Die Ehegatten führen mindestens ein Jahr getrennt ihr eigenes Leben. Danach ist die Scheidung möglich"
+    ],
+    "correct": 3,
+    "bamfId": "4332",
+    "pdfPage": 95
+  },
+  {
+    "id": 255,
+    "region": "Deutschland",
+    "de": "Bei Erziehungsproblemen können Eltern in Deutschland Hilfe erhalten vom …",
+    "answers": [
+      "Ordnungsamt.",
+      "Schulamt.",
+      "Jugendamt.",
+      "Gesundheitsamt."
+    ],
+    "correct": 2,
+    "bamfId": "4355",
+    "pdfPage": 95
+  },
+  {
+    "id": 256,
+    "region": "Deutschland",
+    "de": "Ein Ehepaar möchte in Deutschland ein Restaurant eröffnen. Was braucht es dazu unbedingt?",
+    "answers": [
+      "eine Erlaubnis der Polizei",
+      "eine Genehmigung einer Partei",
+      "eine Genehmigung des Einwohnermeldeamts",
+      "eine Gaststättenerlaubnis von der zuständigen Behörde"
+    ],
+    "correct": 3,
+    "bamfId": "4333",
+    "pdfPage": 95
+  },
+  {
+    "id": 257,
+    "region": "Deutschland",
+    "de": "Eine erwachsene Frau möchte in Deutschland das Abitur nachholen. Das kann sie an …",
+    "answers": [
+      "einer Hochschule.",
+      "einem Abendgymnasium.",
+      "einer Hauptschule.",
+      "einer Privatuniversität."
+    ],
+    "correct": 1,
+    "bamfId": "4346",
+    "pdfPage": 96
+  },
+  {
+    "id": 258,
+    "region": "Deutschland",
+    "de": "Was darf das Jugendamt in Deutschland?",
+    "answers": [
+      "Es entscheidet, welche Schule das Kind besucht.",
+      "Es kann ein Kind, das geschlagen wird oder hungern muss, aus der Familie nehmen.",
+      "Es bezahlt das Kindergeld an die Eltern.",
+      "Es kontrolliert, ob das Kind einen Kindergarten besucht."
+    ],
+    "correct": 1,
+    "bamfId": "4328",
+    "pdfPage": 96
+  },
+  {
+    "id": 259,
+    "region": "Deutschland",
+    "de": "Das Berufsinformationszentrum BIZ bei der Bundesagentur für Arbeit in Deutschland hilft bei der …",
+    "answers": [
+      "Rentenberechnung.",
+      "Lehrstellensuche.",
+      "Steuererklärung.",
+      "Krankenversicherung."
+    ],
+    "correct": 1,
+    "bamfId": "4353",
+    "pdfPage": 96
+  },
+  {
+    "id": 260,
+    "region": "Deutschland",
+    "de": "In Deutschland hat ein Kind in der Schule …",
+    "answers": [
+      "Recht auf unbegrenzte Freizeit.",
+      "Wahlfreiheit für alle Fächer.",
+      "Anspruch auf Schulgeld.",
+      "Anwesenheitspflicht."
+    ],
+    "correct": 3,
+    "bamfId": "4347",
+    "pdfPage": 97
+  },
+  {
+    "id": 261,
+    "region": "Deutschland",
+    "de": "Ein Mann möchte mit 30 Jahren in Deutschland sein Abitur nachholen. Wo kann er das tun? An …",
+    "answers": [
+      "einer Hochschule",
+      "einem Abendgymnasium",
+      "einer Hauptschule",
+      "einer Privatuniversität"
+    ],
+    "correct": 1,
+    "bamfId": "4345",
+    "pdfPage": 97
+  },
+  {
+    "id": 262,
+    "region": "Deutschland",
+    "de": "Was bedeutet in Deutschland der Grundsatz der Gleichbehandlung?",
+    "answers": [
+      "Niemand darf z.B. wegen einer Behinderung benachteiligt werden.",
+      "Man darf andere Personen benachteiligen, wenn ausreichende persönliche Gründe hierfür vorliegen.",
+      "Niemand darf gegen Personen klagen, wenn sie benachteiligt wurden.",
+      "Es ist für alle Gesetz, benachteiligten Gruppen jährlich Geld zu spenden."
+    ],
+    "correct": 0,
+    "bamfId": "4342",
+    "pdfPage": 97
+  },
+  {
+    "id": 263,
+    "region": "Deutschland",
+    "de": "In Deutschland sind Jugendliche ab 14 Jahren strafmündig. Das bedeutet: Jugendliche, die 14 Jahre und älter sind und gegen Strafgesetze verstoßen, …",
+    "answers": [
+      "werden bestraft.",
+      "werden wie Erwachsene behandelt.",
+      "teilen die Strafe mit ihren Eltern.",
+      "werden nicht bestraft."
+    ],
+    "correct": 0,
+    "bamfId": "4337",
+    "pdfPage": 98
+  },
+  {
+    "id": 264,
+    "region": "Deutschland",
+    "de": "Zu welchem Fest tragen Menschen in Deutschland bunte Kostüme und Masken?",
+    "answers": [
+      "am Rosenmontag",
+      "am Maifeiertag",
+      "beim Oktoberfest",
+      "an Pfingsten"
+    ],
+    "correct": 0,
+    "bamfId": "4513",
+    "pdfPage": 98
+  },
+  {
+    "id": 265,
+    "region": "Deutschland",
+    "de": "Wohin muss man in Deutschland zuerst gehen, wenn man heiraten möchte?",
+    "answers": [
+      "zum Einwohnermeldeamt",
+      "zum Ordnungsamt",
+      "zur Agentur für Arbeit",
+      "zum Standesamt"
+    ],
+    "correct": 3,
+    "bamfId": "4330",
+    "pdfPage": 98
+  },
+  {
+    "id": 266,
+    "region": "Deutschland",
+    "de": "Wann beginnt die gesetzliche Nachtruhe in Deutschland?",
+    "answers": [
+      "wenn die Sonne untergeht",
+      "wenn die Nachbarn schlafen gehen",
+      "um 0 Uhr, Mitternacht",
+      "um 22 Uhr"
+    ],
+    "correct": 3,
+    "bamfId": "4321",
+    "pdfPage": 99
+  },
+  {
+    "id": 267,
+    "region": "Deutschland",
+    "de": "Eine junge Frau in Deutschland, 22 Jahre alt, lebt mit ihrem Freund zusammen. Die Eltern der Frau finden das nicht gut, weil ihnen der Freund nicht gefällt. Was können die Eltern tun?",
+    "answers": [
+      "Sie müssen die Entscheidung der volljährigen Tochter respektieren.",
+      "Sie haben das Recht, die Tochter in die elterliche Wohnung zurückzuholen.",
+      "Sie können zur Polizei gehen und die Tochter anzeigen.",
+      "Sie suchen einen anderen Mann für die Tochter."
+    ],
+    "correct": 0,
+    "bamfId": "4336",
+    "pdfPage": 99
+  },
+  {
+    "id": 268,
+    "region": "Deutschland",
+    "de": "Eine junge Frau will den Führerschein machen. Sie hat Angst vor der Prüfung, weil ihre Muttersprache nicht Deutsch ist. Was ist richtig?",
+    "answers": [
+      "Sie muss mindestens zehn Jahre in Deutschland leben, bevor sie den Führerschein machen kann.",
+      "Wenn sie kein Deutsch kann, darf sie keinen Führerschein haben.",
+      "Sie muss den Führerschein in dem Land machen, in dem man ihre Sprache spricht.",
+      "Sie kann die Theorie-Prüfung vielleicht in ihrer Muttersprache machen. Es gibt mehr als zehn Sprachen zur Auswahl."
+    ],
+    "correct": 3,
+    "bamfId": "4358",
+    "pdfPage": 99
+  },
+  {
+    "id": 269,
+    "region": "Deutschland",
+    "de": "In Deutschland haben Kinder ab dem Alter von drei Jahren bis zur Ersteinschulung einen Anspruch auf …",
+    "answers": [
+      "monatliches Taschengeld.",
+      "einen Platz in einem Sportverein.",
+      "einen Kindergartenplatz.",
+      "einen Ferienpass."
+    ],
+    "correct": 2,
+    "bamfId": "4357",
+    "pdfPage": 100
+  },
+  {
+    "id": 270,
+    "region": "Deutschland",
+    "de": "Die Volkshochschule in Deutschland ist eine Einrichtung …",
+    "answers": [
+      "für den Religionsunterricht.",
+      "nur für Jugendliche.",
+      "zur Weiterbildung.",
+      "nur für Rentner und Rentnerinnen."
+    ],
+    "correct": 2,
+    "bamfId": "4354",
+    "pdfPage": 100
+  },
+  {
+    "id": 271,
+    "region": "Deutschland",
+    "de": "Was ist in Deutschland ein Brauch zu Weihnachten?",
+    "answers": [
+      "bunte Eier verstecken",
+      "einen Tannenbaum schmücken",
+      "sich mit Masken und Kostümen verkleiden",
+      "Kürbisse vor die Tür stellen"
+    ],
+    "correct": 1,
+    "bamfId": "4515",
+    "pdfPage": 100
+  },
+  {
+    "id": 272,
+    "region": "Deutschland",
+    "de": "Welche Lebensform ist in Deutschland nicht erlaubt?",
+    "answers": [
+      "Mann und Frau sind geschieden und leben mit neuen Partnern zusammen.",
+      "Zwei Frauen leben zusammen.",
+      "Ein alleinerziehender Vater lebt mit seinen zwei Kindern zusammen.",
+      "Ein Mann ist mit zwei Frauen zur selben Zeit verheiratet."
+    ],
+    "correct": 3,
+    "bamfId": "4334",
+    "pdfPage": 101
+  },
+  {
+    "id": 273,
+    "region": "Deutschland",
+    "de": "Bei Erziehungsproblemen gehen Sie in Deutschland …",
+    "answers": [
+      "zum Arzt / zur Ärztin.",
+      "zum Gesundheitsamt.",
+      "zum Einwohnermeldeamt.",
+      "zum Jugendamt."
+    ],
+    "correct": 3,
+    "bamfId": "4335",
+    "pdfPage": 101
+  },
+  {
+    "id": 274,
+    "region": "Deutschland",
+    "de": "Sie haben in Deutschland absichtlich einen Brief geöffnet, der an eine andere Person adressiert ist. Was haben Sie nicht beachtet?",
+    "answers": [
+      "das Schweigerecht",
+      "das Briefgeheimnis",
+      "die Schweigepflicht",
+      "die Meinungsfreiheit"
+    ],
+    "correct": 1,
+    "bamfId": "4364",
+    "pdfPage": 101
+  },
+  {
+    "id": 275,
+    "region": "Deutschland",
+    "de": "Was braucht man in Deutschland für eine Ehescheidung?",
+    "answers": [
+      "die Einwilligung der Eltern",
+      "ein Attest eines Arztes / einer Ärztin",
+      "die Einwilligung der Kinder",
+      "die Unterstützung eines Anwalts / einer Anwältin"
+    ],
+    "correct": 3,
+    "bamfId": "4329",
+    "pdfPage": 102
+  },
+  {
+    "id": 276,
+    "region": "Deutschland",
+    "de": "Was sollten Sie tun, wenn Sie von Ihrer Ansprechpartnerin/Ihrem Ansprechpartner in einer deutschen Behörde schlecht behandelt werden?",
+    "answers": [
+      "Ich kann nichts tun.",
+      "Ich muss mir diese Behandlung gefallen lassen.",
+      "Ich drohe der Person.",
+      "Ich kann mich beim Behördenleiter / bei der Behördenleiterin beschweren."
+    ],
+    "correct": 3,
+    "bamfId": "4361",
+    "pdfPage": 102
+  },
+  {
+    "id": 277,
+    "region": "Deutschland",
+    "de": "Eine Frau, die ein zweijähriges Kind hat, bewirbt sich in Deutschland um eine Stelle. Was ist ein Beispiel für Diskriminierung? Sie bekommt die Stelle nur deshalb nicht, weil sie …",
+    "answers": [
+      "kein Englisch spricht.",
+      "zu hohe Gehaltsvorstellungen hat.",
+      "keine Erfahrungen in diesem Beruf hat.",
+      "Mutter ist."
+    ],
+    "correct": 3,
+    "bamfId": "4323",
+    "pdfPage": 102
+  },
+  {
+    "id": 278,
+    "region": "Deutschland",
+    "de": "Ein Mann im Rollstuhl hat sich auf eine Stelle als Buchhalter beworben. Was ist ein Beispiel für Diskriminierung? Er bekommt die Stelle nur deshalb nicht, weil er …",
+    "answers": [
+      "im Rollstuhl sitzt.",
+      "keine Erfahrung hat.",
+      "zu hohe Gehaltsvorstellungen hat.",
+      "kein Englisch spricht."
+    ],
+    "correct": 0,
+    "bamfId": "4343",
+    "pdfPage": 103
+  },
+  {
+    "id": 279,
+    "region": "Deutschland",
+    "de": "In den meisten Mietshäusern in Deutschland gibt es eine \"Hausordnung\". Was steht in einer solchen \"Hausordnung\"? Sie nennt …",
+    "answers": [
+      "Regeln für die Benutzung öffentlicher Verkehrsmittel.",
+      "alle Mieter und Mieterinnen im Haus.",
+      "Regeln, an die sich alle Bewohner und Bewohnerinnen halten müssen.",
+      "die Adresse des nächsten Ordnungsamtes."
+    ],
+    "correct": 2,
+    "bamfId": "4365",
+    "pdfPage": 103
+  },
+  {
+    "id": 280,
+    "region": "Deutschland",
+    "de": "Wenn Sie sich in Deutschland gegen einen falschen Steuerbescheid wehren wollen, müssen Sie …",
+    "answers": [
+      "nichts machen.",
+      "den Bescheid wegwerfen.",
+      "Einspruch einlegen.",
+      "warten, bis ein anderer Bescheid kommt."
+    ],
+    "correct": 2,
+    "bamfId": "4362",
+    "pdfPage": 103
+  },
+  {
+    "id": 281,
+    "region": "Deutschland",
+    "de": "Zwei Freunde wollen in ein öffentliches Schwimmbad in Deutschland. Beide haben eine dunkle Hautfarbe und werden deshalb nicht hineingelassen. Welches Recht wird in dieser Situation verletzt? Das Recht auf …",
+    "answers": [
+      "Meinungsfreiheit.",
+      "Gleichbehandlung.",
+      "Versammlungsfreiheit.",
+      "Freizügigkeit."
+    ],
+    "correct": 1,
+    "bamfId": "4339",
+    "pdfPage": 104
+  },
+  {
+    "id": 282,
+    "region": "Deutschland",
+    "de": "Welches Ehrenamt müssen deutsche Staatsbürgerinnen und Staatsbürger übernehmen, wenn sie dazu aufgefordert werden?",
+    "answers": [
+      "Vereinstrainer / Vereinstrainerin",
+      "Wahlhelfer / Wahlhelferin",
+      "Bibliotheksaufsicht",
+      "Lehrer / Lehrerin"
+    ],
+    "correct": 1,
+    "bamfId": "4760",
+    "pdfPage": 104
+  },
+  {
+    "id": 283,
+    "region": "Deutschland",
+    "de": "Was tun Sie, wenn Sie eine falsche Rechnung von einer deutschen Behörde bekommen?",
+    "answers": [
+      "Ich lasse die Rechnung liegen.",
+      "Ich lege Widerspruch bei der Behörde ein.",
+      "Ich schicke die Rechnung an die Behörde zurück.",
+      "Ich gehe mit der Rechnung zum Finanzamt."
+    ],
+    "correct": 1,
+    "bamfId": "4325",
+    "pdfPage": 104
+  },
+  {
+    "id": 284,
+    "region": "Deutschland",
+    "de": "Was man für die Arbeit können muss, ändert sich in Zukunft sehr schnell. Was kann man tun?",
+    "answers": [
+      "Es ist egal, was man lernt.",
+      "Erwachsene müssen auch nach der Ausbildung immer weiter lernen.",
+      "Kinder lernen in der Schule alles, was im Beruf wichtig ist. Nach der Schule muss man nicht weiter lernen.",
+      "Alle müssen früher aufhören zu arbeiten, weil sich alles ändert."
+    ],
+    "correct": 1,
+    "bamfId": "4348",
+    "pdfPage": 105
+  },
+  {
+    "id": 285,
+    "region": "Deutschland",
+    "de": "Frau Frost arbeitet als fest angestellte Mitarbeiterin in einem Büro. Was muss sie nicht von ihrem Gehalt bezahlen?",
+    "answers": [
+      "Lohnsteuer",
+      "Beiträge zur Arbeitslosenversicherung",
+      "Beiträge zur Renten- und Krankenversicherung",
+      "Umsatzsteuer"
+    ],
+    "correct": 3,
+    "bamfId": "4724",
+    "pdfPage": 105
+  },
+  {
+    "id": 286,
+    "region": "Deutschland",
+    "de": "Welche Organisation in einer Firma hilft den Arbeitnehmerinnen und Arbeitnehmern bei Problemen mit der Arbeitgeberin/dem Arbeitgeber?",
+    "answers": [
+      "der Betriebsrat",
+      "der Betriebsprüfer / die Betriebsprüferin",
+      "die Betriebsgruppe",
+      "das Betriebsmanagement"
+    ],
+    "correct": 0,
+    "bamfId": "4331",
+    "pdfPage": 105
+  },
+  {
+    "id": 287,
+    "region": "Deutschland",
+    "de": "Sie möchten bei einer Firma in Deutschland ihr Arbeitsverhältnis beenden. Was müssen Sie beachten?",
+    "answers": [
+      "die Gehaltszahlungen",
+      "die Arbeitszeit",
+      "die Kündigungsfrist",
+      "die Versícherungspflicht"
+    ],
+    "correct": 2,
+    "bamfId": "4322",
+    "pdfPage": 106
+  },
+  {
+    "id": 288,
+    "region": "Deutschland",
+    "de": "Woraus begründet sich Deutschlands besondere Verantwortung für Israel?",
+    "answers": [
+      "aus der Mitgliedschaft in der Europäischen Union (EU)",
+      "aus den nationalsozialistischen Verbrechen gegen Juden",
+      "aus dem Grundgesetz der Bundesrepublik Deutschland",
+      "aus der christlichen Tradition"
+    ],
+    "correct": 1,
+    "bamfId": "4324",
+    "pdfPage": 106
+  },
+  {
+    "id": 289,
+    "region": "Deutschland",
+    "de": "Ein Mann mit dunkler Hautfarbe bewirbt sich um eine Stelle als Kellner in einem Restaurant in Deutschland. Was ist ein Beispiel für Diskriminierung? Er bekommt die Stelle nur deshalb nicht, weil …",
+    "answers": [
+      "seine Deutschkenntnisse zu gering sind.",
+      "er zu hohe Gehaltsvorstellungen hat.",
+      "er eine dunkle Haut hat.",
+      "er keine Erfahrungen im Beruf hat."
+    ],
+    "correct": 2,
+    "bamfId": "4340",
+    "pdfPage": 107
+  },
+  {
+    "id": 290,
+    "region": "Deutschland",
+    "de": "Sie haben in Deutschland einen Fernseher gekauft. Zu Hause packen Sie den Fernseher aus, doch er funktioniert nicht. Der Fernseher ist kaputt. Was können Sie machen?",
+    "answers": [
+      "eine Anzeige schreiben",
+      "den Fernseher reklamieren",
+      "das Gerät ungefragt austauschen",
+      "die Garantie verlängern"
+    ],
+    "correct": 1,
+    "bamfId": "4363",
+    "pdfPage": 108
+  },
+  {
+    "id": 291,
+    "region": "Deutschland",
+    "de": "Warum muss man in Deutschland bei der Steuererklärung aufschreiben, ob man zu einer Kirche gehört oder nicht? Weil …",
+    "answers": [
+      "es eine Kirchensteuer gibt, die an die Einkommen- und Lohnsteuer geknüpft ist.",
+      "das für die Statistik in Deutschland wichtig ist.",
+      "man mehr Steuern zahlen muss, wenn man nicht zu einer Kirche gehört.",
+      "die Kirche für die Steuererklärung verantwortlich ist."
+    ],
+    "correct": 0,
+    "bamfId": "4516",
+    "pdfPage": 108
+  },
+  {
+    "id": 292,
+    "region": "Deutschland",
+    "de": "Die Menschen in Deutschland leben nach dem Grundsatz der religiösen Toleranz. Was bedeutet das?",
+    "answers": [
+      "Es dürfen keine Moscheen gebaut werden.",
+      "Alle Menschen glauben an Gott.",
+      "Jeder kann glauben, was er möchte.",
+      "Der Staat entscheidet, an welchen Gott die Menschen glauben."
+    ],
+    "correct": 2,
+    "bamfId": "4366",
+    "pdfPage": 108
+  },
+  {
+    "id": 293,
+    "region": "Deutschland",
+    "de": "Was ist in Deutschland ein Brauch zu Ostern?",
+    "answers": [
+      "Kürbisse vor die Tür stellen",
+      "einen Tannenbaum schmücken",
+      "Eier bemalen",
+      "Raketen in die Luft schießen"
+    ],
+    "correct": 2,
+    "bamfId": "4512",
+    "pdfPage": 109
+  },
+  {
+    "id": 294,
+    "region": "Deutschland",
+    "de": "Pfingsten ist ein …",
+    "answers": [
+      "christlicher Feiertag.",
+      "deutscher Gedenktag.",
+      "internationaler Trauertag.",
+      "bayerischer Brauch."
+    ],
+    "correct": 0,
+    "bamfId": "4511",
+    "pdfPage": 109
+  },
+  {
+    "id": 295,
+    "region": "Deutschland",
+    "de": "Welche Religion hat die europäische und deutsche Kultur geprägt?",
+    "answers": [
+      "der Hinduismus",
+      "das Christentum",
+      "der Buddhismus",
+      "der Islam"
+    ],
+    "correct": 1,
+    "bamfId": "4517",
+    "pdfPage": 109
+  },
+  {
+    "id": 296,
+    "region": "Deutschland",
+    "de": "In Deutschland nennt man die letzten vier Wochen vor Weihnachten …",
+    "answers": [
+      "den Buß- und Bettag.",
+      "das Erntedankfest.",
+      "die Adventszeit.",
+      "Allerheiligen."
+    ],
+    "correct": 2,
+    "bamfId": "4514",
+    "pdfPage": 110
+  },
+  {
+    "id": 297,
+    "region": "Deutschland",
+    "de": "Aus welchem Land sind die meisten Migrantinnen und Migranten nach Deutschland gekommen?",
+    "answers": [
+      "Italien",
+      "Polen",
+      "Marokko",
+      "Türkei"
+    ],
+    "correct": 3,
+    "bamfId": "4519",
+    "pdfPage": 110
+  },
+  {
+    "id": 298,
+    "region": "Deutschland",
+    "de": "In der DDR lebten vor allem Migrantinnen und Migranten aus …",
+    "answers": [
+      "Vietnam, Polen, Mosambik.",
+      "Frankreich, Rumänien, Somalia.",
+      "Chile, Ungarn, Simbabwe.",
+      "Nordkorea, Mexiko, Ägypten."
+    ],
+    "correct": 0,
+    "bamfId": "4518",
+    "pdfPage": 110
+  },
+  {
+    "id": 299,
+    "region": "Deutschland",
+    "de": "Ausländische Arbeitnehmerinnen und Arbeitnehmer, die in den 50er und 60er Jahren von der Bundesrepublik Deutschland angeworben wurden, nannte man …",
+    "answers": [
+      "Schwarzarbeiter / Schwarzarbeiterinnen.",
+      "Gastarbeiter / Gastarbeiterinnen.",
+      "Zeitarbeiter /Zeitarbeiterinnen.",
+      "Schichtarbeiter / Schichtarbeiterinnen."
+    ],
+    "correct": 1,
+    "bamfId": "4521",
+    "pdfPage": 111
+  },
+  {
+    "id": 300,
+    "region": "Deutschland",
+    "de": "Aus welchem Land kamen die ersten Gastarbeiterinnen und Gastarbeiter in die Bundesrepublik Deutschland?",
+    "answers": [
+      "Italien",
+      "Spanien",
+      "Portugal",
+      "Türkei"
+    ],
+    "correct": 0,
+    "bamfId": "4520",
+    "pdfPage": 111
+  },
+  {
+    "id": 301,
+    "region": "Bayern",
+    "de": "Welches Wappen gehört zum Freistaat Bayern?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 1,
+    "bamfId": "4468",
+    "pdfPage": 117,
+    "image": "assets/question-301.png",
+    "imageCredit": ""
+  },
+  {
+    "id": 302,
+    "region": "Bayern",
+    "de": "Welches ist ein Landkreis in Bayern?",
+    "answers": [
+      "Prignitz",
+      "Rhein-Sieg-Kreis",
+      "Nordfriesland",
+      "Altötting"
+    ],
+    "correct": 3,
+    "bamfId": "4504",
+    "pdfPage": 117
+  },
+  {
+    "id": 303,
+    "region": "Bayern",
+    "de": "Für wie viele Jahre wird der Landtag in Bayern gewählt?",
+    "answers": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "correct": 2,
+    "bamfId": "4503",
+    "pdfPage": 118
+  },
+  {
+    "id": 304,
+    "region": "Bayern",
+    "de": "Ab welchem Alter darf man in Bayern bei Kommunalwahlen wählen?",
+    "answers": [
+      "14",
+      "16",
+      "18",
+      "20"
+    ],
+    "correct": 2,
+    "bamfId": "4489",
+    "pdfPage": 118
+  },
+  {
+    "id": 305,
+    "region": "Bayern",
+    "de": "Welche Farben hat die Landesflagge von Bayern?",
+    "answers": [
+      "blau-weiß-rot",
+      "weiß-blau",
+      "grün-weiß-rot",
+      "schwarz-gelb"
+    ],
+    "correct": 1,
+    "bamfId": "4420",
+    "pdfPage": 118
+  },
+  {
+    "id": 306,
+    "region": "Bayern",
+    "de": "Wo können Sie sich in Bayern über politische Themen informieren?",
+    "answers": [
+      "beim Ordnungsamt der Gemeinde",
+      "bei der Landeszentrale für politische Bildung",
+      "bei der Verbraucherzentrale",
+      "bei den Kirchen"
+    ],
+    "correct": 1,
+    "bamfId": "4435",
+    "pdfPage": 119
+  },
+  {
+    "id": 307,
+    "region": "Bayern",
+    "de": "Die Landeshauptstadt von Bayern heißt …",
+    "answers": [
+      "Ingolstadt.",
+      "Regensburg.",
+      "Nürnberg.",
+      "München."
+    ],
+    "correct": 3,
+    "bamfId": "4413",
+    "pdfPage": 119
+  },
+  {
+    "id": 308,
+    "region": "Bayern",
+    "de": "Welches Bundesland ist Bayern?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 3,
+    "bamfId": "4380",
+    "pdfPage": 120,
+    "image": "assets/question-308.png",
+    "imageCredit": ""
+  },
+  {
+    "id": 309,
+    "region": "Bayern",
+    "de": "Wie nennt man die Regierungschefin/den Regierungschef in Bayern?",
+    "answers": [
+      "Erster Minister/ Erste Ministerin",
+      "Premierminister/ Premierministerin",
+      "Bürgermeister/ Bürgermeisterin",
+      "Ministerpräsident/ Ministerpräsidentin"
+    ],
+    "correct": 3,
+    "bamfId": "4401",
+    "pdfPage": 121
+  },
+  {
+    "id": 310,
+    "region": "Bayern",
+    "de": "Welche Ministerin/welchen Minister hat Bayern nicht?",
+    "answers": [
+      "Justizminister/ Justizministerin",
+      "Außenminister/ Außenministerin",
+      "Finanzminister/ Finanzministerin",
+      "Innenminister/ Innenministerin"
+    ],
+    "correct": 1,
+    "bamfId": "4692",
+    "pdfPage": 121
+  }
+]

@@ -1,0 +1,93 @@
+{
+  "verifiedOn": "2026-10-28",
+  "region": "Bayern",
+  "count": 310,
+  "generalCount": 300,
+  "regionalCount": 10,
+  "questionSource": "https://www.bamf.de/SharedDocs/Anlagen/DE/Integration/Einbuergerung/gesamtfragenkatalog-lebenindeutschland.pdf?__blob=publicationFile&v=22",
+  "pdfEdition": "2025-05-07",
+  "pdfSha256": "edd3ed5e56a35241b6cc61aa0630482dc9e64498db508a7d6892ccee2ec707a9",
+  "answerSource": "https://oet.bamf.de/ords/oetut/f?p=534:1::::::",
+  "answerVerification": "All 310 answer orders and correct indices read from the official Bayern catalogue; correct option identified by its FARBE marker. German questions transcribed from the official PDF; updated text stems taken from the online catalogue.",
+  "translations": "Assistant-authored Russian and English learning aids; not official BAMF translations.",
+  "images": [
+    {
+      "id": 21,
+      "file": "question-021.png",
+      "url": "https://oet.bamf.de/ords/oetut/f?p=534:30::APPLICATION_PROCESS%3Dshow_pag_bild:::F534_PAG_THUMBNAIL,F534_PAG_BILD:,4660",
+      "sha256": "ae07848e3cf8aed60a8dc0e43c186a85c2229166012937da2f131ee6c3634587"
+    },
+    {
+      "id": 55,
+      "file": "question-055.png",
+      "url": "https://oet.bamf.de/ords/oetut/f?p=534:30::APPLICATION_PROCESS%3Dshow_pag_bild:::F534_PAG_THUMBNAIL,F534_PAG_BILD:,4677",
+      "sha256": "4d0968744fccbba059f076bc66569789f696c36c62385520c3890b642964e79b"
+    },
+    {
+      "id": 70,
+      "file": "question-070.png",
+      "url": "https://oet.bamf.de/ords/oetut/f?p=534:30::APPLICATION_PROCESS%3Dshow_pag_bild:::F534_PAG_THUMBNAIL,F534_PAG_BILD:,4658",
+      "sha256": "e70ed5eb8d7e362b8ec8c6aa951df96499e646c7355e000b7ef05d3b96626ead"
+    },
+    {
+      "id": 130,
+      "file": "question-130.png",
+      "url": "https://oet.bamf.de/ords/oetut/f?p=534:30::APPLICATION_PROCESS%3Dshow_pag_bild:::F534_PAG_THUMBNAIL,F534_PAG_BILD:,4758",
+      "sha256": "6f15db25bb7e9455bb6b82da64142eac1b65ec4d5bb3910a0bfcb7b452ed71d8"
+    },
+    {
+      "id": 176,
+      "file": "question-176.png",
+      "url": "https://oet.bamf.de/ords/oetut/f?p=534:30::APPLICATION_PROCESS%3Dshow_pag_bild:::F534_PAG_THUMBNAIL,F534_PAG_BILD:,4550",
+      "sha256": "3da4b68651e1ebd16a8bab1e46f792f3ce5bd7e417ebd4228f0ba9f090fb6060"
+    },
+    {
+      "id": 181,
+      "file": "question-181.png",
+      "url": "https://oet.bamf.de/ords/oetut/f?p=534:30::APPLICATION_PROCESS%3Dshow_pag_bild:::F534_PAG_THUMBNAIL,F534_PAG_BILD:,4552",
+      "sha256": "e7623a4d23dd6e9de27a8a133ba1648a628bbb8bcf3141142cf977abd0eb06ec"
+    },
+    {
+      "id": 187,
+      "file": "question-187.png",
+      "url": "https://oet.bamf.de/ords/oetut/f?p=534:30::APPLICATION_PROCESS%3Dshow_pag_bild:::F534_PAG_THUMBNAIL,F534_PAG_BILD:,4579",
+      "sha256": "303b53843577b3e1a887f17fbcff1f465a909b68aaaea23ce01028b6926b1007"
+    },
+    {
+      "id": 209,
+      "file": "question-209.png",
+      "url": "https://oet.bamf.de/ords/oetut/f?p=534:30::APPLICATION_PROCESS%3Dshow_pag_bild:::F534_PAG_THUMBNAIL,F534_PAG_BILD:,4575",
+      "sha256": "ad30edc032e35a85394d1d23e8e9dfb9686f6e7f65dd341ccd49960a444dd5c3"
+    },
+    {
+      "id": 216,
+      "file": "question-216.png",
+      "url": "https://oet.bamf.de/ords/oetut/f?p=534:30::APPLICATION_PROCESS%3Dshow_pag_bild:::F534_PAG_THUMBNAIL,F534_PAG_BILD:,4699",
+      "sha256": "8c32799e6533dd333860245e72291d42cb7bdf66c0bed6754a61396cc3d7dc35"
+    },
+    {
+      "id": 226,
+      "file": "question-226.png",
+      "url": "https://oet.bamf.de/ords/oetut/f?p=534:30::APPLICATION_PROCESS%3Dshow_pag_bild:::F534_PAG_THUMBNAIL,F534_PAG_BILD:,4597",
+      "sha256": "27baa77b35ae99fd1ccc2e89cf88829a3abbea16ae1b220a6596bd442176c405"
+    },
+    {
+      "id": 235,
+      "file": "question-235.png",
+      "url": "https://oet.bamf.de/ords/oetut/f?p=534:30::APPLICATION_PROCESS%3Dshow_pag_bild:::F534_PAG_THUMBNAIL,F534_PAG_BILD:,4601",
+      "sha256": "662ff530f51a2a94390d8e9af200ad0fad2a277005bbfddda6c12d6755c2a72a"
+    },
+    {
+      "id": 301,
+      "file": "question-301.png",
+      "url": "https://oet.bamf.de/ords/oetut/f?p=534:30::APPLICATION_PROCESS%3Dshow_pag_bild:::F534_PAG_THUMBNAIL,F534_PAG_BILD:,4468",
+      "sha256": "2c9827e05b3b71619621f7b64aa6892b35a457e3cf0f3fffb4ef09d7e0a212d6"
+    },
+    {
+      "id": 308,
+      "file": "question-308.png",
+      "url": "https://oet.bamf.de/ords/oetut/f?p=534:30::APPLICATION_PROCESS%3Dshow_pag_bild:::F534_PAG_THUMBNAIL,F534_PAG_BILD:,4380",
+      "sha256": "a0cb45f1f08932c4a7daf9adc3bbb98cac0da4800ddc21d0e165a06fe6151124"
+    }
+  ]
+}

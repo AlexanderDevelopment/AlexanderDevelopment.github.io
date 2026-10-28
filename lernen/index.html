@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ef">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="Leben in Deutschland: 300 общих вопросов и 10 вопросов Баварии. Учитесь с переводом и повторением ошибок.">
+  <title>Lernen — Leben in Deutschland</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#question-title" data-i18n="skip">Перейти к вопросу</a>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Lernen"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>lernen<span class="brand-dot">.</span></span></a>
+    <div class="brand-sub">LEBEN IN DEUTSCHLAND</div>
+    <label class="language-control"><span class="globe" aria-hidden="true">◎</span><span class="sr-only" data-i18n="interface">Язык интерфейса</span><select id="ui-language" aria-label="Язык интерфейса"><option value="ru">Русский</option><option value="en">English</option></select></label>
+  </header>
+  <main class="page">
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow"><span class="tiny-flag" aria-hidden="true"></span><span data-i18n="eyebrow">ТВОЙ ШАГ К ГЕРМАНИИ</span></p><h1 id="page-title" data-i18n="title">Учимся. Ошибаемся.<br><span>Запоминаем.</span></h1><p class="intro-text" data-i18n="intro">Один вопрос за другим — пока каждый ответ не станет правильным.</p></div>
+      <div class="bavaria-stamp"><span class="diamonds" aria-hidden="true">◆ ◆<br>◆ ◆</span><div><strong>BAYERN</strong><span data-i18n="courseSize">300 общих + 10 региональных</span></div></div>
+    </section>
+    <div id="storage-notice" class="notice" role="status" hidden></div>
+    <div id="sync-notice" class="notice" role="status" hidden></div>
+    <div class="study-layout">
+      <aside class="sidebar" aria-label="Прогресс обучения">
+        <section class="progress-card">
+          <div class="section-heading"><h2 data-i18n="yourProgress">Твой прогресс</h2><span class="live-dot" aria-hidden="true"></span></div>
+          <div class="progress-ring"><svg viewBox="0 0 160 160" aria-hidden="true"><circle class="ring-track" cx="80" cy="80" r="68"/><circle id="ring-fill" class="ring-fill" cx="80" cy="80" r="68" pathLength="100"/></svg><div><strong id="progress-percent">0<span>%</span></strong><span data-i18n="masteredLabel">освоено</span></div></div>
+          <div class="progress-fraction"><strong id="mastered-count">0</strong><span data-i18n="outOf">из 310 вопросов</span></div>
+          <div id="progress-bar" role="progressbar" aria-label="Освоено вопросов" aria-valuemin="0" aria-valuemax="310" aria-valuenow="0"><span></span></div>
+          <div class="stats"><div><span data-i18n="remaining">В очереди</span><strong id="remaining-count">310</strong></div><div><span data-i18n="attempts">Всего ответов</span><strong id="attempt-count">0</strong></div><div><span data-i18n="mistakes">Ошибок</span><strong id="mistake-count">0</strong></div></div>
+          <p class="save-status"><span aria-hidden="true">✓</span><span id="save-status" data-i18n="saved">Прогресс сохраняется в браузере</span></p>
+        </section>
+        <section class="method-card"><span class="loop-symbol" aria-hidden="true">↻</span><h2 data-i18n="methodTitle">Ошибка — часть обучения</h2><p data-i18n="methodText">Не угадал? Вопрос вернётся через 20% оставшейся очереди. Ответил правильно — идём дальше.</p><div class="queue-demo" aria-hidden="true"><i></i><i></i><i class="repeat">↻</i><i></i><i></i><span>20%</span></div></section>
+        <button id="restart" class="text-button" type="button"><span aria-hidden="true">↺</span> <span data-i18n="restart">Начать заново</span></button>
+      </aside>
+      <section class="study-column" aria-label="Тренажёр">
+        <article id="question-card" class="question-card" aria-busy="true">
+          <div class="card-top"><span id="question-number" class="question-number" data-i18n="loading">Загружаем вопросы…</span><span id="question-region" class="region-pill">DEUTSCHLAND</span></div>
+          <div class="question-copy"><div class="question-language">DEUTSCH</div><h2 id="question-title" tabindex="-1"></h2><div class="translation-heading"><span class="translate-icon" aria-hidden="true">文</span><label for="translation-language" class="sr-only" data-i18n="translation">Язык перевода</label><select id="translation-language"><option value="ru">Русский перевод</option><option value="en">English translation</option></select></div><p id="question-translation" class="question-translation"></p></div>
+          <figure id="question-figure" hidden><a id="image-link" target="_blank" rel="noopener"><img id="question-image" alt="" decoding="async"></a><figcaption id="image-credit"></figcaption></figure>
+          <p id="answer-hint" class="answer-hint" data-i18n="chooseAnswer">Выбери один правильный ответ</p>
+          <div id="answers" class="answers"></div>
+          <div id="feedback" class="feedback" role="status" tabindex="-1" hidden></div>
+          <div id="card-bottom" class="card-bottom"><span class="keyboard-hint"><kbd>1</kbd> – <kbd>4</kbd><span data-i18n="keyboard"> для ответа</span></span><button id="next" class="primary-button" type="button" hidden><span data-i18n="next">Следующий вопрос</span><span aria-hidden="true">→</span></button></div>
+        </article>
+        <section id="completion" class="completion" hidden><div class="completion-icon" aria-hidden="true">✓</div><p class="eyebrow">GUT GEMACHT!</p><h2 data-i18n="completeTitle">Все 310. Ты справился!</h2><p data-i18n="completeText">На каждый вопрос дан правильный ответ. Отличная работа!</p><p id="completion-stats"></p><button id="restart-complete" class="primary-button" type="button" data-i18n="again">Пройти ещё раз</button></section>
+        <div id="load-error" class="error-card" role="alert" hidden><h2 data-i18n="loadError">Не удалось загрузить вопросы</h2><p data-i18n="loadErrorText">Проверь подключение к интернету и попробуй ещё раз. Сохранённый прогресс останется на месте.</p><button id="retry" class="primary-button" type="button" data-i18n="retry">Повторить</button></div>
+        <p class="learning-note"><span aria-hidden="true">✦</span><span data-i18n="learningNote">Жирным — слова, на которые стоит обратить внимание. Перевод помогает понять вопрос.</span></p>
+      </section>
+    </div>
+    <footer class="footer"><span>lernen<span class="brand-dot">.</span> <span class="footer-by">by ZweiBier</span></span><div><a href="https://oet.bamf.de/ords/oetut/f?p=534:1::::::" target="_blank" rel="noopener noreferrer" data-i18n="source">Вопросы BAMF ↗</a><span data-i18n="sourceDate">Сверено 28.10.2026</span></div><p data-i18n="disclaimer">Независимый тренажёр. Переводы — учебная помощь, не официальный перевод BAMF. Прогресс хранится только в этом браузере.</p></footer>
+  </main>
+  <dialog id="reset-dialog"><h2 data-i18n="resetTitle">Начать с чистого листа?</h2><p data-i18n="resetText">Текущая очередь и результаты будут сброшены. Все 310 вопросов начнутся заново.</p><div class="dialog-actions"><button id="cancel-reset" class="secondary-button" type="button" data-i18n="cancel">Отмена</button><button id="confirm-reset" class="primary-button" type="button" data-i18n="resetConfirm">Начать заново</button></div></dialog>
+  <noscript><p class="notice">Для тренажёра нужен JavaScript. / JavaScript is required for this trainer.</p></noscript>
+</body>
+</html>
