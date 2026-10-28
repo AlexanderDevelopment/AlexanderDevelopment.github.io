@@ -36,7 +36,7 @@ RESET|confirmation-dialog/cancel-preserves/confirm-recreates310queue;no-other-or
 ## AAAK:TRANSLATED-ANSWER-FEEDBACK-20261028
 
 AUTH|TL-option1/correct-answer-in-result-block-after-wrong-and-right-choice/German-first+italic-RU-or-EN-second+aligned-bold-vocabulary;all310-complete=>offer-mock-exam.
-STATUS|IMPLEMENTED/LOCAL-DATA-TESTS+FULL-COURSE-BROWSER-PASS/PRODUCTION-PENDING|SOURCE_BASE:b3a4684.
+STATUS|COMPLETE/LOCAL-DATA-TESTS+FULL-COURSE-BROWSER+PRODUCTION-PASS|SOURCE_BASE:b3a4684|SOURCE_COMMIT:f0bd41a5420cbf0f36b61e940d1db653734c3670.
 SOURCE|scripts/lernen/answer-translations.tsv/310rows/id+German-emphasis-term+RU+EN;assistant-authored-learning-translations/not-official-or-certified;answer-meaning-reviewed-in-question-context;numeric-image-options-retain-numbers.
 GENERATE|catalog-de.json/correct-index+original-answer-text->build-data.mjs->answer-translations.json/versionbamf-by-answer-feedback-v1/catalogueVersionbamf-by-2026-10-28-v1/310records/de+ru+en.
 RUNTIME|app.mjs/parallel-local-catalogue+feedback-fetch/cached-id-Map;validate310uniqueIDs+catalogueVersion+exact-German-answer-equality-before-restoring-session;no-online-translation-service;no-answer-translation-displayed-before-choice.
@@ -45,6 +45,8 @@ COMPLETE|after-final-correct-answer-and-Next=>310of310+stats+localized-mock-exam
 COMPATIBILITY|questions.json-content-and-version-byte-unchanged;learning-engine+queue-contract+storage-schema-unchanged;separate-feedback-dictionary-does-not-invalidate-learning-progress-or-exam-history;exam-mode-runtime-unmodified/no-new-answer-translations-in-exam.
 QA|node --test scripts/lernen/test.mjs scripts/lernen/exam.test.mjs/22PASS;all310bindings/620translations/930balanced-feedback-lines;negation+numbers+image-answer-keys+regional-title-spotchecks;existing-learning-and-exam-regressions-PASS;app-and-builder-syntax-PASS.
 BROWSER|existing-saved-correct-feedback-restored-with-translation/no-extra-attempt;wrong-answer-RU-feedback+reload-keeps2attempts1mistake;EN-translation-switch;German+translation-strong+computed-italic;full-course-via-DOM-buttons/310mastered311attempts1mistake0remaining/including-returned-question2;all-correct-feedback-translations-present;completion-heading-focused+RU-and-EN-exam-invitation;completion-link->exam.html+3previous-exam-history-records-preserved;zero-console-errors-or-warnings;automation-resumed-after-image-layout-click-failure-and-tool-timeout/no-state-injection.
+VISUAL|completion-desktop1200+mobile390x844/primary-exam-link+secondary-repeat-button-visible/no-horizontal-overflow;mobile-completion-screenshot-retained-in-task-artifacts.
+LIVE|GitHub-Pages-run40781202307/success/sourcef0bd41a;HTTP200/index.html+app.mjs+styles.css+answer-translations.json/content-identical-to-local-source-after-line-ending-normalization;310answer-records/catalogue-version-preserved;production-browser-initializes-with-original0of310-progress+zero-console-errors/no-production-answers-submitted.
 
 ## AAAK:LID-EXAM-20261028
 

@@ -17,7 +17,7 @@ LIFETIME|one-tab-module-load/cached-question-Map+DOM-handlers;no-object-discover
 QA|node --test scripts/lernen/test.mjs;syntax;desktop+mobile-browser;post-push-public-route+data+asset-HTTP.
 SOURCE_BASE|df79e1c029631b22bb1b7c86466ad448a5c9f6f7|SOURCE_COMMIT:4fa15d435d0bae124b15136149ef040d796ab4c1|DATE:2026-10-28.
 ACCEPTANCE|11Node-tests-PASS;desktop+390px-mobile-PASS;actual62-question-retry-position-PASS;production-run40758832295-success/HTTP+browser-PASS;completion+singleton-retries-controlled-engine-verified.
-FEEDBACK_CHANGE|SOURCE_BASE:b3a4684/direct+reverse-review/app-feedback+load+completion+settings+session-restore+shared-style-consumers+builder+exam-catalogue-consumer;question-catalogue-and-storage-contracts-unchanged;22tests-PASS/full310-course-browser-PASS/311attempts1mistake+translated-feedback+RU-EN-completion-link+retained-exam-history;production-pending.
+FEEDBACK_CHANGE|SOURCE_BASE:b3a4684/direct+reverse-review/app-feedback+load+completion+settings+session-restore+shared-style-consumers+builder+exam-catalogue-consumer;question-catalogue-and-storage-contracts-unchanged;22tests-PASS/full310-course-browser-PASS/311attempts1mistake+translated-feedback+RU-EN-completion-link+retained-exam-history;desktop1200+mobile390-PASS;production-run40781202307-success/HTTP-content-parity+browser-PASS;SOURCE_COMMIT:f0bd41a5420cbf0f36b61e940d1db653734c3670.
 
 ## lernen-lid-exam
 
