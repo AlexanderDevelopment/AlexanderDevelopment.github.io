@@ -8,6 +8,7 @@ const {version,questions}=JSON.parse(await readFile(new URL('lernen/questions.js
 const ids=questions.map(q=>q.id),byId=new Map(questions.map(q=>[q.id,q]));
 const plain=JSON.parse(await readFile(new URL('scripts/lernen/catalog-de.json',root),'utf8'));
 const provenance=JSON.parse(await readFile(new URL('scripts/lernen/provenance.json',root),'utf8'));
+const answerFeedback=JSON.parse(await readFile(new URL('lernen/answer-translations.json',root),'utf8'));
 const fresh=()=>createSession(ids,version,1000);
 const wrong=(state)=>{const q=byId.get(state.queue[0]);return answerQuestion(state,q,(q.correct+1)%4,2000);};
 
@@ -29,6 +30,31 @@ test('official key spot checks: first, Chancellor, parliamentary groups, Bavaria
   assert.equal(byId.get(1).correct,3);assert.equal(byId.get(72).answers[byId.get(72).correct],'Friedrich Merz');
   assert.equal(byId.get(73).answers[byId.get(73).correct],'CDU/CSU und AfD.');
   assert.equal(byId.get(301).correct,1);assert.equal(byId.get(308).correct,3);
+});
+
+test('all 310 answer translations bind to the exact official correct answer with balanced emphasis in three languages',()=>{
+  assert.equal(answerFeedback.catalogueVersion,version);
+  assert.deepEqual(answerFeedback.answers.map(a=>a.id),ids);
+  for(const a of answerFeedback.answers){
+    const q=byId.get(a.id);
+    assert.equal(a.de.replaceAll('**',''),q.answers[q.correct],`German answer ${a.id}`);
+    for(const lang of ['de','ru','en']){
+      assert.equal(typeof a[lang],'string');assert.ok(a[lang].trim());
+      assert.match(a[lang],/\*\*[^*]+\*\*/);assert.equal(a[lang].split('**').length%2,1);
+      assert.ok(!/[<>\uFFFD]/.test(a[lang]),`${a.id}/${lang}`);
+    }
+    if(/[A-Za-zÄÖÜäöüß]/.test(a.de))assert.match(a.ru,/[А-Яа-яЁё]/u);
+    assert.ok(!/[А-Яа-яЁё]/u.test(a.en));
+  }
+});
+
+test('answer translation spot checks preserve negation, numbers, map keys and regional titles',()=>{
+  const answers=new Map(answerFeedback.answers.map(a=>[a.id,a]));
+  assert.match(answers.get(12).ru,/нельзя отменить/);assert.match(answers.get(12).en,/cannot be abolished/);
+  assert.match(answers.get(5).en,/must not/);assert.match(answers.get(96).en,/up to five years/);
+  assert.match(answers.get(108).ru,/18 лет/);assert.match(answers.get(176).ru,/1 = Великобритания, 2 = \*\*Советский Союз\*\*, 3 = США, 4 = Франция/);
+  assert.equal(answers.get(301).ru,'**2**');assert.equal(answers.get(308).en,'**4**');
+  assert.match(answers.get(310).ru,/Министр иностранных дел/);
 });
 test('every bundled illustration exists and is byte-identical to official download',async()=>{
   assert.equal(provenance.images.length,13);

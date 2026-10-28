@@ -12,8 +12,8 @@ PDF_URL|https://www.bamf.de/SharedDocs/Anlagen/DE/Integration/Einbuergerung/gesa
 RECORD|scripts/lernen/catalog-de.json/310records/IDs1..300general+301..310Bayern;original-BAMF-question-ID+PDF-page+answer-order+correct-index-retained.
 PROVENANCE|scripts/lernen/provenance.json/PDF-SHA256+source-date+13-original-illustration-URLs-and-SHA256;learning-translations-assistant-authored/not-official-BAMF-translations;no-claim-certified-human-translation.
 ART|lernen/assets/question-{ID}.png/original-BAMF-bytes/not-generated;captions-preserve-authored-photo-credit;full-size-click-through;all-existing-art-unmodified.
-TEXT|German-question-top/RU-or-EN-translation-below;two-logical-lines/wrap-responsively;translation-italic;bold-matching-vocabulary-marked-per-question;short-stems-without-complex-vocabulary-emphasize-key-subject;answers-original-German-only.
-BUILD|node scripts/lernen/build-data.mjs -> lernen/questions.json;310unique-translation-rows/930question-language-lines/620translations;reject-missing-bold-term-or-unbalanced-markup;safe-text-node-renderer/no-user-HTML.
+TEXT|German-question-top/RU-or-EN-translation-below;two-logical-lines/wrap-responsively;translation-italic;bold-matching-vocabulary-marked-per-question;short-stems-without-complex-vocabulary-emphasize-key-subject;selectable-answers-original-German-only;correct-answer-feedback-translated-after-choice/see-feedback-contract-below.
+BUILD|node scripts/lernen/build-data.mjs -> lernen/questions.json+lernen/answer-translations.json;question-translations.tsv/310rows+620translations;answer-translations.tsv/310rows+620translations;reject-missing-bold-term-or-unbalanced-markup;safe-text-node-renderer/no-user-HTML.
 UPDATE|refresh-owning-BAMF-sources+all-correct-indices+affected-translations+illustrations+provenance;rerun-build+tests;change-dataset-version-if-content-or-ID-contract-changes;old-session-kept-unmodified-on-version-mismatch-until-explicit-reset.
 
 ## AAAK:QUEUE
@@ -32,6 +32,19 @@ STORE|queue+mastered+attempts+mistakes+pending+catalogue-version+timestamps;save
 FAILURE|storage-blocked/quota=>in-memory-session+visible-warning;invalid-or-stale-session=>preserve-old-raw-record+warning/no-overwrite-until-explicit-reset;invalid-catalogue=>visible-retry/no-session-write.
 MULTITAB|storage-event-validates-and-adopts-external-state;pre-action-read-defers-stale-action-if-other-tab-updated;localStorage-not-transactional/no-simultaneous-device-or-multitab-transaction-guarantee.
 RESET|confirmation-dialog/cancel-preserves/confirm-recreates310queue;no-other-origin-storage-keys-written-or-cleared.
+
+## AAAK:TRANSLATED-ANSWER-FEEDBACK-20261028
+
+AUTH|TL-option1/correct-answer-in-result-block-after-wrong-and-right-choice/German-first+italic-RU-or-EN-second+aligned-bold-vocabulary;all310-complete=>offer-mock-exam.
+STATUS|IMPLEMENTED/LOCAL-DATA-TESTS+FULL-COURSE-BROWSER-PASS/PRODUCTION-PENDING|SOURCE_BASE:b3a4684.
+SOURCE|scripts/lernen/answer-translations.tsv/310rows/id+German-emphasis-term+RU+EN;assistant-authored-learning-translations/not-official-or-certified;answer-meaning-reviewed-in-question-context;numeric-image-options-retain-numbers.
+GENERATE|catalog-de.json/correct-index+original-answer-text->build-data.mjs->answer-translations.json/versionbamf-by-answer-feedback-v1/catalogueVersionbamf-by-2026-10-28-v1/310records/de+ru+en.
+RUNTIME|app.mjs/parallel-local-catalogue+feedback-fetch/cached-id-Map;validate310uniqueIDs+catalogueVersion+exact-German-answer-equality-before-restoring-session;no-online-translation-service;no-answer-translation-displayed-before-choice.
+FEEDBACK|wrong=>existing-wrong-title+correct-answer-label+German-answer+italic-translated-answer+retry-detail;right=>existing-Richtig-title+German-answer+italic-translated-answer+mastered-detail;matching-vocabulary-bold-on-both-lines;single-language-selection-reused-from-question;UI-language-independent;reload-existing-pending-feedback-gains-translation-without-extra-attempt.
+COMPLETE|after-final-correct-answer-and-Next=>310of310+stats+localized-mock-exam-invitation+primary-link-exam.html;repeat-course-secondary-button-retains-existing-reset-confirmation;focus-completion-heading;exam-start-remains-explicit-on-exam-setup/no-automatic-timer-start.
+COMPATIBILITY|questions.json-content-and-version-byte-unchanged;learning-engine+queue-contract+storage-schema-unchanged;separate-feedback-dictionary-does-not-invalidate-learning-progress-or-exam-history;exam-mode-runtime-unmodified/no-new-answer-translations-in-exam.
+QA|node --test scripts/lernen/test.mjs scripts/lernen/exam.test.mjs/22PASS;all310bindings/620translations/930balanced-feedback-lines;negation+numbers+image-answer-keys+regional-title-spotchecks;existing-learning-and-exam-regressions-PASS;app-and-builder-syntax-PASS.
+BROWSER|existing-saved-correct-feedback-restored-with-translation/no-extra-attempt;wrong-answer-RU-feedback+reload-keeps2attempts1mistake;EN-translation-switch;German+translation-strong+computed-italic;full-course-via-DOM-buttons/310mastered311attempts1mistake0remaining/including-returned-question2;all-correct-feedback-translations-present;completion-heading-focused+RU-and-EN-exam-invitation;completion-link->exam.html+3previous-exam-history-records-preserved;zero-console-errors-or-warnings;automation-resumed-after-image-layout-click-failure-and-tool-timeout/no-state-injection.
 
 ## AAAK:LID-EXAM-20261028
 

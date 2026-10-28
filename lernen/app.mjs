@@ -8,7 +8,9 @@ const copy={
   en:{examStart:'Take a mock exam',examSummary:'33 questions · 60 minutes · with or without translation',skip:'Skip to question',interface:'Interface language',eyebrow:'ONE STEP CLOSER TO GERMANY',title:'Learn. Make mistakes.<br><span>Remember.</span>',intro:'One question at a time — until you have answered every one correctly.',courseSize:'300 general + 10 regional',yourProgress:'Your progress',masteredLabel:'completed',outOf:'of 310 questions',remaining:'In the queue',attempts:'Answers given',mistakes:'Mistakes',saved:'Progress saved in this browser',methodTitle:'Mistakes are part of learning',methodText:'Got it wrong? The question returns after 20% of the remaining queue. Got it right? Keep moving forward.',restart:'Start over',loading:'Loading questions…',translation:'Translation language',chooseAnswer:'Choose the one correct answer',keyboard:' to answer',next:'Next question',completeTitle:'All 310. You did it!',completeText:'You have answered every question correctly. Great work!',again:'Practise again',loadError:'Could not load the questions',loadErrorText:'Check your internet connection and try again. Your saved progress will remain in place.',retry:'Try again',learningNote:'Words in bold deserve a closer look. The translation helps you understand the question.',source:'BAMF questions ↗',sourceDate:'Verified 28 Oct 2026',disclaimer:'Independent study tool. Translations are learning aids, not official BAMF translations. Progress is stored only in this browser.',resetTitle:'Ready for a fresh start?',resetText:'Your current queue and results will be reset. All 310 questions will start again.',cancel:'Cancel',resetConfirm:'Start over',question:n=>`Question ${String(n).padStart(3,'0')} / 310`,good:'Richtig! Correct answer.',wrong:'Not quite. You’ll get another try.',correctAnswer:'Correct answer:',removed:'Question completed and removed from the queue.',repeat:n=>n===0?'This is the last question. It will appear next.':`Placed after ${n} other questions in the remaining queue (20%, rounded up).`,results:(a,m)=>`Answers given: ${a}. Mistakes: ${m}.`,finish:'See results',storageError:'This browser cannot save your progress. It will only last until you close or refresh this page.',restoreError:'The saved progress is damaged or belongs to a different catalogue. The old record has been kept unchanged. You can study in this tab or choose “Start over” to replace it.',notSaved:'Progress is not being saved',synced:'The queue was updated in another tab. Continue with the current question.',image:n=>`Original BAMF illustration for question ${n}. Click to open at full size.`,imageFail:'The illustration did not load. Open the original using the link below before answering.',imageOpen:'Open illustration ↗',progressLabel:'Questions completed',studyLabel:'Practice',answerGood:'Correct answer',answerBad:'Incorrect answer'}
 };
 
-let settings={ui:'ru',translation:'ru'}, questions=[], byId=new Map(), version='', state=null;
+Object.assign(copy.ru,{completeExam:'Пройти пробный экзамен',completeExamText:'Все вопросы освоены. Проверь себя в пробном экзамене: 33 вопроса, 60 минут, Бавария.'});
+Object.assign(copy.en,{completeExam:'Take a mock exam',completeExamText:'You have mastered every question. Test yourself in a mock exam: 33 questions, 60 minutes, Bavaria.'});
+let settings={ui:'ru',translation:'ru'}, questions=[], byId=new Map(), answerTranslations=new Map(), version='', state=null;
 let lastSaved=null, preserveOld=false, storageIssue='', syncMessage=false;
 try {
   const stored=JSON.parse(localStorage.getItem(SETTINGS_KEY));
@@ -80,7 +82,7 @@ function choose(choice){
 function advance(){
   if(!state?.pending){console.info('Next ignored: answer a question first.');return;}
   commit(nextQuestion);
-  if(!state.pending && state.queue.length)$('question-title').focus({preventScroll:false});
+  if(!state.pending){if(state.queue.length)$('question-title').focus({preventScroll:false});else $('completion-title').focus({preventScroll:false});}
 }
 
 function render(){
@@ -135,7 +137,11 @@ function render(){
     title.textContent=p.correct?t().good:t().wrong;
     detail.textContent=p.correct?t().removed:t().repeat(p.delay);
     $('feedback').append(title);
-    if(!p.correct){const correct=document.createElement('p');correct.append(document.createTextNode(t().correctAnswer+' '));const answer=document.createElement('strong');answer.lang='de';answer.textContent=q.answers[q.correct];correct.append(answer);$('feedback').append(correct);}
+    if(!p.correct){const label=document.createElement('p');label.textContent=t().correctAnswer;$('feedback').append(label);}
+    const answer=answerTranslations.get(q.id),block=document.createElement('div'),german=document.createElement('p'),translation=document.createElement('p');
+    block.className='feedback-answer';german.className='feedback-answer-de';german.lang='de';richText(german,answer.de);
+    translation.className='feedback-answer-translation';translation.lang=settings.translation;richText(translation,answer[settings.translation]);
+    block.append(german,translation);$('feedback').append(block);
     $('feedback').append(detail);
     $('next').firstElementChild.textContent=state.queue.length===0?t().finish:t().next;
   }
@@ -145,12 +151,18 @@ function render(){
 async function load(){
   $('load-error').hidden=true;$('question-card').hidden=false;$('question-card').setAttribute('aria-busy','true');$('restart').disabled=true;
   try{
-    const response=await fetch('./questions.json');
-    if(!response.ok)throw new Error(`Catalogue HTTP ${response.status}`);
-    const data=await response.json();
+    const [response,answerResponse]=await Promise.all([fetch('./questions.json'),fetch('./answer-translations.json')]);
+    if(!response.ok||!answerResponse.ok)throw new Error(`Catalogue/answer translations HTTP ${response.status}/${answerResponse.status}`);
+    const [data,answerData]=await Promise.all([response.json(),answerResponse.json()]);
     if(typeof data.version!=='string' || !Array.isArray(data.questions) || data.questions.length!==310)throw new Error('Incomplete catalogue');
     questions=data.questions;version=data.version;byId=new Map(questions.map(q=>[q.id,q]));
     if(byId.size!==310 || questions.some((q,i)=>q.id!==i+1 || ![q.de,q.ru,q.en].every(x=>typeof x==='string' && x.length>0) || q.answers.length!==4 || !Number.isInteger(q.correct) || q.correct<0 || q.correct>3))throw new Error('Invalid catalogue data');
+    if(answerData.version!=='bamf-by-answer-feedback-v1'||answerData.catalogueVersion!==version||!Array.isArray(answerData.answers)||answerData.answers.length!==310)throw new Error('Incomplete or mismatched answer translations');
+    answerTranslations=new Map(answerData.answers.map(a=>[a.id,a]));
+    if(answerTranslations.size!==310||questions.some(q=>{
+      const a=answerTranslations.get(q.id);
+      return !a||![a.de,a.ru,a.en].every(text=>typeof text==='string'&&text.trim()&&text.split('**').length%2===1)||a.de.replaceAll('**','')!==q.answers[q.correct];
+    }))throw new Error('Answer translations do not match the official correct answers');
     state=createSession(questions.map(q=>q.id),version);
     try{
       lastSaved=localStorage.getItem(SESSION_KEY);
