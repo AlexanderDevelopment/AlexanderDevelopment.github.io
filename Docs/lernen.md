@@ -1,7 +1,7 @@
 # AAAK:LERNEN-BAYERN-20261028
 
 AUTH|TL-option1/existing-site/browser-local-progress;German-question+italic-RU-or-EN-translation/aligned-bold-vocabulary;300general+10Bayern;independent-RU-or-EN-interface.
-STATUS|IMPLEMENTED/SOURCE_CONTROLLED_AND_LOCAL_BROWSER_VERIFIED/PRODUCTION_PENDING|SOURCE_BASE:df79e1c029631b22bb1b7c86466ad448a5c9f6f7|SOURCE_COMMIT:task-commit-containing-this-record.
+STATUS|COMPLETE/SOURCE_CONTROLLED_LOCAL_BROWSER_AND_PRODUCTION_VERIFIED|SOURCE_BASE:df79e1c029631b22bb1b7c86466ad448a5c9f6f7|SOURCE_COMMIT:4fa15d435d0bae124b15136149ef040d796ab4c1.
 ROUTE|https://zweibier-indie.de/lernen/|HOST:existing-GitHub-Pages/main|DISCOVERY:direct-link/no-homepage-navigation-change/noindex-nofollow-noarchive-is-not-authentication.
 
 ## AAAK:DATA
@@ -42,5 +42,6 @@ AUTOMATED|11checks/310records+620translations+German-preservation+13imagehashes+
 BROWSER|local-desktop+390px-mobile;wrong-first-question=>62-successful-other-answers=>question1-returns/62mastered+63attempts+1mistake;RU/EN-independent-selection;reload-retains-error+language;correct-answer-removes-question;original-coat-of-arms-rendered;reset-cancel-keeps62/reset-confirm-restores310;no-horizontal-overflow;German+translation-strong-elements+italic-computed-style;console0warnings0errors.
 ART_QA|all13original-illustrations-reviewed-in-contact-sheet;German-question+diagram-labels-preserved;Bayern-coat2+map4-match-official-answer-key.
 BOUND|complete310-question-run+last-question-retries-verified-in-engine-tests/not-a-full310-browser-click-through;translations-authored-and-reviewed/not-certified.
-PENDING|production-HTTP-acceptance.
+DEPLOY|GitHub-Pages-run40758832295/completed-success/head4fa15d435d0bae124b15136149ef040d796ab4c1;https://zweibier-indie.de/lernen/.
+LIVE_QA|HTTP200/index+app.mjs+engine.mjs+styles.css+questions.json+Bayern-coat-and-map;MIME-text/javascript-for-both-modules;catalogue310/Bayern10/RU310/EN310/versionbamf-by-2026-10-28-v1;production-browser-question1+fouranswers+RU-translation+zero-console-errors;fresh0/310-ready;full-page-screenshot-retained-in-task-artifacts.
 KEEP|homepage/pitches/log-portal/game-runtime/all-existing-files-except-documentation-navigation;no-Unity-MCP/FEEL-assets/Photon/version/build.
