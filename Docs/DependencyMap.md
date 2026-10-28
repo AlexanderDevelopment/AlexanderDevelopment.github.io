@@ -15,3 +15,17 @@ LIFETIME|one-tab-module-load/cached-question-Map+DOM-handlers;no-object-discover
 QA|node --test scripts/lernen/test.mjs;syntax;desktop+mobile-browser;post-push-public-route+data+asset-HTTP.
 SOURCE_BASE|df79e1c029631b22bb1b7c86466ad448a5c9f6f7|SOURCE_COMMIT:4fa15d435d0bae124b15136149ef040d796ab4c1|DATE:2026-10-28.
 ACCEPTANCE|11Node-tests-PASS;desktop+390px-mobile-PASS;actual62-question-retry-position-PASS;production-run40758832295-success/HTTP+browser-PASS;completion+singleton-retries-controlled-engine-verified.
+
+## lernen-lid-exam
+
+SYSTEM|LERNEN_LID_EXAM|ROUTE:/lernen/exam.html|OWNER:lernen/exam.html+exam.mjs+exam-engine.mjs+exam.css.
+EDGE|lernen/index.html+app.mjs/localized-exam-entry->exam.html.
+EDGE|exam.html->styles.css/shared-brand-and-card-primitives+exam.css/scoped-layout+exam.mjs.
+EDGE|exam.mjs->exam-engine.mjs+questions.json+existing-local-PNG;exam-engine.mjs->random30general+3Bayern/absolute60min-deadline/LiD15point-threshold.
+EDGE|exam.mjs->localStorage/zb-lernen-bayern-exams-v1(current+history);exam.mjs<->zb-lernen-bayern-settings-v1/shared-ui-and-translation-preferences.
+EDGE|DOM-answer+navigation->validated-attempt-transition->single-envelope-save->active-render;deadline-or-submit->immutable-result->history+previous-attempt-comparison+review.
+EDGE|scripts/lernen/exam.test.mjs->exam-engine.mjs+questions.json;Docs/lernen.md->exam-contract+source-rules+QA.
+BOUNDARY|no-runtime-import-of-learning-engine/no-learning-session-key-access/no-learning-queue-mutation;catalogue+original-answer-order+13images-unchanged;existing-homepage+pitch-pages+log-portal-no-new-edges;shared-GitHub-Pages-publication.
+LIFETIME|cached-questions+byId-Map/module-DOM-handlers;1s-timer-updates-existing-timer-node/expiry-check-only/no-network-polling;history-render-after-submission-or-navigation;localStorage-not-transactional.
+REVIEW_BEFORE|4e33ef4/lernen-index+styles+copy+queue-engine+storage-handlers+data+tests+canonical-docs/direct-and-reverse-consumers-reviewed;no-MemPalace-in-website-repository.
+QA_AFTER|20Node-tests-PASS+syntax+desktop-and390px-mobile+complete33-answer-browser-flow+both-translation-languages+none+history-comparison+reload+two-tab-sync+learning-progress-preserved;60min-expiry-engine-controlled-time-only;production-pending.

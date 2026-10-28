@@ -1,6 +1,6 @@
 # Docs
 
-- [Lernen — Bayern](lernen.md) documents the bilingual BAMF trainer, its 20% retry queue, local progress and official data provenance.
+- [Lernen — Bayern](lernen.md) documents the bilingual BAMF trainer, its 20% retry queue, LiD mock exams with optional translation and result history, local progress and official data provenance.
 - [Dependency Map](DependencyMap.md) records reviewed dependencies for website additions.
 
 - [Discord Community](discord-community.md) documents the consent-gated Discord card, live invite counts, and the update points for the public invite link.

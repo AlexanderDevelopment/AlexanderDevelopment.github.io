@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ef">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="Пробный Leben in Deutschland: 33 вопроса, 60 минут, Бавария. С переводом или без, с историей результатов.">
+  <title>Leben in Deutschland — пробный экзамен</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="exam.css">
+  <script type="module" src="exam.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#exam-heading" data-exam="skip">Перейти к экзамену</a>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Lernen"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>lernen<span class="brand-dot">.</span></span></a>
+    <div class="brand-sub">LEBEN IN DEUTSCHLAND</div>
+    <label class="language-control"><span class="globe" aria-hidden="true">◎</span><span class="sr-only" data-exam="interface">Язык интерфейса</span><select id="exam-ui" aria-label="Язык интерфейса"><option value="ru">Русский</option><option value="en">English</option></select></label>
+  </header>
+  <main class="page exam-page">
+    <div class="exam-heading"><a href="./" class="back-link" data-exam="back">← К обучению</a><p class="eyebrow">BAYERN · LEBEN IN DEUTSCHLAND</p><h1 id="exam-heading" tabindex="-1" data-exam="title">Пробный экзамен</h1><p id="exam-subtitle" data-exam="subtitle">Проверь себя. Сравни результат. Попробуй ещё.</p></div>
+    <div id="exam-notice" class="notice" role="status" hidden></div>
+    <div id="exam-load" class="notice" role="status" data-exam="loading">Загружаем вопросы…</div>
+    <div id="exam-error" class="error-card" role="alert" hidden><p data-exam="loadError">Не удалось загрузить вопросы. Проверь подключение.</p><button id="exam-retry" type="button" class="primary-button" data-exam="retry">Повторить</button></div>
+
+    <section id="exam-setup" class="exam-panel" hidden aria-labelledby="setup-title">
+      <h2 id="setup-title" data-exam="setupTitle">Выбери свой режим</h2>
+      <div class="exam-facts"><div><strong>33</strong><span data-exam="questions">вопроса</span></div><div><strong>60</strong><span data-exam="minutes">минут</span></div><div><strong>15 / 33</strong><span data-exam="threshold">для успешной сдачи LiD</span></div></div>
+      <fieldset class="mode-options"><legend class="sr-only" data-exam="mode">Режим экзамена</legend>
+        <label class="mode-option"><input type="radio" name="exam-mode" value="none" checked><span><strong data-exam="without">Без перевода</strong><small data-exam="withoutHelp">Только немецкий — формат настоящего экзамена.</small></span></label>
+        <label class="mode-option"><input type="radio" name="exam-mode" value="translated"><span><strong data-exam="with">С переводом</strong><small data-exam="withHelp">Учебный вариант: перевод вопроса и выделенные слова.</small></span></label>
+      </fieldset>
+      <label id="exam-translation-label" class="exam-translation-picker" hidden><span data-exam="translation">Язык перевода</span><select id="exam-translation"><option value="ru">Русский</option><option value="en">English</option></select></label>
+      <p class="exam-rules" data-exam="rules">30 общих вопросов + 3 по Баварии. Можно пропускать вопросы и менять ответы. Результат — после сдачи. Таймер идёт без паузы, даже если закрыть страницу; через 60 минут ответы будут сданы автоматически.</p>
+      <div id="setup-previous" class="previous-note" hidden></div>
+      <button id="exam-start" type="button" class="primary-button" data-exam="start">Начать экзамен — 60 минут</button>
+    </section>
+
+    <section id="exam-active" hidden aria-label="Экзамен">
+      <div class="exam-status"><div><span data-exam="timeLeft">Осталось времени</span><strong id="exam-timer" role="timer" aria-live="off">60:00</strong></div><div><span data-exam="answered">Отвечено</span><strong id="exam-answered">0 / 33</strong></div><span id="active-mode" class="mode-tag"></span></div>
+      <div id="time-warning" class="sr-only" role="status"></div>
+      <div class="exam-layout">
+        <aside class="exam-navigation"><h2 data-exam="navigation">Вопросы</h2><nav id="exam-grid" class="exam-grid" aria-label="Вопросы экзамена"></nav><p data-exam="navigationHelp">Заливка — ответ выбран. Обводка — текущий вопрос.</p><button id="exam-submit" type="button" class="primary-button" data-exam="submit">Завершить экзамен</button></aside>
+        <article class="question-card" id="exam-question-card">
+          <div class="card-top"><span id="exam-number" class="question-number"></span><span id="exam-region" class="region-pill"></span></div>
+          <div class="question-copy"><div class="question-language">DEUTSCH</div><h2 id="exam-question" tabindex="-1" lang="de"></h2><p id="exam-question-translation" class="question-translation" hidden></p></div>
+          <figure id="exam-figure" hidden><a id="exam-image-link" target="_blank" rel="noopener"><img id="exam-image" alt=""></a><figcaption id="exam-credit"></figcaption></figure>
+          <p class="answer-hint" data-exam="choose">Выбери один ответ. Его можно изменить до сдачи.</p><div id="exam-answers" class="answers"></div>
+          <div class="exam-question-actions"><button id="exam-clear" type="button" class="text-button" data-exam="clear">Убрать ответ</button><div><button id="exam-prev" type="button" class="secondary-button" data-exam="prev">← Назад</button><button id="exam-next" type="button" class="primary-button" data-exam="next">Далее →</button></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="exam-results" hidden aria-labelledby="result-heading">
+      <div class="exam-panel"><div class="result-heading"><div><p class="eyebrow" data-exam="complete">ЭКЗАМЕН ЗАВЕРШЁН</p><h2 id="result-heading" tabindex="-1" data-exam="resultTitle">Твой результат</h2></div><span id="result-pass" class="pass-badge"></span></div>
+        <p id="result-reason" class="exam-rules"></p>
+        <div class="comparison"><div class="score-card current"><span data-exam="currentResult">Текущий результат</span><strong id="result-score"></strong><p id="result-mode"></p><small id="result-date"></small></div><div class="score-card"><span data-exam="previousResult">Предыдущий результат</span><strong id="previous-score"></strong><p id="previous-mode"></p><small id="previous-date"></small></div></div>
+        <p id="result-delta" class="result-delta"></p><p id="result-detail" class="exam-rules"></p>
+        <button id="exam-new" type="button" class="primary-button" data-exam="again">Пройти новый экзамен</button>
+      </div>
+      <section class="review-section"><h2 data-exam="review">Разбор ответов</h2><p data-exam="reviewHelp">Открой вопрос, чтобы увидеть свой ответ и правильный вариант.</p><div id="exam-review"></div></section>
+    </section>
+
+    <section id="exam-history-section" class="exam-panel history-panel" hidden aria-labelledby="history-title"><h2 id="history-title" data-exam="history">История попыток</h2><p class="exam-rules" data-exam="historyHelp">Результаты хранятся в этом браузере. Режим каждой попытки указан отдельно.</p><p id="history-empty" data-exam="empty">Здесь появится результат твоего первого экзамена.</p><div id="exam-history" class="history-list"></div></section>
+    <footer class="footer"><span>lernen<span class="brand-dot">.</span> <span class="footer-by">by ZweiBier</span></span><div><a href="https://oet.bamf.de/ords/oetut/f?p=534:1::::::" target="_blank" rel="noopener">BAMF ↗</a><a href="https://www.gesetze-im-internet.de/inttestv/__10.html" target="_blank" rel="noopener" data-exam="officialRules">Правила LiD ↗</a></div><p data-exam="disclaimer">Независимый пробный экзамен из каталога BAMF. С переводом — учебный режим. Конкретные официальные экзаменационные бланки не публикуются. Учебная очередь сохраняется отдельно.</p></footer>
+  </main>
+  <dialog id="exam-submit-dialog"><h2 data-exam="confirmTitle">Завершить экзамен?</h2><p id="exam-submit-detail"></p><div class="dialog-actions"><button id="exam-cancel-submit" class="secondary-button" type="button" data-exam="continue">Продолжить</button><button id="exam-confirm-submit" class="primary-button" type="button" data-exam="submitNow">Сдать ответы</button></div></dialog>
+  <noscript><p class="notice">Для экзамена нужен JavaScript. / JavaScript is required for the exam.</p></noscript>
+</body>
+</html>

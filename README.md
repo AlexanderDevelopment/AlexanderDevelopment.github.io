@@ -4,7 +4,7 @@ Static landing page for ZweiBier Indie.
 
 ## Documentation
 
-- BAMF learning app (Bavaria, Russian/English): `Docs/lernen.md`; direct route `/lernen/`.
+- BAMF learning app (Bavaria, Russian/English): `Docs/lernen.md`; direct route `/lernen/`; LiD mock exams with optional translation and result history at `/lernen/exam.html`.
 
 - Motion and fixed background notes: `Docs/site-motion.md`
 - Public contact and social links: `Docs/social-links.md`

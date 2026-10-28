@@ -18,7 +18,7 @@ UPDATE|refresh-owning-BAMF-sources+all-correct-indices+affected-translations+ill
 
 ## AAAK:QUEUE
 
-INITIAL|orderedIDs1..310/no-randomization/no-filter/no-exam-mode.
+INITIAL|learning-queue/orderedIDs1..310/no-randomization/no-filter;separate-exam-mode-see-below.
 RIGHT|remove-current-from-queue/add-once-to-mastered.
 WRONG|remove-current;remaining=queue.length;delay=ceil(remaining/5);insert-at-index-delay;exactly-delay-other-questions-before-repeat-at-insertion-time;later-wrong-answers-can-change-relative-position;repeat-until-correct.
 EXAMPLES|100other-questions=>20-before-repeat;309=>62;6=>2;5=>1;1=>1;0=>same-single-question-next.
@@ -33,7 +33,32 @@ FAILURE|storage-blocked/quota=>in-memory-session+visible-warning;invalid-or-stal
 MULTITAB|storage-event-validates-and-adopts-external-state;pre-action-read-defers-stale-action-if-other-tab-updated;localStorage-not-transactional/no-simultaneous-device-or-multitab-transaction-guarantee.
 RESET|confirmation-dialog/cancel-preserves/confirm-recreates310queue;no-other-origin-storage-keys-written-or-cleared.
 
-## AAAK:DEPENDENCIES-AND-QA
+## AAAK:LID-EXAM-20261028
+
+AUTH|TL-option3/history+current-versus-previous-result;TL-refinement/with-or-without-question-translation/Leben-in-Deutschland.
+STATUS|IMPLEMENTED/LOCAL-ENGINE-AND-BROWSER-PASS/PRODUCTION-PENDING|SOURCE_BASE:4e33ef4.
+ROUTE|/lernen/index.html/localized-exam-entry->/lernen/exam.html;existing-GitHub-Pages/main.
+OWNER|exam.html+exam.css+exam.mjs/presentation+storage;exam-engine.mjs/pure-attempt-state+selection+deadline+grading.
+FORMAT|33unique-questions/30-of-300-Deutschland+3-of-10-Bayern/Fisher-Yates-random-without-replacement/general-first-regional-last/original-answer-order+illustrations;new-paper-each-start.
+RULES|60minutes/4options/one-selected-answer;Leben-in-Deutschland-pass>=15-of33;blank-or-wrong=0points;one-correct=1point;actual-official-papers-not-published/independent-simulation-not-official-exam.
+RULE_SOURCE|https://www.gesetze-im-internet.de/inttestv/__10.html
+FORMAT_SOURCE|https://www.gesetze-im-internet.de/einbtestv/__1.html
+FORMAT_SAMPLE|https://www.bamf.de/SharedDocs/Anlagen/DE/Integration/Einbuergerung/musterbogen_lebenindeutschland.pdf?__blob=publicationFile&v=7
+MODE|none=plain-German/no-translation/no-learning-bold;ru-or-en=German-bold-vocabulary+italic-translated-question-with-bold-vocabulary;answers-always-original-German;assisted-attempt-labelled-study-mode.
+LANGUAGE|UI-RU-or-EN-independent-of-question-translation;exam-translation-fixed-at-start;reuse-existing-settings-key/zb-lernen-bayern-settings-v1;no-question-data-or-answer-key-changes.
+FLOW|setup-explicit-start->active-card+33question-navigation->submit-confirmation/automatic-timeout->results+all33-review+history;answers-changeable/clearable/skippable-before-submission;no-immediate-correctness-or-score;history-hidden-while-active.
+TIMER|absolute-start+3600000ms/deadline-persisted;tick1s+focus+visibility+pre-action-check;no-pause/reload-reuses-deadline;closed-or-suspended-page-finalizes-at-deadline-on-next-load-or-callback;no-action-accepted-at-or-after-deadline;elapsed-capped60min;client-clock/not-proctored-or-cheat-proof.
+COMPARISON|current-completed-attempt-versus-immediately-previous-completed-attempt/all-modes;show-score-out-of33+date+mode+signed-score-delta;different-mode-note;first-attempt-no-baseline;history-review-compares-each-selected-attempt-to-its-predecessor.
+HISTORY|newest-first/completed-attempts+questionIDs+answers+translation+timestamps+end-reason;score-derived-from-versioned-catalogue;manual-submission-and-timeout-share-finalization/duplicate-ID-never-appended-again.
+PERSISTENCE|localStorage/zb-lernen-bayern-exams-v1/schema1/catalogue-version+revision+current+history/single-envelope-write;save-each-answer+navigation+submission;validate33partition+choices+timestamps+current-history-consistency-before-restore.
+FAILURE|blocked-or-full-storage=>visible-warning+in-memory;invalid-or-old-history=>preserve-raw+visible-warning+in-memory/no-silent-overwrite;catalogue-load-error=>retry.
+MULTITAB|storage-event-validates-and-adopts;pre-action-read-defers-stale-input;external-update-closes-stale-submit-dialog;localStorage-not-transactional/no-guarantee-for-truly-simultaneous-writes.
+ISOLATION|exam-module-never-reads-or-writes-learning-session-key;learning-queue+pending-feedback-retained;shared-preferences-only;no-server/no-auth/no-device-sync/no-analytics/new-external-runtime-requests.
+QA_ENGINE|node --test scripts/lernen/test.mjs scripts/lernen/exam.test.mjs/20PASS;240random-papers-all-modes;LiD0/14/15/16/17/33-boundaries;absolute-expiry+background-reload+late-input-rejection;answer-change-clear+history-roundtrip+duplicate-submission+corrupt-records;existing11learning-data-and-queue-tests-pass.
+QA_BROWSER|local-Chromium/IAB/desktop+390x844;entry-button;none/no-bold-no-translation;RU-translation+EN-interface;EN-translation+RU-interface;italic+paired-bold;answer-change-clear+regional-jump+reload-continuing-timer;cancel-and-confirm-submit-with31blanks;complete33-answer-traversal;2/33->8/33/+6+different-mode-note;33review-items;history-reload+thirdattempt;two-tabs-sync-close-stale-dialog+single-history-record;learning-progress1/310+pending-correct-feedback-preserved;zero-console-errors-or-warnings;mobile-no-horizontal-overflow.
+PROOF_BOUNDARY|one-hour-real-wall-clock-expiry-not-waited-in-browser/pure-engine-controlled-time-verified;no-claim-official-exam-certification-or-device-sync;actual-original-exam-papers-unavailable.
+
+## AAAK:LEARNING-BASELINE-ACCEPTANCE
 
 BEFORE|existing-static-site+pitch-docs+README+deployment-source-reviewed;no-MemPalace-in-website-repository;homepage+pitch+Supabase+contact-form+Cloudflare-log-portal-have-no-imports-or-routes-into-new-app.
 MAP|[DependencyMap](DependencyMap.md#lernen-bayern)/new-isolated-static-route+data-build+queue+browser-storage+QA-boundaries.
