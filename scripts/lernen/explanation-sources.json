@@ -1,0 +1,661 @@
+{
+  "reviewedAt": "2026-10-29",
+  "sources": {
+    "gg1": {
+      "title": "Grundgesetz · Artikel 1",
+      "url": "https://www.gesetze-im-internet.de/gg/art_1.html"
+    },
+    "gg3": {
+      "title": "Grundgesetz · Artikel 3",
+      "url": "https://www.gesetze-im-internet.de/gg/art_3.html"
+    },
+    "gg4": {
+      "title": "Grundgesetz · Artikel 4",
+      "url": "https://www.gesetze-im-internet.de/gg/art_4.html"
+    },
+    "gg5": {
+      "title": "Grundgesetz · Artikel 5",
+      "url": "https://www.gesetze-im-internet.de/gg/art_5.html"
+    },
+    "gg6": {
+      "title": "Grundgesetz · Artikel 6",
+      "url": "https://www.gesetze-im-internet.de/gg/art_6.html"
+    },
+    "gg7": {
+      "title": "Grundgesetz · Artikel 7",
+      "url": "https://www.gesetze-im-internet.de/gg/art_7.html"
+    },
+    "gg9": {
+      "title": "Grundgesetz · Artikel 9",
+      "url": "https://www.gesetze-im-internet.de/gg/art_9.html"
+    },
+    "gg10": {
+      "title": "Grundgesetz · Artikel 10",
+      "url": "https://www.gesetze-im-internet.de/gg/art_10.html"
+    },
+    "gg11": {
+      "title": "Grundgesetz · Artikel 11",
+      "url": "https://www.gesetze-im-internet.de/gg/art_11.html"
+    },
+    "gg12": {
+      "title": "Grundgesetz · Artikel 12",
+      "url": "https://www.gesetze-im-internet.de/gg/art_12.html"
+    },
+    "gg16a": {
+      "title": "Grundgesetz · Artikel 16a",
+      "url": "https://www.gesetze-im-internet.de/gg/art_16a.html"
+    },
+    "gg17": {
+      "title": "Grundgesetz · Artikel 17",
+      "url": "https://www.gesetze-im-internet.de/gg/art_17.html"
+    },
+    "gg19": {
+      "title": "Grundgesetz · Artikel 19",
+      "url": "https://www.gesetze-im-internet.de/gg/art_19.html"
+    },
+    "gg20": {
+      "title": "Grundgesetz · Artikel 20",
+      "url": "https://www.gesetze-im-internet.de/gg/art_20.html"
+    },
+    "gg21": {
+      "title": "Grundgesetz · Artikel 21",
+      "url": "https://www.gesetze-im-internet.de/gg/art_21.html"
+    },
+    "gg22": {
+      "title": "Grundgesetz · Artikel 22",
+      "url": "https://www.gesetze-im-internet.de/gg/art_22.html"
+    },
+    "gg28": {
+      "title": "Grundgesetz · Artikel 28",
+      "url": "https://www.gesetze-im-internet.de/gg/art_28.html"
+    },
+    "gg30": {
+      "title": "Grundgesetz · Artikel 30",
+      "url": "https://www.gesetze-im-internet.de/gg/art_30.html"
+    },
+    "gg32": {
+      "title": "Grundgesetz · Artikel 32",
+      "url": "https://www.gesetze-im-internet.de/gg/art_32.html"
+    },
+    "gg38": {
+      "title": "Grundgesetz · Artikel 38",
+      "url": "https://www.gesetze-im-internet.de/gg/art_38.html"
+    },
+    "gg39": {
+      "title": "Grundgesetz · Artikel 39",
+      "url": "https://www.gesetze-im-internet.de/gg/art_39.html"
+    },
+    "gg50": {
+      "title": "Grundgesetz · Artikel 50",
+      "url": "https://www.gesetze-im-internet.de/gg/art_50.html"
+    },
+    "gg54": {
+      "title": "Grundgesetz · Artikel 54",
+      "url": "https://www.gesetze-im-internet.de/gg/art_54.html"
+    },
+    "gg63": {
+      "title": "Grundgesetz · Artikel 63",
+      "url": "https://www.gesetze-im-internet.de/gg/art_63.html"
+    },
+    "gg64": {
+      "title": "Grundgesetz · Artikel 64",
+      "url": "https://www.gesetze-im-internet.de/gg/art_64.html"
+    },
+    "gg65": {
+      "title": "Grundgesetz · Artikel 65",
+      "url": "https://www.gesetze-im-internet.de/gg/art_65.html"
+    },
+    "gg77": {
+      "title": "Grundgesetz · Artikel 77",
+      "url": "https://www.gesetze-im-internet.de/gg/art_77.html"
+    },
+    "gg87a": {
+      "title": "Grundgesetz · Artikel 87a",
+      "url": "https://www.gesetze-im-internet.de/gg/art_87a.html"
+    },
+    "gg97": {
+      "title": "Grundgesetz · Artikel 97",
+      "url": "https://www.gesetze-im-internet.de/gg/art_97.html"
+    },
+    "gg102": {
+      "title": "Grundgesetz · Artikel 102",
+      "url": "https://www.gesetze-im-internet.de/gg/art_102.html"
+    },
+    "gg104": {
+      "title": "Grundgesetz · Artikel 104",
+      "url": "https://www.gesetze-im-internet.de/gg/art_104.html"
+    },
+    "gg140": {
+      "title": "Grundgesetz · Artikel 140",
+      "url": "https://www.gesetze-im-internet.de/gg/art_140.html"
+    },
+    "gg": {
+      "title": "Grundgesetz",
+      "url": "https://www.gesetze-im-internet.de/gg/BJNR000010949.html"
+    },
+    "religion": {
+      "title": "KErzG § 5",
+      "url": "https://www.gesetze-im-internet.de/kerzg/__5.html"
+    },
+    "stgb40": {
+      "title": "StGB § 40",
+      "url": "https://www.gesetze-im-internet.de/stgb/__40.html"
+    },
+    "stgb187": {
+      "title": "StGB § 187",
+      "url": "https://www.gesetze-im-internet.de/stgb/__187.html"
+    },
+    "stgb130": {
+      "title": "StGB § 130",
+      "url": "https://www.gesetze-im-internet.de/stgb/__130.html"
+    },
+    "stgb111": {
+      "title": "StGB § 111",
+      "url": "https://www.gesetze-im-internet.de/stgb/__111.html"
+    },
+    "stgb176": {
+      "title": "StGB § 176",
+      "url": "https://www.gesetze-im-internet.de/stgb/__176.html"
+    },
+    "maternity": {
+      "title": "MuSchG § 17",
+      "url": "https://www.gesetze-im-internet.de/muschg_2018/__17.html"
+    },
+    "labourcourt": {
+      "title": "ArbGG § 2",
+      "url": "https://www.gesetze-im-internet.de/arbgg/__2.html"
+    },
+    "layjudge": {
+      "title": "GVG § 30",
+      "url": "https://www.gesetze-im-internet.de/gvg/__30.html"
+    },
+    "lawyer": {
+      "title": "BRAO § 3",
+      "url": "https://www.gesetze-im-internet.de/brao/__3.html"
+    },
+    "stpo": {
+      "title": "StPO § 261",
+      "url": "https://www.gesetze-im-internet.de/stpo/__261.html"
+    },
+    "adult": {
+      "title": "BGB § 2",
+      "url": "https://www.gesetze-im-internet.de/bgb/__2.html"
+    },
+    "nonviolence": {
+      "title": "BGB § 1631",
+      "url": "https://www.gesetze-im-internet.de/bgb/__1631.html"
+    },
+    "marriage": {
+      "title": "BGB § 1306",
+      "url": "https://www.gesetze-im-internet.de/bgb/__1306.html"
+    },
+    "registration": {
+      "title": "BMG § 17",
+      "url": "https://www.gesetze-im-internet.de/bmg/__17.html"
+    },
+    "divorce": {
+      "title": "BGB § 1565",
+      "url": "https://www.gesetze-im-internet.de/bgb/__1565.html"
+    },
+    "youthhelp": {
+      "title": "SGB VIII § 16",
+      "url": "https://www.gesetze-im-internet.de/sgb_8/__16.html"
+    },
+    "childprotection": {
+      "title": "SGB VIII § 42",
+      "url": "https://www.gesetze-im-internet.de/sgb_8/__42.html"
+    },
+    "juvenile": {
+      "title": "JGG § 3",
+      "url": "https://www.gesetze-im-internet.de/jgg/__3.html"
+    },
+    "civilmarriage": {
+      "title": "BGB § 1310",
+      "url": "https://www.gesetze-im-internet.de/bgb/__1310.html"
+    },
+    "childcare": {
+      "title": "SGB VIII § 24",
+      "url": "https://www.gesetze-im-internet.de/sgb_8/__24.html"
+    },
+    "letter": {
+      "title": "StGB § 202",
+      "url": "https://www.gesetze-im-internet.de/stgb/__202.html"
+    },
+    "divorcelawyer": {
+      "title": "FamFG § 114",
+      "url": "https://www.gesetze-im-internet.de/famfg/__114.html"
+    },
+    "discrimination": {
+      "title": "Allgemeines Gleichbehandlungsgesetz",
+      "url": "https://www.gesetze-im-internet.de/agg/BJNR189710006.html"
+    },
+    "taxappeal": {
+      "title": "AO § 347",
+      "url": "https://www.gesetze-im-internet.de/ao_1977/__347.html"
+    },
+    "appeal": {
+      "title": "VwGO § 68",
+      "url": "https://www.gesetze-im-internet.de/vwgo/__68.html"
+    },
+    "workscouncil": {
+      "title": "BetrVG § 80",
+      "url": "https://www.gesetze-im-internet.de/betrvg/__80.html"
+    },
+    "notice": {
+      "title": "BGB § 622",
+      "url": "https://www.gesetze-im-internet.de/bgb/__622.html"
+    },
+    "defects": {
+      "title": "BGB § 437",
+      "url": "https://www.gesetze-im-internet.de/bgb/__437.html"
+    },
+    "eagle": {
+      "title": "Bundestag · Staatliche Symbole",
+      "url": "https://www.bundestag.de/parlament/symbole"
+    },
+    "anthem": {
+      "title": "Bundestag · Staatliche Symbole",
+      "url": "https://www.bundestag.de/parlament/symbole"
+    },
+    "bundestag": {
+      "title": "Bundestag · Aufgaben",
+      "url": "https://www.bundestag.de/parlament/aufgaben"
+    },
+    "bavaria": {
+      "title": "Verfassung des Freistaates Bayern",
+      "url": "https://www.gesetze-bayern.de/Content/Document/BayVerf/true"
+    },
+    "bavariaconstitution": {
+      "title": "Verfassung des Freistaates Bayern",
+      "url": "https://www.gesetze-bayern.de/Content/Document/BayVerf/true"
+    },
+    "bavariaarms": {
+      "title": "Bayerischer Landtag · Staatswappen",
+      "url": "https://www.bayern.landtag.de/parlament/staatssymbole/bayerisches-staatswappen/"
+    },
+    "bavariaflag": {
+      "title": "Bayerischer Landtag · Staatsflagge",
+      "url": "https://www.bayern.landtag.de/parlament/staatssymbole/staatsflagge/"
+    },
+    "bavariavote": {
+      "title": "Bayerisches Innenministerium · Kommunalwahlen",
+      "url": "https://www.stmi.bayern.de/wahlen-und-abstimmungen/kommunalwahlen"
+    },
+    "bavariamap": {
+      "title": "Bayerisches Innenministerium · Staatsgebiet",
+      "url": "https://www.stmi.bayern.de/staat-und-verfassung/staatsgebiet/"
+    },
+    "munich": {
+      "title": "Bayerisches Innenministerium · Staatsgebiet",
+      "url": "https://www.stmi.bayern.de/staat-und-verfassung/staatsgebiet/"
+    },
+    "bavariaeducation": {
+      "title": "Bayerische Landeszentrale für politische Bildungsarbeit",
+      "url": "https://www.blz.bayern.de/"
+    },
+    "altoetting": {
+      "title": "Landkreis Altötting",
+      "url": "https://www.lra-aoe.de/"
+    },
+    "local": {
+      "title": "Gemeindeordnung für den Freistaat Bayern",
+      "url": "https://www.gesetze-bayern.de/Content/Document/BayGO/true"
+    },
+    "police": {
+      "title": "Polizeiaufgabengesetz Bayern",
+      "url": "https://www.gesetze-bayern.de/Content/Document/BayPAG/true"
+    },
+    "assembly": {
+      "title": "Bayerisches Versammlungsgesetz · Art. 13",
+      "url": "https://www.gesetze-bayern.de/Content/Document/BayVersG-13"
+    },
+    "school": {
+      "title": "Bayerisches Erziehungs- und Unterrichtsgesetz · Art. 35",
+      "url": "https://www.gesetze-bayern.de/Content/Document/BayEUG-35"
+    },
+    "employment": {
+      "title": "Statistische Ämter · Erwerbstätige",
+      "url": "https://www.statistikportal.de/de/etr/ergebnisse/erwerbstaetige"
+    },
+    "social": {
+      "title": "BMAS · Sozialversicherung",
+      "url": "https://www.bmas.de/DE/Soziales/Sozialversicherung/sozialversicherung-art.html"
+    },
+    "market": {
+      "title": "Bundeszentrale für politische Bildung · Soziale Marktwirtschaft",
+      "url": "https://www.bpb.de/kurz-knapp/lexika/das-junge-politik-lexikon/321138/soziale-marktwirtschaft/"
+    },
+    "chancellor": {
+      "title": "Bundesregierung · Friedrich Merz",
+      "url": "https://www.bundesregierung.de/breg-de/bundesregierung/bundeskabinett/friedrich-merz-2342660"
+    },
+    "chancellors": {
+      "title": "Bundeskanzler seit 1949",
+      "url": "https://www.bundeskanzler.de/bk-de/kanzleramt/bundeskanzler-seit-1949"
+    },
+    "seats": {
+      "title": "Bundestag · Sitzverteilung",
+      "url": "https://www.bundestag.de/parlament/plenum/sitzverteilung"
+    },
+    "president": {
+      "title": "Auswärtiges Amt · Deutschland",
+      "url": "https://www.auswaertiges-amt.de/de/service/laender/deutschland-node/deutschland-199140"
+    },
+    "cdu": {
+      "title": "Christlich Demokratische Union",
+      "url": "https://www.cdu.de/"
+    },
+    "csu": {
+      "title": "Christlich-Soziale Union",
+      "url": "https://www.csu.de/"
+    },
+    "spd": {
+      "title": "Sozialdemokratische Partei Deutschlands",
+      "url": "https://www.spd.de/"
+    },
+    "fdp": {
+      "title": "Freie Demokratische Partei",
+      "url": "https://www.fdp.de/"
+    },
+    "constitutional": {
+      "title": "Bundesverfassungsgericht",
+      "url": "https://www.bundesverfassungsgericht.de/"
+    },
+    "voting": {
+      "title": "Bundeswahlleiterin · Das Wahlsystem",
+      "url": "https://www.bundeswahlleiterin.de/bundestagswahlen/2025/informationen-waehler/wahlsystem.html"
+    },
+    "helpers": {
+      "title": "Bundeswahlleiterin · Wahlhelfer",
+      "url": "https://www.bundeswahlleiterin.de/service/glossar/w/wahlhelfer.html"
+    },
+    "helperduty": {
+      "title": "Bundeswahlleiterin · Wahlhelfer",
+      "url": "https://www.bundeswahlleiterin.de/service/glossar/w/wahlhelfer.html"
+    },
+    "ballot": {
+      "title": "Bundeswahlleiterin · Stimmzettel",
+      "url": "https://bundeswahlleiterin.de/service/glossar/s/stimmzettel.html"
+    },
+    "notification": {
+      "title": "Bundeswahlleiterin · Wahlbenachrichtigung",
+      "url": "https://www.bundeswahlleiterin.de/service/glossar/w/wahlbenachrichtigung.html"
+    },
+    "postal": {
+      "title": "Bundeswahlleiterin · Briefwahl",
+      "url": "https://www.bundeswahlleiterin.de/bundestagswahlen/2025/informationen-waehler/briefwahl.html"
+    },
+    "order": {
+      "title": "Niedersächsische Staatskanzlei · Staatliche Auszeichnungen",
+      "url": "https://www.stk.niedersachsen.de/startseite/themen/orden_ehrungen/staatliche-auszeichnungen-und-ehrungen-2730.html"
+    },
+    "jewish321": {
+      "title": "Bundeszentrale für politische Bildung · Jüdisches Leben",
+      "url": "https://www.bpb.de/themen/zeit-kulturgeschichte/juedischesleben/"
+    },
+    "synagogue": {
+      "title": "Zentralrat der Juden · FAQ",
+      "url": "https://www.zentralratderjuden.de/service/faq/"
+    },
+    "jewishcommunities": {
+      "title": "Zentralrat der Juden · FAQ",
+      "url": "https://www.zentralratderjuden.de/service/faq/"
+    },
+    "makkabi": {
+      "title": "Makkabi Deutschland",
+      "url": "https://makkabi.de/"
+    },
+    "ns": {
+      "title": "Deutsches Historisches Museum · NS-Regime",
+      "url": "https://www.dhm.de/lemo/kapitel/ns-regime"
+    },
+    "ww2": {
+      "title": "Deutsches Historisches Museum · Zweiter Weltkrieg",
+      "url": "https://www.dhm.de/lemo/kapitel/zweiter-weltkrieg"
+    },
+    "warend": {
+      "title": "Haus der Geschichte · Nachkriegsjahre",
+      "url": "https://www.hdg.de/lemo/kapitel/nachkriegsjahre"
+    },
+    "occupation": {
+      "title": "Haus der Geschichte · Nachkriegsjahre",
+      "url": "https://www.hdg.de/lemo/kapitel/nachkriegsjahre"
+    },
+    "foundation": {
+      "title": "Haus der Geschichte · Staatsgründungen 1949",
+      "url": "https://www.hdg.de/lemo/kapitel/nachkriegsjahre/doppelte-staatsgruendung.html"
+    },
+    "gdrfoundation": {
+      "title": "Haus der Geschichte · Staatsgründungen 1949",
+      "url": "https://www.hdg.de/lemo/kapitel/nachkriegsjahre/doppelte-staatsgruendung.html"
+    },
+    "racism": {
+      "title": "Deutsches Historisches Museum · Ausgrenzung und Verfolgung",
+      "url": "https://www.dhm.de/lemo/kapitel/ns-regime/ausgrenzung-und-verfolgung"
+    },
+    "resistance": {
+      "title": "Gedenkstätte Deutscher Widerstand",
+      "url": "https://www.gdw-berlin.de/"
+    },
+    "pogrom": {
+      "title": "Bundeszentrale für politische Bildung · Novemberpogrom 1938",
+      "url": "https://www.bpb.de/kurz-knapp/hintergrund-aktuell/542301/novemberpogrom-1938/"
+    },
+    "wall": {
+      "title": "Haus der Geschichte · Berliner Mauer",
+      "url": "https://www.hdg.de/lemo/lernen/hdg/objekt-alltagsdesign-objektgruppe-zum-mauerbau.html"
+    },
+    "wallfall": {
+      "title": "Haus der Geschichte · Deutsche Einheit",
+      "url": "https://www.hdg.de/lemo/kapitel/deutsche-einheit"
+    },
+    "revolution": {
+      "title": "Haus der Geschichte · Deutsche Einheit",
+      "url": "https://www.hdg.de/lemo/kapitel/deutsche-einheit"
+    },
+    "unity": {
+      "title": "Haus der Geschichte · Deutsche Einheit",
+      "url": "https://www.hdg.de/lemo/kapitel/deutsche-einheit"
+    },
+    "unitystates": {
+      "title": "Haus der Geschichte · Deutsche Einheit",
+      "url": "https://www.hdg.de/lemo/kapitel/deutsche-einheit"
+    },
+    "planned": {
+      "title": "Haus der Geschichte · Geteiltes Deutschland",
+      "url": "https://www.hdg.de/lemo/kapitel/geteiltes-Deutschland"
+    },
+    "coldwar": {
+      "title": "Haus der Geschichte · Geteiltes Deutschland",
+      "url": "https://www.hdg.de/lemo/kapitel/geteiltes-Deutschland"
+    },
+    "miracle": {
+      "title": "Haus der Geschichte · Wirtschaftswunder",
+      "url": "https://www.hdg.de/lemo/kapitel/geteiltes-deutschland-gruenderjahre/wirtschaft-und-gesellschaft-im-westen/wirtschaftswunder.html"
+    },
+    "brandt": {
+      "title": "Deutsches Historisches Museum · Kniefall von Warschau",
+      "url": "https://www.dhm.de/journal/beitrag/der-kniefall-von-warschau-die-grosse-geste-von-willy-brandt"
+    },
+    "ostpolitik": {
+      "title": "Haus der Geschichte · Ostverträge",
+      "url": "https://www.hdg.de/lemo/kapitel/geteiltes-deutschland-modernisierung/neue-ostpolitik/moskau-warschau-prag.html"
+    },
+    "airlift": {
+      "title": "Haus der Geschichte · Berlin-Blockade",
+      "url": "https://www.hdg.de/lemo/kapitel/nachkriegsjahre/doppelte-staatsgruendung/berlin-blockade-1948.html"
+    },
+    "stasi": {
+      "title": "Bundesarchiv · Stasi-Unterlagen-Archiv",
+      "url": "https://www.stasi-unterlagen-archiv.de/"
+    },
+    "stolpersteine": {
+      "title": "Stolpersteine · Gunter Demnig",
+      "url": "https://www.stolpersteine.eu/"
+    },
+    "un181": {
+      "title": "United Nations · Palestine and the General Assembly",
+      "url": "https://www.un.org/unispal/data-collection/general-assembly/"
+    },
+    "eu": {
+      "title": "European Union · Aims and values",
+      "url": "https://european-union.europa.eu/principles-countries-history/principles-and-values/aims-and-values_en"
+    },
+    "countriesEU": {
+      "title": "European Union · Member countries",
+      "url": "https://european-union.europa.eu/principles-countries-history/eu-countries_en"
+    },
+    "euflag": {
+      "title": "European Union · European flag",
+      "url": "https://european-union.europa.eu/principles-countries-history/symbols/european-flag_en"
+    },
+    "electionsEU": {
+      "title": "European Parliament · Elections",
+      "url": "https://elections.europa.eu/en/"
+    },
+    "euro": {
+      "title": "Bundesbank · Euro-Bargeld seit 2002",
+      "url": "https://www.bundesbank.de/de/aufgaben/themen/das-euro-bargeld-wird-20--856394"
+    },
+    "abitur": {
+      "title": "Bayerisches Kultusministerium · Abendgymnasium",
+      "url": "https://www.km.bayern.de/lernen/schularten/weitere-schularten/abendgymnasium"
+    },
+    "abituradult": {
+      "title": "Bayerisches Kultusministerium · Abendgymnasium",
+      "url": "https://www.km.bayern.de/lernen/schularten/weitere-schularten/abendgymnasium"
+    },
+    "restaurant": {
+      "title": "Stadt München · Gaststätten",
+      "url": "https://stadt.muenchen.de/buergerservice/branchen-berufe/gastro-handel/gaststaetten.html"
+    },
+    "quiet": {
+      "title": "Stadt Dortmund · Nachtruhe und Lärmschutz",
+      "url": "https://www.dortmund.de/themen/umwelt-nachhaltigkeit-und-klimaschutz/laerm-und-laermminderung/laerm-durch-gewerbe-privatpersonen/"
+    },
+    "driving": {
+      "title": "TÜV NORD · Sprachen der Theorieprüfung",
+      "url": "https://www.tuev-nord.de/de/dienstleistungen/fuehrerschein-und-fahrzeug/faq-fuehrerscheinpruefung/"
+    },
+    "churchtax": {
+      "title": "Bundesportal · Kirchensteuer",
+      "url": "https://verwaltung.bund.de/leistungsverzeichnis/de/leistung/99102035002000"
+    },
+    "salary": {
+      "title": "Bundesfinanzministerium · Steuern von A bis Z",
+      "url": "https://www.bundesfinanzministerium.de/Content/DE/Downloads/Broschueren_Bestellservice/steuern-von-a-z.pdf?__blob=publicationFile&v=12"
+    },
+    "migration": {
+      "title": "Destatis · Geschichte der Arbeitsmigration",
+      "url": "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/10/PD26_377_122.html"
+    },
+    "guestworkers": {
+      "title": "Destatis · Geschichte der Arbeitsmigration",
+      "url": "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/10/PD26_377_122.html"
+    },
+    "advent": {
+      "title": "Erzbistum München · Kirchenjahr",
+      "url": "https://www.erzbistum-muenchen.de/glaube-und-spiritualitaet/kirchenjahr"
+    },
+    "pentecost": {
+      "title": "Erzbistum München · Kirchenjahr",
+      "url": "https://www.erzbistum-muenchen.de/glaube-und-spiritualitaet/kirchenjahr"
+    },
+    "auschwitz": {
+      "title": "Auschwitz Memorial · Liberation",
+      "url": "https://www.auschwitz.org/en/history/liberation/"
+    },
+    "austria": {
+      "title": "European Union · Austria",
+      "url": "https://european-union.europa.eu/principles-countries-history/eu-countries/austria_en"
+    },
+    "biz": {
+      "title": "Bundesagentur für Arbeit · Berufsinformationszentrum",
+      "url": "https://www.arbeitsagentur.de/bildung/berufsinformationszentrum-biz"
+    },
+    "carnival": {
+      "title": "Festkomitee Kölner Karneval · Rosenmontag",
+      "url": "https://koelnerkarneval.de/zuege/rosenmontagszug"
+    },
+    "christianity": {
+      "title": "Evangelische Kirche in Deutschland · Feste feiern",
+      "url": "https://www.ekd.de/Feste-feiern-10805.htm"
+    },
+    "christmas": {
+      "title": "Evangelische Kirche in Deutschland · Feste feiern",
+      "url": "https://www.ekd.de/Feste-feiern-10805.htm"
+    },
+    "easter": {
+      "title": "Evangelische Kirche in Deutschland · Feste feiern",
+      "url": "https://www.ekd.de/Feste-feiern-10805.htm"
+    },
+    "coalition": {
+      "title": "Bundeskanzleramt · Ampelkoalition 2021–2024",
+      "url": "https://www.bundeskanzler.de/bk-de/content/kanzlerschaft-olaf-scholz-2344498"
+    },
+    "euunity": {
+      "title": "European Parliament · German reunification",
+      "url": "https://www.europarl.europa.eu/thinktank/de/document/EPRS_ATA%282019%29642279"
+    },
+    "gdremblem": {
+      "title": "Bundeszentrale für politische Bildung · Staatswappen",
+      "url": "https://www.bpb.de/lernen/angebote/grafstat/fussball-und-nationalbewusstsein/185200/m-02-08-bundeswappen/"
+    },
+    "gdrworkers": {
+      "title": "Bundeszentrale für politische Bildung · Vertragsarbeiter",
+      "url": "https://www.bpb.de/themen/deutsche-einheit/lange-wege-der-deutschen-einheit/314193/auslaender-in-ostdeutschland/"
+    },
+    "houserules": {
+      "title": "BAMF · Willkommen in Deutschland",
+      "url": "https://www.bamf.de/SharedDocs/Anlagen/DE/Integration/WillkommenDeutschland/willkommen-in-deutschland.html"
+    },
+    "israel": {
+      "title": "Auswärtiges Amt · Historische Verantwortung",
+      "url": "https://www.auswaertiges-amt.de/de/service/laender/israel-node/2777026-2777026"
+    },
+    "neighbours": {
+      "title": "Auswärtiges Amt · Geografie Deutschlands",
+      "url": "https://www.tatsachen-ueber-deutschland.de/de/deutschland-auf-einen-blick/geografie-und-klima"
+    },
+    "parental": {
+      "title": "Familienportal · Elterngeld beantragen",
+      "url": "https://familienportal.de/familienportal/familienleistungen/elterngeld/faq/wie-kann-ich-elterngeld-beantragen--124762"
+    },
+    "parliamentEU": {
+      "title": "European Parliament · Places of work",
+      "url": "https://www.europarl.europa.eu/news/en/faq/3/why-does-parliament-move-between-brussels-and-strasbourg"
+    },
+    "population": {
+      "title": "Destatis · Bevölkerungsstand",
+      "url": "https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Bevoelkerungsstand/_inhalt.html"
+    },
+    "reichstag": {
+      "title": "Bundestag · Reichstagsgebäude",
+      "url": "https://www.bundestag.de/besuche/architektur/reichstag"
+    },
+    "rome": {
+      "title": "European Parliament · Treaty of Rome",
+      "url": "https://www.europarl.europa.eu/about-parliament/en/in-the-past/the-parliament-and-the-treaties/treaty-of-rome"
+    },
+    "schengen": {
+      "title": "Your Europe · Travel documents and Schengen",
+      "url": "https://europa.eu/youreurope/citizens/travel/entry-exit/eu-citizen/index_en.htm"
+    },
+    "training": {
+      "title": "Bundesagentur für Arbeit · Karriere und Weiterbildung",
+      "url": "https://www.arbeitsagentur.de/karriere-und-weiterbildung"
+    },
+    "uprising": {
+      "title": "Haus der Geschichte · Volksaufstand am 17. Juni 1953",
+      "url": "https://www.hdg.de/lemo/kapitel/geteiltes-deutschland-gruenderjahre/weg-nach-osten/17-juni-1953-volksaufstand.html"
+    },
+    "vhs": {
+      "title": "Deutscher Volkshochschul-Verband",
+      "url": "https://www.volkshochschule.de/"
+    },
+    "volunteering": {
+      "title": "Deutsche Stiftung für Engagement und Ehrenamt",
+      "url": "https://www.deutsche-stiftung-engagement-und-ehrenamt.de/"
+    }
+  }
+}

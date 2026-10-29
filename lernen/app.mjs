@@ -1,4 +1,5 @@
 import {createSession, answerQuestion, nextQuestion, validateSession} from './engine.mjs';
+import {parseExplanations, explanationFor} from './explanation-data.mjs';
 
 const SESSION_KEY='zb-lernen-bayern-session-v1';
 const SETTINGS_KEY='zb-lernen-bayern-settings-v1';
@@ -10,7 +11,9 @@ const copy={
 
 Object.assign(copy.ru,{completeExam:'Пройти пробный экзамен',completeExamText:'Все вопросы освоены. Проверь себя в пробном экзамене: 33 вопроса, 60 минут, Бавария.'});
 Object.assign(copy.en,{completeExam:'Take a mock exam',completeExamText:'You have mastered every question. Test yourself in a mock exam: 33 questions, 60 minutes, Bavaria.'});
-let settings={ui:'ru',translation:'ru'}, questions=[], byId=new Map(), answerTranslations=new Map(), version='', state=null;
+Object.assign(copy.ru,{why:'Почему так устроено',explanationSource:'Источник ↗'});
+Object.assign(copy.en,{why:'Why it works this way',explanationSource:'Source ↗'});
+let settings={ui:'ru',translation:'ru'}, questions=[], byId=new Map(), answerTranslations=new Map(), explanations=new Map(), explanationSources={}, version='', state=null;
 let lastSaved=null, preserveOld=false, storageIssue='', syncMessage=false;
 try {
   const stored=JSON.parse(localStorage.getItem(SETTINGS_KEY));
@@ -142,6 +145,14 @@ function render(){
     block.className='feedback-answer';german.className='feedback-answer-de';german.lang='de';richText(german,answer.de);
     translation.className='feedback-answer-translation';translation.lang=settings.translation;richText(translation,answer[settings.translation]);
     block.append(german,translation);$('feedback').append(block);
+    const explanation=explanationFor(p,settings.translation,explanations);
+    if(explanation){
+      const context=document.createElement('div'),heading=document.createElement('h4'),body=document.createElement('p'),sourceLink=document.createElement('a');
+      context.className='feedback-explanation';heading.textContent=t().why;body.lang=settings.translation;richText(body,explanation);
+      const source=explanationSources[explanations.get(q.id).sources[0]];
+      sourceLink.href=source.url;sourceLink.target='_blank';sourceLink.rel='noopener noreferrer';sourceLink.textContent=t().explanationSource;sourceLink.setAttribute('aria-label',`${t().explanationSource} ${source.title}`);
+      context.append(heading,body,sourceLink);$('feedback').append(context);
+    }
     $('feedback').append(detail);
     $('next').firstElementChild.textContent=state.queue.length===0?t().finish:t().next;
   }
@@ -151,9 +162,9 @@ function render(){
 async function load(){
   $('load-error').hidden=true;$('question-card').hidden=false;$('question-card').setAttribute('aria-busy','true');$('restart').disabled=true;
   try{
-    const [response,answerResponse]=await Promise.all([fetch('./questions.json'),fetch('./answer-translations.json')]);
-    if(!response.ok||!answerResponse.ok)throw new Error(`Catalogue/answer translations HTTP ${response.status}/${answerResponse.status}`);
-    const [data,answerData]=await Promise.all([response.json(),answerResponse.json()]);
+    const [response,answerResponse,explanationResponse]=await Promise.all([fetch('./questions.json'),fetch('./answer-translations.json'),fetch('./explanations.json')]);
+    if(!response.ok||!answerResponse.ok||!explanationResponse.ok)throw new Error(`Learning data HTTP ${response.status}/${answerResponse.status}/${explanationResponse.status}`);
+    const [data,answerData,explanationData]=await Promise.all([response.json(),answerResponse.json(),explanationResponse.json()]);
     if(typeof data.version!=='string' || !Array.isArray(data.questions) || data.questions.length!==310)throw new Error('Incomplete catalogue');
     questions=data.questions;version=data.version;byId=new Map(questions.map(q=>[q.id,q]));
     if(byId.size!==310 || questions.some((q,i)=>q.id!==i+1 || ![q.de,q.ru,q.en].every(x=>typeof x==='string' && x.length>0) || q.answers.length!==4 || !Number.isInteger(q.correct) || q.correct<0 || q.correct>3))throw new Error('Invalid catalogue data');
@@ -163,6 +174,7 @@ async function load(){
       const a=answerTranslations.get(q.id);
       return !a||![a.de,a.ru,a.en].every(text=>typeof text==='string'&&text.trim()&&text.split('**').length%2===1)||a.de.replaceAll('**','')!==q.answers[q.correct];
     }))throw new Error('Answer translations do not match the official correct answers');
+    explanations=parseExplanations(explanationData,questions,version);explanationSources=explanationData.sources;
     state=createSession(questions.map(q=>q.id),version);
     try{
       lastSaved=localStorage.getItem(SESSION_KEY);

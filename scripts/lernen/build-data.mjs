@@ -1,4 +1,5 @@
 import { readFile, writeFile } from 'node:fs/promises';
+import {parseExplanations} from '../../lernen/explanation-data.mjs';
 const base = new URL('./', import.meta.url);
 const catalogue = JSON.parse(await readFile(new URL('catalog-de.json', base), 'utf8'));
 const lines = (await readFile(new URL('translations.tsv', base), 'utf8')).trim().split(/\r?\n/);
@@ -42,3 +43,23 @@ const answers=catalogue.map(q=>{
 });
 await writeFile(new URL('../../lernen/answer-translations.json',base),JSON.stringify({version:'bamf-by-answer-feedback-v1',catalogueVersion:'bamf-by-2026-10-28-v1',answers})+'\n');
 console.log(`Built ${answers.length} correct-answer records and 620 answer translations; catalogue version unchanged.`);
+
+const explanationSources=JSON.parse(await readFile(new URL('explanation-sources.json',base),'utf8'));
+const explanationRows=(await readFile(new URL('explanations.tsv',base),'utf8')).trim().split(/\r?\n/);
+const explanationById=new Map();
+for(const line of explanationRows){
+  const fields=line.split('|');
+  if(fields.length!==4)throw new Error(`Invalid explanation row: ${fields[0]}`);
+  const [ids,sources,ru,en]=fields;
+  for(const rawId of ids.split(',')){
+    const id=Number(rawId);
+    if(!Number.isInteger(id)||id<1||id>310||explanationById.has(id))throw new Error(`Invalid or duplicate explanation ID: ${rawId}`);
+    explanationById.set(id,{id,ru,en,sources:sources.split(',')});
+  }
+}
+if(explanationById.size!==catalogue.length)throw new Error('Expected explanations for all 310 questions');
+const explanations=catalogue.map(q=>({...explanationById.get(q.id),correctAnswer:q.answers[q.correct]}));
+const explanationData={version:'bamf-by-explanations-v1',catalogueVersion:'bamf-by-2026-10-28-v1',reviewedAt:explanationSources.reviewedAt,sources:explanationSources.sources,explanations};
+parseExplanations(explanationData,questions,explanationData.catalogueVersion);
+await writeFile(new URL('../../lernen/explanations.json',base),JSON.stringify(explanationData)+'\n');
+console.log(`Built ${explanations.length} explanations in Russian and English; learning/exam storage unchanged.`);
